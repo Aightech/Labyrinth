@@ -3,6 +3,9 @@
 #include "struct.h"
 
 /*
+void initMap(Map L);
+void updateMap(Map L);
+
 int dispMap(Map L);//Display the labyrinth
 
 int move(Map L, Player P,char move);//return 1. If can't move return : -1(wall) -2(player) 
