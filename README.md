@@ -17,7 +17,7 @@
 
 **void updateMap(Map L);**
 
-**int move(Map L, Player P,char move);** *Return 1. If can't move return : -1(wall) -2(player) *
+**int move(Map L, Player P,char move);** *Return 1. If can't move return : -1(wall) -2(player)*
 
 **int moveMap(Map L,int row, int line);** *Return 1. If can't move return : -1(not enought energy)*
 
