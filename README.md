@@ -2,9 +2,9 @@
 [ROB3] Labyrinth Game
 
 ##list of structures:
-**LStep**
+**LStep** *A case to move at or a modification of the map*
 
-**Path**  *list of lab case and its size*
+**Path**  *list of step and its size*
 
 **Player** *player*
 
@@ -13,9 +13,9 @@
 ##list of functions:
 **int dispMap(Map L);** *Display the labyrinth*
 
-**void initMap(Map L);**
+**void initMap(Map L);** *Initialize the map*
 
-**void updateMap(Map L);**
+**void updateMap(Map L);** *Update the map*
 
 **int move(Map L, Player P,char move);** *Return 1. If can't move return : -1(wall) -2(player)*
 
