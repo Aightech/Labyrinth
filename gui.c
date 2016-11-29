@@ -24,15 +24,15 @@ int GUI(Map *L,int lstGUIch)
 	init_pair(4, COLOR_CYAN, COLOR_BLACK);
 	
 	PANEL  *my_panels[nbrW];
-	WIN my_wins[nbrW] = {{newwin(21, 40, 0, 0),"Map:",{},{},0},
+	WIN my_wins[nbrW] = {{newwin(25, 40, 0, 0),"Map:",{},{},0},
 				{newwin(14, 40, 0, 40),"Information Player 1:",{},{},0},
 				{newwin(14, 40, 14, 40),"Information Player 2:",{},{},0},
 				{newwin(28, 10, 0, 80),"Modes:",{"GetMap"," Dumb ","Manual"," Auto "," Stop "},{{3,1},{6,1},{9,1},{12,1},{15,1},{3,28}},5},
-				{newwin(7, 40, 21, 0),"Commands:",{" < "," ^ "," v "," > ","Pause","Map Move"},{{3,1},{3,6},{3,11},{3,16},{3,21},{3,28}},6},
+				{newwin(7, 40, 25, 0),"Commands:",{" < "," ^ "," v "," > ","Pause","Map Move"},{{3,1},{3,6},{3,11},{3,16},{3,21},{3,28}},6},
 				};
 				
-
-	for(int i = 0; i < nbrW; ++i)
+	int i;
+	for(i = 0; i < nbrW; ++i)
 	{
 		win_show(&my_wins[i]);
 		my_panels[i] = new_panel(my_wins[i].win);/* Attach a panel to each window */ 
@@ -42,7 +42,8 @@ int GUI(Map *L,int lstGUIch)
 	
 	update_panels();
 	doupdate();
-	int i=4,c=0;
+	i=4;
+	int c=0;
 			
 	//PANEL  *top;
 	while(c!=-1)
@@ -95,7 +96,7 @@ int GUI(Map *L,int lstGUIch)
 int dispMap(Map* L,WIN* win)//Display the labyrinth
 {
 	//mvwprintw(win->win, 5,5, "%s", L->cases[0]);
-	int starty=4,startx=7;
+	int starty=3,startx=1;
 	mvwaddch(win->win, starty, startx, ACS_ULCORNER); 
 	//mvwaddch(win->win, starty+1, startx, ACS_VLINE); 
 	mvwvline(win->win, starty+1, startx, ACS_VLINE, L->heigth+1);
@@ -113,9 +114,9 @@ int dispMap(Map* L,WIN* win)//Display the labyrinth
 		for(j=0;j<L->width;j++)
 		{
 			//printf("(%d,%d)= ",i,j);
-			if(L->cases[i][j]=='1')
+			if(L->cases[i][j]==1)
 				mvwaddch(win->win, starty+i+1, startx+j+1, ACS_CKBOARD);
-			else if(L->cases[i][j]=='2')
+			else if(L->cases[i][j]==2)
 			{
 				wattron(win->win,COLOR_PAIR(3));
 				//mvwprintw(win->win, starty+i+1, startx+j+1, "%s", "o");
@@ -132,7 +133,7 @@ int dispMap(Map* L,WIN* win)//Display the labyrinth
 
 void win_show(WIN *win)
 {	
-	int height=0, width;	
+	int height=0, width,i;	
 	height++;
 	//getbegyx(win->win, starty, startx);
 	getmaxyx(win->win, height, width);
@@ -143,7 +144,7 @@ void win_show(WIN *win)
 	mvwaddch(win->win, 2, width - 1, ACS_RTEE); 
 	mvwprintw(win->win, 1, 2, "%s", win->label);
 	//buttons
-	for(int i =0;i<win->numButt;i++)
+	for(i =0;i<win->numButt;i++)
 	{
 		boxe(win, win->posButt[i][0], win->posButt[i][1], win->buttLab[i]);
 	}
@@ -165,13 +166,13 @@ void boxe(WIN *win, int starty, int startx,const char *string)
 
 int choice(WIN *win,int lstCh)
 {
-	int ch=0;
+	int ch=0,i;
 	int highlight=lstCh;
 	bool selected=false;
 	
 	while(ch!= 10 && ch != 'q' &&selected!=true)
 	{
-		for(int i =0;i<win->numButt;i++)
+		for(i =0;i<win->numButt;i++)
 		{
 			if(highlight == i) /* High light the present choice */
 			{	
