@@ -18,7 +18,6 @@ int GUI(Map *L,int lstGUIch)
 	refresh();
 	
 	init_pair(1, COLOR_RED, COLOR_BLACK);
-	
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
 	init_pair(3, COLOR_BLUE, COLOR_BLACK);
 	init_pair(4, COLOR_CYAN, COLOR_BLACK);
@@ -116,7 +115,7 @@ int dispMap(Map* L,WIN* win)//Display the labyrinth
 			//printf("(%d,%d)= ",i,j);
 			if(L->cases[i][j]==1)
 				mvwaddch(win->win, starty+i+1, startx+j+1, ACS_CKBOARD);
-			else if(L->cases[i][j]==2)
+			else if(L->cases[i][j]=='2')
 			{
 				wattron(win->win,COLOR_PAIR(3));
 				//mvwprintw(win->win, starty+i+1, startx+j+1, "%s", "o");

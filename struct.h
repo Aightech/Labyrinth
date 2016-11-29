@@ -37,6 +37,7 @@ typedef struct _Player {//player
 typedef struct _Map {//the labyrinth
 
 	//WINDOW *win;// to use with ncurses
+	char name[50];
 	int width;
 	int heigth;
 	char **cases;
@@ -54,5 +55,7 @@ typedef struct _WIN_struct {
 	
 	
 }WIN;
+
+
 
 #endif
