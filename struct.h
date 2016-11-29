@@ -2,6 +2,9 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
+#include <panel.h>
+
+
 typedef struct _LStep{//case of lab to create path
 	struct _LStep* from;
 	struct _LStep* next;
@@ -34,10 +37,22 @@ typedef struct _Player {//player
 typedef struct _Map {//the labyrinth
 
 	//WINDOW *win;// to use with ncurses
-	int size[2];//width/heigth
+	int width;
+	int heigth;
 	char **cases;
-	Player* Players[3];//[P1;P2;Tresor]
+	Player* players[3];//[P1;P2;Tresor]
 	
 }Map;
+
+typedef struct _WIN_struct {
+
+	WINDOW *win;
+	const char *label;
+	const char *buttLab[7];
+	int posButt[7][2];
+	int numButt;
+	
+	
+}WIN;
 
 #endif
