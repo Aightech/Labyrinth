@@ -3,7 +3,7 @@
 
 //#include "gui.h"
 #include "struct.h"
-//#include "labyrinthAPI.h"
+#include "labyrinthAPI.h"
 #include <unistd.h>
 
 
@@ -49,7 +49,7 @@ void getMap(Map *L)
 	
 
 	/* connection to the server */
-	connectToServer( "pc4023.polytech.upmc.fr", 1234, "Aightech");
+	connectToServer( "pc4021.polytech.upmc.fr", 1234, "Aightech");
 	int i,j;
 	for(i=0;i<L->heigth;i++)//delete the last cases
 	{
@@ -60,6 +60,15 @@ void getMap(Map *L)
 	/* wait for a game, and retrieve informations about it */
 	waitForLabyrinth( "DO_NOTHING timeout=10", L->name, &(L->width), &(L->heigth));
 	labData = (char*) malloc( L->width*L->heigth);
+	for(i=0;i<3;i++)
+	{
+		L->players[i]=(Player*) malloc(sizeof(Player));
+		L->players[i]->lastX=0;//last position of the player
+		L->players[i]->lastY=0;
+		L->players[i]->X=0;//curent position of the player
+		L->players[i]->Y=0;
+		L->players[i]->energy=0;
+	}
 	L->players[0]->turn = getLabyrinth(labData);
 	
 	
@@ -83,7 +92,7 @@ int TestMoveP(Map *L,int P,t_move *move)
 	int state=0;
 	switch(move->type)
 	{
-		case 0:
+		case MOVE_LEFT:
 			if(L->players[P]->X-1>-1)//if the player would still remain in the map
 			{
 				if(L->cases[L->players[P]->Y][L->players[P]->X-1]==1)
@@ -95,7 +104,7 @@ int TestMoveP(Map *L,int P,t_move *move)
 					state= -1;
 			}
 		break;
-		case 1:
+		case MOVE_UP:
 			if(L->players[P]->Y-1>-1)//if the player would still remai n in the map
 			{
 				if(L->cases[L->players[P]->Y-1][L->players[P]->X]==1)
@@ -108,7 +117,7 @@ int TestMoveP(Map *L,int P,t_move *move)
 			}
 				
 		break;
-		case 2:
+		case MOVE_DOWN:
 			if(L->players[P]->Y+1<L->heigth)//if the player would still remai n in the map
 			{
 				if(L->cases[L->players[P]->Y+1][L->players[P]->X]==1)
@@ -120,7 +129,7 @@ int TestMoveP(Map *L,int P,t_move *move)
 					state= -1;
 			}
 		break;
-		case 3:
+		case MOVE_RIGHT:
 			if(L->players[P]->X+1<L->width)//if the player would still remai n in the map
 			{
 				if(L->cases[L->players[P]->Y][L->players[P]->X+1]==1)
@@ -145,7 +154,7 @@ int moveP(Map *L, int P,t_move *move)
 	int state=0;
 	switch(move->type)
 	{
-		case 0:
+		case MOVE_LEFT:
 			if(L->players[P]->X-1>-1)//if the player would still remai n in the map
 			{
 					L->cases[L->players[P]->Y][L->players[P]->X]=0;
@@ -159,7 +168,7 @@ int moveP(Map *L, int P,t_move *move)
 					L->cases[L->players[P]->Y][L->players[P]->X]=2;
 			}
 		break;
-		case 1:
+		case MOVE_UP:
 			if(L->players[P]->Y-1>-1)//if the player would still remai n in the map
 			{
 					L->cases[L->players[P]->Y][L->players[P]->X]=0;
@@ -174,7 +183,7 @@ int moveP(Map *L, int P,t_move *move)
 			}
 				
 		break;
-		case 2:
+		case MOVE_DOWN:
 			if(L->players[P]->Y+1<L->heigth)//if the player would still remai n in the map
 			{
 					L->cases[L->players[P]->Y][L->players[P]->X]=0;
@@ -188,7 +197,7 @@ int moveP(Map *L, int P,t_move *move)
 					L->cases[L->players[P]->Y][L->players[P]->X]=2;
 			}
 		break;
-		case 3:
+		case MOVE_RIGHT:
 			if(L->players[P]->X+1<L->width)//if the player would still remai n in the map
 			{
 					L->cases[L->players[P]->Y][L->players[P]->X]=0;

@@ -115,7 +115,7 @@ int dispMap(Map* L,WIN* win)//Display the labyrinth
 			//printf("(%d,%d)= ",i,j);
 			if(L->cases[i][j]==1)
 				mvwaddch(win->win, starty+i+1, startx+j+1, ACS_CKBOARD);
-			else if(L->cases[i][j]=='2')
+			else if(L->cases[i][j]==2)
 			{
 				wattron(win->win,COLOR_PAIR(3));
 				//mvwprintw(win->win, starty+i+1, startx+j+1, "%s", "o");

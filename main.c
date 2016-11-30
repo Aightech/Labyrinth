@@ -22,7 +22,7 @@ int evaluate(Map *L);//Return the
 int main()
 {
 	Map *L=initMap();
-	t_move move;
+	t_move* move=(t_move*) malloc(sizeof(t_move));
 	int choice=0;
 	while(choice!=-1)
 	{
@@ -32,15 +32,24 @@ int main()
 			case 30:
 				getMap(L);
 			break;
-			
 			case 40:
-			case 41:
-			case 42:
-			case 43:
-				move.type=choice%4;
+				move->type=MOVE_LEFT;
 				moveP(L,0,move);
 			break;
-			
+			case 41:
+				move->type=MOVE_UP;
+				moveP(L,0,move);
+			break;
+			case 42:
+				move->type=MOVE_DOWN;
+				moveP(L,0,move);
+			break;
+			case 43:
+				move->type=MOVE_RIGHT;
+				moveP(L,0,move);
+			break;
+				
+   
 			
 		}
 	}
