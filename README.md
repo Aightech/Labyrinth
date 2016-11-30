@@ -11,11 +11,16 @@
 **Map** *the labyrinther*
 
 ##list of functions:
-**int dispMap(Map L);** *Display the labyrinth*
+###GUI functions 
+**int GUI(Map* L,int lastCh);** *Monitor the gui system and all other graphical functions*
 
-**void initMap(Map L);** *Initialize the map*
+**int dispMap(Map* L);** *Display the labyrinth*
 
-**void updateMap(Map L);** *Update the map*
+**Map* initMap();** *Initialize the map*
+
+**void updateMap(Map *L);** *Update the map*
+###Movements functions 
+**int testMoveP(Map L, Player P,char move);** *Return 1. If can't move return : -1(wall) -2(player)* 
 
 **int move(Map L, Player P,char move);** *Return 1. If can't move return : -1(wall) -2(player)*
 
