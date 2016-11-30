@@ -38,6 +38,8 @@ typedef struct _Map {//the labyrinth
 
 	//WINDOW *win;// to use with ncurses
 	char name[50];
+	char infoP1[10][50];
+	char infoP2[10][50];
 	int width;
 	int heigth;
 	char **cases;

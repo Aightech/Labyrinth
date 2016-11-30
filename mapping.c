@@ -60,16 +60,41 @@ void getMap(Map *L)
 	/* wait for a game, and retrieve informations about it */
 	waitForLabyrinth( "DO_NOTHING timeout=10", L->name, &(L->width), &(L->heigth));
 	labData = (char*) malloc( L->width*L->heigth);
-	for(i=0;i<3;i++)
-	{
-		L->players[i]=(Player*) malloc(sizeof(Player));
-		L->players[i]->lastX=0;//last position of the player
-		L->players[i]->lastY=0;
-		L->players[i]->X=0;//curent position of the player
-		L->players[i]->Y=0;
-		L->players[i]->energy=0;
-	}
 	L->players[0]->turn = getLabyrinth(labData);
+	
+	if(L->players[0]->turn==0)
+	{
+		L->players[0]->X=0;//curent position of the player
+		L->players[0]->Y=L->heigth/2;
+		L->players[0]->energy=0;
+		L->players[0]->lastX=L->players[0]->X;//last position of the player
+		L->players[0]->lastY=L->players[0]->Y;
+		
+		L->players[1]->X=L->width-1;//curent position of the player
+		L->players[1]->Y=L->heigth/2;
+		L->players[1]->energy=1;
+		L->players[1]->lastX=L->players[1]->X;//last position of the player
+		L->players[1]->lastY=L->players[1]->Y;
+	}
+	else
+	{
+		L->players[1]->X=0;//curent position of the player
+		L->players[1]->Y=L->heigth/2;
+		L->players[1]->energy=0;
+		L->players[1]->lastX=L->players[1]->X;//last position of the player
+		L->players[1]->lastY=L->players[1]->Y;
+		
+		L->players[0]->X=L->width-1;//curent position of the player
+		L->players[0]->Y=L->heigth/2;
+		L->players[0]->energy=1;
+		L->players[0]->lastX=L->players[0]->X;//last position of the player
+		L->players[0]->lastY=L->players[0]->Y;
+	}
+	L->players[2]->X=L->width/2;//curent position of the player
+	L->players[2]->Y=L->heigth/2;
+	L->players[2]->energy=0;
+	L->players[2]->lastX=L->players[2]->X;//last position of the player
+	L->players[2]->lastY=L->players[2]->Y;
 	
 	
 	
@@ -85,9 +110,14 @@ void getMap(Map *L)
 		}
 	}
 	free(labData);
+	for(i=0;i<3;i++)
+	{
+		L->cases[L->players[i]->Y][L->players[i]->X]=i+2;
+	}
+	
 }
 
-int TestMoveP(Map *L,int P,t_move *move)
+int testMoveP(Map *L,int P,t_move *move)
 {
 	int state=0;
 	switch(move->type)
@@ -152,66 +182,72 @@ int TestMoveP(Map *L,int P,t_move *move)
 int moveP(Map *L, int P,t_move *move)
 {
 	int state=0;
-	switch(move->type)
+	if(testMoveP(L,P,move)!=-1)
 	{
-		case MOVE_LEFT:
-			if(L->players[P]->X-1>-1)//if the player would still remai n in the map
-			{
-					L->cases[L->players[P]->Y][L->players[P]->X]=0;
-					L->players[P]->X--;	
-					L->cases[L->players[P]->Y][L->players[P]->X]=2;
-			}
-			else//else it has to appear in the other side
-			{
-					L->cases[L->players[P]->Y][L->players[P]->X]=0;
-					L->players[P]->X=L->width-1;	
-					L->cases[L->players[P]->Y][L->players[P]->X]=2;
-			}
-		break;
-		case MOVE_UP:
-			if(L->players[P]->Y-1>-1)//if the player would still remai n in the map
-			{
-					L->cases[L->players[P]->Y][L->players[P]->X]=0;
-					L->players[P]->Y--;	
-					L->cases[L->players[P]->Y][L->players[P]->X]=2;
-			}
-			else
-			{
-					L->cases[L->players[P]->Y][L->players[P]->X]=0;
-					L->players[P]->Y=L->heigth-1;	
-					L->cases[L->players[P]->Y][L->players[P]->X]=2;
-			}
+		switch(move->type)
+		{
+			case MOVE_LEFT:
+				if(L->players[P]->X-1>-1)//if the player would still remai n in the map
+				{
+						L->cases[L->players[P]->Y][L->players[P]->X]=0;
+						L->players[P]->X--;	
+						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+				}
+				else//else it has to appear in the other side
+				{
+						L->cases[L->players[P]->Y][L->players[P]->X]=0;
+						L->players[P]->X=L->width-1;	
+						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+				}
+			break;
+			case MOVE_UP:
+				if(L->players[P]->Y-1>-1)//if the player would still remai n in the map
+				{
+						L->cases[L->players[P]->Y][L->players[P]->X]=0;
+						L->players[P]->Y--;	
+						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+				}
+				else
+				{
+						L->cases[L->players[P]->Y][L->players[P]->X]=0;
+						L->players[P]->Y=L->heigth-1;	
+						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+				}
 				
-		break;
-		case MOVE_DOWN:
-			if(L->players[P]->Y+1<L->heigth)//if the player would still remai n in the map
-			{
-					L->cases[L->players[P]->Y][L->players[P]->X]=0;
-					L->players[P]->Y++;	
-					L->cases[L->players[P]->Y][L->players[P]->X]=2;
-			}
-			else
-			{
-					L->cases[L->players[P]->Y][L->players[P]->X]=0;
-					L->players[P]->Y=0;	
-					L->cases[L->players[P]->Y][L->players[P]->X]=2;
-			}
-		break;
-		case MOVE_RIGHT:
-			if(L->players[P]->X+1<L->width)//if the player would still remai n in the map
-			{
-					L->cases[L->players[P]->Y][L->players[P]->X]=0;
-					L->players[P]->X++;	
-					L->cases[L->players[P]->Y][L->players[P]->X]=2;
-			}
-			else
-			{
-					L->cases[L->players[P]->Y][L->players[P]->X]=0;
-					L->players[P]->X=0;	
-					L->cases[L->players[P]->Y][L->players[P]->X]=2;
-			}
-		break;
+			break;
+			case MOVE_DOWN:
+				if(L->players[P]->Y+1<L->heigth)//if the player would still remai n in the map
+				{
+						L->cases[L->players[P]->Y][L->players[P]->X]=0;
+						L->players[P]->Y++;	
+						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+				}
+				else
+				{
+						L->cases[L->players[P]->Y][L->players[P]->X]=0;
+						L->players[P]->Y=0;	
+						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+				}
+			break;
+			case MOVE_RIGHT:
+				if(L->players[P]->X+1<L->width)//if the player would still remai n in the map
+				{
+						L->cases[L->players[P]->Y][L->players[P]->X]=0;
+						L->players[P]->X++;	
+						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+				}
+				else
+				{
+						L->cases[L->players[P]->Y][L->players[P]->X]=0;
+						L->players[P]->X=0;	
+						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+				}
+			break;
+		}
 	}
+	else
+		state=-1;
+	return state;
 
 	return state;
 

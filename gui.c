@@ -20,7 +20,7 @@ int GUI(Map *L,int lstGUIch)
 	init_pair(1, COLOR_RED, COLOR_BLACK);
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
 	init_pair(3, COLOR_BLUE, COLOR_BLACK);
-	init_pair(4, COLOR_CYAN, COLOR_BLACK);
+	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
 	
 	PANEL  *my_panels[nbrW];
 	WIN my_wins[nbrW] = {{newwin(25, 40, 0, 0),"Map:",{},{},0},
@@ -121,6 +121,20 @@ int dispMap(Map* L,WIN* win)//Display the labyrinth
 				//mvwprintw(win->win, starty+i+1, startx+j+1, "%s", "o");
 				mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
 				wattroff(win->win,COLOR_PAIR(3));
+			}
+			else if(L->cases[i][j]==3)
+			{
+				wattron(win->win,COLOR_PAIR(1));
+				//mvwprintw(win->win, starty+i+1, startx+j+1, "%s", "o");
+				mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+				wattroff(win->win,COLOR_PAIR(1));
+			}
+			else if(L->cases[i][j]==4)
+			{
+				wattron(win->win,COLOR_PAIR(4));
+				//mvwprintw(win->win, starty+i+1, startx+j+1, "%s", "o");
+				mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+				wattroff(win->win,COLOR_PAIR(4));
 			}
 			//scanf("%d",&p[i][j]);
 			//printf("(%d,%d)= %d\n",i,j,p[i][j]);
