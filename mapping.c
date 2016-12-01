@@ -3,6 +3,7 @@
 
 //#include "gui.h"
 #include "struct.h"
+#include "mapping.h"
 #include "labyrinthAPI.h"
 #include <unistd.h>
 
@@ -29,7 +30,26 @@ Map* initMap()
 			//printf("(%d,%d)= %d\n",i,j,p[i][j]);
 		}
 	}
-	
+	addStr(L->infoP1[0],"  Aightech","");
+	addStr(L->infoP1[1],"  0","");
+	for(i=2;i<10;i++)
+	{
+		for(j=0;j<9;j++)
+		{
+			L->infoP1[i][j]='o';
+		}
+		L->infoP1[i][9]='\0';
+	}
+	addStr(L->infoP2[0],"  UNKOWN","");
+	addStr(L->infoP2[1],"  0","");
+	for(i=2;i<10;i++)
+	{
+		for(j=0;j<9;j++)
+		{
+			L->infoP2[i][j]='o';
+		}
+		L->infoP1[i][9]='\0';
+	}
 	for(i=0;i<3;i++)
 	{
 		L->players[i]=(Player*) malloc(sizeof(Player));
@@ -49,7 +69,7 @@ void getMap(Map *L)
 	
 
 	/* connection to the server */
-	connectToServer( "pc4021.polytech.upmc.fr", 1234, "Aightech");
+	connectToServer( "pc4023.polytech.upmc.fr", 1234, "Aightech");
 	int i,j;
 	for(i=0;i<L->heigth;i++)//delete the last cases
 	{
@@ -61,6 +81,7 @@ void getMap(Map *L)
 	waitForLabyrinth( "DO_NOTHING timeout=10", L->name, &(L->width), &(L->heigth));
 	labData = (char*) malloc( L->width*L->heigth);
 	L->players[0]->turn = getLabyrinth(labData);
+	addStr(L->infoP2[0],"  DO NOTHING","");
 	
 	if(L->players[0]->turn==0)
 	{
@@ -90,6 +111,13 @@ void getMap(Map *L)
 		L->players[0]->lastX=L->players[0]->X;//last position of the player
 		L->players[0]->lastY=L->players[0]->Y;
 	}
+	char e[4]="  ";
+	e[2]='0'+L->players[0]->energy;	
+	addStr(L->infoP1[1],e,"");
+	e[2]='0'+L->players[1]->energy;	
+	addStr(L->infoP2[1],e,"");
+	
+	
 	L->players[2]->X=L->width/2;//curent position of the player
 	L->players[2]->Y=L->heigth/2;
 	L->players[2]->energy=0;
@@ -256,7 +284,7 @@ int moveP(Map *L, int P,t_move *move)
 }
 
 
-void addStr(char target*,char *add1,char *add2)
+void addStr(char *target,char *add1,char *add2)
 {
 	while(*add1)
 	{

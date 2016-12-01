@@ -17,9 +17,9 @@ EXEC = test
 all: $(EXEC)
 
 # dépendance des .h
-main.o: gui.h struct.h
-gui.o: gui.h struct.h
-mapping.o:gui.h struct.h
+main.o: gui.h mapping.h struct.h
+gui.o: gui.h struct.h mapping.h
+mapping.o:gui.h struct.h mapping.h
 
 # règles de compilation
 %.o: %.c

@@ -5,6 +5,7 @@
 #include <panel.h>
 #include "struct.h"
 #include "gui.h"
+#include "mapping.h"
 #define nbrW 5
 
 int GUI(Map *L,int lstGUIch)
@@ -21,9 +22,10 @@ int GUI(Map *L,int lstGUIch)
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
 	init_pair(3, COLOR_BLUE, COLOR_BLACK);
 	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
-	
+	char labMap[50];
+	addStr(labMap,"Map:",L->name);
 	PANEL  *my_panels[nbrW];
-	WIN my_wins[nbrW] = {{newwin(25, 40, 0, 0),"Map:",{},{},0},
+	WIN my_wins[nbrW] = {{newwin(25, 40, 0, 0),labMap,{},{},0},
 				{newwin(14, 40, 0, 40),"Information Player 1:",{},{},0},
 				{newwin(14, 40, 14, 40),"Information Player 2:",{},{},0},
 				{newwin(28, 10, 0, 80),"Modes:",{"GetMap"," Dumb ","Manual"," Auto "," Stop "},{{3,1},{6,1},{9,1},{12,1},{15,1},{3,28}},5},
@@ -48,6 +50,7 @@ int GUI(Map *L,int lstGUIch)
 	while(c!=-1)
 	{
 		dispMap(L,&my_wins[0]);
+		dispInfo(L,&my_wins[1],&my_wins[2]);
 		c=choice(&my_wins[i],lstGUIch%10);
 		//mvprintw(40, 0, "%d", c+i*10);
 		if(c==9)
@@ -253,26 +256,26 @@ int choice(WIN *win,int lstCh)
 int dispInfo(Map *L,WIN* win1,WIN* win2)//Display the Player info
 {
 	int starty=3,startx=1;
-	int i,j;
-	mvwprintw(win->win1, starty, startx, "%s", "Name:");
-	wattron(win->win1,COLOR_PAIR(1));
-	mvwprintw(win->win1, starty, startx+5, "%s", L->infoP1[0]);
-	wattroff(win->win1,COLOR_PAIR(1));
-	mvwprintw(win->win1, starty+1, startx, "%s", "Energy:");
-	mvwprintw(win->win1, starty+1, startx+7, "%s", L->infoP1[1]);
-	mvwprintw(win->win1, starty+2, startx, "%s", "Infos:");
-	for(i=2;i<10;i++)
-		mvwprintw(win->win1, starty+i, startx, "%s", L->infoP1[i]);
+	int i;
+	mvwprintw(win1->win, starty, startx, "%s", "Name:");
+	wattron(win1->win,COLOR_PAIR(3));
+	mvwprintw(win1->win, starty, startx+5, "%s", L->infoP1[0]);
+	wattroff(win1->win,COLOR_PAIR(3));
+	mvwprintw(win1->win, starty+1, startx, "%s", "Energy:");
+	mvwprintw(win1->win, starty+1, startx+7, "%s", L->infoP1[1]);
+	mvwprintw(win1->win, starty+2, startx, "%s", "Infos:");
+	for(i=3;i<10;i++)
+		mvwprintw(win1->win, starty+i, startx, "%s", L->infoP1[i]);
 		
-	mvwprintw(win->win2, starty, startx, "%s", "Name:");
-	wattron(win->win2,COLOR_PAIR(3));
-	mvwprintw(win->win2, starty, startx+5, "%s", L->infoP2[0]);
-	wattroff(win->win2,COLOR_PAIR(3));
-	mvwprintw(win->win2, starty+1, startx, "%s", "Energy:");
-	mvwprintw(win->win2, starty+1, startx+7, "%s", L->infoP2[1]);
-	mvwprintw(win->win2, starty+2, startx, "%s", "Infos:");
-	for(i=2;i<10;i++)
-		mvwprintw(win->win2, starty+i, startx, "%s", L->infoP2[i]);	
-	
+	mvwprintw(win2->win, starty, startx, "%s", "Name:");
+	wattron(win2->win,COLOR_PAIR(1));
+	mvwprintw(win2->win, starty, startx+5, "%s", L->infoP2[0]);
+	wattroff(win2->win,COLOR_PAIR(1));
+	mvwprintw(win2->win, starty+1, startx, "%s", "Energy:");
+	mvwprintw(win2->win, starty+1, startx+7, "%s", L->infoP2[1]);
+	mvwprintw(win2->win, starty+2, startx, "%s", "Infos:");
+	for(i=3;i<10;i++)
+		mvwprintw(win2->win, starty+i, startx, "%s", L->infoP2[i]);	
+	return 1;
 }
 
