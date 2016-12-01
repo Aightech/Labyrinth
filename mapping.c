@@ -256,7 +256,22 @@ int moveP(Map *L, int P,t_move *move)
 }
 
 
-
+void addStr(char target*,char *add1,char *add2)
+{
+	while(*add1)
+	{
+		*target=*add1;
+		target++;
+		add1++;
+	}
+	while(*add2)
+	{
+		*target=*add2;
+		target++;
+		add2++;
+	}
+	*target='\0';
+}
 
 	
 	

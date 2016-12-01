@@ -141,7 +141,7 @@ int dispMap(Map* L,WIN* win)//Display the labyrinth
 		}
 	}
 	
-	return -1;
+	return 1;
 }
 
 void win_show(WIN *win)
@@ -247,3 +247,32 @@ int choice(WIN *win,int lstCh)
 	
 	return highlight;
 }
+
+
+
+int dispInfo(Map *L,WIN* win1,WIN* win2)//Display the Player info
+{
+	int starty=3,startx=1;
+	int i,j;
+	mvwprintw(win->win1, starty, startx, "%s", "Name:");
+	wattron(win->win1,COLOR_PAIR(1));
+	mvwprintw(win->win1, starty, startx+5, "%s", L->infoP1[0]);
+	wattroff(win->win1,COLOR_PAIR(1));
+	mvwprintw(win->win1, starty+1, startx, "%s", "Energy:");
+	mvwprintw(win->win1, starty+1, startx+7, "%s", L->infoP1[1]);
+	mvwprintw(win->win1, starty+2, startx, "%s", "Infos:");
+	for(i=2;i<10;i++)
+		mvwprintw(win->win1, starty+i, startx, "%s", L->infoP1[i]);
+		
+	mvwprintw(win->win2, starty, startx, "%s", "Name:");
+	wattron(win->win2,COLOR_PAIR(3));
+	mvwprintw(win->win2, starty, startx+5, "%s", L->infoP2[0]);
+	wattroff(win->win2,COLOR_PAIR(3));
+	mvwprintw(win->win2, starty+1, startx, "%s", "Energy:");
+	mvwprintw(win->win2, starty+1, startx+7, "%s", L->infoP2[1]);
+	mvwprintw(win->win2, starty+2, startx, "%s", "Infos:");
+	for(i=2;i<10;i++)
+		mvwprintw(win->win2, starty+i, startx, "%s", L->infoP2[i]);	
+	
+}
+
