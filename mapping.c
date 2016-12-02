@@ -55,6 +55,7 @@ Map* initMap()
 		L->players[i]=(Player*) malloc(sizeof(Player));
 		L->players[i]->X=0;
 		L->players[i]->Y=0;
+		L->players[i]->mode=0;
 	}
 	return L;
 	
@@ -76,12 +77,30 @@ void getMap(Map *L)
 		free(L->cases[i]);
 	}
 	free(L->cases);
-
+	
+	
+	switch(L->players[0]->mode)
+	{
+		case 0:
+			addStr(L->infoP1[0],"  Aightech","  (DUMB)");
+			
+		break;
+	}
+	
+	char argMap[50];
+	switch(L->players[1]->mode)
+	{
+		case 0:
+			addStr(argMap,"DO_NOTHING"," timeout=10");
+			addStr(L->infoP2[0],"  DO NOTHING","  (DUMB)");
+			
+		break;
+	}
 	/* wait for a game, and retrieve informations about it */
-	waitForLabyrinth( "DO_NOTHING timeout=10", L->name, &(L->width), &(L->heigth));
+	waitForLabyrinth( argMap, L->name, &(L->width), &(L->heigth));
 	labData = (char*) malloc( L->width*L->heigth);
 	L->players[0]->turn = getLabyrinth(labData);
-	addStr(L->infoP2[0],"  DO NOTHING","");
+	
 	
 	if(L->players[0]->turn==0)
 	{
@@ -111,17 +130,18 @@ void getMap(Map *L)
 		L->players[0]->lastX=L->players[0]->X;//last position of the player
 		L->players[0]->lastY=L->players[0]->Y;
 	}
-	char e[4]="  ";
-	e[2]='0'+L->players[0]->energy;	
-	addStr(L->infoP1[1],e,"");
-	e[2]='0'+L->players[1]->energy;	
-	addStr(L->infoP2[1],e,"");
+	
+	char* e=intTostr(L->players[0]->energy);
+	addStr(L->infoP1[1],"  ",e);
+	e=intTostr(L->players[1]->energy);
+	addStr(L->infoP2[1],"  ",e);
+	free(e);
 	
 	
-	L->players[2]->X=L->width/2;//curent position of the player
+	L->players[2]->X=L->width/2;//curent position of the tresor
 	L->players[2]->Y=L->heigth/2;
 	L->players[2]->energy=0;
-	L->players[2]->lastX=L->players[2]->X;//last position of the player
+	L->players[2]->lastX=L->players[2]->X;//last position of the tresor
 	L->players[2]->lastY=L->players[2]->Y;
 	
 	
@@ -129,7 +149,7 @@ void getMap(Map *L)
 	L->cases=(char **) malloc(L->heigth*sizeof(char*));
 	
 	
-	for(i=0;i<L->heigth;i++)
+	for(i=0;i<L->heigth;i++)//get the lab in a 2dim array
 	{
 		L->cases[i]=(char*)malloc(L->width*sizeof(char));
 		for(j=0;j<L->width;j++)
@@ -308,7 +328,7 @@ char *intTostr(int nb)
 	
 	char* nbch=(char*)malloc(sizeof(n+1));
 	nbch[n]='\0';
-	while(nb>0)
+	while(n>0)
 	{
 		nbch[n-1]='0'+ nb%10;
 		nb/=10;

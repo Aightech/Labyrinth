@@ -6,7 +6,7 @@
 #include "struct.h"
 #include "gui.h"
 #include "mapping.h"
-#define nbrW 5
+#define nbrW 7
 
 int GUI(Map *L,int lstGUIch)
 {
@@ -26,11 +26,12 @@ int GUI(Map *L,int lstGUIch)
 	addStr(labMap,"Map:",L->name);
 	PANEL  *my_panels[nbrW];
 	WIN my_wins[nbrW] = {{newwin(25, 40, 0, 0),labMap,{},{},0},
-				{newwin(14, 40, 0, 40),"Information Player 1:",{},{},0},
-				{newwin(14, 40, 14, 40),"Information Player 2:",{},{},0},
-				{newwin(28, 10, 0, 80),"Modes:",{"GetMap"," Dumb ","Manual"," Auto "," Stop "},{{3,1},{6,1},{9,1},{12,1},{15,1},{3,28}},5},
+				{newwin(16, 40, 0, 40),"Information Player 1:",{},{},0},
+				{newwin(16, 40, 16, 40),"Information Player 2:",{},{},0},
+				{newwin(7, 10, 0, 80),"Server:",{"GetMap"},{{3,1}},1},
 				{newwin(7, 40, 25, 0),"Commands:",{" < "," ^ "," v "," > ","Pause","Map Move"},{{3,1},{3,6},{3,11},{3,16},{3,21},{3,28}},6},
-				};
+				{newwin(13, 10, 7, 80),"P.mode:",{" Dumb ","Manual"," Auto "},{{3,1},{6,1},{9,1}},3},
+				{newwin(13, 10, 20, 80),"Op.md:",{" Dumb ","Manual"," Auto "},{{3,1},{6,1},{9,1}},3} };
 				
 	int i;
 	for(i = 0; i < nbrW; ++i)
@@ -43,7 +44,7 @@ int GUI(Map *L,int lstGUIch)
 	
 	update_panels();
 	doupdate();
-	i=4;
+	i=lstGUIch/10;
 	int c=0;
 			
 	//PANEL  *top;
@@ -57,34 +58,15 @@ int GUI(Map *L,int lstGUIch)
 		{
 			//top = (PANEL *)panel_userptr(top);
 			//top_panel(top);
-			if(i==4)
+			if(i==6)
 				i=3;
 			else
 				i++;
 		}
 		int u=c+i*10;
-		switch(u)
-		{	
-			case 30:
-				
-				return u;
-			break;
-			
-			case 40:
-				return u;
-			break;
-			case 41:
-				return u;
-			break;
-			case 42:
-				return u;
-			break;
-			case 43:
-				return u;
-			break;
-			
-			
-		}
+		if(c!=-1&&c!=9)//if it's choice (not a change of win or a prg quit)
+			return u;
+		
 	}
 	
 	

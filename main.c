@@ -23,15 +23,17 @@ int main()
 {
 	Map *L=initMap();
 	t_move* move=(t_move*) malloc(sizeof(t_move));
-	int choice=0;
+	int choice=40;
 	while(choice!=-1)
 	{
 		choice=GUI(L,choice);
 		switch(choice)
 		{
-			case 30:
+			case 30://connection to the server
 				getMap(L);
 			break;
+			
+			/*MANUAL MOVES*/
 			case 40:
 				move->type=MOVE_LEFT;
 				moveP(L,0,move);
@@ -47,6 +49,22 @@ int main()
 			case 43:
 				move->type=MOVE_RIGHT;
 				moveP(L,0,move);
+			break;
+			
+			/*PLAYER MODES*/
+			case 50://DO NOTHING
+			case 51://MANUAL
+			case 52://AUTO
+				L->players[0]->mode=choice%10;
+				choice+=10;
+			break;
+			
+			/*OPONENT MODES*/
+			case 60://DO NOTHING
+			case 61://MANUAL
+			case 62://AUTO
+				L->players[1]->mode=choice%10;
+				choice=30;
 			break;
 				
    

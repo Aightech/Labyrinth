@@ -29,6 +29,7 @@ typedef struct _Player {//player
 	int Y;
 	int turn;
 	int energy;
+	int mode;
 	Path otherP;
 	Path tresor;
 	
