@@ -301,8 +301,22 @@ void addStr(char *target,char *add1,char *add2)
 	*target='\0';
 }
 
+char *intTostr(int nb)
+{
+	int i=10,n=1;
+	while(nb>i){i*=10;n++;}
 	
-	
+	char* nbch=(char*)malloc(sizeof(n+1));
+	nbch[n]='\0';
+	while(nb>0)
+	{
+		nbch[n-1]='0'+ nb%10;
+		nb/=10;
+		n--;
+	}
+	printf("%s\n",nbch);
+	return nbch;
+}	
 	
 	
 	
