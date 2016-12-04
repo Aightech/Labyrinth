@@ -63,12 +63,8 @@ Map* initMap()
 
 void getMap(Map *L)
 {
-	char labName[50];					/* name of the labyrinth */
-	char* labData;						/* data of the labyrinth */
-	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
-	t_move move;						/* a move */
 	
-
+	char* labData;						/* data of the labyrinth */
 	/* connection to the server */
 	connectToServer( "pc4023.polytech.upmc.fr", 1234, "Aightech");
 	int i,j;
@@ -102,7 +98,7 @@ void getMap(Map *L)
 	L->players[0]->turn = getLabyrinth(labData);
 	
 	
-	if(L->players[0]->turn==0)
+	if(L->players[0]->turn==0)//if we start
 	{
 		L->players[0]->X=0;//curent position of the player
 		L->players[0]->Y=L->heigth/2;
@@ -116,7 +112,7 @@ void getMap(Map *L)
 		L->players[1]->lastX=L->players[1]->X;//last position of the player
 		L->players[1]->lastY=L->players[1]->Y;
 	}
-	else
+	else//the op start
 	{
 		L->players[1]->X=0;//curent position of the player
 		L->players[1]->Y=L->heigth/2;
@@ -292,10 +288,25 @@ int moveP(Map *L, int P,t_move *move)
 				}
 			break;
 		}
+		L->players[P]->turn=1;
+		L->players[(P+1)%2]->turn=0;
+		L->players[P]->energy++;
+		char* e=intTostr(L->players[P]->energy);
+		if(P==0)
+			addStr(L->infoP1[1],"  ",e);
+		else
+			addStr(L->infoP2[1],"  ",e);
+		free(e);
 	}
 	else
+	{
+		if(P==0)
+			addStr(L->infoP1[5]," CANNOT MOVE","");
+		else
+			addStr(L->infoP2[5]," CANNOT MOVE","");
+		
 		state=-1;
-	return state;
+	}
 
 	return state;
 
@@ -334,7 +345,6 @@ char *intTostr(int nb)
 		nb/=10;
 		n--;
 	}
-	printf("%s\n",nbch);
 	return nbch;
 }	
 	

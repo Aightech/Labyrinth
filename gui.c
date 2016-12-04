@@ -6,9 +6,8 @@
 #include "struct.h"
 #include "gui.h"
 #include "mapping.h"
-#define nbrW 7
 
-int GUI(Map *L,int lstGUIch)
+void initGUI(Map * L)
 {
 	initscr();
 	clear();
@@ -22,37 +21,133 @@ int GUI(Map *L,int lstGUIch)
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
 	init_pair(3, COLOR_BLUE, COLOR_BLACK);
 	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
-	char labMap[50];
-	addStr(labMap,"Map:",L->name);
-	PANEL  *my_panels[nbrW];
-	WIN my_wins[nbrW] = {{newwin(25, 40, 0, 0),labMap,{},{},0},
-				{newwin(16, 40, 0, 40),"Information Player 1:",{},{},0},
-				{newwin(16, 40, 16, 40),"Information Player 2:",{},{},0},
-				{newwin(7, 10, 0, 80),"Server:",{"GetMap"},{{3,1}},1},
-				{newwin(7, 40, 25, 0),"Commands:",{" < "," ^ "," v "," > ","Pause","Map Move"},{{3,1},{3,6},{3,11},{3,16},{3,21},{3,28}},6},
-				{newwin(13, 10, 7, 80),"P.mode:",{" Dumb ","Manual"," Auto "},{{3,1},{6,1},{9,1}},3},
-				{newwin(13, 10, 20, 80),"Op.md:",{" Dumb ","Manual"," Auto "},{{3,1},{6,1},{9,1}},3} };
-				
+	
 	int i;
+	
+	/*Allocation*/
+	L->guiWins=(Win **)malloc(nbrW*sizeof(Win *));
+	for(i = 0; i < nbrW; ++i)
+		L->guiWins[i]=(Win *)malloc(nbrW*sizeof(Win));	
+	/*Definition*/
+	L->guiWins[0]->win=newwin(25, 40, 0, 0);//Map windows
+	addStr(L->guiWins[0]->label,"Map:  ",L->name);
+	L->guiWins[0]->numButt=0;
+	
+	L->guiWins[1]->win=newwin(16, 40, 0, 40);//Info player 1
+	addStr(L->guiWins[1]->label,"Information Player 1:","");
+	L->guiWins[1]->numButt=0;
+	
+	L->guiWins[2]->win=newwin(16, 40, 16, 40);//info player 2
+	addStr(L->guiWins[2]->label,"Information Player 2:","");
+	L->guiWins[2]->numButt=0;
+	
+	L->guiWins[3]->win=newwin(7, 10, 0, 80);//Server options
+	addStr(L->guiWins[3]->label,"Server:","");
+	L->guiWins[3]->numButt=1;
+	L->guiWins[3]->posButt=(int **)malloc(L->guiWins[3]->numButt*sizeof(int*));
+	L->guiWins[3]->posButt[0]=(int *)malloc(2*sizeof(int));
+	L->guiWins[3]->posButt[0][0]=3;
+	L->guiWins[3]->posButt[0][1]=1;
+	L->guiWins[3]->labButt=(char **)malloc(L->guiWins[3]->numButt*sizeof(char*));
+	L->guiWins[3]->labButt[0]=(char *)malloc(20*sizeof(char));
+	addStr(L->guiWins[3]->labButt[0],"GetMap","");
+	
+	L->guiWins[4]->win=newwin(7, 40, 25, 0);//Commands options
+	addStr(L->guiWins[4]->label,"Commands:","");
+	L->guiWins[4]->numButt=6;
+	L->guiWins[4]->posButt=(int **)malloc(L->guiWins[4]->numButt*sizeof(int*));
+	L->guiWins[4]->labButt=(char **)malloc(L->guiWins[4]->numButt*sizeof(char*));
+	for(i=0;i<L->guiWins[4]->numButt;i++){
+		L->guiWins[4]->posButt[i]=(int *)malloc(2*sizeof(int));
+		L->guiWins[4]->labButt[i]=(char *)malloc(20*sizeof(char));
+	}
+	L->guiWins[4]->posButt[0][0]=3;
+	L->guiWins[4]->posButt[0][1]=1;
+	addStr(L->guiWins[4]->labButt[0]," < ","");
+	L->guiWins[4]->posButt[1][0]=3;
+	L->guiWins[4]->posButt[1][1]=6;
+	addStr(L->guiWins[4]->labButt[1]," ^ ","");
+	L->guiWins[4]->posButt[2][0]=3;
+	L->guiWins[4]->posButt[2][1]=11;
+	addStr(L->guiWins[4]->labButt[2]," v ","");
+	L->guiWins[4]->posButt[3][0]=3;
+	L->guiWins[4]->posButt[3][1]=16;
+	addStr(L->guiWins[4]->labButt[3]," > ","");
+	L->guiWins[4]->posButt[4][0]=3;
+	L->guiWins[4]->posButt[4][1]=21;
+	addStr(L->guiWins[4]->labButt[4],"Pause","");
+	L->guiWins[4]->posButt[5][0]=3;
+	L->guiWins[4]->posButt[5][1]=28;
+	addStr(L->guiWins[4]->labButt[5],"Map Move","");
+	
+	L->guiWins[5]->win=newwin(13, 10, 7, 80);//Player mode
+	addStr(L->guiWins[5]->label,"P.mode:","");
+	L->guiWins[5]->numButt=3;
+	L->guiWins[5]->posButt=(int **)malloc(L->guiWins[5]->numButt*sizeof(int*));
+	L->guiWins[5]->labButt=(char **)malloc(L->guiWins[5]->numButt*sizeof(char*));
+	for(i=0;i<L->guiWins[5]->numButt;i++){
+		L->guiWins[5]->posButt[i]=(int *)malloc(2*sizeof(int));
+		L->guiWins[5]->labButt[i]=(char *)malloc(20*sizeof(char));
+	}
+	L->guiWins[5]->posButt[0][0]=3;
+	L->guiWins[5]->posButt[0][1]=1;
+	addStr(L->guiWins[5]->labButt[0]," Dumb ","");
+	L->guiWins[5]->posButt[1][0]=6;
+	L->guiWins[5]->posButt[1][1]=1;
+	addStr(L->guiWins[5]->labButt[1],"Manual","");
+	L->guiWins[5]->posButt[2][0]=9;
+	L->guiWins[5]->posButt[2][1]=1;
+	addStr(L->guiWins[5]->labButt[2]," Auto ","");
+	
+	
+	L->guiWins[6]->win=newwin(13, 10, 20, 80);//Opponent mode
+	addStr(L->guiWins[6]->label,"Op.md:","");
+	L->guiWins[6]->numButt=3;
+	L->guiWins[6]->posButt=(int **)malloc(L->guiWins[6]->numButt*sizeof(int*));
+	L->guiWins[6]->labButt=(char **)malloc(L->guiWins[6]->numButt*sizeof(char*));
+	for(i=0;i<L->guiWins[6]->numButt;i++){
+		L->guiWins[6]->posButt[i]=(int *)malloc(2*sizeof(int));
+		L->guiWins[6]->labButt[i]=(char *)malloc(20*sizeof(char));
+	}
+	L->guiWins[6]->posButt[0][0]=3;
+	L->guiWins[6]->posButt[0][1]=1;
+	addStr(L->guiWins[6]->labButt[0]," Dumb ","");
+	L->guiWins[6]->posButt[1][0]=6;
+	L->guiWins[6]->posButt[1][1]=1;
+	addStr(L->guiWins[6]->labButt[1],"Manual","");
+	L->guiWins[6]->posButt[2][0]=9;
+	L->guiWins[6]->posButt[2][1]=1;
+	addStr(L->guiWins[6]->labButt[2]," Auto ","");
+	
+	
+	
+	
+		
+	
 	for(i = 0; i < nbrW; ++i)
 	{
-		win_show(&my_wins[i]);
-		my_panels[i] = new_panel(my_wins[i].win);/* Attach a panel to each window */ 
-		set_panel_userptr(my_panels[i%2], my_panels[(i+1)%2]);/* Set up the user pointers to the next panel */
+		showWin(L->guiWins[i]);
+		L->panels[i] = new_panel(L->guiWins[i]->win);/* Attach a panel to each window */ 
+		set_panel_userptr(L->panels[i%2], L->panels[(i+1)%2]);/* Set up the user pointers to the next panel */
 	}
 	
 	
 	update_panels();
 	doupdate();
-	i=lstGUIch/10;
-	int c=0;
-			
-	//PANEL  *top;
+}
+
+int GUI(Map *L,int lstGUIch)
+{
+	
+	
+	int c=0,i=lstGUIch/10;
+	
 	while(c!=-1)
 	{
-		dispMap(L,&my_wins[0]);
-		dispInfo(L,&my_wins[1],&my_wins[2]);
-		c=choice(&my_wins[i],lstGUIch%10);
+		dispMap(L);
+		dispInfo(L);
+		
+		c=choice(L->guiWins[i],lstGUIch%10);
 		//mvprintw(40, 0, "%d", c+i*10);
 		if(c==9)
 		{
@@ -77,9 +172,10 @@ int GUI(Map *L,int lstGUIch)
 	return -1;
 }
 
-int dispMap(Map* L,WIN* win)//Display the labyrinth
+int dispMap(Map* L)//Display the labyrinth
 {
 	//mvwprintw(win->win, 5,5, "%s", L->cases[0]);
+	Win* win=L->guiWins[0];
 	int starty=3,startx=1;
 	mvwaddch(win->win, starty, startx, ACS_ULCORNER); 
 	//mvwaddch(win->win, starty+1, startx, ACS_VLINE); 
@@ -97,39 +193,41 @@ int dispMap(Map* L,WIN* win)//Display the labyrinth
 	{
 		for(j=0;j<L->width;j++)
 		{
-			//printf("(%d,%d)= ",i,j);
-			if(L->cases[i][j]==1)
-				mvwaddch(win->win, starty+i+1, startx+j+1, ACS_CKBOARD);
-			else if(L->cases[i][j]==2)
+			switch(L->cases[i][j])
 			{
-				wattron(win->win,COLOR_PAIR(3));
-				//mvwprintw(win->win, starty+i+1, startx+j+1, "%s", "o");
-				mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
-				wattroff(win->win,COLOR_PAIR(3));
+				case 0:
+					mvwaddch(win->win, starty+i+1, startx+j+1, ' ');
+				break;
+				case 1:
+					mvwaddch(win->win, starty+i+1, startx+j+1, ACS_CKBOARD);
+				break;
+				case 2:
+					wattron(win->win,COLOR_PAIR(3));
+					mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+					wattroff(win->win,COLOR_PAIR(3));
+				break;
+				case 3:
+					wattron(win->win,COLOR_PAIR(1));
+					mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+					wattroff(win->win,COLOR_PAIR(1));
+				break;
+				case 4:
+					wattron(win->win,COLOR_PAIR(4));
+					//mvwprintw(win->win, starty+i+1, startx+j+1, "%s", "o");
+					mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+					wattroff(win->win,COLOR_PAIR(4));
+				break;
 			}
-			else if(L->cases[i][j]==3)
-			{
-				wattron(win->win,COLOR_PAIR(1));
-				//mvwprintw(win->win, starty+i+1, startx+j+1, "%s", "o");
-				mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
-				wattroff(win->win,COLOR_PAIR(1));
-			}
-			else if(L->cases[i][j]==4)
-			{
-				wattron(win->win,COLOR_PAIR(4));
-				//mvwprintw(win->win, starty+i+1, startx+j+1, "%s", "o");
-				mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
-				wattroff(win->win,COLOR_PAIR(4));
-			}
-			//scanf("%d",&p[i][j]);
-			//printf("(%d,%d)= %d\n",i,j,p[i][j]);
 		}
 	}
-	
+	update_panels();
+	doupdate();
 	return 1;
 }
 
-void win_show(WIN *win)
+
+
+void showWin(Win *win)
 {	
 	int height=0, width,i;	
 	height++;
@@ -144,11 +242,13 @@ void win_show(WIN *win)
 	//buttons
 	for(i =0;i<win->numButt;i++)
 	{
-		boxe(win, win->posButt[i][0], win->posButt[i][1], win->buttLab[i]);
+		wboxe(win, win->posButt[i][0], win->posButt[i][1], win->labButt[i]);
 	}
 }
 
-void boxe(WIN *win, int starty, int startx,const char *string)
+
+
+void wboxe(Win *win, int starty, int startx,const char *string)
 {
 	mvwaddch(win->win, starty, startx, ACS_ULCORNER); 
 	mvwaddch(win->win, starty+1, startx, ACS_VLINE); 
@@ -162,7 +262,7 @@ void boxe(WIN *win, int starty, int startx,const char *string)
 	
 }
 
-int choice(WIN *win,int lstCh)
+int choice(Win *win,int lstCh)
 {
 	int ch=0,i;
 	int highlight=lstCh;
@@ -175,11 +275,11 @@ int choice(WIN *win,int lstCh)
 			if(highlight == i) /* High light the present choice */
 			{	
 				wattron(win->win, A_REVERSE); 
-				mvwprintw(win->win, win->posButt[i][0]+1, win->posButt[i][1]+1, "%s", win->buttLab[i]);
+				mvwprintw(win->win, win->posButt[i][0]+1, win->posButt[i][1]+1, "%s", win->labButt[i]);
 				wattroff(win->win, A_REVERSE);
 			}
 			else
-				mvwprintw(win->win, win->posButt[i][0]+1, win->posButt[i][1]+1, "%s", win->buttLab[i]);
+				mvwprintw(win->win, win->posButt[i][0]+1, win->posButt[i][1]+1, "%s", win->labButt[i]);
 		}
 		update_panels();
 		doupdate();
@@ -218,7 +318,7 @@ int choice(WIN *win,int lstCh)
 				return (int)-1;
 				break;
 			case 9:
-				mvwprintw(win->win, win->posButt[highlight][0]+1, win->posButt[highlight][1]+1, "%s", win->buttLab[highlight]);
+				mvwprintw(win->win, win->posButt[highlight][0]+1, win->posButt[highlight][1]+1, "%s", win->labButt[highlight]);
 				return (int)9;
 				break;
 			default:
@@ -235,8 +335,10 @@ int choice(WIN *win,int lstCh)
 
 
 
-int dispInfo(Map *L,WIN* win1,WIN* win2)//Display the Player info
-{
+int dispInfo(Map *L)//Display the Player info
+{			
+	Win* win1=L->guiWins[1];
+	Win* win2=L->guiWins[2];
 	int starty=3,startx=1;
 	int i;
 	mvwprintw(win1->win, starty, startx, "%s", "Name:");
@@ -257,7 +359,10 @@ int dispInfo(Map *L,WIN* win1,WIN* win2)//Display the Player info
 	mvwprintw(win2->win, starty+1, startx+7, "%s", L->infoP2[1]);
 	mvwprintw(win2->win, starty+2, startx, "%s", "Infos:");
 	for(i=3;i<10;i++)
-		mvwprintw(win2->win, starty+i, startx, "%s", L->infoP2[i]);	
+		mvwprintw(win2->win, starty+i, startx, "%s", L->infoP2[i]);
+		
+	update_panels();
+	doupdate();	
 	return 1;
 }
 

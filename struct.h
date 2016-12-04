@@ -2,7 +2,9 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
+#define nbrW 7
 #include <panel.h>
+#include <ncurses.h>
 
 
 typedef struct _LStep{//case of lab to create path
@@ -35,6 +37,19 @@ typedef struct _Player {//player
 	
 }Player;
 
+
+
+typedef struct _Win {
+
+	WINDOW *win;
+	char label[50];
+	char **labButt;
+	int **posButt;
+	int numButt;
+	
+	
+}Win;
+
 typedef struct _Map {//the labyrinth
 
 	//WINDOW *win;// to use with ncurses
@@ -46,18 +61,12 @@ typedef struct _Map {//the labyrinth
 	char **cases;
 	Player* players[3];//[P1;P2;Tresor]
 	
+	PANEL  *panels[nbrW];
+	Win **guiWins;
+	
 }Map;
 
-typedef struct _WIN_struct {
 
-	WINDOW *win;
-	const char *label;
-	const char *buttLab[7];
-	int posButt[7][2];
-	int numButt;
-	
-	
-}WIN;
 
 
 

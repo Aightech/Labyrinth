@@ -4,6 +4,7 @@
 #include "gui.h"
 #include "struct.h"
 #include "mapping.h"
+#include "dumbMd.h"
 
 
 
@@ -22,7 +23,9 @@ int evaluate(Map *L);//Return the
 int main()
 {
 	Map *L=initMap();
+	initGUI(L);
 	t_move* move=(t_move*) malloc(sizeof(t_move));
+	
 	int choice=40;
 	while(choice!=-1)
 	{
@@ -30,7 +33,8 @@ int main()
 		switch(choice)
 		{
 			case 30://connection to the server
-				getMap(L);
+				getMap(L);//switch of the value getmap return to lauched the game mode
+				dumbMode(L);
 			break;
 			
 			/*MANUAL MOVES*/

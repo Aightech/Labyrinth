@@ -8,7 +8,7 @@ LIBS = -L $(LIBDIR)/lib
 LDFLAGS = -lm -lcgs -lncurses -lpanel
 
 # fichiers du projet
-SRC = main.c gui.c mapping.c
+SRC = main.c gui.c mapping.c dumbMd.c
 OBJ = $(SRC:.c=.o)
 EXEC = test
 
@@ -17,9 +17,10 @@ EXEC = test
 all: $(EXEC)
 
 # dépendance des .h
-main.o: gui.h mapping.h struct.h
+main.o: gui.h mapping.h struct.h dumbMd.h
 gui.o: gui.h struct.h mapping.h
 mapping.o:gui.h struct.h mapping.h
+mapping.o:gui.h struct.h dumbMd.h mapping.h
 
 # règles de compilation
 %.o: %.c
