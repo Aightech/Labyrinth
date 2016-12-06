@@ -14,7 +14,7 @@ void dumbMode(Map* L)
 	t_move moveOp;
 	
 	
-	while(ret!=-1)
+	while(ret==MOVE_OK)
 	{
 		
 		if (L->players[0]->turn==1)	
@@ -41,7 +41,7 @@ void dumbMode(Map* L)
 	
 	
 	/* end the connection, because we are polite */
-	//closeConnection();
+	closeConnection();
 	
 	
 }

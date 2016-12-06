@@ -5,6 +5,7 @@
 #include "struct.h"
 #include "mapping.h"
 #include "dumbMd.h"
+#include "manualMd.h"
 
 
 
@@ -34,7 +35,10 @@ int main()
 		{
 			case 30://connection to the server
 				getMap(L);//switch of the value getmap return to lauched the game mode
-				dumbMode(L);
+				if(L->players[0]->mode==0)
+					dumbMode(L);
+				if(L->players[0]->mode==1)
+					manualMode(L);
 			break;
 			
 			/*MANUAL MOVES*/
