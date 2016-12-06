@@ -14,13 +14,20 @@ void move_alea(Map *L,t_move *move) // pointeur move, largeur et longueur du lab
     {
       move->type=rand()%9;
       if (move->type==0 || move->type==1) //rotate line
-	move->value=rand()%L->width;
-	t=testMoveM(L,move);
+	{
+	  move->value=rand()%L->width;
+	  t=testMoveM(L,move);
+	}
       else if (move->type==2 || move->type==3) //rotate column
-	move->value=rand()%L->height;
-t=testMoveM(L,move);
+	{
+	  move->value=rand()%L->height;
+	  t=testMoveM(L,move);
+	}    
+      else
+	t=testMoveP(L,move);
     }
 }
+
 
 
 
