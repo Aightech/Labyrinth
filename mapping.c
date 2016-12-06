@@ -79,7 +79,9 @@ void getMap(Map *L)
 	{
 		case 0:
 			addStr(L->infoP1[0],"  Aightech","  (DUMB)");
-			
+		break;
+		case 1:
+			addStr(L->infoP1[0],"  Aightech","  (MANUAL)");
 		break;
 	}
 	
@@ -89,7 +91,10 @@ void getMap(Map *L)
 		case 0:
 			addStr(argMap,"DO_NOTHING"," timeout=10");
 			addStr(L->infoP2[0],"  DO NOTHING","  (DUMB)");
-			
+		break;
+		case 1:
+			addStr(argMap,"DO_NOTHING"," timeout=10");
+			addStr(L->infoP2[0],"  DO NOTHING","  (DUMB)");
 		break;
 	}
 	/* wait for a game, and retrieve informations about it */

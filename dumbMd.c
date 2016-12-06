@@ -18,10 +18,10 @@ void dumbMode(Map* L)
 	{
 		
 		if (L->players[0]->turn==1)	
-		  {
-		    ret = getMove( &moveOp);
-		    moveP(L,1,&moveOp);
-		  }
+		{
+			ret = getMove( &moveOp);
+			moveP(L,1,&moveOp);
+		}
 		else
 		  {
 		  	moveP(L,0,move);

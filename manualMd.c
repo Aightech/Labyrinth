@@ -12,18 +12,18 @@ void manualMode(Map* L)
 	move->type = DO_NOTHING;
 	move->value = 0;
 	t_move moveOp;
-	int choice;
+	int choice=40;
 	
 	
 	while(ret==MOVE_OK)
 	{
 		
-		if (L->players[0]->turn==1&&L->players[1]->mode!=1)	
+		if (L->players[0]->turn==1&&L->players[1]->mode!=1)//op turn	
 		{
 			ret = getMove( &moveOp);
 			moveP(L,1,&moveOp);
 		}
-		if (L->players[0]->turn==1&&L->players[1]->mode==1)	
+		else if (L->players[0]->turn==1&&L->players[1]->mode==1)	
 		{
 			
 			choice=GUI(L,choice);
