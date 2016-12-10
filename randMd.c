@@ -145,7 +145,10 @@ void randMode(Map *L)
 		else
 		  {
 		    gene_randmove(L,move,L->players[1]);
-		    moveM(L,move);
+		    if (move==ROTATE_LINE_UP || move==ROTATE_LINE_DOWN || move==ROTATE_COLUMN_LEFT || move==ROTATE_COLUM_RIGHT)
+			moveM(L,move);
+		    else
+			    moveP(L,2,move); //pas sûre du 2
 		    ret = sendMove(move);		    
 		  }
 		  //endwin();
