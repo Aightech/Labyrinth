@@ -56,7 +56,7 @@ void getMap(Map *L)
 	
 	char* labData;						/* data of the labyrinth */
 	/* connection to the server */
-	connectToServer( "pc4024.polytech.upmc.fr", 1234, "Aightech");
+	connectToServer( "pc4001.polytech.upmc.fr", 1234, "Aightech");
 	int i,j;
 	for(i=0;i<L->heigth;i++)//delete the last cases
 	{
