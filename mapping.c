@@ -79,9 +79,7 @@ void getMap(Map *L)
 	{
 		case 0:
 			addStr(L->infoP1[0],"  Aightech","  (DUMB)");
-		break;
-		case 1:
-			addStr(L->infoP1[0],"  Aightech","  (MANUAL)");
+			
 		break;
 	}
 	
@@ -91,10 +89,7 @@ void getMap(Map *L)
 		case 0:
 			addStr(argMap,"DO_NOTHING"," timeout=10");
 			addStr(L->infoP2[0],"  DO NOTHING","  (DUMB)");
-		break;
-		case 1:
-			addStr(argMap,"DO_NOTHING"," timeout=10");
-			addStr(L->infoP2[0],"  DO NOTHING","  (DUMB)");
+			
 		break;
 	}
 	/* wait for a game, and retrieve informations about it */
@@ -317,6 +312,52 @@ int moveP(Map *L, int P,t_move *move)
 
 
 
+}
+
+
+void MoveMap(Map *L,t_move move)
+//apply changes generate by move to the current map L
+{
+  int i;
+  char temp;
+  switch (move->type)
+    {
+    case ROTATE_LINE_LEFT;
+    temp=L->cases[move->value][0];
+    for (i=0;i<L->width-1;i++)
+      {
+	L->cases[move->value][i]=L->cases[move->value][i+1];
+      }
+    L->cases[move->value][width-1]=temp;
+    break;
+    
+    case ROTATE_LINE_RIGHT;
+    temp=L->cases[move->value][width-1];
+    for (i=1;i<L->width;i++)
+      {
+        L->cases[move->value][width-i]=L->cases[move->value][width-1-i];
+      }
+    L->cases[move->value][0]=temp;
+    break;
+    
+    case ROTATE_COLUMN_DOWN;
+    temp=L->cases[heigth-1][move->value];
+    for (i=1;i<L->heigth;i++)
+      {
+	L->cases[heigth-i][move->value]=L->cases[heigth-1-i][move->value];
+      }
+    L->cases[0][move->value]=temp;
+    break;
+    
+    case ROTATE_COLUM_UP;
+    temp=L->cases[0][move->value];
+    for (i=0;i<L->heigth-1;i++)
+      {
+	L->cases[i][move->value]=L->cases[i+1][move->value];
+      }
+    L->cases[height-1][move->value]=temp;
+    break;
+    }
 }
 
 
