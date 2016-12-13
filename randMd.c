@@ -10,7 +10,7 @@ void gene_randmove(Map *L,t_move *move,Player *player)
 // pointeur move, largeur et longueur du lab
 // run until generate a possible move 
 {
-  inte type=0;
+  int type=0;
   int t=-1;
   srand(time(NULL));
   while(t==-1)
