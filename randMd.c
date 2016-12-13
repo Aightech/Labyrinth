@@ -18,11 +18,13 @@ void gene_randmove(Map *L,t_move *move,Player *player)
       type=rand()%9;      
       if (type==0 || type==1)      //row line
 	{
+	  convert_movetype(t,move);
 	  move->value=rand()%L->width;
 	  t=testMoveM(player,move);
 	}
       else if (type==2 || type==3) //row column
 	{
+	  convert_movetype(t,move);
 	  move->value=rand()%L->height;
 	  t=testMoveM(player,move);
 	}    
@@ -34,6 +36,7 @@ void gene_randmove(Map *L,t_move *move,Player *player)
 }
 
 int testMoveM(Player *player,t_move *move,int type)
+//return 0 if "move", which may be a rotation of the map, is possible for player and -1 otherwise 
 {
     if (player->energy<5)
     return -1;
@@ -45,6 +48,7 @@ int testMoveM(Player *player,t_move *move,int type)
 }
 
 void convert_movetype(int type, t_move *move)
+//convert an int, for example generate by rand, to a t_move type
 {
    switch (type)
     {
@@ -80,6 +84,7 @@ void convert_movetype(int type, t_move *move)
   
 
 void MoveM(Map *L,t_move move)
+//apply changes generate by move to the current map L
 {
   int i;
   char temp;
@@ -124,6 +129,7 @@ void MoveM(Map *L,t_move move)
 }
   
 void randMode(Map *L)
+//instructions of the random mode of the game
 {
 	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
 	t_move* move=(t_move*) malloc(sizeof(t_move));
@@ -141,15 +147,20 @@ void randMode(Map *L)
 		{
 			ret = getMove( move);
 			moveP(L,1,move);
+			L->players[0]->turn=0; //*
+			L->players[1]->turn=1; //*
+			L->players[0]->energy++; //* 
+					      
 		}
 		else
 		  {
 		    gene_randmove(L,move,L->players[1]);
-		    if (move==ROTATE_LINE_UP || move==ROTATE_LINE_DOWN || move==ROTATE_COLUMN_LEFT || move==ROTATE_COLUM_RIGHT)
-			moveM(L,move);
-		    else
-			    moveP(L,2,move); //pas sûre du 2
-		    ret = sendMove(move);		    
+		    if (move->type==ROTATE_COLUMN_UP || move->type==ROTATE_COLUMN_DOWN || move->type==ROTATE_LINE_LEFT ||move->type==ROTATE_LINE_RIGHT)
+		    moveM(L,move);
+		    ret = sendMove(move);
+		    L->players[1]->turn=0; //*
+		    L->players[0]->turn=1; //*
+		    L->players[1]->energy++; //*
 		  }
 		  //endwin();
 		  //printLabyrinth();
