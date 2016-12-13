@@ -6,6 +6,7 @@
 #include "mapping.h"
 #include "dumbMd.h"
 #include "manualMd.h"
+#include "randMd.h"
 
 
 
@@ -18,11 +19,12 @@ int evaluate(Map *L);//Return the
 
 
 
-
+extern int debug;
 
 
 int main()
 {
+	debug=0;
 	Map *L=initMap();
 	initGUI(L);
 	t_move* move=(t_move*) malloc(sizeof(t_move));
@@ -37,8 +39,11 @@ int main()
 				getMap(L);//switch of the value getmap return to lauched the game mode
 				if(L->players[0]->mode==0)
 					dumbMode(L);
-				if(L->players[0]->mode==1)
+				else if(L->players[0]->mode==1)
 					manualMode(L);
+				else if(L->players[0]->mode==2)
+					randMode(L);
+					
 			break;
 			
 			/*MANUAL MOVES*/

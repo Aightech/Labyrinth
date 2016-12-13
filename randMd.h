@@ -1,14 +1,14 @@
-#ifndef MANUALMD_H
-#define MANUALMD_H
+#ifndef RANDMD_H
+#define RANDMD_H
 #include "struct.h"
-//#include "labyrinthAPI.h"
+#include "labyrinthAPI.h"
 
-void gene_randmove(Map* L,t_move *move, Player *player);
+void gene_randmove(Map* L,t_move *move, int P);
 
-int testMoveM(Player *player,t_move *move,int type);
+int testMoveM(Map *L,int P);
 
 void convert_movetype(int type, t_move *move);
 
-void randMode(Map *L)
+void randMode(Map *L);
 
 #endif

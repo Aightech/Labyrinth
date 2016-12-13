@@ -34,22 +34,12 @@ Map* initMap()
 	addStr(L->infoP1[1],"  0","");
 	for(i=2;i<10;i++)
 	{
-		for(j=0;j<9;j++)
-		{
-			L->infoP1[i][j]='o';
-		}
-		L->infoP1[i][9]='\0';
+		addStr(L->infoP1[i],"                   ","");
+		addStr(L->infoP2[i],"                   ","");
 	}
-	addStr(L->infoP2[0],"  UNKOWN","");
+	addStr(L->infoP2[0],"  UNKNOWN","");
 	addStr(L->infoP2[1],"  0","");
-	for(i=2;i<10;i++)
-	{
-		for(j=0;j<9;j++)
-		{
-			L->infoP2[i][j]='o';
-		}
-		L->infoP1[i][9]='\0';
-	}
+	
 	for(i=0;i<3;i++)
 	{
 		L->players[i]=(Player*) malloc(sizeof(Player));
@@ -66,7 +56,7 @@ void getMap(Map *L)
 	
 	char* labData;						/* data of the labyrinth */
 	/* connection to the server */
-	connectToServer( "pc4023.polytech.upmc.fr", 1234, "Aightech");
+	connectToServer( "pc4024.polytech.upmc.fr", 1234, "Aightech");
 	int i,j;
 	for(i=0;i<L->heigth;i++)//delete the last cases
 	{
@@ -79,7 +69,15 @@ void getMap(Map *L)
 	{
 		case 0:
 			addStr(L->infoP1[0],"  Aightech","  (DUMB)");
-			
+		break;
+		case 1:
+			addStr(L->infoP1[0],"  Aightech","  (MANUAL)");
+		break;
+		case 2:
+			addStr(L->infoP1[0],"  Aightech","  (RANDOM)");
+		break;
+		case 3:
+			addStr(L->infoP1[0],"  Aightech","  ( A* )");
 		break;
 	}
 	
@@ -89,8 +87,20 @@ void getMap(Map *L)
 		case 0:
 			addStr(argMap,"DO_NOTHING"," timeout=10");
 			addStr(L->infoP2[0],"  DO NOTHING","  (DUMB)");
-			
 		break;
+		case 1:
+			addStr(argMap,"PLAY_RANDOM"," timeout=10");
+			addStr(L->infoP2[0],"  MANUAL","  (MANUAL)");
+		break;
+		case 2:
+			addStr(argMap,"PLAY_RANDOM"," timeout=10");
+			addStr(L->infoP2[0],"  RANDOM","  (RANDOM)");
+		break;
+		case 3:
+			addStr(argMap,"ASTAR"," timeout=10");
+			addStr(L->infoP2[0],"  RANDOM","  ( A* )");
+		break;
+		
 	}
 	/* wait for a game, and retrieve informations about it */
 	waitForLabyrinth( argMap, L->name, &(L->width), &(L->heigth));
@@ -287,6 +297,9 @@ int moveP(Map *L, int P,t_move *move)
 						L->cases[L->players[P]->Y][L->players[P]->X]=2;
 				}
 			break;
+			default:
+				state=-1;
+			break;
 		}
 		L->players[P]->turn=1;
 		L->players[(P+1)%2]->turn=0;
@@ -315,49 +328,57 @@ int moveP(Map *L, int P,t_move *move)
 }
 
 
-void MoveMap(Map *L,t_move move)
+int moveM(Map *L,int P,t_move *move)
 //apply changes generate by move to the current map L
 {
   int i;
   char temp;
   switch (move->type)
     {
-    case ROTATE_LINE_LEFT;
+    case ROTATE_LINE_LEFT:
     temp=L->cases[move->value][0];
     for (i=0;i<L->width-1;i++)
       {
 	L->cases[move->value][i]=L->cases[move->value][i+1];
       }
-    L->cases[move->value][width-1]=temp;
+    L->cases[move->value][L->width-1]=temp;
     break;
     
-    case ROTATE_LINE_RIGHT;
-    temp=L->cases[move->value][width-1];
+    case ROTATE_LINE_RIGHT:
+    temp=L->cases[move->value][L->width-1];
     for (i=1;i<L->width;i++)
       {
-        L->cases[move->value][width-i]=L->cases[move->value][width-1-i];
+        L->cases[move->value][L->width-i]=L->cases[move->value][L->width-1-i];
       }
     L->cases[move->value][0]=temp;
     break;
     
-    case ROTATE_COLUMN_DOWN;
-    temp=L->cases[heigth-1][move->value];
+    case ROTATE_COLUMN_DOWN:
+    temp=L->cases[L->heigth-1][move->value];
     for (i=1;i<L->heigth;i++)
       {
-	L->cases[heigth-i][move->value]=L->cases[heigth-1-i][move->value];
+	L->cases[L->heigth-i][move->value]=L->cases[L->heigth-1-i][move->value];
       }
     L->cases[0][move->value]=temp;
     break;
     
-    case ROTATE_COLUM_UP;
-    temp=L->cases[0][move->value];
-    for (i=0;i<L->heigth-1;i++)
-      {
-	L->cases[i][move->value]=L->cases[i+1][move->value];
-      }
-    L->cases[height-1][move->value]=temp;
+    case ROTATE_COLUMN_UP:
+	    temp=L->cases[0][move->value];
+	    for (i=0;i<L->heigth-1;i++)
+	      {
+		L->cases[i][move->value]=L->cases[i+1][move->value];
+	      }
+	    L->cases[L->heigth-1][move->value]=temp;
     break;
+    default:
+		
+	break;
+    
     }
+    L->players[P]->turn=1;
+	L->players[(P+1)%2]->turn=0;
+	L->players[P]->energy-=5;
+    return 0;
 }
 
 

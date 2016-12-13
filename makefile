@@ -3,12 +3,12 @@ LIBDIR = /home/sasl/encad/brajard/projet/CGS_lib
 
 # options de compilation
 CC =gcc
-CCFLAGS = -Wall -I $(LIBDIR)/include
+CCFLAGS = -Wall -Wno-switch -I $(LIBDIR)/include
 LIBS = -L $(LIBDIR)/lib
 LDFLAGS = -lm -lcgs -lncurses -lpanel
 
 # fichiers du projet
-SRC = main.c gui.c mapping.c dumbMd.c manualMd.c
+SRC = main.c gui.c mapping.c dumbMd.c manualMd.c randMd.c
 OBJ = $(SRC:.c=.o)
 EXEC = test
 
@@ -22,6 +22,7 @@ gui.o: gui.h struct.h mapping.h
 mapping.o:gui.h struct.h mapping.h
 mapping.o:gui.h struct.h dumbMd.h mapping.h
 manualMd.o:gui.h struct.h manualMd.h mapping.h
+randMd.o:gui.h struct.h randMd.h mapping.h
 
 # règles de compilation
 %.o: %.c
