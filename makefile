@@ -14,7 +14,7 @@ EXEC = test
 
 
 # règle initiale
-all: $(EXEC)
+all: $(EXEC) clean
 
 # dépendance des .h
 main.o: gui.h mapping.h struct.h dumbMd.h
@@ -34,6 +34,6 @@ $(EXEC): $(OBJ)
 
 # règles supplémentaires
 clean:
-	rm -f *.o
+	@rm -rf *.o
 rmproper:
-	rm -f $(EXEC) *.o
+	rm -rf $(EXEC) *.o
