@@ -82,23 +82,28 @@ void getMap(Map *L)
 	}
 	
 	char argMap[50];
+	char time[]=" timeout=10";
 	switch(L->players[1]->mode)
 	{
 		case 0:
-			addStr(argMap,"DO_NOTHING"," timeout=10");
+			addStr(argMap,"DO_NOTHING",time);
 			addStr(L->infoP2[0],"  DO NOTHING","  (DUMB)");
 		break;
 		case 1:
-			addStr(argMap,"PLAY_RANDOM"," timeout=10");
+			addStr(argMap,"PLAY_RANDOM",time);
 			addStr(L->infoP2[0],"  MANUAL","  (MANUAL)");
 		break;
 		case 2:
-			addStr(argMap,"PLAY_RANDOM"," timeout=10");
-			addStr(L->infoP2[0],"  RANDOM","  (RANDOM)");
+			addStr(argMap,"PLAY_RANDOM",time);
+			addStr(L->infoP2[0],"  RANDOM MOVE PLAYER","  (RANDOM)");
 		break;
 		case 3:
-			addStr(argMap,"ASTAR"," timeout=10");
-			addStr(L->infoP2[0],"  RANDOM","  ( A* )");
+			addStr(argMap,"PLAY_RANDOM",time);
+			addStr(L->infoP2[0],"  RANDOM","  (RANDOM)");
+		break;
+		case 4:
+			addStr(argMap,"ASTAR",time);
+			addStr(L->infoP2[0],"  Clever","  ( A* )");
 		break;
 		
 	}
@@ -331,54 +336,54 @@ int moveP(Map *L, int P,t_move *move)
 int moveM(Map *L,int P,t_move *move)
 //apply changes generate by move to the current map L
 {
-  int i;
-  char temp;
-  switch (move->type)
-    {
-    case ROTATE_LINE_LEFT:
-    temp=L->cases[move->value][0];
-    for (i=0;i<L->width-1;i++)
-      {
-	L->cases[move->value][i]=L->cases[move->value][i+1];
-      }
-    L->cases[move->value][L->width-1]=temp;
-    break;
-    
-    case ROTATE_LINE_RIGHT:
-    temp=L->cases[move->value][L->width-1];
-    for (i=1;i<L->width;i++)
-      {
-        L->cases[move->value][L->width-i]=L->cases[move->value][L->width-1-i];
-      }
-    L->cases[move->value][0]=temp;
-    break;
-    
-    case ROTATE_COLUMN_DOWN:
-    temp=L->cases[L->heigth-1][move->value];
-    for (i=1;i<L->heigth;i++)
-      {
-	L->cases[L->heigth-i][move->value]=L->cases[L->heigth-1-i][move->value];
-      }
-    L->cases[0][move->value]=temp;
-    break;
-    
-    case ROTATE_COLUMN_UP:
-	    temp=L->cases[0][move->value];
-	    for (i=0;i<L->heigth-1;i++)
-	      {
-		L->cases[i][move->value]=L->cases[i+1][move->value];
-	      }
-	    L->cases[L->heigth-1][move->value]=temp;
-    break;
-    default:
-		
-	break;
-    
-    }
-    L->players[P]->turn=1;
+	int i;
+	char temp;
+	switch (move->type)
+	{
+		case ROTATE_LINE_LEFT:
+			temp=L->cases[move->value][0];
+			for (i=0;i<L->width-1;i++)
+			{
+				L->cases[move->value][i]=L->cases[move->value][i+1];
+			}
+			L->cases[move->value][L->width-1]=temp;
+		break;
+
+		case ROTATE_LINE_RIGHT:
+			temp=L->cases[move->value][L->width-1];
+			for (i=1;i<L->width;i++)
+			{
+				L->cases[move->value][L->width-i]=L->cases[move->value][L->width-1-i];
+			}
+			L->cases[move->value][0]=temp;
+		break;
+
+		case ROTATE_COLUMN_DOWN:
+			temp=L->cases[L->heigth-1][move->value];
+			for (i=1;i<L->heigth;i++)
+			{
+				L->cases[L->heigth-i][move->value]=L->cases[L->heigth-1-i][move->value];
+			}
+			L->cases[0][move->value]=temp;
+			break;
+
+		case ROTATE_COLUMN_UP:
+			temp=L->cases[0][move->value];
+			for (i=0;i<L->heigth-1;i++)
+			{
+				L->cases[i][move->value]=L->cases[i+1][move->value];
+			}
+			L->cases[L->heigth-1][move->value]=temp;
+		break;
+		default:
+
+		break;
+
+	}
+	L->players[P]->turn=1;
 	L->players[(P+1)%2]->turn=0;
 	L->players[P]->energy-=5;
-    return 0;
+	return 0;
 }
 
 

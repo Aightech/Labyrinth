@@ -37,12 +37,14 @@ int main()
 		{
 			case 30://connection to the server
 				getMap(L);//switch of the value getmap return to lauched the game mode
-				if(L->players[0]->mode==0)
+				if(L->players[0]->mode==0)//we are dumb
 					dumbMode(L);
-				else if(L->players[0]->mode==1)
+				else if(L->players[0]->mode==1)//we play manual
 					manualMode(L);
-				else if(L->players[0]->mode==2)
+				else if(L->players[0]->mode==2)//we play random
 					randMode(L);
+				else if(L->players[0]->mode==3)//we play astar
+					{}//TODO astarMode(L);
 					
 			break;
 			
@@ -67,7 +69,8 @@ int main()
 			/*PLAYER MODES*/
 			case 50://DO NOTHING
 			case 51://MANUAL
-			case 52://AUTO
+			case 52://RANDOM
+			case 53://ASTAR
 				L->players[0]->mode=choice%10;
 				choice+=10;
 			break;
@@ -75,7 +78,9 @@ int main()
 			/*OPONENT MODES*/
 			case 60://DO NOTHING
 			case 61://MANUAL
-			case 62://AUTO
+			case 62://RANDOM MOVEP
+			case 63://RANDOM MOVEP&M
+			case 64://ASTAR
 				L->players[1]->mode=choice%10;
 				choice=30;
 			break;

@@ -82,7 +82,7 @@ void initGUI(Map * L)
 	
 	L->guiWins[5]->win=newwin(25, 10, 7, 80);//Player mode
 	addStr(L->guiWins[5]->label,"P.mode:","");
-	L->guiWins[5]->numButt=5;
+	L->guiWins[5]->numButt=7;
 	L->guiWins[5]->posButt=(int **)malloc(L->guiWins[5]->numButt*sizeof(int*));
 	L->guiWins[5]->labButt=(char **)malloc(L->guiWins[5]->numButt*sizeof(char*));
 	for(i=0;i<L->guiWins[5]->numButt;i++){
@@ -103,12 +103,18 @@ void initGUI(Map * L)
 	addStr(L->guiWins[5]->labButt[3],"  A*  ","");
 	L->guiWins[5]->posButt[4][0]=15;
 	L->guiWins[5]->posButt[4][1]=1;
-	addStr(L->guiWins[5]->labButt[4],"  ??  ","");
+	addStr(L->guiWins[5]->labButt[4],"XXXXXX","");
+	L->guiWins[5]->posButt[5][0]=18;
+	L->guiWins[5]->posButt[5][1]=1;
+	addStr(L->guiWins[5]->labButt[5],"XXXXXX","");
+	L->guiWins[5]->posButt[6][0]=21;
+	L->guiWins[5]->posButt[6][1]=1;
+	addStr(L->guiWins[5]->labButt[6],"XXXXXX","");
 	
 	
 	L->guiWins[6]->win=newwin(25, 10, 7, 90);//Opponent mode
 	addStr(L->guiWins[6]->label,"Op.md:","");
-	L->guiWins[6]->numButt=5;
+	L->guiWins[6]->numButt=7;
 	L->guiWins[6]->posButt=(int **)malloc(L->guiWins[6]->numButt*sizeof(int*));
 	L->guiWins[6]->labButt=(char **)malloc(L->guiWins[6]->numButt*sizeof(char*));
 	for(i=0;i<L->guiWins[6]->numButt;i++){
@@ -123,13 +129,19 @@ void initGUI(Map * L)
 	addStr(L->guiWins[6]->labButt[1],"Manual","");
 	L->guiWins[6]->posButt[2][0]=9;
 	L->guiWins[6]->posButt[2][1]=1;
-	addStr(L->guiWins[6]->labButt[2],"Random","");
+	addStr(L->guiWins[6]->labButt[2],"Rand P","");
 	L->guiWins[6]->posButt[3][0]=12;
 	L->guiWins[6]->posButt[3][1]=1;
-	addStr(L->guiWins[6]->labButt[3],"  A*  ","");
+	addStr(L->guiWins[6]->labButt[3],"RandMP","");
 	L->guiWins[6]->posButt[4][0]=15;
 	L->guiWins[6]->posButt[4][1]=1;
-	addStr(L->guiWins[6]->labButt[4],"  ??  ","");
+	addStr(L->guiWins[6]->labButt[4],"  A*  ","");
+	L->guiWins[6]->posButt[5][0]=18;
+	L->guiWins[6]->posButt[5][1]=1;
+	addStr(L->guiWins[6]->labButt[5],"XXXXXX","");
+	L->guiWins[6]->posButt[6][0]=21;
+	L->guiWins[6]->posButt[6][1]=1;
+	addStr(L->guiWins[6]->labButt[6],"XXXXXX","");
 	
 	
 	
