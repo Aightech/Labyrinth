@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//#include "gui.h"
+#include "gui.h"
 #include "struct.h"
 #include "mapping.h"
 #include "labyrinthAPI.h"
@@ -63,6 +63,7 @@ void getMap(Map *L)
 		free(L->cases[i]);
 	}
 	free(L->cases);
+	eraseMap(L);
 	
 	
 	switch(L->players[0]->mode)

@@ -201,7 +201,7 @@ int dispMap(Map* L)//Display the labyrinth
 {
 	//mvwprintw(win->win, 5,5, "%s", L->cases[0]);
 	Win* win=L->guiWins[0];
-	int starty=3,startx=1;
+	int starty=12-L->heigth/2,startx=18-L->width/2;
 	mvwaddch(win->win, starty, startx, ACS_ULCORNER); 
 	//mvwaddch(win->win, starty+1, startx, ACS_VLINE); 
 	mvwvline(win->win, starty+1, startx, ACS_VLINE, L->heigth+1);
@@ -242,9 +242,26 @@ int dispMap(Map* L)//Display the labyrinth
 					mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
 					wattroff(win->win,COLOR_PAIR(4));
 				break;
+				default:
+					mvwaddch(win->win, starty+i+1, startx+j+1, L->cases[i][j]);
+				break;
 			}
 		}
 	}
+	update_panels();
+	doupdate();
+	return 1;
+}
+
+int eraseMap(Map *L)
+{
+	Win* win=L->guiWins[0];
+	int starty=12-L->heigth/2,startx=18-L->width/2;
+	int i,j;
+	for(i=0;i<L->heigth+2;i++)
+		for(j=0;j<L->width+2;j++)
+			mvwaddch(win->win, starty+i, startx+j, ' ');
+			
 	update_panels();
 	doupdate();
 	return 1;

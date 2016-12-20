@@ -9,6 +9,7 @@ void showWin(Win *win);
 void wboxe(Win *win, int starty, int startx,const char *string);
 int choice(Win *win,int lstCh);
 int dispMap(Map *L);//Display the labyrinth
+int eraseMap(Map *L);//Erase the labyrynth
 int dispInfo(Map *L);//Display the Player info
 
 
