@@ -89,49 +89,44 @@ void randMode(Map *L)
 //instructions of the random mode of the game
 {
 	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
-	t_move* move=(t_move*) malloc(sizeof(t_move));
-	move->type = DO_NOTHING;
-	move->value = 0;
+	t_move* myMove=(t_move*) malloc(sizeof(t_move));
+	t_move* adMove=(t_move*) malloc(sizeof(t_move));
+	myMove->type = DO_NOTHING;
+	myMove->value = 0;
 	
 	
 	while(ret==MOVE_OK)
 	{
-		
-		//if (L->players[0]->turn==1&&L->players[1]->mode!=1)	
 		if (L->players[0]->turn==1)
 		{
-			ret = getMove( move);
-			if (move->type==ROTATE_COLUMN_UP || move->type==ROTATE_COLUMN_DOWN || move->type==ROTATE_LINE_LEFT ||move->type==ROTATE_LINE_RIGHT)
-			moveM(L,1,move);
-			else
-			moveP(L,1,move);
+			addStr(L->infoP2[5],"                         ","");
+			ret = getMove(adMove);
+			movement(L,1,adMove);
 			      
 		}
 		else
 		{
-			gene_randmove(L,move,0);
-			if (move->type==ROTATE_COLUMN_UP || move->type==ROTATE_COLUMN_DOWN || move->type==ROTATE_LINE_LEFT ||move->type==ROTATE_LINE_RIGHT)
-			{
-				moveM(L,0,move);
-				ret = sendMove(*move);
-			}
-			else
-			{
-				moveP(L,0,move);
-				ret = sendMove(*move);
-			}
+			addStr(L->infoP1[5],"                         ","");
+			gene_randmove(L,myMove,0);
+			movement(L,0,myMove);
+			ret = sendMove(*myMove);
 		}
-		endwin();
-		printLabyrinth();
-		//dispInfo(L);
-		//dispMap(L);
+		//endwin();
+		//printLabyrinth();
+		dispInfo(L);
+		dispMap(L);
 		  
 	}
-	
-	
-	
-	
-	
+	if ((L->players[0]->turn==1 && ret == MOVE_WIN) || (L->players[0]->turn==0 && ret == MOVE_LOSE))
+	{
+		addStr(L->infoP2[5]," YOU LOOSE","");
+		addStr(L->infoP1[5]," YOU WIN","");
+	}
+	else
+	{
+		addStr(L->infoP1[5]," YOU LOOSE","");
+		addStr(L->infoP2[5]," YOU WIN","");
+	}
 	
 	/* end the connection, because we are polite */
 	closeConnection();

@@ -20,8 +20,9 @@ void manualMode(Map* L)
 		
 		if (L->players[0]->turn==1&&L->players[1]->mode!=1)//op turn	
 		{
+			addStr(L->infoP2[5],"                         ","");
 			ret = getMove( &moveOp);
-			moveP(L,1,&moveOp);
+			movement(L,1,&moveOp);
 		}
 		else if (L->players[0]->turn==1&&L->players[1]->mode==1)	
 		{
@@ -43,16 +44,18 @@ void manualMode(Map* L)
 				case 43:
 					moveOp.type=MOVE_RIGHT;
 				break;
+				
 			}
 			//ret = getMove( &moveOp);
 			moveP(L,1,&moveOp);
 		}
 		else
 		  {
+		  	addStr(L->infoP1[5],"                         ","");
 		  	choice=GUI(L,choice);
 			switch(choice)
 			{
-			
+				
 				/*MANUAL MOVES*/
 				case 40:
 					move->type=MOVE_LEFT;
@@ -81,12 +84,17 @@ void manualMode(Map* L)
 		dispMap(L);
 		  
 	}
-	
-	
-	
-	
-	
-	
+	if ((L->players[0]->turn==1 && ret == MOVE_WIN) || (L->players[0]->turn==0 && ret == MOVE_LOSE))
+	{
+		addStr(L->infoP2[5]," YOU LOOSE","");
+		addStr(L->infoP1[5]," YOU WIN","");
+	}
+	else
+	{
+		addStr(L->infoP1[5]," YOU LOOSE","");
+		addStr(L->infoP2[5]," YOU WIN","");
+	}
+
 	/* end the connection, because we are polite */
 	closeConnection();
 	

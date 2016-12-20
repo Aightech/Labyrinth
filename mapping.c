@@ -251,13 +251,13 @@ int moveP(Map *L, int P,t_move *move)
 				{
 						L->cases[L->players[P]->Y][L->players[P]->X]=0;
 						L->players[P]->X--;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
 				}
 				else//else it has to appear in the other side
 				{
 						L->cases[L->players[P]->Y][L->players[P]->X]=0;
 						L->players[P]->X=L->width-1;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
 				}
 			break;
 			case MOVE_UP:
@@ -265,13 +265,13 @@ int moveP(Map *L, int P,t_move *move)
 				{
 						L->cases[L->players[P]->Y][L->players[P]->X]=0;
 						L->players[P]->Y--;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
 				}
 				else
 				{
 						L->cases[L->players[P]->Y][L->players[P]->X]=0;
 						L->players[P]->Y=L->heigth-1;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
 				}
 				
 			break;
@@ -280,13 +280,13 @@ int moveP(Map *L, int P,t_move *move)
 				{
 						L->cases[L->players[P]->Y][L->players[P]->X]=0;
 						L->players[P]->Y++;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
 				}
 				else
 				{
 						L->cases[L->players[P]->Y][L->players[P]->X]=0;
 						L->players[P]->Y=0;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
 				}
 			break;
 			case MOVE_RIGHT:
@@ -294,13 +294,13 @@ int moveP(Map *L, int P,t_move *move)
 				{
 						L->cases[L->players[P]->Y][L->players[P]->X]=0;
 						L->players[P]->X++;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
 				}
 				else
 				{
 						L->cases[L->players[P]->Y][L->players[P]->X]=0;
 						L->players[P]->X=0;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2;
+						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
 				}
 			break;
 			default:
@@ -348,6 +348,15 @@ int moveM(Map *L,int P,t_move *move)
 				L->cases[move->value][i]=L->cases[move->value][i+1];
 			}
 			L->cases[move->value][L->width-1]=temp;
+			for(i=0;i<3;i++)
+				if(L->players[i]->Y==move->value)
+				{
+					if(L->players[i]->X-1>-1)//if the player would still remai n in the map
+						L->players[i]->X--;
+					else
+						L->players[i]->X=L->width-1;
+				}
+					
 		break;
 
 		case ROTATE_LINE_RIGHT:
@@ -357,6 +366,14 @@ int moveM(Map *L,int P,t_move *move)
 				L->cases[move->value][L->width-i]=L->cases[move->value][L->width-1-i];
 			}
 			L->cases[move->value][0]=temp;
+			for(i=0;i<3;i++)
+				if(L->players[i]->Y==move->value)
+				{
+					if(L->players[i]->X+1<L->width)//if the player would still remai n in the map
+						L->players[i]->X++;
+					else
+						L->players[i]->X=0;
+				}
 		break;
 
 		case ROTATE_COLUMN_DOWN:
@@ -366,7 +383,15 @@ int moveM(Map *L,int P,t_move *move)
 				L->cases[L->heigth-i][move->value]=L->cases[L->heigth-1-i][move->value];
 			}
 			L->cases[0][move->value]=temp;
-			break;
+			for(i=0;i<3;i++)
+				if(L->players[i]->X==move->value)
+				{
+					if(L->players[i]->Y+1<L->heigth)//if the player would still remai n in the map
+						L->players[i]->Y++;
+					else
+						L->players[i]->Y=0;
+				}
+		break;
 
 		case ROTATE_COLUMN_UP:
 			temp=L->cases[0][move->value];
@@ -375,6 +400,14 @@ int moveM(Map *L,int P,t_move *move)
 				L->cases[i][move->value]=L->cases[i+1][move->value];
 			}
 			L->cases[L->heigth-1][move->value]=temp;
+			for(i=0;i<3;i++)
+				if(L->players[i]->X==move->value)
+				{
+					if(L->players[i]->Y+1<L->heigth)//if the player would still remai n in the map
+						L->players[i]->Y--;
+					else
+						L->players[i]->Y=L->heigth-1;
+				}
 		break;
 		default:
 
@@ -384,9 +417,24 @@ int moveM(Map *L,int P,t_move *move)
 	L->players[P]->turn=1;
 	L->players[(P+1)%2]->turn=0;
 	L->players[P]->energy-=5;
+	char* e=intTostr(L->players[P]->energy);
+	if(P==0)
+		addStr(L->infoP1[1],"  ",e);
+	else
+		addStr(L->infoP2[1],"  ",e);
+	free(e);
+	
 	return 0;
 }
 
+int movement(Map *L,int P,t_move *move)
+{
+	if (move->type==ROTATE_COLUMN_UP || move->type==ROTATE_COLUMN_DOWN || move->type==ROTATE_LINE_LEFT ||move->type==ROTATE_LINE_RIGHT)
+		moveM(L,P,move);
+	else
+		moveP(L,P,move);
+	return 1;
+}
 
 void addStr(char *target,char *add1,char *add2)
 {
