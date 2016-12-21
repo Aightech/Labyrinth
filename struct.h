@@ -50,6 +50,14 @@ typedef struct _Win {
 	
 }Win;
 
+typedef struct _Node{//the nodes
+	int x,y;
+	int cost;
+	int heuristique;
+	int xp, yp;
+}Node;
+
+
 typedef struct _Map {//the labyrinth
 
 	//WINDOW *win;// to use with ncurses

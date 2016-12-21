@@ -3,11 +3,11 @@
 #include "struct.h"
 #include "gui.h"
 #include "mapping.h"
-#include "labyrinthAPI.h"
 #include "Astar.h"
+#include "labyrinthAPI.h"
 #include <unistd.h>
 
-Case newCase(Map *L, Case c, int x, int y) //create a new case for a neighbour of c
+Node newCase(Map *L, Node c, int x, int y) //create a new case for a neighbour of c
 {
 	Case v;
 	v.x=x;
