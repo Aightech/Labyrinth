@@ -75,10 +75,10 @@ void initGUI(Map * L)
 	addStr(L->guiWins[4]->labButt[3]," > ","");
 	L->guiWins[4]->posButt[4][0]=3;
 	L->guiWins[4]->posButt[4][1]=21;
-	addStr(L->guiWins[4]->labButt[4],"Pause","");
+	addStr(L->guiWins[4]->labButt[4],"Map Move","");
 	L->guiWins[4]->posButt[5][0]=3;
-	L->guiWins[4]->posButt[5][1]=28;
-	addStr(L->guiWins[4]->labButt[5],"Map Move","");
+	L->guiWins[4]->posButt[5][1]=31;
+	addStr(L->guiWins[4]->labButt[5],"Valid.","");
 	
 	L->guiWins[5]->win=newwin(25, 10, 7, 80);//Player mode
 	addStr(L->guiWins[5]->label,"P.mode:","");
@@ -218,6 +218,9 @@ int dispMap(Map* L)//Display the labyrinth
 	{
 		for(j=0;j<L->width;j++)
 		{
+			if(i==L->mvL||j==L->mvC)
+				wattron(win->win, A_REVERSE); 
+				
 			switch(L->cases[i][j])
 			{
 				case 0:
@@ -246,6 +249,8 @@ int dispMap(Map* L)//Display the labyrinth
 					mvwaddch(win->win, starty+i+1, startx+j+1, L->cases[i][j]);
 				break;
 			}
+			if(i==L->mvL||j==L->mvC)
+				wattroff(win->win, A_REVERSE);
 		}
 	}
 	update_panels();

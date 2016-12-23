@@ -8,7 +8,7 @@ LIBS = -L $(LIBDIR)/lib
 LDFLAGS = -lm -lcgs -lncurses -lpanel
 
 # fichiers du projet
-SRC = main.c gui.c mapping.c dumbMd.c manualMd.c randMd.c
+SRC = main.c gui.c mapping.c dumbMd.c manualMd.c randMd.c astarMd.c
 OBJ = $(SRC:.c=.o)
 EXEC = test
 
@@ -23,6 +23,7 @@ mapping.o:gui.h struct.h mapping.h
 mapping.o:gui.h struct.h dumbMd.h mapping.h
 manualMd.o:gui.h struct.h manualMd.h mapping.h
 randMd.o:gui.h struct.h randMd.h mapping.h
+astarMd.o:gui.h struct.h astarMd.h mapping.h
 
 # règles de compilation
 %.o: %.c

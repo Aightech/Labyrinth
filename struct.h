@@ -51,10 +51,10 @@ typedef struct _Win {
 }Win;
 
 typedef struct _Node{//the nodes
-	int x,y;
+	int X,Y;
 	int cost;
-	int heuristique;
-	int xp, yp;
+	int heuristic;
+	struct _Node * from;
 }Node;
 
 
@@ -71,6 +71,7 @@ typedef struct _Map {//the labyrinth
 	
 	PANEL  *panels[nbrW];
 	Win **guiWins;
+	int mvC,mvL;
 	
 }Map;
 

@@ -44,6 +44,42 @@ void manualMode(Map* L)
 				case 43:
 					moveOp.type=MOVE_RIGHT;
 				break;
+				case 44:
+					L->mvC=0;
+					printf("hey");
+					while(choice!=45)
+					{
+						dispMap(L);
+						choice=GUI(L,choice);
+						switch(choice)
+						{
+							/*COLUMN MOVES*/
+							case 40:
+								L->mvL=-1;
+								if(L->mvC<0)
+									L->mvC--;
+								else
+									L->mvC=L->width-1;
+							break;
+							case 43:
+								L->mvL=-1;
+								if(L->mvC+1>L->width-1)
+									L->mvC++;
+								else
+									L->mvC=0;
+							break;
+							/*LINE MOVES*/
+							case 41:
+								//moveOp.type=MOVE_UP;
+							break;
+							case 42:
+								//moveOp.type=MOVE_DOWN;
+							break;
+						}
+					}
+				break;		
+				
+			
 				
 			}
 			//ret = getMove( &moveOp);
@@ -72,6 +108,47 @@ void manualMode(Map* L)
 				case 43:
 					move->type=MOVE_RIGHT;
 					moveP(L,0,move);
+				break;
+				case 44:
+					L->mvC=0;
+					while(choice!=45)
+					{
+						dispMap(L);
+						choice=GUI(L,choice);
+						switch(choice)
+						{
+							/*COLUMN MOVES*/
+							case 40:
+								L->mvL=-1;
+								if(L->mvC>0)
+									L->mvC--;
+								else
+									L->mvC=L->width-1;
+							break;
+							case 43:
+								L->mvL=-1;
+								if(L->mvC+1<L->width)
+									L->mvC++;
+								else
+									L->mvC=0;
+							break;
+							/*LINE MOVES*/
+							case 41:
+								L->mvC=-1;
+								if(L->mvL>0)
+									L->mvL--;
+								else
+									L->mvL=L->heigth-1;
+							break;
+							case 42:
+								L->mvC=-1;
+								if(L->mvL+1<L->heigth)
+									L->mvL++;
+								else
+									L->mvL=0;
+							break;
+						}
+					}
 				break;
 			}
 			if(L->players[1]->mode!=1)
