@@ -249,61 +249,26 @@ int moveP(Map *L, int P,t_move *move)
 		switch(move->type)
 		{
 			case MOVE_LEFT:
-				if(L->players[P]->X-1>-1)//if the player would still remai n in the map
-				{
-						L->cases[L->players[P]->Y][L->players[P]->X]=0;
-						L->players[P]->X--;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
-				}
-				else//else it has to appear in the other side
-				{
-						L->cases[L->players[P]->Y][L->players[P]->X]=0;
-						L->players[P]->X=L->width-1;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
-				}
+				L->cases[L->players[P]->Y][L->players[P]->X]=0;
+				L->players[P]->X=(L->width+L->players[P]->X-1)%L->width;	
+				L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
+		
 			break;
 			case MOVE_UP:
-				if(L->players[P]->Y-1>-1)//if the player would still remai n in the map
-				{
-						L->cases[L->players[P]->Y][L->players[P]->X]=0;
-						L->players[P]->Y--;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
-				}
-				else
-				{
-						L->cases[L->players[P]->Y][L->players[P]->X]=0;
-						L->players[P]->Y=L->heigth-1;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
-				}
-				
+				L->cases[L->players[P]->Y][L->players[P]->X]=0;
+				L->players[P]->Y=(L->heigth+L->players[P]->Y-1)%L->heigth;
+				L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
+								
 			break;
 			case MOVE_DOWN:
-				if(L->players[P]->Y+1<L->heigth)//if the player would still remai n in the map
-				{
-						L->cases[L->players[P]->Y][L->players[P]->X]=0;
-						L->players[P]->Y++;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
-				}
-				else
-				{
-						L->cases[L->players[P]->Y][L->players[P]->X]=0;
-						L->players[P]->Y=0;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
-				}
+				L->cases[L->players[P]->Y][L->players[P]->X]=0;
+				L->players[P]->Y=(L->heigth+L->players[P]->Y+1)%L->heigth;
+				L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
 			break;
 			case MOVE_RIGHT:
-				if(L->players[P]->X+1<L->width)//if the player would still remai n in the map
-				{
-						L->cases[L->players[P]->Y][L->players[P]->X]=0;
-						L->players[P]->X++;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
-				}
-				else
-				{
-						L->cases[L->players[P]->Y][L->players[P]->X]=0;
-						L->players[P]->X=0;	
-						L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
-				}
+				L->cases[L->players[P]->Y][L->players[P]->X]=0;
+				L->players[P]->X=(L->width+L->players[P]->X+1)%L->width;
+				L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
 			break;
 			default:
 				state=-1;
@@ -341,74 +306,64 @@ int moveM(Map *L,int P,t_move *move)
 {
 	int i;
 	char temp;
+	int width=L->width; //create to avoid many ->
+	int heigth=L->heigth;
 	switch (move->type)
 	{
 		case ROTATE_LINE_LEFT:
 			temp=L->cases[move->value][0];
-			for (i=0;i<L->width-1;i++)
+			for (i=0;i<width-1;i++)
 			{
 				L->cases[move->value][i]=L->cases[move->value][i+1];
 			}
-			L->cases[move->value][L->width-1]=temp;
+			L->cases[move->value][width-1]=temp;
 			for(i=0;i<3;i++)
 				if(L->players[i]->Y==move->value)
 				{
-					if(L->players[i]->X-1>-1)//if the player would still remai n in the map
-						L->players[i]->X--;
-					else
-						L->players[i]->X=L->width-1;
+					L->players[i]->X=(width+L->players[i]->X-1)%width;
 				}
 					
 		break;
 
 		case ROTATE_LINE_RIGHT:
-			temp=L->cases[move->value][L->width-1];
+			temp=L->cases[move->value][width-1];
 			for (i=1;i<L->width;i++)
 			{
-				L->cases[move->value][L->width-i]=L->cases[move->value][L->width-1-i];
+				L->cases[move->value][width-i]=L->cases[move->value][width-1-i];
 			}
 			L->cases[move->value][0]=temp;
 			for(i=0;i<3;i++)
 				if(L->players[i]->Y==move->value)
 				{
-					if(L->players[i]->X+1<L->width)//if the player would still remai n in the map
-						L->players[i]->X++;
-					else
-						L->players[i]->X=0;
+					L->players[i]->X=(width+L->players[i]->X+1)%width;
 				}
 		break;
 
 		case ROTATE_COLUMN_DOWN:
-			temp=L->cases[L->heigth-1][move->value];
-			for (i=1;i<L->heigth;i++)
+			temp=L->cases[heigth-1][move->value];
+			for (i=1;i<heigth;i++)
 			{
-				L->cases[L->heigth-i][move->value]=L->cases[L->heigth-1-i][move->value];
+				L->cases[heigth-i][move->value]=L->cases[heigth-1-i][move->value];
 			}
 			L->cases[0][move->value]=temp;
 			for(i=0;i<3;i++)
 				if(L->players[i]->X==move->value)
 				{
-					if(L->players[i]->Y+1<L->heigth)//if the player would still remai n in the map
-						L->players[i]->Y++;
-					else
-						L->players[i]->Y=0;
+					L->players[i]->Y=(heigth+L->players[i]->Y+1)%heigth;
 				}
 		break;
 
 		case ROTATE_COLUMN_UP:
 			temp=L->cases[0][move->value];
-			for (i=0;i<L->heigth-1;i++)
+			for (i=0;i<heigth-1;i++)
 			{
 				L->cases[i][move->value]=L->cases[i+1][move->value];
 			}
-			L->cases[L->heigth-1][move->value]=temp;
+			L->cases[heigth-1][move->value]=temp;
 			for(i=0;i<3;i++)
 				if(L->players[i]->X==move->value)
 				{
-					if(L->players[i]->Y+1<L->heigth)//if the player would still remai n in the map
-						L->players[i]->Y--;
-					else
-						L->players[i]->Y=L->heigth-1;
+					L->players[i]->Y=(heigth+L->players[i]->Y-1)%heigth;	
 				}
 		break;
 		default:
