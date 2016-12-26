@@ -277,8 +277,7 @@ int moveP(Map *L, int P,t_move *move)
 			break;
 		}
 		
-		L->players[P]->turn=1;
-		L->players[(P+1)%2]->turn=0;
+		
 		L->players[P]->energy++;
 		char* e=intTostr(L->players[P]->energy);
 		if(P==0)
@@ -300,6 +299,8 @@ int moveP(Map *L, int P,t_move *move)
 		
 		state=-1;
 	}
+	L->players[P]->turn=1;
+	L->players[(P+1)%2]->turn=0;
 
 	return state;
 

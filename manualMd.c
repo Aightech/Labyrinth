@@ -137,8 +137,8 @@ void manualMode(Map* L)
 		}
 		else
 		  {
-		  	addStr(L->infoP1[5],"                              ","");
-		  	addStr(L->infoP1[5],"It's your turn, select a move.","");
+		  	addStr(L->infoP1[4],"                                 ","");
+		  	addStr(L->infoP1[4],"It's your turn, select a move.","");
 		  	choice=GUI(L,choice);
 			switch(choice)
 			{
@@ -164,8 +164,8 @@ void manualMode(Map* L)
 					while(choice!=45)
 					{
 						dispMap(L);
-						addStr(L->infoP1[5]," Select OK to confirm the line","");
-						addStr(L->infoP1[6]," or the column to move.","");
+						addStr(L->infoP1[3]," Select OK to confirm the line","");
+						addStr(L->infoP1[4]," or the column to move.","");
 						dispInfo(L);
 						
 						choice=GUI(L,choice);
@@ -204,13 +204,13 @@ void manualMode(Map* L)
 						}
 					}
 					choice=40;
-					addStr(L->infoP1[5],"                              ","");
-					addStr(L->infoP1[6],"                              ","");
+					addStr(L->infoP1[3],"                              ","");
+					addStr(L->infoP1[4],"                              ","");
 					while(choice!=45)
 					{
 						dispMap(L);
-						addStr(L->infoP1[5]," Select the direction of the rotation.","");
-						addStr(L->infoP1[6]," Then select OK to confirm.","");
+						addStr(L->infoP1[3]," Select the direction of the rotation.","");
+						addStr(L->infoP1[4]," Then select OK to confirm.","");
 						dispInfo(L);
 						choice=GUI(L,choice);
 						switch(choice)
@@ -260,8 +260,8 @@ void manualMode(Map* L)
 					mvwprintw(L->guiWins[0]->win, 12-L->heigth/2-1, 18-L->width/2+L->mvC+1, " ");
 					mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18-L->width/2-2, "  ");
 					mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18+L->width/2+3, "  ");
-					addStr(L->infoP1[5],"                                      ","");
-					addStr(L->infoP1[6],"                              ","");
+					addStr(L->infoP1[3],"                                      ","");
+					addStr(L->infoP1[4],"                              ","");
 					
 				break;
 			}
@@ -278,13 +278,15 @@ void manualMode(Map* L)
 	}
 	if ((L->players[0]->turn==1 && ret == MOVE_WIN) || (L->players[0]->turn==0 && ret == MOVE_LOSE))
 	{
-		addStr(L->infoP2[5]," YOU LOOSE","");
-		addStr(L->infoP1[5]," YOU WIN","");
+		addStr(L->infoP1[4],"                                  ","");
+		addStr(L->infoP2[6]," YOU LOOSE","");
+		addStr(L->infoP1[6]," YOU WIN","");
 	}
 	else
 	{
-		addStr(L->infoP1[5]," YOU LOOSE","");
-		addStr(L->infoP2[5]," YOU WIN","");
+	 	addStr(L->infoP1[4],"                                  ","");
+		addStr(L->infoP1[6]," YOU LOOSE","");
+		addStr(L->infoP2[6]," YOU WIN","");
 	}
 
 	/* end the connection, because we are polite */
