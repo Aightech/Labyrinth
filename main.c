@@ -29,13 +29,17 @@ int main()
 	initGUI(L);
 	t_move* move=(t_move*) malloc(sizeof(t_move));
 	
-	int choice=40;
+	int choice=50;
+	addStr(L->infoP1[5]," Select your mode.","");
 	while(choice!=-1)
-	{
+	{	
+		dispInfo(L);
 		choice=GUI(L,choice);
 		switch(choice)
 		{
 			case 30://connection to the server
+				
+				addStr(L->infoP1[5],"                                     ","");
 				getMap(L);//switch of the value getmap return to lauched the game mode
 				if(L->players[0]->mode==0)//we are dumb
 					dumbMode(L);
@@ -72,6 +76,7 @@ int main()
 			case 52://RANDOM
 			case 53://ASTAR
 				L->players[0]->mode=choice%10;
+				addStr(L->infoP1[5]," Select the mode of your opponent.","");
 				choice+=10;
 			break;
 			
@@ -82,6 +87,7 @@ int main()
 			case 63://RANDOM MOVEP&M
 			case 64://ASTAR
 				L->players[1]->mode=choice%10;
+				addStr(L->infoP1[5]," Select <ENTER> to get a map","");
 				choice=30;
 			break;
 				

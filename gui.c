@@ -54,7 +54,7 @@ void initGUI(Map * L)
 	
 	L->guiWins[4]->win=newwin(7, 40, 25, 0);//Commands options
 	addStr(L->guiWins[4]->label,"Commands:","");
-	L->guiWins[4]->numButt=6;
+	L->guiWins[4]->numButt=7;
 	L->guiWins[4]->posButt=(int **)malloc(L->guiWins[4]->numButt*sizeof(int*));
 	L->guiWins[4]->labButt=(char **)malloc(L->guiWins[4]->numButt*sizeof(char*));
 	for(i=0;i<L->guiWins[4]->numButt;i++){
@@ -78,7 +78,10 @@ void initGUI(Map * L)
 	addStr(L->guiWins[4]->labButt[4],"Map Move","");
 	L->guiWins[4]->posButt[5][0]=3;
 	L->guiWins[4]->posButt[5][1]=31;
-	addStr(L->guiWins[4]->labButt[5],"Valid.","");
+	addStr(L->guiWins[4]->labButt[5],"OK","");
+	L->guiWins[4]->posButt[6][0]=3;
+	L->guiWins[4]->posButt[6][1]=35;
+	addStr(L->guiWins[4]->labButt[6],"XX","");
 	
 	L->guiWins[5]->win=newwin(25, 10, 7, 80);//Player mode
 	addStr(L->guiWins[5]->label,"P.mode:","");

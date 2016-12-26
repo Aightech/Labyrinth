@@ -72,6 +72,7 @@ typedef struct _Map {//the labyrinth
 	PANEL  *panels[nbrW];
 	Win **guiWins;
 	int mvC,mvL;
+	int turn;
 	
 }Map;
 

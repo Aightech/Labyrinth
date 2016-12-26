@@ -13,12 +13,12 @@ Map* initMap()
 {
 	Map* L=(Map *) malloc(sizeof(Map));
 	L->width=21;
-	L->heigth=13;
+	L->heigth=12;
 	L->mvC=-1;
 	L->mvL=-1;
 	L->cases=(char **) malloc(L->heigth*sizeof(char*));
 	
-	char MapI[]="000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+	char MapI[]="---------------------  Project Labyrinth       2016/2017       ---------------------       ROB 3         ---------------------   ARLANDIS Maeva                           DEVILLARD  Alexis                          AUSSAGE Antoine   ---------------------";
 	
 	int i,j;
 	for(i=0;i<L->heigth;i++)
@@ -85,7 +85,7 @@ void getMap(Map *L)
 	}
 	
 	char argMap[50];
-	char time[]=" timeout=10";
+	char time[]=" timeout=100";
 	switch(L->players[1]->mode)
 	{
 		case 0:
@@ -114,6 +114,8 @@ void getMap(Map *L)
 	waitForLabyrinth( argMap, L->name, &(L->width), &(L->heigth));
 	labData = (char*) malloc( L->width*L->heigth);
 	L->players[0]->turn = getLabyrinth(labData);
+	mvwprintw(L->guiWins[0]->win, 1, 10, L->name);
+	mvwprintw(L->guiWins[0]->win, 1, 25, "turn:");
 	
 	
 	if(L->players[0]->turn==0)//if we start
@@ -274,6 +276,7 @@ int moveP(Map *L, int P,t_move *move)
 				state=-1;
 			break;
 		}
+		
 		L->players[P]->turn=1;
 		L->players[(P+1)%2]->turn=0;
 		L->players[P]->energy++;
@@ -282,6 +285,10 @@ int moveP(Map *L, int P,t_move *move)
 			addStr(L->infoP1[1],"  ",e);
 		else
 			addStr(L->infoP2[1],"  ",e);
+			
+		L->turn++;
+		e=intTostr(L->turn);
+		mvwprintw(L->guiWins[0]->win, 1, 32, e);
 		free(e);
 	}
 	else
@@ -379,6 +386,10 @@ int moveM(Map *L,int P,t_move *move)
 		addStr(L->infoP1[1],"  ",e);
 	else
 		addStr(L->infoP2[1],"  ",e);
+		
+	L->turn++;
+	e=intTostr(L->turn);
+	mvwprintw(L->guiWins[0]->win, 1, 32, e);
 	free(e);
 	
 	return 0;
