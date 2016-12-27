@@ -18,11 +18,25 @@ typedef struct _LStep{//case of lab to create path
 	int heuristic;
 }Lcase;
 
-typedef struct _Path {//list of lab case and its size
-	Lcase path;
+
+typedef struct _Node{//the nodes
+	int X,Y;
+	int cost;
+	int heuristic;
+	struct _Node * pathParent;
+	struct _Node * OListParent;
+	int closed;
+	
+}Node;
+
+typedef struct _Path {//list of lab node and its size
+	Node *first;
 	int size;
 	
 }Path;
+
+
+}Llink;
 
 typedef struct _Player {//player
 	int lastX;//last position of the player
@@ -50,12 +64,6 @@ typedef struct _Win {
 	
 }Win;
 
-typedef struct _Node{//the nodes
-	int X,Y;
-	int cost;
-	int heuristic;
-	struct _Node * from;
-}Node;
 
 
 typedef struct _Map {//the labyrinth

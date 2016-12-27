@@ -281,12 +281,14 @@ void manualMode(Map* L)
 		addStr(L->infoP1[4],"                                  ","");
 		addStr(L->infoP2[6]," YOU LOOSE","");
 		addStr(L->infoP1[6]," YOU WIN","");
+		addStr(L->cases[L->heigth/2],"   YOU WIN","");
 	}
 	else
 	{
 	 	addStr(L->infoP1[4],"                                  ","");
 		addStr(L->infoP1[6]," YOU LOOSE","");
 		addStr(L->infoP2[6]," YOU WIN","");
+		addStr(L->cases[L->heigth/2],"   YOU LOOSE","");
 	}
 
 	/* end the connection, because we are polite */

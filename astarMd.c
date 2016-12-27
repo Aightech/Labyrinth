@@ -9,15 +9,51 @@
 #include "labyrinthAPI.h"
 
 
-Node *newNode(Map *L,int x, int y,Node * neigh) //create a new case for a neighbour of c
+Node *newNode(Map *L,int x, int y,Node * parent) //create a new case for a neighbour of c
 {
 	Node* N= (Node *) malloc(sizeof(Node));
 	N->X=x;
 	N->Y=y;
-	N->cost=neigh->cost+1;
+	N->cost=parent->cost+1;
 	N->heuristic=N->cost;//+dist(L,x,y);
-	N->from=neigh;
+	N->from=parent;
 	return N;
+}
+
+Llist* add(Llist *N1,Node* NodetoAdd)
+{
+	Node *Nact=N1->first;
+	if(N1->heuristic > MtoAdd->heuristic)//pour l'ordre croissant ">"
+	{
+		MtoAdd->next = M1;
+		return MtoAdd;
+	}
+	else if(Mact->n==MtoAdd->n)
+	{
+		Mact->c+=MtoAdd->c;
+		free(MtoAdd);
+		return M1;
+	}
+	else
+	{
+		while(Mact->next!=NULL&&Mact->next->n<MtoAdd->n)//pour l'ordre croissant "<"
+		{
+			Mact=Mact->next;
+		}
+		if(Mact->next!=NULL&&Mact->next->n==MtoAdd->n)
+		{
+			Mact->next->c+=MtoAdd->c;
+			free(MtoAdd);
+		}
+		else
+		{
+			Maillon* next =Mact->next;
+			Mact->next = MtoAdd;
+			MtoAdd->next = next;
+		}
+		
+		return M1;
+	}	
 }
 
 int distNtoP(Map *L,int P,Node *N)
