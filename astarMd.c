@@ -49,30 +49,11 @@ int distNtoP(Map *L,int P,Node *N)
 		
 }
 
-int distance_to_treasure(Map *L,int x,int y)
+int distance_to_treasure(Map *L,int x,int y) // renvoie la distance au carré d'un point au trésor pour comparaison des distances
 {
-	int d;
 	int Xt=L->players[2]->X;
 	int Yt=L->players[2]->Y;
-	
-	if (abs(Xt-x)<L->width)
-		d=abs(Xt-x);
-	else	
-		d=L->width-abs(Xt-x);
-		
-	if (abs(Yt-y)<L->heigth)
-		return d=d+abs(Yt-y);
-	else
-		return d=d+L->heigth-abs(Yt-y);		
-		
-}
-
-int abs(int x)
-{
-	if (x<0)
-		return -x;
-	else
-		return x;
+	return (Xt-x)*(Xt-x)+(Yt-y)*(Yt-y)
 }
 
 /*List * add_to_list(List* list, Case c) //add the case c into list
@@ -83,11 +64,26 @@ int abs(int x)
 	
 }
 
-Case* check_lowest(List *list) //return the case with the lowest heuristique in list
+Node* check_lowest(List *list) //return the node with the lowest heuristique in list
 {
 }
 
-Case Astar_case(Map *L, //return the case the player has to go to*/
+int check_presence(Node* node, List *list)
+{
+}
+
+Node* Astar_case(Map *L, //return the node the player has to go to
+{
+	List *openlist;
+	List *closedlist;
+	début boucle tant que openlist non vide
+		prendre le plus petit élément de openlist et le mettre dans closedlist
+			si noeud=trésor remonter les sources puis renvoyer la case où aller
+			si noeud!=trésor rajoutez tous les voisins inexplorés (=pas dans closedlist) du noeud dans openlist si pas déjà dans la liste
+	si open list vide = pas de chemin possible
+}
+
+*/
 
 
 
