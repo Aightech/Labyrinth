@@ -11,7 +11,7 @@
 
 int astarMode(Map *L)
 {	
-	char ** nodes=(char **) malloc(L->width*L->heigth*sizeof(char));
+	char ** nodes=(char **) malloc(L->width*L->heigth*sizeof(char)); //why ?
 	Node * openlist=initOpenList(L,L->players[0]->X,L->players[0]->Y);
 	
 	return 1;
@@ -22,9 +22,9 @@ Node *initOpenList(Map *L,int x, int y)
 	Node* N= (Node *) malloc(sizeof(Node));
 	N->X=x;
 	N->Y=y;
-	N->ncase=L->cases[N->Y]+N->X;
+	N->ncase=L->cases[N->Y]+N->X; //à quoi ça correspond ?
 	N->cost=0;
-	N->heuristic=N->cost;//+dist(L,x,y);
+	N->heuristic=N->cost;//+dist(L,x,y); //cost + la fonction distance au trésor 
 	N->pathParent=NULL;
 	return N;
 }
