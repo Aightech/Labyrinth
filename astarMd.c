@@ -11,47 +11,71 @@
 
 int astarMode(Map *L)
 {	
-	char ** nodes=(char **) malloc(L->width*L->heigth*sizeof(char));
-	Node * openlist=initOpenList(L,L->players[0]->X,L->players[0]->Y);
+	char ** nodes=(char **) malloc(L->width*L->heigth*sizeof(char*));//array of char to make easier the check of visited or not neighbor: nodes[i][j]=0=>pas check;nodes[i][j]=1=> check;
+	int i,j;
+	char goalValue=4;//the value of the treasur case
+	for(i =0;i<L->heigth;i++)
+	{
+		nodes[i]=(char *) malloc(L->width*sizeof(char));
+		for(j=0;j<L->width;j++)
+		{
+			nodes[i][j]=0;
+		}
+	}
+		
+	Node * openlist=initOpenList(L,L->players[0]->X,L->players[0]->Y,nodes);
+	Node * ActNode=openList; //Node being process
+	Node * Clist=openlist;// c'est la pseudo closedlist: je ne vois pas trop a quoi ca sert de retenir tous les point traité, il faut prendre le point tresor et remonter de parent en parent pour retrouver le meilleur chemin a la fin du A*, donc lors de cette remonter je set le pointeur .CListNode sur le node correspondant au meilleur chemin.
+	
+	while(openList!=NULL&&*(ActNode->ncase)==goalValue)//if the openlist isn't empty and the current node is not the goal.
+	
+	L->players[0]->toGoal=(Path*) malloc(sizeof(Path));
+	L->players[0]->toGoal->first=Clist;
 	
 	return 1;
 }
 
-Node *initOpenList(Map *L,int x, int y) 
+Node *initOpenList(Map *L,int x, int y,char ** nds) 
 {
 	Node* N= (Node *) malloc(sizeof(Node));
 	N->X=x;
 	N->Y=y;
-	N->ncase=L->cases[N->Y]+N->X;
+	N->ncase=L->cases[N->Y]+N->X;//this is the character of the map so it as the mapping data : wall/players
 	N->cost=0;
 	N->heuristic=N->cost;//+dist(L,x,y);
 	N->pathParent=NULL;
+	nds[N->Y][N->X]=1;
 	return N;
 }
 
-Node *newNode(Map *L,int x, int y,Node * parent) //create a new case for a neighbour of c
-{
-	Node* N= (Node *) malloc(sizeof(Node));
-	N->X=x;
-	N->Y=y;
-	N->ncase=L->cases[N->Y]+N->X;
-	N->cost=parent->cost+1;
-	N->heuristic=N->cost;//+dist(L,x,y);
-	N->pathParent=parent;
+Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case for a neighbour of c
+{	
+	Node* N=NULL;
+	if(nds[y][x]!=1)
+	{
+		N=(Node *) malloc(sizeof(Node));
+		N->X=x;
+		N->Y=y;
+		N->ncase=L->cases[N->Y]+N->X;
+		N->cost=parent->cost+1;
+		N->heuristic=N->cost;//+dist(L,x,y);
+		N->pathParent=parent;
+		nds[N->Y][N->X]=1;
+	}
 	return N;
+		
 }
 
-/*Node* add(Node *N1,Node* NodetoAdd)
+/*Node* addToList(Node *N1,Node* NtoAdd)
 {
-	Node *Nact=N1->first;
+	Node *Nact=N1;
 	if(N1->heuristic > MtoAdd->heuristic)//pour l'ordre croissant ">"
 	{
 		MtoAdd->next = M1;
 		return MtoAdd;
 	}
-	else if(Mact->n==MtoAdd->n)
+	else if(N1->ncase == MtoAdd->ncase)
 	{
-		Mact->c+=MtoAdd->c;
 		free(MtoAdd);
 		return M1;
 	}

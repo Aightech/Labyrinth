@@ -48,6 +48,7 @@ Map* initMap()
 		L->players[i]->X=0;
 		L->players[i]->Y=0;
 		L->players[i]->mode=0;
+		L->players[i]->toGoal=NULL;
 	}
 	return L;
 	

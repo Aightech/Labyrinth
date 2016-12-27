@@ -3,10 +3,12 @@
 
 #include "gui.h"
 #include "struct.h"
+
 #include "mapping.h"
 #include "dumbMd.h"
 #include "manualMd.h"
 #include "randMd.h"
+#include "astarMd.h"
 
 
 

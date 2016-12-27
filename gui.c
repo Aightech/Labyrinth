@@ -174,6 +174,7 @@ int GUI(Map *L,int lstGUIch)
 	{
 		dispMap(L);
 		dispInfo(L);
+		dispPath(L);
 		
 		c=choice(L->guiWins[i],lstGUIch%10);
 		//mvprintw(40, 0, "%d", c+i*10);
@@ -263,6 +264,24 @@ int dispMap(Map* L)//Display the labyrinth
 
 int dispPath(Map* L)//Display the path of a player
 {
+	int i;
+	Win* win=L->guiWins[0];
+	int starty=12-L->heigth/2+1,startx=18-L->width/2+1;
+	Node * Nact;
+	for(i=0;i<2;i++)
+	{
+		if(L->players[i]->toGoal!=NULL)
+		{
+			Nact=L->players[i]->toGoal->first;
+			while(Nact!=NULL)
+			{
+				wattron(win->win,COLOR_PAIR(2));
+				mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
+				wattroff(win->win,COLOR_PAIR(2));
+				Nact=Nact->OListNext;
+			}
+		}
+	}
 	return 1;
 }
 int eraseMap(Map *L)

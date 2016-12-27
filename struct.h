@@ -23,14 +23,15 @@ typedef struct _Node{//the nodes
 	int X,Y;
 	int cost;
 	int heuristic;
-	char **ncase;
+	char *ncase;
 	struct _Node * pathParent;
 	struct _Node * OListNext;
+	struct _Node * CListNext;
 	
 }Node;
 
 typedef struct _Path {//list of lab node and its size
-	Node *first;
+	Node * first;
 	int size;
 	
 }Path;
@@ -44,8 +45,8 @@ typedef struct _Player {//player
 	int turn;
 	int energy;
 	int mode;
-	Path otherP;
-	Path tresor;
+	Path *toOtherP;
+	Path *toGoal;
 	
 }Player;
 
