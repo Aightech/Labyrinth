@@ -9,18 +9,39 @@
 #include "labyrinthAPI.h"
 
 
+int astarMode(Map *L)
+{	
+	char ** nodes=(char **) malloc(L->width*L->heigth*sizeof(char));
+	Node * openlist=initOpenList(L,L->players[0]->X,L->players[0]->Y);
+	
+	return 1;
+}
+
+Node *initOpenList(Map *L,int x, int y) 
+{
+	Node* N= (Node *) malloc(sizeof(Node));
+	N->X=x;
+	N->Y=y;
+	N->ncase=L->cases[N->Y]+N->X;
+	N->cost=0;
+	N->heuristic=N->cost;//+dist(L,x,y);
+	N->pathParent=NULL;
+	return N;
+}
+
 Node *newNode(Map *L,int x, int y,Node * parent) //create a new case for a neighbour of c
 {
 	Node* N= (Node *) malloc(sizeof(Node));
 	N->X=x;
 	N->Y=y;
+	N->ncase=L->cases[N->Y]+N->X;
 	N->cost=parent->cost+1;
 	N->heuristic=N->cost;//+dist(L,x,y);
-	N->from=parent;
+	N->pathParent=parent;
 	return N;
 }
 
-Llist* add(Llist *N1,Node* NodetoAdd)
+/*Node* add(Node *N1,Node* NodetoAdd)
 {
 	Node *Nact=N1->first;
 	if(N1->heuristic > MtoAdd->heuristic)//pour l'ordre croissant ">"
@@ -54,7 +75,7 @@ Llist* add(Llist *N1,Node* NodetoAdd)
 		
 		return M1;
 	}	
-}
+}*/
 
 int distNtoP(Map *L,int P,Node *N)
 {
@@ -89,7 +110,7 @@ int distance_to_treasure(Map *L,int x,int y) // renvoie la distance au carré d'
 {
 	int Xt=L->players[2]->X;
 	int Yt=L->players[2]->Y;
-	return (Xt-x)*(Xt-x)+(Yt-y)*(Yt-y)
+	return (Xt-x)*(Xt-x)+(Yt-y)*(Yt-y);
 }
 
 /*List * add_to_list(List* list, Case c) //add the case c into list

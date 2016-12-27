@@ -23,9 +23,9 @@ typedef struct _Node{//the nodes
 	int X,Y;
 	int cost;
 	int heuristic;
+	char **ncase;
 	struct _Node * pathParent;
-	struct _Node * OListParent;
-	int closed;
+	struct _Node * OListNext;
 	
 }Node;
 
@@ -35,8 +35,6 @@ typedef struct _Path {//list of lab node and its size
 	
 }Path;
 
-
-}Llink;
 
 typedef struct _Player {//player
 	int lastX;//last position of the player
@@ -64,11 +62,6 @@ typedef struct _Win {
 	
 }Win;
 
-
-typedef struct _List{//the nodes
-	Node node;
-	struct _List * next;
-}List;
 
 
 

@@ -29,7 +29,7 @@ int main()
 	initGUI(L);
 	t_move* move=(t_move*) malloc(sizeof(t_move));
 	
-	int choice=50,i;
+	int choice=53,i;
 	
 	addStr(L->infoP1[5]," Select your mode.","");
 	while(choice!=-1)
@@ -49,7 +49,7 @@ int main()
 				else if(L->players[0]->mode==2)//we play random
 					randMode(L);
 				else if(L->players[0]->mode==3)//we play astar
-					{}//TODO astarMode(L);
+					astarMode(L);
 				for(i=3;i<7;i++)
 				{
 					addStr(L->infoP1[i],"                                 ","");

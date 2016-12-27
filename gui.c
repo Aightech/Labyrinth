@@ -261,6 +261,10 @@ int dispMap(Map* L)//Display the labyrinth
 	return 1;
 }
 
+int dispPath(Map* L)//Display the path of a player
+{
+	return 1;
+}
 int eraseMap(Map *L)
 {
 	Win* win=L->guiWins[0];

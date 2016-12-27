@@ -11,6 +11,7 @@ int choice(Win *win,int lstCh);
 int dispMap(Map *L);//Display the labyrinth
 int eraseMap(Map *L);//Erase the labyrynth
 int dispInfo(Map *L);//Display the Player info
+int dispPath(Map* L);//Display the path of players
 
 
 #endif
