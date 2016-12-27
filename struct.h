@@ -65,6 +65,12 @@ typedef struct _Win {
 }Win;
 
 
+typedef struct _List{//the nodes
+	Node node;
+	struct _List * next;
+}List;
+
+
 
 typedef struct _Map {//the labyrinth
 
