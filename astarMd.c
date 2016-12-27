@@ -42,7 +42,7 @@ Node *initOpenList(Map *L,int x, int y,char ** nds)
 	N->Y=y;
 	N->ncase=L->cases[N->Y]+N->X;//this is the character of the map so it as the mapping data : wall/players
 	N->cost=0;
-	N->heuristic=N->cost;//+dist(L,x,y);
+	N->heuristic=N->cost;//+dist(L,x,y); //cost + la fonction distance au trésor 
 	N->pathParent=NULL;
 	nds[N->Y][N->X]=1;
 	return N;
