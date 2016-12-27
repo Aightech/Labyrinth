@@ -270,7 +270,7 @@ int dispPath(Map* L)//Display the path of a player
 	Node * Nact;
 	for(i=0;i<2;i++)
 	{
-		if(L->players[i]->toGoal!=NULL)
+		if(L->players[i]->toGoal!=NULL)//if a path has been calculated
 		{
 			Nact=L->players[i]->toGoal->first;
 			while(Nact!=NULL)
@@ -278,7 +278,7 @@ int dispPath(Map* L)//Display the path of a player
 				wattron(win->win,COLOR_PAIR(2));
 				mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
 				wattroff(win->win,COLOR_PAIR(2));
-				Nact=Nact->OListNext;
+				Nact=Nact->pathChild;
 			}
 		}
 	}

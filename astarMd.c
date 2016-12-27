@@ -23,14 +23,30 @@ int astarMode(Map *L)
 		}
 	}
 		
-	Node * openlist=initOpenList(L,L->players[0]->X,L->players[0]->Y,nodes);
-	Node * ActNode=openList; //Node being process
-	Node * Clist=openlist;// c'est la pseudo closedlist: je ne vois pas trop a quoi ca sert de retenir tous les point traité, il faut prendre le point tresor et remonter de parent en parent pour retrouver le meilleur chemin a la fin du A*, donc lors de cette remonter je set le pointeur .CListNode sur le node correspondant au meilleur chemin.
+	Node * openList=initOpenList(L,L->players[0]->X,L->players[0]->Y,nodes);
+	Node * closedList=NULL;
 	
-	while(openList!=NULL&&*(ActNode->ncase)==goalValue)//if the openlist isn't empty and the current node is not the goal.
+	Node * curNode=openList; //Node being process
+	
+	
+	while(openList!=NULL&&*(curNode->ncase)==goalValue)//if the openlist isn't empty and the current node is not the goal.
+	{
+		openList->CListFrom=closedList;
+		closedList=openList;
+		//openList=popList(openList,closedList);//remove the current node, and add it on closed list
+		//addNeighbors(L,openList,curNode,nodes);//add the neighbor of the curent to the openlist
+		curNode=openList;//the curent node become the first of the open list
+	}
 	
 	L->players[0]->toGoal=(Path*) malloc(sizeof(Path));
-	L->players[0]->toGoal->first=Clist;
+	L->players[0]->toGoal->first=NULL;
+	
+	//if(*(curNode->ncase)==goalValue)
+	//	L->players[0]->toGoal->first=extractPath(curNode);//if the path is found, get the path.
+		
+		
+	
+	
 	
 	return 1;
 }
@@ -51,7 +67,7 @@ Node *initOpenList(Map *L,int x, int y,char ** nds)
 Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case for a neighbour of c
 {	
 	Node* N=NULL;
-	if(nds[y][x]!=1)
+	if(nds[y][x]!=1&&L->cases[y][x]!=1)
 	{
 		N=(Node *) malloc(sizeof(Node));
 		N->X=x;
@@ -62,11 +78,28 @@ Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case
 		N->pathParent=parent;
 		nds[N->Y][N->X]=1;
 	}
-	return N;
+	return N;//return NULL if the node was already visted or was a wall
 		
 }
 
-/*Node* addToList(Node *N1,Node* NtoAdd)
+Node * popList(Node * opL,Node * clL)//remove the first node of the open list, and put it on the closedList.
+{	
+	clL->CListFrom=opl;
+	return opl;}
+
+Node * addNeigh(Map* L,Node* opL,Node* from,char** nds)// try to create a node for each neighbor, and add them to the open list.
+{
+	Node* N;
+	//if((N=newNode(L,xUP,yUP,from,nds))!=NULL)//if the node upside is not a wall or a already visited node.
+	//opL=addToList(opL,N);//put the upside neighbor into the open list at the heuristic place it belong to.
+	//do it for left,right,down neighbors
+	
+	return opl;}
+
+Node * extractPath(Node * clL)//start from the goal, iterativly,freing node that are not pathParent,taking pathParent node and put last node adress in its pathChild.
+{	return NULL;}
+
+/*Node* addToList(Node *N1,Node* NtoAdd)//add a node to a list sort heuristicly increasing
 {
 	Node *Nact=N1;
 	if(N1->heuristic > MtoAdd->heuristic)//pour l'ordre croissant ">"

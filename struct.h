@@ -25,8 +25,9 @@ typedef struct _Node{//the nodes
 	int heuristic;
 	char *ncase;
 	struct _Node * pathParent;
+	struct _Node * pathChild;
 	struct _Node * OListNext;
-	struct _Node * CListNext;
+	struct _Node * CListFrom;
 	
 }Node;
 
