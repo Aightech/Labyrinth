@@ -57,6 +57,12 @@ typedef struct _Node{//the nodes
 	struct _Node * from;
 }Node;
 
+typedef struct _List{//the nodes
+	Node node;
+	struct _List * next;
+}List;
+
+
 
 typedef struct _Map {//the labyrinth
 
