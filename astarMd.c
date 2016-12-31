@@ -163,12 +163,31 @@ int distNtoP(Map *L,int P,Node *N)
 		
 }
 
-int distance_to_treasure(Map *L,int x,int y) // renvoie la distance au carré d'un point au trésor pour comparaison des distances
-{
-	int Xt=L->players[2]->X;
-	int Yt=L->players[2]->Y;
-	return (Xt-x)*(Xt-x)+(Yt-y)*(Yt-y);
+int dist_h(Map *L,int x,int y) // renvoie la somme des distances horizontales et verticales d'un point au trésor pour heuristic
+ { //il y a t-il besoin de faire la racine ?
+	int d;
+ 	int Xt=L->players[2]->X;
+ 	int Yt=L->players[2]->Y;
+
+	if (abs(Xt-x)<L->width/2)
+		d=abs(Xt-x);
+	else	
+		d=L->width-abs(Xt-x);
+		
+	if (abs(Yt-y)<L->heigth/2)
+		return d=d+abs(Yt-y);
+	else
+		return d=d+L->heigth-abs(Yt-y);		
+		
 }
+
+/*int abs(int x)  //apparement il y en a une 
+{
+	if (x<0)
+		return -x;
+	else
+		return x;
+}*/
 
 /*List * add_to_list(List* list, Case c) //add the case c into list
 {
