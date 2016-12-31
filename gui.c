@@ -182,6 +182,7 @@ int GUI(Map *L,int lstGUIch)
 		{
 			//top = (PANEL *)panel_userptr(top);
 			//top_panel(top);
+			lstGUIch=10;
 			if(i==6)
 				i=3;
 			else

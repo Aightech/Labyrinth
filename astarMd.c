@@ -11,44 +11,52 @@
 
 int astarMode(Map *L)
 {	
-	char ** nodes=(char **) malloc(L->width*L->heigth*sizeof(char*));//array of char to make easier the check of visited or not neighbor: nodes[i][j]=0=>pas check;nodes[i][j]=1=> check;
-	int i,j;
-	char goalValue=4;//the value of the treasur case
-	for(i =0;i<L->heigth;i++)
-	{
-		nodes[i]=(char *) malloc(L->width*sizeof(char));
-		for(j=0;j<L->width;j++)
-		{
-			nodes[i][j]=0;
-		}
-	}
-		
-	Node * openList=initOpenList(L,L->players[0]->X,L->players[0]->Y,nodes);
-	Node * closedList=NULL;
 	
-	Node * curNode=openList; //Node being process
+	L->players[0]->toGoal=astarPath(L,0);
 	
-	
-	while(openList!=NULL&&*(curNode->ncase)==goalValue)//if the openlist isn't empty and the current node is not the goal.
-	{
-		openList->CListFrom=closedList;
-		closedList=openList;
-		//openList=popList(openList,closedList);//remove the current node, and add it on closed list
-		//addNeighbors(L,openList,curNode,nodes);//add the neighbor of the curent to the openlist
-		curNode=openList;//the curent node become the first of the open list
-	}
-	
-	L->players[0]->toGoal=(Path*) malloc(sizeof(Path));
-	L->players[0]->toGoal->first=NULL;
-	
-	//if(*(curNode->ncase)==goalValue)
-	//	L->players[0]->toGoal->first=extractPath(curNode);//if the path is found, get the path.
 		
 		
 	
 	
 	
 	return 1;
+}
+
+Path * astarPath(Map* L, int P)
+{
+	Path * path=NULL;
+	int i,j;
+	char goalValue=4;//the value of the treasur case
+	char ** nodes=(char **) malloc(L->width*L->heigth*sizeof(char*));//array of char to make easier the check of visited or not neighbor: nodes[i][j]=0=>pas check;nodes[i][j]=1=> check;
+	for(i =0;i<L->heigth;i++)
+	{
+		nodes[i]=(char *) malloc(L->width*sizeof(char));
+		for(j=0;j<L->width;j++)
+			nodes[i][j]=0;
+	}
+		
+	Node * openList=initOpenList(L,L->players[P]->X,L->players[P]->Y,nodes);
+	Node * closedList=NULL;
+	Node * Ntemp=NULL;
+	
+	while(openList!=NULL&&*(openList->ncase)==goalValue)//if the openlist isn't empty and the current node is not the goal.
+	{
+		addNeigh(L,openList,nodes);//add the neighbors of the first node of the openlist
+		
+		Ntemp=openList->listNext;
+		openList->listNext=closedList;
+		closedList=openList;
+		openList=Ntemp;
+	}
+	
+	if(*(openList->ncase)==goalValue)
+	{
+		path=(Path*) malloc(sizeof(Path));
+		path->size=openList->cost;
+		path->first=extractPath(openList);//if the path is found, get the path.
+	}
+	
+	return path;
 }
 
 Node *initOpenList(Map *L,int x, int y,char ** nds) 
@@ -60,6 +68,8 @@ Node *initOpenList(Map *L,int x, int y,char ** nds)
 	N->cost=0;
 	N->heuristic=N->cost;//+dist(L,x,y); //cost + la fonction distance au trésor 
 	N->pathParent=NULL;
+	N->pathChild=NULL;
+	N->listNext=NULL;
 	nds[N->Y][N->X]=1;
 	return N;
 }
@@ -82,57 +92,55 @@ Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case
 		
 }
 
-Node * popList(Node * opL,Node * clL)//remove the first node of the open list, and put it on the closedList.
+Node * popList(Node * opL)//remove the first node of the open list.
 {	
-	clL->CListFrom=opl;
-	return opl;}
+	opL->listNext=opL;
+	return opL;
+}
 
-Node * addNeigh(Map* L,Node* opL,Node* from,char** nds)// try to create a node for each neighbor, and add them to the open list.
+Node * addNeigh(Map* L,Node* opL,char** nds)// try to create a node for each neighbor, and add them to the open list.
 {
 	Node* N;
-	//if((N=newNode(L,xUP,yUP,from,nds))!=NULL)//if the node upside is not a wall or a already visited node.
-	//opL=addToList(opL,N);//put the upside neighbor into the open list at the heuristic place it belong to.
-	//do it for left,right,down neighbors
+	int x=opL->X;
+	int y=opL->Y;
+	if((N=newNode(L,x+1,y,opL,nds))!=NULL)//if the node leftside is not a wall or a already visited node.
+		opL=addToList(opL,N);//put the leftside neighbor into the open list at the heuristic place it belong to.
 	
-	return opl;}
+	if((N=newNode(L,x-1,y,opL,nds))!=NULL)//if the node rightside is not a wall or a already visited node.
+		opL=addToList(opL,N);//put the rightside neighbor into the open list at the heuristic place it belong to.
+	
+	if((N=newNode(L,x,y+1,opL,nds))!=NULL)//if the node upside is not a wall or a already visited node.
+		opL=addToList(opL,N);//put the upside neighbor into the open list at the heuristic place it belong to.
+	
+	if((N=newNode(L,x,y-1,opL,nds))!=NULL)//if the node downside is not a wall or a already visited node.
+		opL=addToList(opL,N);//put the downside neighbor into the open list at the heuristic place it belong to.
+	
+	return opL;}
 
 Node * extractPath(Node * clL)//start from the goal, iterativly,freing node that are not pathParent,taking pathParent node and put last node adress in its pathChild.
 {	return NULL;}
 
-/*Node* addToList(Node *N1,Node* NtoAdd)//add a node to a list sort heuristicly increasing
+Node* addToList(Node *N1,Node* NtoAdd)//add a node to a list sort heuristicly increasing
 {
 	Node *Nact=N1;
-	if(N1->heuristic > MtoAdd->heuristic)//pour l'ordre croissant ">"
+	if(N1->heuristic >= NtoAdd->heuristic)//pour l'ordre croissant ">"
 	{
-		MtoAdd->next = M1;
-		return MtoAdd;
-	}
-	else if(N1->ncase == MtoAdd->ncase)
-	{
-		free(MtoAdd);
-		return M1;
+		NtoAdd->listNext = N1;
+		return NtoAdd;
 	}
 	else
 	{
-		while(Mact->next!=NULL&&Mact->next->n<MtoAdd->n)//pour l'ordre croissant "<"
+		while(Nact->listNext!=NULL&&Nact->listNext->heuristic<NtoAdd->heuristic)//pour l'ordre croissant "<"
 		{
-			Mact=Mact->next;
-		}
-		if(Mact->next!=NULL&&Mact->next->n==MtoAdd->n)
-		{
-			Mact->next->c+=MtoAdd->c;
-			free(MtoAdd);
-		}
-		else
-		{
-			Maillon* next =Mact->next;
-			Mact->next = MtoAdd;
-			MtoAdd->next = next;
+			Nact=Nact->listNext;
 		}
 		
-		return M1;
+		NtoAdd->listNext = Nact->listNext;
+		Nact->listNext = NtoAdd;
+		
+		return N1;
 	}	
-}*/
+}
 
 int distNtoP(Map *L,int P,Node *N)
 {

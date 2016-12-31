@@ -26,8 +26,7 @@ typedef struct _Node{//the nodes
 	char *ncase;
 	struct _Node * pathParent;
 	struct _Node * pathChild;
-	struct _Node * OListNext;
-	struct _Node * CListFrom;
+	struct _Node * listNext;
 	
 }Node;
 
