@@ -1,0 +1,102 @@
+\hypertarget{gui_8c}{}\section{gui.\+c File Reference}
+\label{gui_8c}\index{gui.\+c@{gui.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$ncurses.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$panel.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}struct.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}gui.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mapping.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{gui_8c_a52e7af91e0aaf587d1642ab4748b6396}{init\+G\+UI} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L)
+\item 
+int \hyperlink{gui_8c_a74faad0e3c55dfd39a5ecd03e9ae60f1}{G\+UI} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int lst\+G\+U\+Ich)
+\item 
+int \hyperlink{gui_8c_a82e2bf7357d16998055a8768e3632f0e}{disp\+Map} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L)
+\item 
+int \hyperlink{gui_8c_a49ec06bbcb4afaba4ec233e5f5d0ea50}{disp\+Path} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L)
+\item 
+int \hyperlink{gui_8c_a59d8e32f972620bcf3a16c00a7f1b9f8}{erase\+Map} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L)
+\item 
+void \hyperlink{gui_8c_a7cfcdaaf5fbb33b1d0f1da23989ebc14}{show\+Win} (\hyperlink{struct_8h_adf6d865a38ae98af7b316588c8737f7a}{Win} $\ast$win)
+\item 
+void \hyperlink{gui_8c_aebef6c596deaf6c14ecc98b4dbb35289}{wboxe} (\hyperlink{struct_8h_adf6d865a38ae98af7b316588c8737f7a}{Win} $\ast$win, int starty, int startx, const char $\ast$string)
+\item 
+int \hyperlink{gui_8c_ae485c573e417de3d5d0762338cca871b}{choice} (\hyperlink{struct_8h_adf6d865a38ae98af7b316588c8737f7a}{Win} $\ast$win, int lst\+Ch)
+\item 
+int \hyperlink{gui_8c_abbe720778f4a4bb964fb8dfacaf2e315}{disp\+Info} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{gui.\+c@{gui.\+c}!choice@{choice}}
+\index{choice@{choice}!gui.\+c@{gui.\+c}}
+\subsubsection[{\texorpdfstring{choice(\+Win $\ast$win, int lst\+Ch)}{choice(Win *win, int lstCh)}}]{\setlength{\rightskip}{0pt plus 5cm}int choice (
+\begin{DoxyParamCaption}
+\item[{{\bf Win} $\ast$}]{win, }
+\item[{int}]{lst\+Ch}
+\end{DoxyParamCaption}
+)}\hypertarget{gui_8c_ae485c573e417de3d5d0762338cca871b}{}\label{gui_8c_ae485c573e417de3d5d0762338cca871b}
+\index{gui.\+c@{gui.\+c}!disp\+Info@{disp\+Info}}
+\index{disp\+Info@{disp\+Info}!gui.\+c@{gui.\+c}}
+\subsubsection[{\texorpdfstring{disp\+Info(\+Map $\ast$\+L)}{dispInfo(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}int disp\+Info (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L}
+\end{DoxyParamCaption}
+)}\hypertarget{gui_8c_abbe720778f4a4bb964fb8dfacaf2e315}{}\label{gui_8c_abbe720778f4a4bb964fb8dfacaf2e315}
+\index{gui.\+c@{gui.\+c}!disp\+Map@{disp\+Map}}
+\index{disp\+Map@{disp\+Map}!gui.\+c@{gui.\+c}}
+\subsubsection[{\texorpdfstring{disp\+Map(\+Map $\ast$\+L)}{dispMap(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}int disp\+Map (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L}
+\end{DoxyParamCaption}
+)}\hypertarget{gui_8c_a82e2bf7357d16998055a8768e3632f0e}{}\label{gui_8c_a82e2bf7357d16998055a8768e3632f0e}
+\index{gui.\+c@{gui.\+c}!disp\+Path@{disp\+Path}}
+\index{disp\+Path@{disp\+Path}!gui.\+c@{gui.\+c}}
+\subsubsection[{\texorpdfstring{disp\+Path(\+Map $\ast$\+L)}{dispPath(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}int disp\+Path (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L}
+\end{DoxyParamCaption}
+)}\hypertarget{gui_8c_a49ec06bbcb4afaba4ec233e5f5d0ea50}{}\label{gui_8c_a49ec06bbcb4afaba4ec233e5f5d0ea50}
+\index{gui.\+c@{gui.\+c}!erase\+Map@{erase\+Map}}
+\index{erase\+Map@{erase\+Map}!gui.\+c@{gui.\+c}}
+\subsubsection[{\texorpdfstring{erase\+Map(\+Map $\ast$\+L)}{eraseMap(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}int erase\+Map (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L}
+\end{DoxyParamCaption}
+)}\hypertarget{gui_8c_a59d8e32f972620bcf3a16c00a7f1b9f8}{}\label{gui_8c_a59d8e32f972620bcf3a16c00a7f1b9f8}
+\index{gui.\+c@{gui.\+c}!G\+UI@{G\+UI}}
+\index{G\+UI@{G\+UI}!gui.\+c@{gui.\+c}}
+\subsubsection[{\texorpdfstring{G\+U\+I(\+Map $\ast$\+L, int lst\+G\+U\+Ich)}{GUI(Map *L, int lstGUIch)}}]{\setlength{\rightskip}{0pt plus 5cm}int G\+UI (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L, }
+\item[{int}]{lst\+G\+U\+Ich}
+\end{DoxyParamCaption}
+)}\hypertarget{gui_8c_a74faad0e3c55dfd39a5ecd03e9ae60f1}{}\label{gui_8c_a74faad0e3c55dfd39a5ecd03e9ae60f1}
+\index{gui.\+c@{gui.\+c}!init\+G\+UI@{init\+G\+UI}}
+\index{init\+G\+UI@{init\+G\+UI}!gui.\+c@{gui.\+c}}
+\subsubsection[{\texorpdfstring{init\+G\+U\+I(\+Map $\ast$\+L)}{initGUI(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}void init\+G\+UI (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L}
+\end{DoxyParamCaption}
+)}\hypertarget{gui_8c_a52e7af91e0aaf587d1642ab4748b6396}{}\label{gui_8c_a52e7af91e0aaf587d1642ab4748b6396}
+\index{gui.\+c@{gui.\+c}!show\+Win@{show\+Win}}
+\index{show\+Win@{show\+Win}!gui.\+c@{gui.\+c}}
+\subsubsection[{\texorpdfstring{show\+Win(\+Win $\ast$win)}{showWin(Win *win)}}]{\setlength{\rightskip}{0pt plus 5cm}void show\+Win (
+\begin{DoxyParamCaption}
+\item[{{\bf Win} $\ast$}]{win}
+\end{DoxyParamCaption}
+)}\hypertarget{gui_8c_a7cfcdaaf5fbb33b1d0f1da23989ebc14}{}\label{gui_8c_a7cfcdaaf5fbb33b1d0f1da23989ebc14}
+\index{gui.\+c@{gui.\+c}!wboxe@{wboxe}}
+\index{wboxe@{wboxe}!gui.\+c@{gui.\+c}}
+\subsubsection[{\texorpdfstring{wboxe(\+Win $\ast$win, int starty, int startx, const char $\ast$string)}{wboxe(Win *win, int starty, int startx, const char *string)}}]{\setlength{\rightskip}{0pt plus 5cm}void wboxe (
+\begin{DoxyParamCaption}
+\item[{{\bf Win} $\ast$}]{win, }
+\item[{int}]{starty, }
+\item[{int}]{startx, }
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}\hypertarget{gui_8c_aebef6c596deaf6c14ecc98b4dbb35289}{}\label{gui_8c_aebef6c596deaf6c14ecc98b4dbb35289}

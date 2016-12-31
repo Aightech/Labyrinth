@@ -1,0 +1,369 @@
+\hypertarget{struct_8h}{}\section{struct.\+h File Reference}
+\label{struct_8h}\index{struct.\+h@{struct.\+h}}
+{\ttfamily \#include $<$panel.\+h$>$}\\*
+{\ttfamily \#include $<$ncurses.\+h$>$}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_8h_d4/dd5/struct___l_step}{\+\_\+\+L\+Step}
+\item 
+struct \hyperlink{struct_8h_d0/d6e/struct___node}{\+\_\+\+Node}
+\item 
+struct \hyperlink{struct_8h_d7/d82/struct___path}{\+\_\+\+Path}
+\item 
+struct \hyperlink{struct_8h_d4/dcb/struct___player}{\+\_\+\+Player}
+\item 
+struct \hyperlink{struct_8h_d0/d4a/struct___win}{\+\_\+\+Win}
+\item 
+struct \hyperlink{struct_8h_d7/d1b/struct___map}{\+\_\+\+Map}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{struct_8h_a30565ba468295703d7e04c7676643a4f}{nbrW}~7
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct_8h_d4/dd5/struct___l_step}{\+\_\+\+L\+Step} \hyperlink{struct_8h_af5341ec1566a8c9b5eecbdbbe6f269ae}{Lcase}
+\item 
+typedef struct \hyperlink{struct_8h_d0/d6e/struct___node}{\+\_\+\+Node} \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node}
+\item 
+typedef struct \hyperlink{struct_8h_d7/d82/struct___path}{\+\_\+\+Path} \hyperlink{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}{Path}
+\item 
+typedef struct \hyperlink{struct_8h_d4/dcb/struct___player}{\+\_\+\+Player} \hyperlink{struct_8h_af30e2030635a69690f85e48bc6ef202f}{Player}
+\item 
+typedef struct \hyperlink{struct_8h_d0/d4a/struct___win}{\+\_\+\+Win} \hyperlink{struct_8h_adf6d865a38ae98af7b316588c8737f7a}{Win}
+\item 
+typedef struct \hyperlink{struct_8h_d7/d1b/struct___map}{\+\_\+\+Map} \hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map}
+\end{DoxyCompactItemize}
+
+
+\subsection{Data Structure Documentation}
+\index{\+\_\+\+L\+Step@{\+\_\+\+L\+Step}}\label{struct___l_step}
+\hypertarget{struct_8h_struct___l_step}{}
+\subsubsection{struct \+\_\+\+L\+Step}
+\begin{DoxyFields}{Data Fields}
+int\hypertarget{struct_8h_a66700f11d42fee2413e58dbf49c43ee1}{}\label{struct_8h_a66700f11d42fee2413e58dbf49c43ee1}
+&
+cost&
+\\
+\hline
+
+struct \hyperlink{struct_8h_d4/dd5/struct___l_step}{\+\_\+\+L\+Step} $\ast$\hypertarget{struct_8h_ac26cd8182373efaf743f0afc78124c9c}{}\label{struct_8h_ac26cd8182373efaf743f0afc78124c9c}
+&
+from&
+\\
+\hline
+
+int\hypertarget{struct_8h_a266b59afb2a9e30cb84c2b14388fb5fe}{}\label{struct_8h_a266b59afb2a9e30cb84c2b14388fb5fe}
+&
+heuristic&
+\\
+\hline
+
+int\hypertarget{struct_8h_a28708c211dc7281c07d30444d75e5e7c}{}\label{struct_8h_a28708c211dc7281c07d30444d75e5e7c}
+&
+lvl\+Energy&
+\\
+\hline
+
+int\hypertarget{struct_8h_a7e11726fa8adbf489710249a6685d939}{}\label{struct_8h_a7e11726fa8adbf489710249a6685d939}
+&
+nature&
+\\
+\hline
+
+struct \hyperlink{struct_8h_d4/dd5/struct___l_step}{\+\_\+\+L\+Step} $\ast$\hypertarget{struct_8h_aec049652ca71b0108f37877e247b710c}{}\label{struct_8h_aec049652ca71b0108f37877e247b710c}
+&
+next&
+\\
+\hline
+
+int\hypertarget{struct_8h_a80c0944640e62d3ed6c5419c1bcc0c88}{}\label{struct_8h_a80c0944640e62d3ed6c5419c1bcc0c88}
+&
+X&
+\\
+\hline
+
+int\hypertarget{struct_8h_aa482c4cc86a24474e4fb19b5b5978778}{}\label{struct_8h_aa482c4cc86a24474e4fb19b5b5978778}
+&
+Y&
+\\
+\hline
+
+\end{DoxyFields}
+\index{\+\_\+\+Node@{\+\_\+\+Node}}\label{struct___node}
+\hypertarget{struct_8h_struct___node}{}
+\subsubsection{struct \+\_\+\+Node}
+\begin{DoxyFields}{Data Fields}
+struct \hyperlink{struct_8h_d0/d6e/struct___node}{\+\_\+\+Node} $\ast$\hypertarget{struct_8h_a184c1c4c06e65b6370a72e7520bbb290}{}\label{struct_8h_a184c1c4c06e65b6370a72e7520bbb290}
+&
+C\+List\+From&
+\\
+\hline
+
+int\hypertarget{struct_8h_a66700f11d42fee2413e58dbf49c43ee1}{}\label{struct_8h_a66700f11d42fee2413e58dbf49c43ee1}
+&
+cost&
+\\
+\hline
+
+int\hypertarget{struct_8h_a266b59afb2a9e30cb84c2b14388fb5fe}{}\label{struct_8h_a266b59afb2a9e30cb84c2b14388fb5fe}
+&
+heuristic&
+\\
+\hline
+
+char $\ast$\hypertarget{struct_8h_aa0cc47f15f87b45c6960e18fd786f286}{}\label{struct_8h_aa0cc47f15f87b45c6960e18fd786f286}
+&
+ncase&
+\\
+\hline
+
+struct \hyperlink{struct_8h_d0/d6e/struct___node}{\+\_\+\+Node} $\ast$\hypertarget{struct_8h_ad6389fd077852071265bb2dba8ce054a}{}\label{struct_8h_ad6389fd077852071265bb2dba8ce054a}
+&
+O\+List\+Next&
+\\
+\hline
+
+struct \hyperlink{struct_8h_d0/d6e/struct___node}{\+\_\+\+Node} $\ast$\hypertarget{struct_8h_ac1bcf3cc6dca353ea81f1e92b01d7ecb}{}\label{struct_8h_ac1bcf3cc6dca353ea81f1e92b01d7ecb}
+&
+path\+Child&
+\\
+\hline
+
+struct \hyperlink{struct_8h_d0/d6e/struct___node}{\+\_\+\+Node} $\ast$\hypertarget{struct_8h_a7d0cf1a91c4dd335673a79aa5db87d01}{}\label{struct_8h_a7d0cf1a91c4dd335673a79aa5db87d01}
+&
+path\+Parent&
+\\
+\hline
+
+int\hypertarget{struct_8h_a80c0944640e62d3ed6c5419c1bcc0c88}{}\label{struct_8h_a80c0944640e62d3ed6c5419c1bcc0c88}
+&
+X&
+\\
+\hline
+
+int\hypertarget{struct_8h_aa482c4cc86a24474e4fb19b5b5978778}{}\label{struct_8h_aa482c4cc86a24474e4fb19b5b5978778}
+&
+Y&
+\\
+\hline
+
+\end{DoxyFields}
+\index{\+\_\+\+Path@{\+\_\+\+Path}}\label{struct___path}
+\hypertarget{struct_8h_struct___path}{}
+\subsubsection{struct \+\_\+\+Path}
+\begin{DoxyFields}{Data Fields}
+\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$\hypertarget{struct_8h_a2addc5f5fab651284199528b83cd61c8}{}\label{struct_8h_a2addc5f5fab651284199528b83cd61c8}
+&
+first&
+\\
+\hline
+
+int\hypertarget{struct_8h_a439227feff9d7f55384e8780cfc2eb82}{}\label{struct_8h_a439227feff9d7f55384e8780cfc2eb82}
+&
+size&
+\\
+\hline
+
+\end{DoxyFields}
+\index{\+\_\+\+Player@{\+\_\+\+Player}}\label{struct___player}
+\hypertarget{struct_8h_struct___player}{}
+\subsubsection{struct \+\_\+\+Player}
+\begin{DoxyFields}{Data Fields}
+int\hypertarget{struct_8h_a4ec8c7cb48771b844a6d50e2150e3f63}{}\label{struct_8h_a4ec8c7cb48771b844a6d50e2150e3f63}
+&
+energy&
+\\
+\hline
+
+int\hypertarget{struct_8h_a7bb8b2cfc1aec0db2429c600cddccf17}{}\label{struct_8h_a7bb8b2cfc1aec0db2429c600cddccf17}
+&
+lastX&
+\\
+\hline
+
+int\hypertarget{struct_8h_ae135df8cfc9b15d97e97b400a5cbc768}{}\label{struct_8h_ae135df8cfc9b15d97e97b400a5cbc768}
+&
+lastY&
+\\
+\hline
+
+int\hypertarget{struct_8h_a1ea5d0cb93f22f7d0fdf804bd68c3326}{}\label{struct_8h_a1ea5d0cb93f22f7d0fdf804bd68c3326}
+&
+mode&
+\\
+\hline
+
+\hyperlink{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}{Path} $\ast$\hypertarget{struct_8h_ac7fee391a1ea765fcd9a813684459133}{}\label{struct_8h_ac7fee391a1ea765fcd9a813684459133}
+&
+to\+Goal&
+\\
+\hline
+
+\hyperlink{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}{Path} $\ast$\hypertarget{struct_8h_acb6bf1fa3b8884d0c9ce0b566a534bcc}{}\label{struct_8h_acb6bf1fa3b8884d0c9ce0b566a534bcc}
+&
+to\+OtherP&
+\\
+\hline
+
+int\hypertarget{struct_8h_aaefa47f4fdf865c2358c22b542a993e4}{}\label{struct_8h_aaefa47f4fdf865c2358c22b542a993e4}
+&
+turn&
+\\
+\hline
+
+int\hypertarget{struct_8h_a80c0944640e62d3ed6c5419c1bcc0c88}{}\label{struct_8h_a80c0944640e62d3ed6c5419c1bcc0c88}
+&
+X&
+\\
+\hline
+
+int\hypertarget{struct_8h_aa482c4cc86a24474e4fb19b5b5978778}{}\label{struct_8h_aa482c4cc86a24474e4fb19b5b5978778}
+&
+Y&
+\\
+\hline
+
+\end{DoxyFields}
+\index{\+\_\+\+Win@{\+\_\+\+Win}}\label{struct___win}
+\hypertarget{struct_8h_struct___win}{}
+\subsubsection{struct \+\_\+\+Win}
+\begin{DoxyFields}{Data Fields}
+char $\ast$$\ast$\hypertarget{struct_8h_aff6ffec032f54ef65d0b880416f8246d}{}\label{struct_8h_aff6ffec032f54ef65d0b880416f8246d}
+&
+lab\+Butt&
+\\
+\hline
+
+char\hypertarget{struct_8h_a80059d6954dd5c12e38fd5cafe1a16cc}{}\label{struct_8h_a80059d6954dd5c12e38fd5cafe1a16cc}
+&
+label\mbox{[}50\mbox{]}&
+\\
+\hline
+
+int\hypertarget{struct_8h_a1910eef8db510628192f27b24cdd0eb2}{}\label{struct_8h_a1910eef8db510628192f27b24cdd0eb2}
+&
+num\+Butt&
+\\
+\hline
+
+int $\ast$$\ast$\hypertarget{struct_8h_a6d6060115df541c075d8f529a1511d26}{}\label{struct_8h_a6d6060115df541c075d8f529a1511d26}
+&
+pos\+Butt&
+\\
+\hline
+
+W\+I\+N\+D\+OW $\ast$\hypertarget{struct_8h_a09d962b38c0d24e36078d717d2a6ed96}{}\label{struct_8h_a09d962b38c0d24e36078d717d2a6ed96}
+&
+win&
+\\
+\hline
+
+\end{DoxyFields}
+\index{\+\_\+\+Map@{\+\_\+\+Map}}\label{struct___map}
+\hypertarget{struct_8h_struct___map}{}
+\subsubsection{struct \+\_\+\+Map}
+\begin{DoxyFields}{Data Fields}
+char $\ast$$\ast$\hypertarget{struct_8h_a601e32b61d466f9df86e0fbc527472bf}{}\label{struct_8h_a601e32b61d466f9df86e0fbc527472bf}
+&
+cases&
+\\
+\hline
+
+\hyperlink{struct_8h_adf6d865a38ae98af7b316588c8737f7a}{Win} $\ast$$\ast$\hypertarget{struct_8h_a81c46208e94d18eaf33350342c9051f1}{}\label{struct_8h_a81c46208e94d18eaf33350342c9051f1}
+&
+gui\+Wins&
+\\
+\hline
+
+int\hypertarget{struct_8h_ae951a64b5603fdb0385b729946d1ebe1}{}\label{struct_8h_ae951a64b5603fdb0385b729946d1ebe1}
+&
+heigth&
+\\
+\hline
+
+char\hypertarget{struct_8h_abd5a12f6d08d1da5d84e9142bcef5d9a}{}\label{struct_8h_abd5a12f6d08d1da5d84e9142bcef5d9a}
+&
+info\+P1\mbox{[}10\mbox{]}\mbox{[}50\mbox{]}&
+\\
+\hline
+
+char\hypertarget{struct_8h_a7918e7b9cb5d1890b8b6f01464a40e25}{}\label{struct_8h_a7918e7b9cb5d1890b8b6f01464a40e25}
+&
+info\+P2\mbox{[}10\mbox{]}\mbox{[}50\mbox{]}&
+\\
+\hline
+
+int\hypertarget{struct_8h_a23569f3884fe223e40739ce644769816}{}\label{struct_8h_a23569f3884fe223e40739ce644769816}
+&
+mvC&
+\\
+\hline
+
+int\hypertarget{struct_8h_a610a529d29e0a116ba9b47eacecbb962}{}\label{struct_8h_a610a529d29e0a116ba9b47eacecbb962}
+&
+mvL&
+\\
+\hline
+
+char\hypertarget{struct_8h_ae5cb967283dbbdf75cb2032c1fa08fee}{}\label{struct_8h_ae5cb967283dbbdf75cb2032c1fa08fee}
+&
+name\mbox{[}50\mbox{]}&
+\\
+\hline
+
+P\+A\+N\+EL $\ast$\hypertarget{struct_8h_a5b6cf16adf92bcc75c0341ca682861d8}{}\label{struct_8h_a5b6cf16adf92bcc75c0341ca682861d8}
+&
+panels\mbox{[}\hyperlink{struct_8h_a30565ba468295703d7e04c7676643a4f}{nbrW}\mbox{]}&
+\\
+\hline
+
+\hyperlink{struct_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$\hypertarget{struct_8h_a48395d86670996c0e7144aff32feb7be}{}\label{struct_8h_a48395d86670996c0e7144aff32feb7be}
+&
+players\mbox{[}3\mbox{]}&
+\\
+\hline
+
+int\hypertarget{struct_8h_aaefa47f4fdf865c2358c22b542a993e4}{}\label{struct_8h_aaefa47f4fdf865c2358c22b542a993e4}
+&
+turn&
+\\
+\hline
+
+int\hypertarget{struct_8h_a2474a5474cbff19523a51eb1de01cda4}{}\label{struct_8h_a2474a5474cbff19523a51eb1de01cda4}
+&
+width&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\index{struct.\+h@{struct.\+h}!nbrW@{nbrW}}
+\index{nbrW@{nbrW}!struct.\+h@{struct.\+h}}
+\subsubsection[{\texorpdfstring{nbrW}{nbrW}}]{\setlength{\rightskip}{0pt plus 5cm}\#define nbrW~7}\hypertarget{struct_8h_a30565ba468295703d7e04c7676643a4f}{}\label{struct_8h_a30565ba468295703d7e04c7676643a4f}
+
+
+\subsection{Typedef Documentation}
+\index{struct.\+h@{struct.\+h}!Lcase@{Lcase}}
+\index{Lcase@{Lcase}!struct.\+h@{struct.\+h}}
+\subsubsection[{\texorpdfstring{Lcase}{Lcase}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+L\+Step} {\bf Lcase}}\hypertarget{struct_8h_af5341ec1566a8c9b5eecbdbbe6f269ae}{}\label{struct_8h_af5341ec1566a8c9b5eecbdbbe6f269ae}
+\index{struct.\+h@{struct.\+h}!Map@{Map}}
+\index{Map@{Map}!struct.\+h@{struct.\+h}}
+\subsubsection[{\texorpdfstring{Map}{Map}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Map} {\bf Map}}\hypertarget{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{}\label{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}
+\index{struct.\+h@{struct.\+h}!Node@{Node}}
+\index{Node@{Node}!struct.\+h@{struct.\+h}}
+\subsubsection[{\texorpdfstring{Node}{Node}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Node} {\bf Node}}\hypertarget{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{}\label{struct_8h_a8ff62746a396b270606ff04818b7e4ac}
+\index{struct.\+h@{struct.\+h}!Path@{Path}}
+\index{Path@{Path}!struct.\+h@{struct.\+h}}
+\subsubsection[{\texorpdfstring{Path}{Path}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Path} {\bf Path}}\hypertarget{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}{}\label{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}
+\index{struct.\+h@{struct.\+h}!Player@{Player}}
+\index{Player@{Player}!struct.\+h@{struct.\+h}}
+\subsubsection[{\texorpdfstring{Player}{Player}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Player} {\bf Player}}\hypertarget{struct_8h_af30e2030635a69690f85e48bc6ef202f}{}\label{struct_8h_af30e2030635a69690f85e48bc6ef202f}
+\index{struct.\+h@{struct.\+h}!Win@{Win}}
+\index{Win@{Win}!struct.\+h@{struct.\+h}}
+\subsubsection[{\texorpdfstring{Win}{Win}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Win} {\bf Win}}\hypertarget{struct_8h_adf6d865a38ae98af7b316588c8737f7a}{}\label{struct_8h_adf6d865a38ae98af7b316588c8737f7a}

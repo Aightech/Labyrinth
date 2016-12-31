@@ -1,0 +1,15 @@
+digraph "_Map"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="_Map",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" guiWins" ];
+  Node2 [label="_Win",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d4a/struct___win.html"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" players" ];
+  Node3 [label="_Player",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/dcb/struct___player.html"];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" toOtherP\ntoGoal" ];
+  Node4 [label="_Path",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d82/struct___path.html"];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" first" ];
+  Node5 [label="_Node",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d6e/struct___node.html"];
+  Node5 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" pathParent\npathChild\nCListFrom\nOListNext" ];
+}

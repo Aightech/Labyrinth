@@ -1,0 +1,114 @@
+\hypertarget{astar_md_8h}{}\section{astar\+Md.\+h File Reference}
+\label{astar_md_8h}\index{astar\+Md.\+h@{astar\+Md.\+h}}
+{\ttfamily \#include \char`\"{}struct.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{astar_md_8h_a6fcd248ff5643acbb0b4fa966ce3cd0f}{astar\+Mode} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L)
+\item 
+\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8h_ad4e0719576ebe703dcc6309e827992f2}{init\+Open\+List} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int x, int y, char $\ast$$\ast$nds)
+\item 
+\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8h_a1b73245c3aa4c719f745416057b79229}{new\+Node} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int x, int y, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$neigh, char $\ast$$\ast$nds)
+\item 
+\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8h_ab97d13119e81f857501fde3d1f5ba92c}{pop\+List} (\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$OpL, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$clL)
+\item 
+\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8h_a59c5246f9fcd3da076704696c0369b46}{add\+Neigh} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$OpL, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$from, char $\ast$$\ast$nds)
+\item 
+\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8h_a9b4f457ca7c276eb535b22e2a37de74a}{extract\+Path} (\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$clL)
+\item 
+int \hyperlink{astar_md_8h_a9f2e525a00122b6a13abc912d078817d}{rm\+List} (\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$first)
+\item 
+int \hyperlink{astar_md_8h_aa2236259a3dd1633bef2c35b9ccfd56a}{dist\+NtoP} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int P, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$N)
+\item 
+int \hyperlink{astar_md_8h_af110e353e2d3901320f2dd6066f6236c}{distance\+\_\+to\+\_\+treasure} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int x, int y)
+\item 
+int \hyperlink{astar_md_8h_a196e7f007a501cf9d0907cb2bab0b622}{abs} (int x)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{astar\+Md.\+h@{astar\+Md.\+h}!abs@{abs}}
+\index{abs@{abs}!astar\+Md.\+h@{astar\+Md.\+h}}
+\subsubsection[{\texorpdfstring{abs(int x)}{abs(int x)}}]{\setlength{\rightskip}{0pt plus 5cm}int abs (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8h_a196e7f007a501cf9d0907cb2bab0b622}{}\label{astar_md_8h_a196e7f007a501cf9d0907cb2bab0b622}
+\index{astar\+Md.\+h@{astar\+Md.\+h}!add\+Neigh@{add\+Neigh}}
+\index{add\+Neigh@{add\+Neigh}!astar\+Md.\+h@{astar\+Md.\+h}}
+\subsubsection[{\texorpdfstring{add\+Neigh(\+Map $\ast$\+L, Node $\ast$\+Op\+L, Node $\ast$from, char $\ast$$\ast$nds)}{addNeigh(Map *L, Node *OpL, Node *from, char **nds)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ add\+Neigh (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L, }
+\item[{{\bf Node} $\ast$}]{OpL, }
+\item[{{\bf Node} $\ast$}]{from, }
+\item[{char $\ast$$\ast$}]{nds}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8h_a59c5246f9fcd3da076704696c0369b46}{}\label{astar_md_8h_a59c5246f9fcd3da076704696c0369b46}
+\index{astar\+Md.\+h@{astar\+Md.\+h}!astar\+Mode@{astar\+Mode}}
+\index{astar\+Mode@{astar\+Mode}!astar\+Md.\+h@{astar\+Md.\+h}}
+\subsubsection[{\texorpdfstring{astar\+Mode(\+Map $\ast$\+L)}{astarMode(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}int astar\+Mode (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8h_a6fcd248ff5643acbb0b4fa966ce3cd0f}{}\label{astar_md_8h_a6fcd248ff5643acbb0b4fa966ce3cd0f}
+\index{astar\+Md.\+h@{astar\+Md.\+h}!distance\+\_\+to\+\_\+treasure@{distance\+\_\+to\+\_\+treasure}}
+\index{distance\+\_\+to\+\_\+treasure@{distance\+\_\+to\+\_\+treasure}!astar\+Md.\+h@{astar\+Md.\+h}}
+\subsubsection[{\texorpdfstring{distance\+\_\+to\+\_\+treasure(\+Map $\ast$\+L, int x, int y)}{distance_to_treasure(Map *L, int x, int y)}}]{\setlength{\rightskip}{0pt plus 5cm}int distance\+\_\+to\+\_\+treasure (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8h_af110e353e2d3901320f2dd6066f6236c}{}\label{astar_md_8h_af110e353e2d3901320f2dd6066f6236c}
+\index{astar\+Md.\+h@{astar\+Md.\+h}!dist\+NtoP@{dist\+NtoP}}
+\index{dist\+NtoP@{dist\+NtoP}!astar\+Md.\+h@{astar\+Md.\+h}}
+\subsubsection[{\texorpdfstring{dist\+Nto\+P(\+Map $\ast$\+L, int P, Node $\ast$\+N)}{distNtoP(Map *L, int P, Node *N)}}]{\setlength{\rightskip}{0pt plus 5cm}int dist\+NtoP (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L, }
+\item[{int}]{P, }
+\item[{{\bf Node} $\ast$}]{N}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8h_aa2236259a3dd1633bef2c35b9ccfd56a}{}\label{astar_md_8h_aa2236259a3dd1633bef2c35b9ccfd56a}
+\index{astar\+Md.\+h@{astar\+Md.\+h}!extract\+Path@{extract\+Path}}
+\index{extract\+Path@{extract\+Path}!astar\+Md.\+h@{astar\+Md.\+h}}
+\subsubsection[{\texorpdfstring{extract\+Path(\+Node $\ast$cl\+L)}{extractPath(Node *clL)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ extract\+Path (
+\begin{DoxyParamCaption}
+\item[{{\bf Node} $\ast$}]{clL}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8h_a9b4f457ca7c276eb535b22e2a37de74a}{}\label{astar_md_8h_a9b4f457ca7c276eb535b22e2a37de74a}
+\index{astar\+Md.\+h@{astar\+Md.\+h}!init\+Open\+List@{init\+Open\+List}}
+\index{init\+Open\+List@{init\+Open\+List}!astar\+Md.\+h@{astar\+Md.\+h}}
+\subsubsection[{\texorpdfstring{init\+Open\+List(\+Map $\ast$\+L, int x, int y, char $\ast$$\ast$nds)}{initOpenList(Map *L, int x, int y, char **nds)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ init\+Open\+List (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{char $\ast$$\ast$}]{nds}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8h_ad4e0719576ebe703dcc6309e827992f2}{}\label{astar_md_8h_ad4e0719576ebe703dcc6309e827992f2}
+\index{astar\+Md.\+h@{astar\+Md.\+h}!new\+Node@{new\+Node}}
+\index{new\+Node@{new\+Node}!astar\+Md.\+h@{astar\+Md.\+h}}
+\subsubsection[{\texorpdfstring{new\+Node(\+Map $\ast$\+L, int x, int y, Node $\ast$neigh, char $\ast$$\ast$nds)}{newNode(Map *L, int x, int y, Node *neigh, char **nds)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ new\+Node (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{{\bf Node} $\ast$}]{neigh, }
+\item[{char $\ast$$\ast$}]{nds}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8h_a1b73245c3aa4c719f745416057b79229}{}\label{astar_md_8h_a1b73245c3aa4c719f745416057b79229}
+\index{astar\+Md.\+h@{astar\+Md.\+h}!pop\+List@{pop\+List}}
+\index{pop\+List@{pop\+List}!astar\+Md.\+h@{astar\+Md.\+h}}
+\subsubsection[{\texorpdfstring{pop\+List(\+Node $\ast$\+Op\+L, Node $\ast$cl\+L)}{popList(Node *OpL, Node *clL)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ pop\+List (
+\begin{DoxyParamCaption}
+\item[{{\bf Node} $\ast$}]{OpL, }
+\item[{{\bf Node} $\ast$}]{clL}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8h_ab97d13119e81f857501fde3d1f5ba92c}{}\label{astar_md_8h_ab97d13119e81f857501fde3d1f5ba92c}
+\index{astar\+Md.\+h@{astar\+Md.\+h}!rm\+List@{rm\+List}}
+\index{rm\+List@{rm\+List}!astar\+Md.\+h@{astar\+Md.\+h}}
+\subsubsection[{\texorpdfstring{rm\+List(\+Node $\ast$first)}{rmList(Node *first)}}]{\setlength{\rightskip}{0pt plus 5cm}int rm\+List (
+\begin{DoxyParamCaption}
+\item[{{\bf Node} $\ast$}]{first}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8h_a9f2e525a00122b6a13abc912d078817d}{}\label{astar_md_8h_a9f2e525a00122b6a13abc912d078817d}
