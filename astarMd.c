@@ -12,9 +12,69 @@
 int astarMode(Map *L)
 {	
 	
-	L->players[0]->toGoal=astarPath(L,0);
+	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
+	t_move* myMove=(t_move*) malloc(sizeof(t_move));
+	myMove->type = DO_NOTHING;
+	myMove->value = 0;
+	t_move* opMove=(t_move*) malloc(sizeof(t_move));
+	opMove->type = DO_NOTHING;
+	opMove->value = 0;
 	
+	
+	while(ret==MOVE_OK)
+	{
 		
+		if (L->players[0]->turn==1)//op turn	
+		{
+			addStr(L->infoP2[5],"                         ","");
+			ret = getMove(opMove);
+			movement(L,1,opMove);
+		}
+		else
+		{
+			addStr(L->infoP1[5],"                         ","");
+			L->players[0]->toGoal=astarPath(L,0);
+			Node * NToGO=L->players[0]->toGoal->first->pathChild;
+			if(NToGO->X==L->players[0]->X)
+			{
+				if(NToGO->Y>L->players[0]->Y)
+					myMove->type=MOVE_DOWN;
+				else
+					myMove->type=MOVE_UP;
+			}
+			else
+			{
+				if(NToGO->X>L->players[0]->X)
+					myMove->type=MOVE_RIGHT;
+				else
+					myMove->type=MOVE_LEFT;
+			}
+			movement(L,0,myMove);
+			ret = sendMove(*myMove);
+		  }
+		  //endwin();
+		  //printLabyrinth();
+		  dispInfo(L);
+		dispMap(L);
+		  
+	}
+	if ((L->players[0]->turn==1 && ret == MOVE_WIN) || (L->players[0]->turn==0 && ret == MOVE_LOSE))
+	{
+		addStr(L->infoP1[4],"                                  ","");
+		addStr(L->infoP2[6]," YOU LOOSE","");
+		addStr(L->infoP1[6]," YOU WIN","");
+		addStr(L->cases[L->heigth/2],"   YOU WIN","");
+	}
+	else
+	{
+	 	addStr(L->infoP1[4],"                                  ","");
+		addStr(L->infoP1[6]," YOU LOOSE","");
+		addStr(L->infoP2[6]," YOU WIN","");
+		addStr(L->cases[L->heigth/2],"   YOU LOOSE","");
+	}
+
+	/* end the connection, because we are polite */
+	closeConnection();
 		
 	
 	
@@ -146,7 +206,7 @@ int distNtoP(Map *L,int P,Node *N)
 {
 	int dx1=(L->players[P]->X - N->X);
 	dx1=(dx1>0)?dx1:-dx1;
-	int dx2=(N->X + L->width - L->players[P]->X);
+	int dx2=(L->width - dx1);
 	dx2=(dx2>0)?dx2:-dx2;
 	
 	int dy1=(L->players[P]->Y - N->Y);
@@ -177,10 +237,8 @@ int dist_h(Map *L,int x,int y) // renvoie la somme des distances horizontales et
  	int Xt=L->players[2]->X;
  	int Yt=L->players[2]->Y;
 
-	if (abs(Xt-x)<L->width/2)
-		d=abs(Xt-x);
-	else	
-		d=L->width-abs(Xt-x);
+	if ((d=abs(Xt-x))>L->width/2)
+		d=L->width-d;
 		
 	if (abs(Yt-y)<L->heigth/2)
 		return d=d+abs(Yt-y);

@@ -26,12 +26,45 @@ Map* initMap()
 		L->cases[i]=(char*)malloc(L->width*sizeof(char));
 		for(j=0;j<L->width;j++)
 		{
-			//printf("(%d,%d)= ",i,j);
 			L->cases[i][j]=MapI[i*L->width+j];
-			//scanf("%d",&p[i][j]);
-			//printf("(%d,%d)= %d\n",i,j,p[i][j]);
 		}
 	}
+	
+	L->listPlrName=(char **) malloc(2*sizeof(char*));
+	L->listPlrName[0]=(char*)malloc(25*sizeof(char));
+	addStr(L->listPlrName[0],"Aightech","");
+	L->listPlrName[1]=(char*)malloc(25*sizeof(char));
+	addStr(L->listPlrName[1],"Barbe Bleu","");
+	
+	addStr(L->PlayerName,L->listPlrName[0],"");//default;
+	
+	L->listSvrName=(char **) malloc(2*sizeof(char*));
+	L->listSvrName[0]=(char*)malloc(50*sizeof(char));
+	addStr(L->listSvrName[0],"pc4023.polytech.upmc.fr","");
+	L->listSvrName[1]=(char*)malloc(50*sizeof(char));
+	addStr(L->listSvrName[1],"pc4001.polytech.upmc.fr","");
+	
+	addStr(L->PlayerName,L->listSvrName[0],"");//default;
+	
+	L->listTimeOut=(char **) malloc(3*sizeof(char*));
+	L->listTimeOut[0]=(char*)malloc(10*sizeof(char));
+	addStr(L->listTimeOut[0],"100","");
+	L->listTimeOut[1]=(char*)malloc(10*sizeof(char));
+	addStr(L->listTimeOut[1],"10","");
+	L->listTimeOut[2]=(char*)malloc(10*sizeof(char));
+	addStr(L->listTimeOut[2],"1000","");
+	
+	addStr(L->TimeOut,L->listTimeOut[0],"");//default;
+	
+	L->listPrtName=(char **) malloc(1*sizeof(char*));
+	L->listPrtName[0]=(char*)malloc(10*sizeof(char));
+	addStr(L->listPrtName[0],"1234","");
+	
+	addStr(L->PortName,L->listPrtName[0],"");//default;
+	
+	
+	
+	
 	addStr(L->infoP1[0],"  Aightech","");
 	addStr(L->infoP1[1],"  0","");
 	for(i=2;i<10;i++)
@@ -59,7 +92,7 @@ void getMap(Map *L)
 	
 	char* labData;						/* data of the labyrinth */
 	/* connection to the server */
-	connectToServer( "pc4001.polytech.upmc.fr", 1234, "Aightech");
+	connectToServer( L->ServerName,strToint(L->PortName),L->PlayerName);
 	int i,j;
 	for(i=0;i<L->heigth;i++)//delete the last cases
 	{
@@ -72,41 +105,40 @@ void getMap(Map *L)
 	switch(L->players[0]->mode)
 	{
 		case 0:
-			addStr(L->infoP1[0],"  Aightech","  (DUMB)");
+			addStr(L->infoP1[0],L->PlayerName,"  (DUMB)");
 		break;
 		case 1:
-			addStr(L->infoP1[0],"  Aightech","  (MANUAL)");
+			addStr(L->infoP1[0],L->PlayerName,"  (MANUAL)");
 		break;
 		case 2:
-			addStr(L->infoP1[0],"  Aightech","  (RANDOM)");
+			addStr(L->infoP1[0],L->PlayerName,"  (RANDOM)");
 		break;
 		case 3:
-			addStr(L->infoP1[0],"  Aightech","  ( A* )");
+			addStr(L->infoP1[0],L->PlayerName,"  ( A* )");
 		break;
 	}
 	
 	char argMap[50];
-	char time[]=" timeout=100";
 	switch(L->players[1]->mode)
 	{
 		case 0:
-			addStr(argMap,"DO_NOTHING",time);
+			addStr(argMap,"DO_NOTHING",L->TimeOut);
 			addStr(L->infoP2[0],"  DO NOTHING","  (DUMB)");
 		break;
 		case 1:
-			addStr(argMap,"PLAY_RANDOM",time);
+			addStr(argMap,"PLAY_RANDOM",L->TimeOut);
 			addStr(L->infoP2[0],"  MANUAL","  (MANUAL)");
 		break;
 		case 2:
-			addStr(argMap,"PLAY_RANDOM",time);
+			addStr(argMap,"PLAY_RANDOM",L->TimeOut);
 			addStr(L->infoP2[0],"  RANDOM MOVE PLAYER","  (RANDOM)");
 		break;
 		case 3:
-			addStr(argMap,"PLAY_RANDOM",time);
+			addStr(argMap,"PLAY_RANDOM",L->TimeOut);
 			addStr(L->infoP2[0],"  RANDOM","  (RANDOM)");
 		break;
 		case 4:
-			addStr(argMap,"ASTAR",time);
+			addStr(argMap,"ASTAR",L->TimeOut);
 			addStr(L->infoP2[0],"  Clever","  ( A* )");
 		break;
 		
@@ -406,21 +438,25 @@ int movement(Map *L,int P,t_move *move)
 	return 1;
 }
 
-void addStr(char *target,char *add1,char *add2)
+int addStr(char *target,char *add1,char *add2)
 {
+	int i=0;
 	while(*add1)
 	{
 		*target=*add1;
 		target++;
 		add1++;
+		i++;
 	}
 	while(*add2)
 	{
 		*target=*add2;
 		target++;
 		add2++;
+		i++;
 	}
 	*target='\0';
+	return i;
 }
 
 char *intTostr(int nb)
@@ -439,7 +475,21 @@ char *intTostr(int nb)
 	return nbch;
 }	
 	
+int strToint(char *nbr)
+{
+	int n=0,neg=0;
+	char c = '0';
+	if(*nbr=='-')
+	{neg=1;nbr++;}
+	while(*nbr)
+	{
+		n*=10;
+		n+=*nbr-c;
+		nbr++;
+	}
 	
+	return (neg==0)?n:-n;
+}	
 	
 	
 	

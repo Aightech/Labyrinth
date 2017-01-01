@@ -41,16 +41,30 @@ void initGUI(Map * L)
 	addStr(L->guiWins[2]->label,"Information Player 2:","");
 	L->guiWins[2]->numButt=0;
 	
-	L->guiWins[3]->win=newwin(7, 10, 0, 80);//Server options
+	L->guiWins[3]->win=newwin(7, 100, 32, 0);//Server options
 	addStr(L->guiWins[3]->label,"Server:","");
-	L->guiWins[3]->numButt=1;
+	L->guiWins[3]->numButt=5;
 	L->guiWins[3]->posButt=(int **)malloc(L->guiWins[3]->numButt*sizeof(int*));
-	L->guiWins[3]->posButt[0]=(int *)malloc(2*sizeof(int));
+	L->guiWins[3]->labButt=(char **)malloc(L->guiWins[3]->numButt*sizeof(char*));
+	for(i=0;i<L->guiWins[3]->numButt;i++){
+		L->guiWins[3]->posButt[i]=(int *)malloc(2*sizeof(int));
+		L->guiWins[3]->labButt[i]=(char *)malloc(20*sizeof(char));
+	}
 	L->guiWins[3]->posButt[0][0]=3;
 	L->guiWins[3]->posButt[0][1]=1;
-	L->guiWins[3]->labButt=(char **)malloc(L->guiWins[3]->numButt*sizeof(char*));
-	L->guiWins[3]->labButt[0]=(char *)malloc(20*sizeof(char));
-	addStr(L->guiWins[3]->labButt[0],"GetMap","");
+	addStr(L->guiWins[3]->labButt[0],"Player","");
+	L->guiWins[3]->posButt[1][0]=3;
+	L->guiWins[3]->posButt[1][1]=23;
+	addStr(L->guiWins[3]->labButt[1],"Server","");
+	L->guiWins[3]->posButt[2][0]=3;
+	L->guiWins[3]->posButt[2][1]=57;
+	addStr(L->guiWins[3]->labButt[2],"timeOut","");
+	L->guiWins[3]->posButt[3][0]=3;
+	L->guiWins[3]->posButt[3][1]=75;
+	addStr(L->guiWins[3]->labButt[3],"Port","");
+	L->guiWins[3]->posButt[4][0]=3;
+	L->guiWins[3]->posButt[4][1]=90;
+	addStr(L->guiWins[3]->labButt[4],"Connect","");
 	
 	L->guiWins[4]->win=newwin(7, 40, 25, 0);//Commands options
 	addStr(L->guiWins[4]->label,"Commands:","");
@@ -438,5 +452,86 @@ int dispInfo(Map *L)//Display the Player info
 	update_panels();
 	doupdate();	
 	return 1;
+}
+
+char* selectL(Map *L, int w, int starty, int startx,char ** list,int sizeL)
+{
+	Win *win=L->guiWins[w];
+	int x, y,highlight=0,ch=0,i;;
+	getbegyx(win->win, y, x);
+	x+=startx;
+	y+=starty;
+	char label[50];
+  	Win* directory = (Win *)malloc(nbrW*sizeof(Win));
+  	directory->win=newwin(sizeL+4,addStr(label,list[0],"")+6,y,x);
+  	addStr(directory->label,"choose","");
+  	directory->numButt=0;
+  	
+  	for(i=0;i<sizeL;i++) 
+		mvwprintw(directory->win, 3+i, 2, list[i]);
+  	
+	showWin(directory);
+	L->panels[nbrW] = new_panel(directory->win);
+	top_panel(L->panels[nbrW]);
+	update_panels();
+	doupdate();
+  	
+	while(ch != 10)
+	{	
+		for(i =0;i<sizeL;i++)
+		{
+			if(highlight == i)
+			{	
+				wattron(directory->win, A_REVERSE); 
+				mvwprintw(directory->win, 3+i, 2, "%s", list[i]);
+				wattroff(directory->win, A_REVERSE);
+			}
+			else
+				mvwprintw(directory->win, 3+i, 2, "%s", list[i]);
+		}
+		update_panels();
+		doupdate();
+		ch = getch();
+		switch(ch)
+		{	
+			case KEY_LEFT:
+				if(highlight == 0)
+					highlight = sizeL-1;
+				else
+					--highlight;
+				break;
+			case KEY_RIGHT:
+				if(highlight == sizeL-1)
+					highlight = 0;
+				else 
+					++highlight;
+				break;
+			case KEY_UP:
+				if(highlight == 0)
+					highlight = sizeL-1;
+				else
+					--highlight;
+				break;
+			case KEY_DOWN:
+				if(highlight == sizeL-1)
+					highlight = 0;
+				else 
+					++highlight;
+				break;
+		}
+	}
+	wclear(directory->win);
+	L->panels[nbrW] = NULL;
+	for(i=0;i<nbrW;i++)
+		top_panel(L->panels[i]);
+
+	mvwprintw(win->win, starty+1, startx+1, "%s", list[highlight]);
+	update_panels();
+	doupdate();
+	  
+	return list[highlight];
+	  
+	
+			
 }
 

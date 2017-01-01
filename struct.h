@@ -69,15 +69,25 @@ typedef struct _Win {
 typedef struct _Map {//the labyrinth
 
 	//WINDOW *win;// to use with ncurses
-	char name[50];
+	char** listPlrName;
+	char** listSvrName;
+	char** listTimeOut;
+	char** listPrtName;
+	
+	char PlayerName[25];
+	char ServerName[50];
+	char TimeOut[10];
+	char PortName[10];
+	char name[50];//map Name
 	char infoP1[10][50];
 	char infoP2[10][50];
 	int width;
 	int heigth;
+	
 	char **cases;
 	Player* players[3];//[P1;P2;Tresor]
 	
-	PANEL  *panels[nbrW];
+	PANEL  *panels[nbrW+1];
 	Win **guiWins;
 	int mvC,mvL;
 	int turn;

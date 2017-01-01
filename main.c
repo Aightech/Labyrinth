@@ -40,7 +40,23 @@ int main()
 		choice=GUI(L,choice);
 		switch(choice)
 		{
-			case 30://connection to the server
+			case 30:
+				addStr(L->PlayerName,selectL(L,3,L->guiWins[3]->posButt[0][0],L->guiWins[3]->posButt[0][1]+8,L->listPlrName,2),"");
+				choice++;
+			break;
+			case 31:
+				addStr(L->ServerName,selectL(L,3,L->guiWins[3]->posButt[1][0],L->guiWins[3]->posButt[1][1]+8,L->listSvrName,2),"");
+				choice++;
+			break;
+			case 32:
+				addStr(L->TimeOut,"timeout=",selectL(L,3,L->guiWins[3]->posButt[2][0],L->guiWins[3]->posButt[2][1]+9,L->listTimeOut,3));
+				choice++;
+			break;
+			case 33:
+				addStr(L->PortName,selectL(L,3,L->guiWins[3]->posButt[3][0],L->guiWins[3]->posButt[3][1]+7,L->listPrtName,1),"");
+				choice++;
+			break;
+			case 34://connection to the server
 				
 				addStr(L->infoP1[5],"                                     ","");
 				getMap(L);//switch of the value getmap return to lauched the game mode

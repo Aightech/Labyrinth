@@ -14,7 +14,7 @@ int moveM(Map *L,int P,t_move* move);//return 1. If can't move return : -1(not e
 int movement(Map *L,int P,t_move *move);
 
 
-
-void addStr(char * target,char * add1,char * add2);
+int addStr(char * target,char * add1,char * add2);
 char *intTostr(int nb);
+int strToint(char *nbr);
 #endif
