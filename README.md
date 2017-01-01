@@ -4,6 +4,8 @@
 ##list of structures:
 **LStep** *A case to move at or a modification of the map*
 
+**Node**  *A node of the map (useful for Astar search)*
+
 **Path**  *list of step and its size*
 
 **Player** *player*
@@ -16,9 +18,15 @@
 
 **int dispMap(Map* L);** *Display the labyrinth*
 
+**int dispInfo(Map* L);** *Display players' information*
+
+**int dispPath(Map* L);** *Display the paths of the players to the goal*
+
+###Map functions 
+
 **Map* initMap();** *Initialize the map*
 
-**void updateMap(Map *L);** *Update the map*
+**void getMap(Map *L);** *get the map from the server*
 ###Movements functions 
 **int testMoveP(Map L, Player P,char move);** *Return 1. If can't move return : -1(wall) -2(player)* 
 
