@@ -12,69 +12,9 @@
 int astarMode(Map *L)
 {	
 	
-	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
-	t_move* myMove=(t_move*) malloc(sizeof(t_move));
-	myMove->type = DO_NOTHING;
-	myMove->value = 0;
-	t_move* opMove=(t_move*) malloc(sizeof(t_move));
-	opMove->type = DO_NOTHING;
-	opMove->value = 0;
+	L->players[0]->toGoal=astarPath(L,0);
 	
-	
-	while(ret==MOVE_OK)
-	{
 		
-		if (L->players[0]->turn==1)//op turn	
-		{
-			addStr(L->infoP2[5],"                         ","");
-			ret = getMove(opMove);
-			movement(L,1,opMove);
-		}
-		else
-		{
-			addStr(L->infoP1[5],"                         ","");
-			L->players[0]->toGoal=astarPath(L,0);
-			Node * NToGO=L->players[0]->toGoal->first->pathChild;
-			if(NToGO->X==L->players[0]->X)
-			{
-				if(NToGO->Y>L->players[0]->Y)
-					myMove->type=MOVE_DOWN;
-				else
-					myMove->type=MOVE_UP;
-			}
-			else
-			{
-				if(NToGO->X>L->players[0]->X)
-					myMove->type=MOVE_RIGHT;
-				else
-					myMove->type=MOVE_LEFT;
-			}
-			movement(L,0,myMove);
-			ret = sendMove(*myMove);
-		  }
-		  //endwin();
-		  //printLabyrinth();
-		  dispInfo(L);
-		dispMap(L);
-		  
-	}
-	if ((L->players[0]->turn==1 && ret == MOVE_WIN) || (L->players[0]->turn==0 && ret == MOVE_LOSE))
-	{
-		addStr(L->infoP1[4],"                                  ","");
-		addStr(L->infoP2[6]," YOU LOOSE","");
-		addStr(L->infoP1[6]," YOU WIN","");
-		addStr(L->cases[L->heigth/2],"   YOU WIN","");
-	}
-	else
-	{
-	 	addStr(L->infoP1[4],"                                  ","");
-		addStr(L->infoP1[6]," YOU LOOSE","");
-		addStr(L->infoP2[6]," YOU WIN","");
-		addStr(L->cases[L->heigth/2],"   YOU LOOSE","");
-	}
-
-	/* end the connection, because we are polite */
-	closeConnection();
 		
 	
 	
@@ -88,10 +28,20 @@ Path * astarPath(Map* L, int P)
 	int i,j;
 	char goalValue=4;//the value of the treasur case
 	char ** nodes=(char **) malloc(L->width*L->heigth*sizeof(char*));//array of char to make easier the check of visited or not neighbor: nodes[i][j]=0=>pas check;nodes[i][j]=1=> check;
+	/*if (nodes==NULL) //test if the allocation is a success
+	{
+		printf("Malloc Error!\n");
+		exit(EXIT_FAILURE); //EXIT_FAILURE is a predefined macro, opposite of EXIT_SUCCESS
+	}*/
 	for(i =0;i<L->heigth;i++)
 	{
-		nodes[i]=(char *) malloc(L->width*sizeof(char));
-		for(j=0;j<L->width;j++)
+		nodes[i]=(char *) malloc(L->width*sizeof(char)); // we can use calloc
+		/*if (nodes==NULL) //test if the allocation is a success
+		{
+			printf("Malloc Error!\n");
+			exit(EXIT_FAILURE);
+		}*/
+		for(j=0;j<L->width;j++) //we don't need this if we use calloc
 			nodes[i][j]=0;
 	}
 		
@@ -112,6 +62,11 @@ Path * astarPath(Map* L, int P)
 	if(*(openList->ncase)==goalValue)
 	{
 		path=(Path*) malloc(sizeof(Path));
+		/*if (nodes==NULL) //test if the allocation is a success
+		{
+			printf("Malloc Error!\n");
+			exit(EXIT_FAILURE);
+		}*/
 		path->size=openList->cost;
 		path->first=extractPath(openList);//if the path is found, get the path.
 	}
@@ -122,6 +77,11 @@ Path * astarPath(Map* L, int P)
 Node *initOpenList(Map *L,int x, int y,char ** nds) 
 {
 	Node* N= (Node *) malloc(sizeof(Node));
+	/*if (nodes==NULL) //test if the allocation is a success
+	{
+		printf("Malloc Error!\n");
+		exit(EXIT_FAILURE);
+	}*/
 	N->X=x;
 	N->Y=y;
 	N->ncase=L->cases[N->Y]+N->X;//this is the character of the map so it as the mapping data : wall/players
@@ -140,6 +100,11 @@ Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case
 	if(nds[y][x]!=1&&L->cases[y][x]!=1)
 	{
 		N=(Node *) malloc(sizeof(Node));
+		/*if (nodes==NULL) //test if the allocation is a success
+		{
+			printf("Malloc Error!\n");
+			exit(EXIT_FAILURE);
+		}*/
 		N->X=x;
 		N->Y=y;
 		N->ncase=L->cases[N->Y]+N->X;
@@ -206,7 +171,7 @@ int distNtoP(Map *L,int P,Node *N)
 {
 	int dx1=(L->players[P]->X - N->X);
 	dx1=(dx1>0)?dx1:-dx1;
-	int dx2=(L->width - dx1);
+	int dx2=(N->X + L->width - L->players[P]->X);
 	dx2=(dx2>0)?dx2:-dx2;
 	
 	int dy1=(L->players[P]->Y - N->Y);
@@ -237,8 +202,10 @@ int dist_h(Map *L,int x,int y) // renvoie la somme des distances horizontales et
  	int Xt=L->players[2]->X;
  	int Yt=L->players[2]->Y;
 
-	if ((d=abs(Xt-x))>L->width/2)
-		d=L->width-d;
+	if (abs(Xt-x)<L->width/2)
+		d=abs(Xt-x);
+	else	
+		d=L->width-abs(Xt-x);
 		
 	if (abs(Yt-y)<L->heigth/2)
 		return d=d+abs(Yt-y);
