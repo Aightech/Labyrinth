@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['togoal',['toGoal',['../df/dec/struct_8h.html#ac7fee391a1ea765fcd9a813684459133',1,'_Player']]],
-  ['tootherp',['toOtherP',['../df/dec/struct_8h.html#acb6bf1fa3b8884d0c9ce0b566a534bcc',1,'_Player']]],
-  ['turn',['turn',['../df/dec/struct_8h.html#aaefa47f4fdf865c2358c22b542a993e4',1,'_Player::turn()'],['../df/dec/struct_8h.html#aaefa47f4fdf865c2358c22b542a993e4',1,'_Map::turn()']]]
+  ['width',['width',['../df/dec/struct_8h.html#a2474a5474cbff19523a51eb1de01cda4',1,'_Map']]],
+  ['win',['win',['../df/dec/struct_8h.html#a09d962b38c0d24e36078d717d2a6ed96',1,'_Win']]]
 ];

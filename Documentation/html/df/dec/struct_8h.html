@@ -229,12 +229,6 @@ Y</td>
 <div class="textblock"></div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a184c1c4c06e65b6370a72e7520bbb290"></a>struct <a class="el" href="../../df/dec/struct_8h.html#d0/d6e/struct___node">_Node</a> *</td>
-<td class="fieldname">
-CListFrom</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a class="anchor" id="a66700f11d42fee2413e58dbf49c43ee1"></a>int</td>
 <td class="fieldname">
 cost</td>
@@ -247,15 +241,15 @@ heuristic</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="aa0cc47f15f87b45c6960e18fd786f286"></a>char *</td>
+<a class="anchor" id="a92b940ae1bafab81f2c09dcb727b2759"></a>struct <a class="el" href="../../df/dec/struct_8h.html#d0/d6e/struct___node">_Node</a> *</td>
 <td class="fieldname">
-ncase</td>
+listNext</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="ad6389fd077852071265bb2dba8ce054a"></a>struct <a class="el" href="../../df/dec/struct_8h.html#d0/d6e/struct___node">_Node</a> *</td>
+<a class="anchor" id="aa0cc47f15f87b45c6960e18fd786f286"></a>char *</td>
 <td class="fieldname">
-OListNext</td>
+ncase</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
@@ -469,6 +463,30 @@ infoP2[10][50]</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
+<a class="anchor" id="ade5703e4636c30db184056e412bbad9f"></a>char **</td>
+<td class="fieldname">
+listPlrName</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a45b86bccc4b981236f1c4a63f08ae81e"></a>char **</td>
+<td class="fieldname">
+listPrtName</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a8cf857386077284b154dda055543b3b8"></a>char **</td>
+<td class="fieldname">
+listSvrName</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a2fd94d11f33e862deebb3b7d667ba636"></a>char **</td>
+<td class="fieldname">
+listTimeOut</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
 <a class="anchor" id="a23569f3884fe223e40739ce644769816"></a>int</td>
 <td class="fieldname">
 mvC</td>
@@ -487,15 +505,39 @@ name[50]</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a5b6cf16adf92bcc75c0341ca682861d8"></a>PANEL *</td>
+<a class="anchor" id="acf9de252f49470dbdbd63ede514eb4eb"></a>PANEL *</td>
 <td class="fieldname">
-panels[<a class="el" href="../../df/dec/struct_8h.html#a30565ba468295703d7e04c7676643a4f">nbrW</a>]</td>
+panels[<a class="el" href="../../df/dec/struct_8h.html#a30565ba468295703d7e04c7676643a4f">nbrW</a>+1]</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a612b2a0ee041233958a9ef2896741004"></a>char</td>
+<td class="fieldname">
+PlayerName[25]</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a48395d86670996c0e7144aff32feb7be"></a><a class="el" href="../../df/dec/struct_8h.html#af30e2030635a69690f85e48bc6ef202f">Player</a> *</td>
 <td class="fieldname">
 players[3]</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a92a954e5ff7b84046e76bd7c9a54138b"></a>char</td>
+<td class="fieldname">
+PortName[10]</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a8688ed54a60069cc4615ee29c9c6c552"></a>char</td>
+<td class="fieldname">
+ServerName[50]</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="ab1aeb27b976555390e2429e283a877b7"></a>char</td>
+<td class="fieldname">
+TimeOut[10]</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">

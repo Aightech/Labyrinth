@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Labyrinth
-   &#160;<span id="projectnumber">4.03</span>
+   &#160;<span id="projectnumber">4.1</span>
    </div>
    <div id="projectbrief">This project aim to create bios-like GUI, and create an AI able to reach a goal before its opponent in a maze.</div>
   </td>
@@ -106,15 +106,19 @@ $(document).ready(function(){initNavTree('md_README.html','');});
 <div class="textblock"><p>[ROB3] Labyrinth Game</p>
 <h2>list of structures:</h2>
 <p><b>LStep</b> <em>A case to move at or a modification of the map</em></p>
+<p><b>Node</b> <em>A node of the map (useful for Astar search)</em></p>
 <p><b>Path</b> <em>list of step and its size</em></p>
 <p><b>Player</b> <em>player</em></p>
 <p><b>Map</b> <em>the labyrinther</em></p>
 <h2>list of functions:</h2>
 <h3>GUI functions</h3>
-<p><b>int <a class="el" href="db/db6/gui_8h.html#aadf45496327e577d13cb7135e578dc73">GUI(Map* L,int lastCh)</a>;</b> <em>Monitor the gui system and all other graphical functions</em></p>
-<p><b>int <a class="el" href="db/db6/gui_8h.html#a82e2bf7357d16998055a8768e3632f0e">dispMap(Map* L)</a>;</b> <em>Display the labyrinth</em></p>
-<p><b>Map* <a class="el" href="d4/d7b/mapping_8c.html#af7560ce2af2a08abe0b230e7ba56cf45">initMap()</a>;</b> <em>Initialize the map</em></p>
-<p><b>void <a class="el" href="de/d0c/mapping_8h.html#acf87be0f8a95fdb44dce3da0707aac0f">updateMap(Map *L)</a>;</b> <em>Update the map</em> </p><h3>Movements functions</h3>
+<p><b>int GUI(Map* L,int lastCh);</b> <em>Monitor the gui system and all other graphical functions</em></p>
+<p><b>int dispMap(Map* L);</b> <em>Display the labyrinth</em></p>
+<p><b>int dispInfo(Map* L);</b> <em>Display players' information</em></p>
+<p><b>int dispPath(Map* L);</b> <em>Display the paths of the players to the goal</em></p>
+<h3>Map functions</h3>
+<p><b>Map* <a class="el" href="de/d0c/mapping_8h.html#af7560ce2af2a08abe0b230e7ba56cf45" title="Return a map structure. ">initMap()</a>;</b> <em>Initialize the map</em></p>
+<p><b>void <a class="el" href="de/d0c/mapping_8h.html#acd86842943223c3da418c5981befabf6" title="Connect to the server and get the labyrinth data. ">getMap(Map *L)</a>;</b> <em>get the map from the server</em> </p><h3>Movements functions</h3>
 <p><b>int testMoveP(Map L, Player P,char move);</b> <em>Return 1. If can't move return : -1(wall) -2(player)</em></p>
 <p><b>int move(Map L, Player P,char move);</b> <em>Return 1. If can't move return : -1(wall) -2(player)</em></p>
 <p><b>int moveMap(Map L,int row, int line);</b> <em>Return 1. If can't move return : -1(not enought energy)</em></p>

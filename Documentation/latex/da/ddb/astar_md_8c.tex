@@ -12,34 +12,69 @@
 \begin{DoxyCompactItemize}
 \item 
 int \hyperlink{astar_md_8c_a6fcd248ff5643acbb0b4fa966ce3cd0f}{astar\+Mode} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L)
+\begin{DoxyCompactList}\small\item\em Generate simple A$\ast$ behavior. \end{DoxyCompactList}\item 
+\hyperlink{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}{Path} $\ast$ \hyperlink{astar_md_8c_acc034467f49f5a0e59d7b0ccc729de3a}{astar\+Path} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int P)
+\begin{DoxyCompactList}\small\item\em Generate the shortest path to the goal with an A$\ast$ algo. \end{DoxyCompactList}\item 
+\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8c_aa86ce0a8f1e5e39d7cb1015392dffba7}{init\+Open\+List} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int x, int y, char $\ast$$\ast$nds)
+\begin{DoxyCompactList}\small\item\em Initialise and return the node of the position (x,y). \end{DoxyCompactList}\item 
+\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8c_a8e8b3a15b3195c68a488a8096044aa94}{new\+Node} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int x, int y, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$parent, char $\ast$$\ast$nds)
+\begin{DoxyCompactList}\small\item\em Initialise and return the node cominf from fromN. \end{DoxyCompactList}\item 
+\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8c_af1fe89d3df6e13f67ecd28a47e0b9dea}{pop\+List} (\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$opL)
 \item 
-\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8c_ad4e0719576ebe703dcc6309e827992f2}{init\+Open\+List} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int x, int y, char $\ast$$\ast$nds)
-\item 
-\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8c_a3fff4a8445cd48159ad39bf5e95f8431}{new\+Node} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int x, int y, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$parent, char $\ast$$\ast$nds)
-\item 
-\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8c_a278795af299ade4e981395521e802c70}{pop\+List} (\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$opL, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$clL)
-\item 
-\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8c_a877fe66b8a6090bfa9ef03c0c85fcc34}{add\+Neigh} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$opL, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$from, char $\ast$$\ast$nds)
-\item 
-\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8c_a9b4f457ca7c276eb535b22e2a37de74a}{extract\+Path} (\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$clL)
-\item 
+\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8c_ae480fd54799666879cfa692c6dc113c4}{add\+Neigh} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$opL, char $\ast$$\ast$nds)
+\begin{DoxyCompactList}\small\item\em try to create a node for each neighbor, and add them to the open list. \end{DoxyCompactList}\item 
+\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8c_a25aab49c57c89e5cee7b6d6be934b744}{extract\+Path} (\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$clL)
+\begin{DoxyCompactList}\small\item\em Starting from the goal, iterativly,freing node that are not path\+Parent,taking path\+Parent node and put last node adress in its path\+Child. \end{DoxyCompactList}\item 
+\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$ \hyperlink{astar_md_8c_aca343a9d1bc7d45fafe52077228f39b9}{add\+To\+List} (\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$N1, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$Nto\+Add)
+\begin{DoxyCompactList}\small\item\em Add a node to a list sort heuristicly increasing. \end{DoxyCompactList}\item 
 int \hyperlink{astar_md_8c_aa2236259a3dd1633bef2c35b9ccfd56a}{dist\+NtoP} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int P, \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$N)
 \item 
-int \hyperlink{astar_md_8c_af110e353e2d3901320f2dd6066f6236c}{distance\+\_\+to\+\_\+treasure} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int x, int y)
+int \hyperlink{astar_md_8c_a73ad43b838e75903fcabbef2d3adc43a}{dist\+\_\+h} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int x, int y)
 \end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
 \index{astar\+Md.\+c@{astar\+Md.\+c}!add\+Neigh@{add\+Neigh}}
 \index{add\+Neigh@{add\+Neigh}!astar\+Md.\+c@{astar\+Md.\+c}}
-\subsubsection[{\texorpdfstring{add\+Neigh(\+Map $\ast$\+L, Node $\ast$op\+L, Node $\ast$from, char $\ast$$\ast$nds)}{addNeigh(Map *L, Node *opL, Node *from, char **nds)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ add\+Neigh (
+\subsubsection[{\texorpdfstring{add\+Neigh(\+Map $\ast$\+L, Node $\ast$op\+L, char $\ast$$\ast$nds)}{addNeigh(Map *L, Node *opL, char **nds)}}]{\setlength{\rightskip}{0pt plus 5cm}add\+Neigh (
 \begin{DoxyParamCaption}
 \item[{{\bf Map} $\ast$}]{L, }
-\item[{{\bf Node} $\ast$}]{opL, }
-\item[{{\bf Node} $\ast$}]{from, }
+\item[{{\bf Node} $\ast$}]{OpL, }
 \item[{char $\ast$$\ast$}]{nds}
 \end{DoxyParamCaption}
-)}\hypertarget{astar_md_8c_a877fe66b8a6090bfa9ef03c0c85fcc34}{}\label{astar_md_8c_a877fe66b8a6090bfa9ef03c0c85fcc34}
+)}\hypertarget{astar_md_8c_ae480fd54799666879cfa692c6dc113c4}{}\label{astar_md_8c_ae480fd54799666879cfa692c6dc113c4}
+
+
+try to create a node for each neighbor, and add them to the open list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structur. \\
+\hline
+{\em OpL} & The open list. \\
+\hline
+{\em nds} & The character array of 0/1 (making easier checking if cases have been checked.) \\
+\hline
+\end{DoxyParams}
+\index{astar\+Md.\+c@{astar\+Md.\+c}!add\+To\+List@{add\+To\+List}}
+\index{add\+To\+List@{add\+To\+List}!astar\+Md.\+c@{astar\+Md.\+c}}
+\subsubsection[{\texorpdfstring{add\+To\+List(\+Node $\ast$\+N1, Node $\ast$\+Nto\+Add)}{addToList(Node *N1, Node *NtoAdd)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} $\ast$ add\+To\+List (
+\begin{DoxyParamCaption}
+\item[{{\bf Node} $\ast$}]{N1, }
+\item[{{\bf Node} $\ast$}]{Nto\+Add}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8c_aca343a9d1bc7d45fafe52077228f39b9}{}\label{astar_md_8c_aca343a9d1bc7d45fafe52077228f39b9}
+
+
+Add a node to a list sort heuristicly increasing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N1} & First node of the the list to add. \\
+\hline
+{\em Nto\+Add} & node to add to the list. \\
+\hline
+\end{DoxyParams}
 \index{astar\+Md.\+c@{astar\+Md.\+c}!astar\+Mode@{astar\+Mode}}
 \index{astar\+Mode@{astar\+Mode}!astar\+Md.\+c@{astar\+Md.\+c}}
 \subsubsection[{\texorpdfstring{astar\+Mode(\+Map $\ast$\+L)}{astarMode(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}int astar\+Mode (
@@ -47,15 +82,43 @@ int \hyperlink{astar_md_8c_af110e353e2d3901320f2dd6066f6236c}{distance\+\_\+to\+
 \item[{{\bf Map} $\ast$}]{L}
 \end{DoxyParamCaption}
 )}\hypertarget{astar_md_8c_a6fcd248ff5643acbb0b4fa966ce3cd0f}{}\label{astar_md_8c_a6fcd248ff5643acbb0b4fa966ce3cd0f}
-\index{astar\+Md.\+c@{astar\+Md.\+c}!distance\+\_\+to\+\_\+treasure@{distance\+\_\+to\+\_\+treasure}}
-\index{distance\+\_\+to\+\_\+treasure@{distance\+\_\+to\+\_\+treasure}!astar\+Md.\+c@{astar\+Md.\+c}}
-\subsubsection[{\texorpdfstring{distance\+\_\+to\+\_\+treasure(\+Map $\ast$\+L, int x, int y)}{distance_to_treasure(Map *L, int x, int y)}}]{\setlength{\rightskip}{0pt plus 5cm}int distance\+\_\+to\+\_\+treasure (
+
+
+Generate simple A$\ast$ behavior. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structur. \\
+\hline
+\end{DoxyParams}
+\index{astar\+Md.\+c@{astar\+Md.\+c}!astar\+Path@{astar\+Path}}
+\index{astar\+Path@{astar\+Path}!astar\+Md.\+c@{astar\+Md.\+c}}
+\subsubsection[{\texorpdfstring{astar\+Path(\+Map $\ast$\+L, int P)}{astarPath(Map *L, int P)}}]{\setlength{\rightskip}{0pt plus 5cm}int astar\+Path (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L, }
+\item[{int}]{P}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8c_acc034467f49f5a0e59d7b0ccc729de3a}{}\label{astar_md_8c_acc034467f49f5a0e59d7b0ccc729de3a}
+
+
+Generate the shortest path to the goal with an A$\ast$ algo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structur. \\
+\hline
+{\em P} & the player from whitch the path wll start. \\
+\hline
+\end{DoxyParams}
+\index{astar\+Md.\+c@{astar\+Md.\+c}!dist\+\_\+h@{dist\+\_\+h}}
+\index{dist\+\_\+h@{dist\+\_\+h}!astar\+Md.\+c@{astar\+Md.\+c}}
+\subsubsection[{\texorpdfstring{dist\+\_\+h(\+Map $\ast$\+L, int x, int y)}{dist_h(Map *L, int x, int y)}}]{\setlength{\rightskip}{0pt plus 5cm}int dist\+\_\+h (
 \begin{DoxyParamCaption}
 \item[{{\bf Map} $\ast$}]{L, }
 \item[{int}]{x, }
 \item[{int}]{y}
 \end{DoxyParamCaption}
-)}\hypertarget{astar_md_8c_af110e353e2d3901320f2dd6066f6236c}{}\label{astar_md_8c_af110e353e2d3901320f2dd6066f6236c}
+)}\hypertarget{astar_md_8c_a73ad43b838e75903fcabbef2d3adc43a}{}\label{astar_md_8c_a73ad43b838e75903fcabbef2d3adc43a}
 \index{astar\+Md.\+c@{astar\+Md.\+c}!dist\+NtoP@{dist\+NtoP}}
 \index{dist\+NtoP@{dist\+NtoP}!astar\+Md.\+c@{astar\+Md.\+c}}
 \subsubsection[{\texorpdfstring{dist\+Nto\+P(\+Map $\ast$\+L, int P, Node $\ast$\+N)}{distNtoP(Map *L, int P, Node *N)}}]{\setlength{\rightskip}{0pt plus 5cm}int dist\+NtoP (
@@ -67,37 +130,75 @@ int \hyperlink{astar_md_8c_af110e353e2d3901320f2dd6066f6236c}{distance\+\_\+to\+
 )}\hypertarget{astar_md_8c_aa2236259a3dd1633bef2c35b9ccfd56a}{}\label{astar_md_8c_aa2236259a3dd1633bef2c35b9ccfd56a}
 \index{astar\+Md.\+c@{astar\+Md.\+c}!extract\+Path@{extract\+Path}}
 \index{extract\+Path@{extract\+Path}!astar\+Md.\+c@{astar\+Md.\+c}}
-\subsubsection[{\texorpdfstring{extract\+Path(\+Node $\ast$cl\+L)}{extractPath(Node *clL)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ extract\+Path (
+\subsubsection[{\texorpdfstring{extract\+Path(\+Node $\ast$cl\+L)}{extractPath(Node *clL)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} $\ast$ extract\+Path (
 \begin{DoxyParamCaption}
 \item[{{\bf Node} $\ast$}]{clL}
 \end{DoxyParamCaption}
-)}\hypertarget{astar_md_8c_a9b4f457ca7c276eb535b22e2a37de74a}{}\label{astar_md_8c_a9b4f457ca7c276eb535b22e2a37de74a}
+)}\hypertarget{astar_md_8c_a25aab49c57c89e5cee7b6d6be934b744}{}\label{astar_md_8c_a25aab49c57c89e5cee7b6d6be934b744}
+
+
+Starting from the goal, iterativly,freing node that are not path\+Parent,taking path\+Parent node and put last node adress in its path\+Child. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clL} & closed list The open list. \\
+\hline
+\end{DoxyParams}
 \index{astar\+Md.\+c@{astar\+Md.\+c}!init\+Open\+List@{init\+Open\+List}}
 \index{init\+Open\+List@{init\+Open\+List}!astar\+Md.\+c@{astar\+Md.\+c}}
-\subsubsection[{\texorpdfstring{init\+Open\+List(\+Map $\ast$\+L, int x, int y, char $\ast$$\ast$nds)}{initOpenList(Map *L, int x, int y, char **nds)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ init\+Open\+List (
+\subsubsection[{\texorpdfstring{init\+Open\+List(\+Map $\ast$\+L, int x, int y, char $\ast$$\ast$nds)}{initOpenList(Map *L, int x, int y, char **nds)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} $\ast$ init\+Open\+List (
 \begin{DoxyParamCaption}
 \item[{{\bf Map} $\ast$}]{L, }
 \item[{int}]{x, }
 \item[{int}]{y, }
 \item[{char $\ast$$\ast$}]{nds}
 \end{DoxyParamCaption}
-)}\hypertarget{astar_md_8c_ad4e0719576ebe703dcc6309e827992f2}{}\label{astar_md_8c_ad4e0719576ebe703dcc6309e827992f2}
+)}\hypertarget{astar_md_8c_aa86ce0a8f1e5e39d7cb1015392dffba7}{}\label{astar_md_8c_aa86ce0a8f1e5e39d7cb1015392dffba7}
+
+
+Initialise and return the node of the position (x,y). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structur. \\
+\hline
+{\em x} & The x coordinate of the staring point. \\
+\hline
+{\em y} & The y coordinate of the staring point. \\
+\hline
+{\em nds} & The character array of 0/1 (making easier checking if cases have been checked.) \\
+\hline
+\end{DoxyParams}
 \index{astar\+Md.\+c@{astar\+Md.\+c}!new\+Node@{new\+Node}}
 \index{new\+Node@{new\+Node}!astar\+Md.\+c@{astar\+Md.\+c}}
-\subsubsection[{\texorpdfstring{new\+Node(\+Map $\ast$\+L, int x, int y, Node $\ast$parent, char $\ast$$\ast$nds)}{newNode(Map *L, int x, int y, Node *parent, char **nds)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ new\+Node (
+\subsubsection[{\texorpdfstring{new\+Node(\+Map $\ast$\+L, int x, int y, Node $\ast$parent, char $\ast$$\ast$nds)}{newNode(Map *L, int x, int y, Node *parent, char **nds)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} $\ast$ new\+Node (
 \begin{DoxyParamCaption}
 \item[{{\bf Map} $\ast$}]{L, }
 \item[{int}]{x, }
 \item[{int}]{y, }
-\item[{{\bf Node} $\ast$}]{parent, }
+\item[{{\bf Node} $\ast$}]{neigh, }
 \item[{char $\ast$$\ast$}]{nds}
 \end{DoxyParamCaption}
-)}\hypertarget{astar_md_8c_a3fff4a8445cd48159ad39bf5e95f8431}{}\label{astar_md_8c_a3fff4a8445cd48159ad39bf5e95f8431}
+)}\hypertarget{astar_md_8c_a8e8b3a15b3195c68a488a8096044aa94}{}\label{astar_md_8c_a8e8b3a15b3195c68a488a8096044aa94}
+
+
+Initialise and return the node cominf from fromN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structur. \\
+\hline
+{\em x} & The x coordinate of the staring point. \\
+\hline
+{\em y} & The y coordinate of the staring point. \\
+\hline
+{\em nds} & The character array of 0/1 (making easier checking if cases have been checked.) \\
+\hline
+\end{DoxyParams}
 \index{astar\+Md.\+c@{astar\+Md.\+c}!pop\+List@{pop\+List}}
 \index{pop\+List@{pop\+List}!astar\+Md.\+c@{astar\+Md.\+c}}
-\subsubsection[{\texorpdfstring{pop\+List(\+Node $\ast$op\+L, Node $\ast$cl\+L)}{popList(Node *opL, Node *clL)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ pop\+List (
+\subsubsection[{\texorpdfstring{pop\+List(\+Node $\ast$op\+L)}{popList(Node *opL)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ pop\+List (
 \begin{DoxyParamCaption}
-\item[{{\bf Node} $\ast$}]{opL, }
-\item[{{\bf Node} $\ast$}]{clL}
+\item[{{\bf Node} $\ast$}]{opL}
 \end{DoxyParamCaption}
-)}\hypertarget{astar_md_8c_a278795af299ade4e981395521e802c70}{}\label{astar_md_8c_a278795af299ade4e981395521e802c70}
+)}\hypertarget{astar_md_8c_af1fe89d3df6e13f67ecd28a47e0b9dea}{}\label{astar_md_8c_af1fe89d3df6e13f67ecd28a47e0b9dea}

@@ -4,6 +4,8 @@
 
 {\bfseries L\+Step} {\itshape A case to move at or a modification of the map}
 
+{\bfseries Node} {\itshape A node of the map (useful for Astar search)}
+
 {\bfseries Path} {\itshape list of step and its size}
 
 {\bfseries Player} {\itshape player}
@@ -14,13 +16,19 @@
 
 \subsubsection*{G\+UI functions}
 
-{\bfseries int \hyperlink{gui_8h_aadf45496327e577d13cb7135e578dc73}{G\+U\+I(\+Map$\ast$ L,int last\+Ch)};} {\itshape Monitor the gui system and all other graphical functions}
+{\bfseries int G\+U\+I(\+Map$\ast$ L,int last\+Ch);} {\itshape Monitor the gui system and all other graphical functions}
 
-{\bfseries int \hyperlink{gui_8h_a82e2bf7357d16998055a8768e3632f0e}{disp\+Map(\+Map$\ast$ L)};} {\itshape Display the labyrinth}
+{\bfseries int disp\+Map(\+Map$\ast$ L);} {\itshape Display the labyrinth}
 
-{\bfseries Map$\ast$ \hyperlink{mapping_8c_af7560ce2af2a08abe0b230e7ba56cf45}{init\+Map()};} {\itshape Initialize the map}
+{\bfseries int disp\+Info(\+Map$\ast$ L);} {\itshape Display players\textquotesingle{} information}
 
-{\bfseries void \hyperlink{mapping_8h_acf87be0f8a95fdb44dce3da0707aac0f}{update\+Map(\+Map $\ast$\+L)};} {\itshape Update the map} \subsubsection*{Movements functions}
+{\bfseries int disp\+Path(\+Map$\ast$ L);} {\itshape Display the paths of the players to the goal}
+
+\subsubsection*{Map functions}
+
+{\bfseries Map$\ast$ \hyperlink{mapping_8h_af7560ce2af2a08abe0b230e7ba56cf45}{init\+Map()};} {\itshape Initialize the map}
+
+{\bfseries void \hyperlink{mapping_8h_acd86842943223c3da418c5981befabf6}{get\+Map(\+Map $\ast$\+L)};} {\itshape get the map from the server} \subsubsection*{Movements functions}
 
 {\bfseries int test\+Move\+P(\+Map L, Player P,char move);} {\itshape Return 1. If can\textquotesingle{}t move return \+: -\/1(wall) -\/2(player)}
 

@@ -3,14 +3,58 @@
 #include "struct.h"
 #include "labyrinthAPI.h"
 
+/*! \file mapping.h
+    \brief Mapping related functions.
+    
+    Details.
+*/
+
+
+
+
+/*! \fn Map* initMap();
+    \brief Return a map structure.
+*/
 Map* initMap();
+
+/*! \fn void getMap(Map *L);
+    \brief Connect to the server and get the labyrinth data.
+    \param L The labyrinth map structur.
+*/
 void getMap(Map *L);
+
 void updateMap(Map *L);
 
+/*! \fn int testMoveP(Map *L,int P,t_move* move);
+    \brief Return 1 if can't move return : -1(wall) -2(player)
+    \param L The labyrinth map structure.
+    \param P the player from which the movement will be made.
+    \param move The movement that is tested.
+*/
+int testMoveP(Map *L,int P,t_move* move); 
 
-int testMoveP(Map *L,int P,t_move* move);//return 1. If can't move return : -1(wall) -2(player) 
-int moveP(Map *L, int P,t_move* move);//return 1. If can't move return : -1(wall) -2(player) 
-int moveM(Map *L,int P,t_move* move);//return 1. If can't move return : -1(not enought energy)
+/*! \fn int moveP(Map *L, int P,t_move* move);
+    \brief Move the position of the player on the map. Return 1 if can't move return : -1(wall) -2(player)
+    \param L The labyrinth map structure.
+    \param P the player from which the movement will be made.
+    \param move The movement that is tested.
+*/
+int moveP(Map *L, int P,t_move* move);
+
+/*! \fn int moveM(Map *L,int P,t_move* move);
+    \brief Rotate the map. Return 1 if can't move return : -1(not enought energy)
+    \param L The labyrinth map structure.
+    \param P the player from which the movement will be made.
+    \param move The movement that is tested.
+*/
+int moveM(Map *L,int P,t_move* move);
+
+/*! \fn int movement(Map *L,int P,t_move *move);
+    \brief Rotate the map(moveM()) or move the player (moveP()). Return 1 if can't move return
+    \param L The labyrinth map structure.
+    \param P the player from which the movement will be made.
+    \param move The movement that is tested.
+*/
 int movement(Map *L,int P,t_move *move);
 
 
