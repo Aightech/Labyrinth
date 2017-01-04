@@ -34,28 +34,35 @@ int astarMode(Map *L)
 		{
 			addStr(L->infoP1[5],"                         ","");
 			L->players[0]->toGoal=astarPath(L,0);
-			Node * NToGO=L->players[0]->toGoal->first->pathChild;
-			if(NToGO->X==L->players[0]->X)
+			
+			if(L->players[0]->toGoal!=NULL&& L->players[0]->toGoal->first!=NULL && L->players[0]->toGoal->first->pathChild!=NULL)
 			{
-				if(NToGO->Y>L->players[0]->Y)
-					myMove->type=MOVE_DOWN;
+				Node * NToGO=L->players[0]->toGoal->first->pathChild;
+				if(NToGO->X==L->players[0]->X)
+				{
+					if(NToGO->Y>L->players[0]->Y)
+						myMove->type=MOVE_DOWN;
+					else
+						myMove->type=MOVE_UP;
+				}
 				else
-					myMove->type=MOVE_UP;
+				{
+					if(NToGO->X>L->players[0]->X)
+						myMove->type=MOVE_RIGHT;
+					else
+						myMove->type=MOVE_LEFT;
+				}
 			}
 			else
-			{
-				if(NToGO->X>L->players[0]->X)
-					myMove->type=MOVE_RIGHT;
-				else
-					myMove->type=MOVE_LEFT;
-			}
+				myMove->type=DO_NOTHING;
 			movement(L,0,myMove);
 			ret = sendMove(*myMove);
 		  }
-		  //endwin();
-		  //printLabyrinth();
 		  dispInfo(L);
 		dispMap(L);
+		  //endwin();
+		  //printLabyrinth();
+		  
 		  
 	}
 	if ((L->players[0]->turn==1 && ret == MOVE_WIN) || (L->players[0]->turn==0 && ret == MOVE_LOSE))
@@ -84,6 +91,11 @@ int astarMode(Map *L)
 
 Path * astarPath(Map* L, int P)
 {
+	Win* win=L->guiWins[0];
+	int starty=12-L->heigth/2+1,startx=18-L->width/2+1;
+	Node * Nact;
+
+
 	Path * path=NULL;
 	int i,j;
 	char goalValue=4;//the value of the treasur case
@@ -95,27 +107,62 @@ Path * astarPath(Map* L, int P)
 			nodes[i][j]=0;
 	}
 		
-	Node * openList=initOpenList(L,L->players[P]->X,L->players[P]->Y,nodes);
+	Node * openList=initOpenList(L,L->players[0]->X,L->players[0]->Y,nodes);
+	addStr(L->infoP1[6]," step 1","");
+	dispInfo(L);
+	
+	Nact=openList;
+	wattron(win->win,COLOR_PAIR(2));
+	mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
+	wattroff(win->win,COLOR_PAIR(2));
+	
 	Node * closedList=NULL;
 	Node * Ntemp=NULL;
 	
-	while(openList!=NULL&&*(openList->ncase)==goalValue)//if the openlist isn't empty and the current node is not the goal.
+	while(*(openList->ncase)!=goalValue)//if the openlist isn't empty and the current node is not the goal.
 	{
+		Nact=openList;
+		wattron(win->win,COLOR_PAIR(2));
+		mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
+		wattroff(win->win,COLOR_PAIR(2));
+		addStr(L->infoP1[6]," step 2","");
+		dispInfo(L);
 		addNeigh(L,openList,nodes);//add the neighbors of the first node of the openlist
-		
+		addStr(L->infoP1[6]," step 3","");
+		dispInfo(L);
 		Ntemp=openList->listNext;
 		openList->listNext=closedList;
 		closedList=openList;
 		openList=Ntemp;
 	}
 	
-	if(*(openList->ncase)==goalValue)
+	
+	
+	Nact=closedList;
+	while(Nact!=NULL)
+	{
+		wattron(win->win,COLOR_PAIR(2));
+		mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
+		wattroff(win->win,COLOR_PAIR(2));
+		Nact=Nact->pathParent;
+	}
+		
+	wattron(win->win,COLOR_PAIR(3));
+	mvwaddch(win->win, starty+L->players[0]->Y, startx+L->players[0]->X, 'o');
+	wattroff(win->win,COLOR_PAIR(3));
+	
+	/*if(*(openList->ncase)==goalValue)
 	{
 		path=(Path*) malloc(sizeof(Path));
 		path->size=openList->cost;
 		path->first=extractPath(openList);//if the path is found, get the path.
-	}
+	}*/
+	addStr(L->infoP1[6]," step 4","");
+	dispInfo(L);
 	
+	for(i =0;i<L->heigth;i++)
+		free(nodes[i]);
+	free(nodes);
 	return path;
 }
 
@@ -144,7 +191,7 @@ Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case
 		N->Y=y;
 		N->ncase=L->cases[N->Y]+N->X;
 		N->cost=parent->cost+1;
-		N->heuristic=N->cost;//+dist(L,x,y);
+		N->heuristic=N->cost+distNtoP(L,0,N);//dist_h(L,x,y);
 		N->pathParent=parent;
 		nds[N->Y][N->X]=1;
 	}
@@ -152,33 +199,46 @@ Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case
 		
 }
 
-Node * popList(Node * opL)//remove the first node of the open list.
-{	
-	opL->listNext=opL;
-	return opL;
-}
+
 
 Node * addNeigh(Map* L,Node* opL,char** nds)// try to create a node for each neighbor, and add them to the open list.
 {
 	Node* N;
 	int x=opL->X;
 	int y=opL->Y;
-	if((N=newNode(L,x+1,y,opL,nds))!=NULL)//if the node leftside is not a wall or a already visited node.
+	if((N=newNode(L,(x+1<L->width)?x+1:0,y,opL,nds))!=NULL)//if the node leftside is not a wall or a already visited node.
 		opL=addToList(opL,N);//put the leftside neighbor into the open list at the heuristic place it belong to.
 	
-	if((N=newNode(L,x-1,y,opL,nds))!=NULL)//if the node rightside is not a wall or a already visited node.
+	if((N=newNode(L,(x>0)?x-1:L->width-1,y,opL,nds))!=NULL)//if the node rightside is not a wall or a already visited node.
 		opL=addToList(opL,N);//put the rightside neighbor into the open list at the heuristic place it belong to.
 	
-	if((N=newNode(L,x,y+1,opL,nds))!=NULL)//if the node upside is not a wall or a already visited node.
+	if((N=newNode(L,x,(y+1<L->heigth)?y+1:0,opL,nds))!=NULL)//if the node upside is not a wall or a already visited node.
 		opL=addToList(opL,N);//put the upside neighbor into the open list at the heuristic place it belong to.
 	
-	if((N=newNode(L,x,y-1,opL,nds))!=NULL)//if the node downside is not a wall or a already visited node.
+	if((N=newNode(L,x,(y>0)?y-1:L->heigth-1,opL,nds))!=NULL)//if the node downside is not a wall or a already visited node.
 		opL=addToList(opL,N);//put the downside neighbor into the open list at the heuristic place it belong to.
 	
 	return opL;}
 
 Node * extractPath(Node * clL)//start from the goal, iterativly,freing node that are not pathParent,taking pathParent node and put last node adress in its pathChild.
-{	return NULL;}
+{	
+	Node * Ntemp;
+	while(clL->listNext!=NULL)
+	{
+		if(clL->pathParent==clL->listNext)
+		{
+			clL->pathParent->pathChild=clL;
+			clL=clL->listNext;
+		}
+		else
+		{
+			Ntemp=clL->listNext->listNext;
+			free(clL->listNext);
+			clL->listNext=Ntemp;
+		}
+	}	
+	return clL;
+}
 
 Node* addToList(Node *N1,Node* NtoAdd)//add a node to a list sort heuristicly increasing
 {

@@ -44,7 +44,7 @@ Node *initOpenList(Map *L,int x, int y,char ** nds);
 Node *newNode(Map *L,int x, int y,Node * parent,char ** nds);
 
 
-Node * popList(Node * OpL);//remove the first node of the open list.
+
 
 /*! \fn addNeigh(Map* L,Node* OpL,char** nds);
     \brief try to create a node for each neighbor, and add them to the open list.
@@ -75,6 +75,7 @@ int rmList(Node* first);
 
 int distNtoP(Map *L,int P,Node *N);
 int distance_to_treasure(Map *L,int x,int y);
+int dist_h(Map *L,int x,int y);
 int abs(int x);
 
 

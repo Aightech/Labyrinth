@@ -41,7 +41,7 @@ int main()
 		switch(choice)
 		{
 			case 30:
-				addStr(L->PlayerName,selectL(L,3,L->guiWins[3]->posButt[0][0],L->guiWins[3]->posButt[0][1]+8,L->listPlrName,2),"");
+				addStr(L->PlayerName,selectL(L,3,L->guiWins[3]->posButt[0][0],L->guiWins[3]->posButt[0][1]+8,L->listPlrName,3),"");
 				choice++;
 			break;
 			case 31:
@@ -49,7 +49,7 @@ int main()
 				choice++;
 			break;
 			case 32:
-				addStr(L->TimeOut,"timeout=",selectL(L,3,L->guiWins[3]->posButt[2][0],L->guiWins[3]->posButt[2][1]+9,L->listTimeOut,3));
+				addStr(L->TimeOut," timeout=",selectL(L,3,L->guiWins[3]->posButt[2][0],L->guiWins[3]->posButt[2][1]+9,L->listTimeOut,3));
 				choice++;
 			break;
 			case 33:
