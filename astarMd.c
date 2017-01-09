@@ -12,9 +12,17 @@
 int astarMode(Map *L)
 {	
 	
-	L->players[0]->toGoal=astarPath(L,0);
+	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
+	t_move* myMove=(t_move*) malloc(sizeof(t_move));
+	myMove->type = DO_NOTHING;
+	myMove->value = 0;
+	t_move* opMove=(t_move*) malloc(sizeof(t_move));
+	opMove->type = DO_NOTHING;
+	opMove->value = 0;
+	dispMap(L);
 	
-		
+	while(ret==MOVE_OK)
+	{
 		if (L->players[0]->turn==1)//op turn	
 		{
 			addStr(L->infoP2[5],"                         ","");
@@ -45,12 +53,16 @@ int astarMode(Map *L)
 				}
 			}
 			else
+			{
 				myMove->type=DO_NOTHING;
+				addStr(L->infoP1[8],"no path found","");
+			}
 			movement(L,0,myMove);
 			ret = sendMove(*myMove);
 		  }
 		  dispInfo(L);
 		dispMap(L);
+		dispPath(L);
 		  //endwin();
 		  //printLabyrinth();
 		  
@@ -110,27 +122,22 @@ Path * astarPath(Map* L, int P)
 	}
 		
 	Node * openList=initOpenList(L,L->players[0]->X,L->players[0]->Y,nodes);
-	addStr(L->infoP1[6]," step 1","");
+	
 	dispInfo(L);
 	
-	Nact=openList;
-	wattron(win->win,COLOR_PAIR(2));
-	mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
-	wattroff(win->win,COLOR_PAIR(2));
+	
 	
 	Node * closedList=NULL;
 	Node * Ntemp=NULL;
 	
-	while(*(openList->ncase)!=goalValue)//if the openlist isn't empty and the current node is not the goal.
+	while(openList!=NULL&&*(openList->ncase)!=goalValue)//if the openlist isn't empty and the current node is not the goal.
 	{
-		Nact=openList;
+		/*Nact=openList;
 		wattron(win->win,COLOR_PAIR(2));
 		mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
-		wattroff(win->win,COLOR_PAIR(2));
-		addStr(L->infoP1[6]," step 2","");
+		wattroff(win->win,COLOR_PAIR(2));*/
 		dispInfo(L);
 		addNeigh(L,openList,nodes);//add the neighbors of the first node of the openlist
-		addStr(L->infoP1[6]," step 3","");
 		dispInfo(L);
 		Ntemp=openList->listNext;
 		openList->listNext=closedList;
@@ -138,33 +145,44 @@ Path * astarPath(Map* L, int P)
 		openList=Ntemp;
 	}
 	
-	
+	//int ch = getch();
 	
 	Nact=closedList;
-	while(Nact!=NULL)
+	/*while(Nact!=NULL)
 	{
-		wattron(win->win,COLOR_PAIR(2));
-		mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
-		wattroff(win->win,COLOR_PAIR(2));
-		Nact=Nact->pathParent;
-	}
-		
-	wattron(win->win,COLOR_PAIR(3));
-	mvwaddch(win->win, starty+L->players[0]->Y, startx+L->players[0]->X, 'o');
-	wattroff(win->win,COLOR_PAIR(3));
-	
-	/*if(*(openList->ncase)==goalValue)
-	{
-		path=(Path*) malloc(sizeof(Path));
-		if (nodes==NULL) //test if the allocation is a success
+		if(openList!=NULL&&*(openList->ncase)==goalValue)
 		{
-			printf("Malloc Error!\n");
-			exit(EXIT_FAILURE);
+			wattron(win->win,COLOR_PAIR(2));
+			mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
+			wattroff(win->win,COLOR_PAIR(2));
 		}
-		path->size=openList->cost;
-		path->first=extractPath(openList);//if the path is found, get the path.
+		else
+		{
+			wattron(win->win,COLOR_PAIR(1));
+			mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
+			wattroff(win->win,COLOR_PAIR(1));
+		}
+		Nact=Nact->pathParent;
 	}*/
-	addStr(L->infoP1[6]," step 4","");
+	
+	if(openList!=NULL)
+	{
+		if(*(openList->ncase)==goalValue)
+		{
+			path=(Path*) malloc(sizeof(Path));
+			if (nodes==NULL) //test if the allocation is a success
+			{
+				printf("Malloc Error!\n");
+				exit(EXIT_FAILURE);
+				addStr(L->infoP1[6],"Malloc Error!","");
+			}
+			addStr(L->infoP1[7],"path found","");
+			openList->listNext=closedList;
+			closedList=openList;
+			path->size=openList->cost;
+			path->first=extractPath(closedList);//if the path is found, get the path.
+		}
+	}
 	dispInfo(L);
 	
 	for(i =0;i<L->heigth;i++)
@@ -196,8 +214,10 @@ Node *initOpenList(Map *L,int x, int y,char ** nds)
 Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case for a neighbour of c
 {	
 	Node* N=NULL;
+	
 	if(nds[y][x]!=1&&L->cases[y][x]!=1)
 	{
+		
 		N=(Node *) malloc(sizeof(Node));
 		/*if (nodes==NULL) //test if the allocation is a success
 		{
@@ -206,9 +226,10 @@ Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case
 		}*/
 		N->X=x;
 		N->Y=y;
+		
 		N->ncase=L->cases[N->Y]+N->X;
 		N->cost=parent->cost+1;
-		N->heuristic=N->cost+distNtoP(L,0,N);//dist_h(L,x,y);
+		N->heuristic=N->cost+distNtoP(L,2,N);//dist_h(L,x,y);
 		N->pathParent=parent;
 		nds[N->Y][N->X]=1;
 	}
@@ -235,10 +256,13 @@ Node * addNeigh(Map* L,Node* opL,char** nds)// try to create a node for each nei
 	if((N=newNode(L,x,(y>0)?y-1:L->heigth-1,opL,nds))!=NULL)//if the node downside is not a wall or a already visited node.
 		opL=addToList(opL,N);//put the downside neighbor into the open list at the heuristic place it belong to.
 	
-	return opL;}
+	
+	return opL;
+}
 
 Node * extractPath(Node * clL)//start from the goal, iterativly,freing node that are not pathParent,taking pathParent node and put last node adress in its pathChild.
 {	
+	
 	Node * Ntemp;
 	while(clL->listNext!=NULL)
 	{
@@ -260,8 +284,9 @@ Node * extractPath(Node * clL)//start from the goal, iterativly,freing node that
 Node* addToList(Node *N1,Node* NtoAdd)//add a node to a list sort heuristicly increasing
 {
 	Node *Nact=N1;
-	if(N1->heuristic >= NtoAdd->heuristic)//pour l'ordre croissant ">"
+	if(N1->heuristic > NtoAdd->heuristic)//pour l'ordre croissant ">"
 	{
+		
 		NtoAdd->listNext = N1;
 		return NtoAdd;
 	}

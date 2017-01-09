@@ -188,7 +188,6 @@ int GUI(Map *L,int lstGUIch)
 	{
 		dispMap(L);
 		dispInfo(L);
-		dispPath(L);
 		
 		c=choice(L->guiWins[i],lstGUIch%10);
 		//mvprintw(40, 0, "%d", c+i*10);

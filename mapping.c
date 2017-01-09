@@ -30,13 +30,16 @@ Map* initMap()
 		}
 	}
 	
-	L->listPlrName=(char **) malloc(3*sizeof(char*));
+	L->listPlrName=(char **) malloc(4*sizeof(char*));
 	L->listPlrName[0]=(char*)malloc(25*sizeof(char));
 	addStr(L->listPlrName[0],"aightech","");
 	L->listPlrName[1]=(char*)malloc(25*sizeof(char));
-	addStr(L->listPlrName[1],"BarbeBleu","");
+	addStr(L->listPlrName[1],"BarbeBleue","");
 	L->listPlrName[2]=(char*)malloc(25*sizeof(char));
-	addStr(L->listPlrName[2],"K250","");
+	addStr(L->listPlrName[2],"K2S0","");
+	L->listPlrName[3]=(char*)malloc(25*sizeof(char));
+	addStr(L->listPlrName[3],"Darkradox","");
+	
 	
 	addStr(L->PlayerName,L->listPlrName[0],"");//default;
 	

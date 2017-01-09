@@ -41,7 +41,7 @@ int main()
 		switch(choice)
 		{
 			case 30:
-				addStr(L->PlayerName,selectL(L,3,L->guiWins[3]->posButt[0][0],L->guiWins[3]->posButt[0][1]+8,L->listPlrName,3),"");
+				addStr(L->PlayerName,selectL(L,3,L->guiWins[3]->posButt[0][0],L->guiWins[3]->posButt[0][1]+8,L->listPlrName,4),"");
 				choice++;
 			break;
 			case 31:
