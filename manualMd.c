@@ -5,6 +5,13 @@
 #include "mapping.h"
 #include <unistd.h>
 
+/*! \file manualMd.c
+    \brief Manual mode related functions.
+    \author Maeva Arlandis et Alexis Devillard
+    \version 6.2
+    \date 10 janvier 2017
+*/
+
 void manualMode(Map* L)
 {
 	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */

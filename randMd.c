@@ -8,8 +8,12 @@
 #include <unistd.h>
 #include <time.h>
 
-// pointeur move, largeur et longueur du lab
-// run until generate a possible move 
+/*! \file randMd.c
+    \brief Rand mode related functions.
+    \author Maeva Arlandis et Alexis Devillard
+    \version 6.2
+    \date 10 janvier 2017
+*/
 
 void gene_randmove(Map *L,t_move *move,int P)
 {
@@ -38,14 +42,6 @@ void gene_randmove(Map *L,t_move *move,int P)
 	}
 }
 
-int testMoveM(Map *L,int P)
-//return 0 if "move", which may be a rotation of the map, is possible for player and -1 otherwise 
-{
-	if (L->players[P]->energy<5)
-		return -1;
-	else
-		return 0;
-}
 
 void convert_movetype(int type, t_move *move)
 //convert an int, for example generate by rand, to a t_move type

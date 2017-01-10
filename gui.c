@@ -7,6 +7,13 @@
 #include "gui.h"
 #include "mapping.h"
 
+/*! \file gui.c
+    \brief GUI related functions.
+    \author Maeva Arlandis et Alexis Devillard
+    \version 6.2
+    \date 10 janvier 2017
+*/
+
 void initGUI(Map * L)
 {
 	initscr();

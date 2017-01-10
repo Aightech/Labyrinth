@@ -1,6 +1,14 @@
 #ifndef GUI_H
 #define GUI_H
 #include "struct.h"
+
+/*! \file gui.h
+    \brief GUI related functions descriptions.
+    \author Maeva Arlandis et Alexis Devillard
+    \version 6.2
+    \date 10 janvier 2017
+*/
+
 void initGUI(Map * L);
 int GUI(Map *L,int lstGUIh);
 //void win_show(WIN *win);

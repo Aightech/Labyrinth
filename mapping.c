@@ -7,6 +7,12 @@
 #include "labyrinthAPI.h"
 #include <unistd.h>
 
+/*! \file mapping.c
+    \brief Mapping related functions.
+    \author Maeva Arlandis et Alexis Devillard
+    \version 6.2
+    \date 10 janvier 2017
+*/
 
 
 Map* initMap()
@@ -285,6 +291,15 @@ int testMoveP(Map *L,int P,t_move *move)
 
 
 
+}
+
+int testMoveM(Map *L,int P)
+//return 0 if e a rotation of the map is possible for player and -1 otherwise 
+{
+	if (L->players[P]->energy<5)
+		return -1;
+	else
+		return 0;
 }
 
 int moveP(Map *L, int P,t_move *move)

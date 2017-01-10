@@ -4,13 +4,11 @@
 #include "labyrinthAPI.h"
 
 /*! \file mapping.h
-    \brief Mapping related functions.
-    
-    Details.
+    \brief Mapping related functions descriptions.
+    \author Maeva Arlandis et Alexis Devillard
+    \version 6.2
+    \date 10 janvier 2017
 */
-
-
-
 
 /*! \fn Map* initMap();
     \brief Return a map structure.
@@ -32,6 +30,13 @@ void updateMap(Map *L);
     \param move The movement that is tested.
 */
 int testMoveP(Map *L,int P,t_move* move); 
+
+/*! \fn int testMoveM(Map *L,int P)
+    \brief Return 0 if player P has enough energy to move the Map and -1 otherwise 
+    \param L The labyrinth map structure.
+    \param P The player we want to know if he can move the map.
+*/
+int testMoveM(Map *L,int P);
 
 /*! \fn int moveP(Map *L, int P,t_move* move);
     \brief Move the position of the player on the map. Return 1 if can't move return : -1(wall) -2(player)
