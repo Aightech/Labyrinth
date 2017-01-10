@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "gui.h"
+#include "guilib.h"
 #include "struct.h"
 #include "strlib.h"
 
