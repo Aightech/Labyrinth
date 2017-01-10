@@ -289,11 +289,13 @@ int dispPath(Map* L)//Display the path of a player
 			Nact=L->players[i]->toGoal->first;
 			while(Nact!=NULL)
 			{
-				
+				if(n>1)
+				{
 					wattron(win->win,COLOR_PAIR(2));
 					mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
 					wattroff(win->win,COLOR_PAIR(2));
-					
+				}
+				n++;	
 				Nact=Nact->pathChild;
 			}
 		}

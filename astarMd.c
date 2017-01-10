@@ -39,14 +39,14 @@ int astarMode(Map *L)
 				Node * NToGO=L->players[0]->toGoal->first->pathChild;
 				if(NToGO->X==L->players[0]->X)
 				{
-					if(NToGO->Y>L->players[0]->Y)
+					if((NToGO->Y>L->players[0]->Y && NToGO->Y!=L->heigth-1) || (NToGO->Y==0&&L->players[0]->Y==L->heigth-1)||(L->players[0]->Y==L->heigth-2 && NToGO->Y==L->heigth-1))
 						myMove->type=MOVE_DOWN;
 					else
 						myMove->type=MOVE_UP;
 				}
 				else
 				{
-					if(NToGO->X>L->players[0]->X)
+					if((NToGO->X>L->players[0]->X && NToGO->X!=L->width-1) || (NToGO->X==0 && L->players[0]->X==L->width-1)||(L->players[0]->X==L->width-2 && NToGO->X==L->width-1))
 						myMove->type=MOVE_RIGHT;
 					else
 						myMove->type=MOVE_LEFT;
@@ -140,7 +140,7 @@ Path * astarPath(Map* L, int P)
 		openList=Ntemp;
 	}
 	
-	//int ch = getch();
+	int ch = getch();
 	
 	/*Nact=closedList;
 	while(Nact!=NULL)
@@ -173,9 +173,12 @@ Path * astarPath(Map* L, int P)
 				addStr(L->infoP1[6],"Malloc Error!","");
 			}
 			addStr(L->infoP1[7],"path found","");
+			Ntemp=openList->listNext;
 			openList->listNext=closedList;
 			closedList=openList;
 			path->size=openList->cost;
+			openList=Ntemp;
+			rmOList(openList);
 			path->first=extractPath(closedList);//if the path is found, get the path.
 		}
 	}
