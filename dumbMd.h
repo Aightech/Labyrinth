@@ -3,10 +3,18 @@
 #include "struct.h"
 //#include "labyrinthAPI.h"
 
-/*! \fn void dumbMode(Map* L)
-    \brief Mode of the game where the player control his moves turn by turn with the console.
-    \param L The labyrinth map structure.
+/*! \file dumbMd.h
+    \brief Dumb mode related functions.
+    \author Maeva Arlandis et Alexis Devillard
+    \version 6.2
+    \date 10 janvier 2017
+    
+    Details.
 */
 
+/*! \fn void dumbMode(Map* L)
+    \brief Run the mode of the game where our player don't do anything.
+    \param L The labyrinth map structure.
+*/
 void dumbMode(Map* L);
 #endif

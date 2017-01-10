@@ -6,6 +6,14 @@
 #include <panel.h>
 #include <ncurses.h>
 
+/*! \file struct.h
+    \brief Data structures use in the program.
+    \author Maeva Arlandis et Alexis Devillard
+    \version 6.2
+    \date 10 janvier 2017
+    
+    Details.
+*/
 
 
 typedef struct _LStep{//case of lab to create path

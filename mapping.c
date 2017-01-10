@@ -283,6 +283,15 @@ int testMoveP(Map *L,int P,t_move *move)
 
 }
 
+int testMoveM(Map *L,int P)
+//return 0 if e a rotation of the map is possible for player and -1 otherwise 
+{
+	if (L->players[P]->energy<5)
+		return -1;
+	else
+		return 0;
+}
+
 int moveP(Map *L, int P,t_move *move)
 {
 	int state=0;

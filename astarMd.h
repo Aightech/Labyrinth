@@ -5,11 +5,12 @@
 
 /*! \file astarMd.h
     \brief A* related functions.
+    \author Maeva Arlandis et Alexis Devillard
+    \version 6.2
+    \date 10 janvier 2017
     
     Details.
 */
-
-
 
 
 /*! \fn int astarMode(Map *L);
@@ -18,7 +19,7 @@
 */
 int astarMode(Map *L);
 
-/*! \fn int astarPath(Map *L,int P);
+/*! \fn Path * astarPath(Map *L,int P);
     \brief Generate the shortest path to the goal with an A* algo.
     \param L The labyrinth map structure.
     \param P the player from which the path wll start.
@@ -43,10 +44,7 @@ Node *initOpenList(Map *L,int x, int y,char ** nds);
 */
 Node *newNode(Map *L,int x, int y,Node * parent,char ** nds);
 
-
-
-
-/*! \fn addNeigh(Map* L,Node* OpL,char** nds);
+/*! \fn Node * addNeigh(Map* L,Node* OpL,char** nds);
     \brief try to create a node for each neighbor, and add them to the open list.
     \param L The labyrinth map structure.
     \param OpL The open list.
@@ -73,10 +71,13 @@ Node* addToList(Node* N1,Node* NtoAdd);
 */
 int rmList(Node* first);
 
+/*! \fn int distNtoP(Map *L,int P,Node *N)
+    \brief Calculate the distance as the crows fly from the node N to the player P.
+    \param L The labyrinth map structure.
+    \param P Number of the Player.
+    \param N Pointer to the Node.
+*/
 int distNtoP(Map *L,int P,Node *N);
-int distance_to_treasure(Map *L,int x,int y);
-int dist_h(Map *L,int x,int y);
-int abs(int x);
 
 
 #endif
