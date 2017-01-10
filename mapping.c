@@ -36,7 +36,7 @@ Map* initMap()
 		}
 	}
 	
-	L->listPlrName=(char **) malloc(4*sizeof(char*));
+	L->listPlrName=(char **) malloc(5*sizeof(char*));
 	L->listPlrName[0]=(char*)malloc(25*sizeof(char));
 	addStr(L->listPlrName[0],"aightech","");
 	L->listPlrName[1]=(char*)malloc(25*sizeof(char));
@@ -45,32 +45,36 @@ Map* initMap()
 	addStr(L->listPlrName[2],"K2SO","");
 	L->listPlrName[3]=(char*)malloc(25*sizeof(char));
 	addStr(L->listPlrName[3],"Darkradox","");
+	L->listPlrName[4]=NULL;
 	
 	
 	addStr(L->PlayerName,L->listPlrName[0],"");//default;
 	
-	L->listSvrName=(char **) malloc(2*sizeof(char*));
+	L->listSvrName=(char **) malloc(3*sizeof(char*));
 	L->listSvrName[1]=(char*)malloc(50*sizeof(char));
 	addStr(L->listSvrName[1],"pc4023.polytech.upmc.fr","");
 	L->listSvrName[0]=(char*)malloc(50*sizeof(char));
 	addStr(L->listSvrName[0],"pc4001.polytech.upmc.fr","");
+	L->listSvrName[2]=NULL;
 	
 	
 	addStr(L->PlayerName,L->listSvrName[0],"");//default;
 	
-	L->listTimeOut=(char **) malloc(3*sizeof(char*));
+	L->listTimeOut=(char **) malloc(4*sizeof(char*));
 	L->listTimeOut[0]=(char*)malloc(10*sizeof(char));
 	addStr(L->listTimeOut[0],"100","");
 	L->listTimeOut[1]=(char*)malloc(10*sizeof(char));
 	addStr(L->listTimeOut[1],"10","");
 	L->listTimeOut[2]=(char*)malloc(10*sizeof(char));
 	addStr(L->listTimeOut[2],"1000","");
+	L->listTimeOut[3]=NULL;
 	
 	addStr(L->TimeOut,L->listTimeOut[0],"");//default;
 	
-	L->listPrtName=(char **) malloc(1*sizeof(char*));
+	L->listPrtName=(char **) malloc(2*sizeof(char*));
 	L->listPrtName[0]=(char*)malloc(10*sizeof(char));
 	addStr(L->listPrtName[0],"1234","");
+	L->listPrtName[1]=NULL;
 	
 	addStr(L->PortName,L->listPrtName[0],"");//default;
 	

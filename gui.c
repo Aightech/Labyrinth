@@ -464,15 +464,18 @@ int dispInfo(Map *L)//Display the Player info
 	return 1;
 }
 
-char* selectL(Map *L, int w, int starty, int startx,char ** list,int sizeL)
+char* selectL(Map *L, int w, int starty, int startx,char ** list)
 {
 	Win *win=L->guiWins[w];
-	int x, y,highlight=0,ch=0,i;;
+	int x, y,highlight=0,ch=0,i;
 	getbegyx(win->win, y, x);
 	x+=startx;
 	y+=starty;
 	char label[50];
-  	Win* directory = (Win *)malloc(nbrW*sizeof(Win));
+	int sizeL=0;
+	while(list[sizeL]!=NULL){sizeL++;}//count the number of item to display
+	
+  	Win* directory = (Win *)malloc(sizeof(Win));
   	directory->win=newwin(sizeL+4,addStr(label,list[0],"")+6,y,x);
   	addStr(directory->label,"choose","");
   	directory->numButt=0;
