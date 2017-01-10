@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['width',['width',['../df/dec/struct_8h.html#a2474a5474cbff19523a51eb1de01cda4',1,'_Map']]],
-  ['win',['win',['../df/dec/struct_8h.html#a09d962b38c0d24e36078d717d2a6ed96',1,'_Win']]]
+  ['y',['Y',['../d0/d6e/struct___node.html#aa482c4cc86a24474e4fb19b5b5978778',1,'_Node::Y()'],['../d4/dcb/struct___player.html#aa482c4cc86a24474e4fb19b5b5978778',1,'_Player::Y()']]]
 ];

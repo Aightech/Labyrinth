@@ -6,11 +6,11 @@
 
 {\bfseries Node} {\itshape A node of the map (useful for Astar search)}
 
-{\bfseries Path} {\itshape list of step and its size}
+{\bfseries \hyperlink{struct_path}{Path}} {\itshape list of step and its size}
 
-{\bfseries Player} {\itshape player}
+{\bfseries \hyperlink{struct_player}{Player}} {\itshape player}
 
-{\bfseries Map} {\itshape the labyrinther}
+{\bfseries \hyperlink{struct_map}{Map}} {\itshape the labyrinther}
 
 \subsection*{list of functions\+:}
 
@@ -24,7 +24,7 @@
 
 {\bfseries int disp\+Path(\+Map$\ast$ L);} {\itshape Display the paths of the players to the goal}
 
-\subsubsection*{Map functions}
+\subsubsection*{\hyperlink{struct_map}{Map} functions}
 
 {\bfseries Map$\ast$ \hyperlink{mapping_8h_af7560ce2af2a08abe0b230e7ba56cf45}{init\+Map()};} {\itshape Initialize the map}
 
@@ -36,6 +36,6 @@
 
 {\bfseries int move\+Map(\+Map L,int row, int line);} {\itshape Return 1. If can\textquotesingle{}t move return \+: -\/1(not enought energy)}
 
-{\bfseries Path Astar(\+Map L,\+Player P1, Player P2);} {\itshape Return the shortest path beetween P1 and P2 (could work with Map move)}
+{\bfseries \hyperlink{struct_path}{Path} Astar(\+Map L,\+Player P1, Player P2);} {\itshape Return the shortest path beetween P1 and P2 (could work with \hyperlink{struct_map}{Map} move)}
 
 {\bfseries int evaluate(\+Map L);} 

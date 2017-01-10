@@ -1,60 +1,65 @@
 \hypertarget{struct___node}{}\section{\+\_\+\+Node Struct Reference}
 \label{struct___node}\index{\+\_\+\+Node@{\+\_\+\+Node}}
+
+
+Node is a case from the map. It is used in Astar mode.  
+
+
+
+
+{\ttfamily \#include $<$struct.\+h$>$}
+
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 int {\bfseries X}\hypertarget{struct___node_a80c0944640e62d3ed6c5419c1bcc0c88}{}\label{struct___node_a80c0944640e62d3ed6c5419c1bcc0c88}
 
 \item 
-int {\bfseries Y}\hypertarget{struct___node_aa482c4cc86a24474e4fb19b5b5978778}{}\label{struct___node_aa482c4cc86a24474e4fb19b5b5978778}
-
+int \hyperlink{struct___node_aa482c4cc86a24474e4fb19b5b5978778}{Y}
 \item 
-int {\bfseries cost}\hypertarget{struct___node_a66700f11d42fee2413e58dbf49c43ee1}{}\label{struct___node_a66700f11d42fee2413e58dbf49c43ee1}
-
+int \hyperlink{struct___node_a66700f11d42fee2413e58dbf49c43ee1}{cost}
 \item 
-int {\bfseries heuristic}\hypertarget{struct___node_a266b59afb2a9e30cb84c2b14388fb5fe}{}\label{struct___node_a266b59afb2a9e30cb84c2b14388fb5fe}
-
+int \hyperlink{struct___node_a266b59afb2a9e30cb84c2b14388fb5fe}{heuristic}
 \item 
-char $\ast$ {\bfseries ncase}\hypertarget{struct___node_aa0cc47f15f87b45c6960e18fd786f286}{}\label{struct___node_aa0cc47f15f87b45c6960e18fd786f286}
-
+char $\ast$ \hyperlink{struct___node_aa0cc47f15f87b45c6960e18fd786f286}{ncase}
 \item 
-struct \hyperlink{struct___node}{\+\_\+\+Node} $\ast$ {\bfseries path\+Parent}\hypertarget{struct___node_a7d0cf1a91c4dd335673a79aa5db87d01}{}\label{struct___node_a7d0cf1a91c4dd335673a79aa5db87d01}
-
+struct \hyperlink{struct___node}{\+\_\+\+Node} $\ast$ \hyperlink{struct___node_a7d0cf1a91c4dd335673a79aa5db87d01}{path\+Parent}
 \item 
-struct \hyperlink{struct___node}{\+\_\+\+Node} $\ast$ {\bfseries path\+Child}\hypertarget{struct___node_ac1bcf3cc6dca353ea81f1e92b01d7ecb}{}\label{struct___node_ac1bcf3cc6dca353ea81f1e92b01d7ecb}
-
+struct \hyperlink{struct___node}{\+\_\+\+Node} $\ast$ \hyperlink{struct___node_ac1bcf3cc6dca353ea81f1e92b01d7ecb}{path\+Child}
 \item 
-struct \hyperlink{struct___node}{\+\_\+\+Node} $\ast$ {\bfseries list\+Next}\hypertarget{struct___node_a92b940ae1bafab81f2c09dcb727b2759}{}\label{struct___node_a92b940ae1bafab81f2c09dcb727b2759}
-
+struct \hyperlink{struct___node}{\+\_\+\+Node} $\ast$ \hyperlink{struct___node_a92b940ae1bafab81f2c09dcb727b2759}{list\+Next}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Node is a case from the map. It is used in Astar mode. 
 
 \subsection{Field Documentation}
 \index{\+\_\+\+Node@{\+\_\+\+Node}!cost@{cost}}
 \index{cost@{cost}!\+\_\+\+Node@{\+\_\+\+Node}}
 \subsubsection[{\texorpdfstring{cost}{cost}}]{\setlength{\rightskip}{0pt plus 5cm}int cost}\hypertarget{struct___node_a66700f11d42fee2413e58dbf49c43ee1}{}\label{struct___node_a66700f11d42fee2413e58dbf49c43ee1}
-\index{\+\_\+\+Node@{\+\_\+\+Node}!heuristic@{heuristic}}
+distance from the player to the current node \index{\+\_\+\+Node@{\+\_\+\+Node}!heuristic@{heuristic}}
 \index{heuristic@{heuristic}!\+\_\+\+Node@{\+\_\+\+Node}}
 \subsubsection[{\texorpdfstring{heuristic}{heuristic}}]{\setlength{\rightskip}{0pt plus 5cm}int heuristic}\hypertarget{struct___node_a266b59afb2a9e30cb84c2b14388fb5fe}{}\label{struct___node_a266b59afb2a9e30cb84c2b14388fb5fe}
-\index{\+\_\+\+Node@{\+\_\+\+Node}!list\+Next@{list\+Next}}
+distance between the player and the treasure as the crows fly \index{\+\_\+\+Node@{\+\_\+\+Node}!list\+Next@{list\+Next}}
 \index{list\+Next@{list\+Next}!\+\_\+\+Node@{\+\_\+\+Node}}
 \subsubsection[{\texorpdfstring{list\+Next}{listNext}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \+\_\+\+Node}$\ast$ list\+Next}\hypertarget{struct___node_a92b940ae1bafab81f2c09dcb727b2759}{}\label{struct___node_a92b940ae1bafab81f2c09dcb727b2759}
-\index{\+\_\+\+Node@{\+\_\+\+Node}!ncase@{ncase}}
+used if in Closedlist and Openlist \index{\+\_\+\+Node@{\+\_\+\+Node}!ncase@{ncase}}
 \index{ncase@{ncase}!\+\_\+\+Node@{\+\_\+\+Node}}
 \subsubsection[{\texorpdfstring{ncase}{ncase}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ ncase}\hypertarget{struct___node_aa0cc47f15f87b45c6960e18fd786f286}{}\label{struct___node_aa0cc47f15f87b45c6960e18fd786f286}
-\index{\+\_\+\+Node@{\+\_\+\+Node}!path\+Child@{path\+Child}}
+pointer to a case of the map in order to get the data of \index{\+\_\+\+Node@{\+\_\+\+Node}!path\+Child@{path\+Child}}
 \index{path\+Child@{path\+Child}!\+\_\+\+Node@{\+\_\+\+Node}}
 \subsubsection[{\texorpdfstring{path\+Child}{pathChild}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \+\_\+\+Node}$\ast$ path\+Child}\hypertarget{struct___node_ac1bcf3cc6dca353ea81f1e92b01d7ecb}{}\label{struct___node_ac1bcf3cc6dca353ea81f1e92b01d7ecb}
-\index{\+\_\+\+Node@{\+\_\+\+Node}!path\+Parent@{path\+Parent}}
+pointer to get the Node evaluated after \index{\+\_\+\+Node@{\+\_\+\+Node}!path\+Parent@{path\+Parent}}
 \index{path\+Parent@{path\+Parent}!\+\_\+\+Node@{\+\_\+\+Node}}
 \subsubsection[{\texorpdfstring{path\+Parent}{pathParent}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \+\_\+\+Node}$\ast$ path\+Parent}\hypertarget{struct___node_a7d0cf1a91c4dd335673a79aa5db87d01}{}\label{struct___node_a7d0cf1a91c4dd335673a79aa5db87d01}
-\index{\+\_\+\+Node@{\+\_\+\+Node}!X@{X}}
+pointer to get the Node evaluated before \index{\+\_\+\+Node@{\+\_\+\+Node}!X@{X}}
 \index{X@{X}!\+\_\+\+Node@{\+\_\+\+Node}}
 \subsubsection[{\texorpdfstring{X}{X}}]{\setlength{\rightskip}{0pt plus 5cm}int X}\hypertarget{struct___node_a80c0944640e62d3ed6c5419c1bcc0c88}{}\label{struct___node_a80c0944640e62d3ed6c5419c1bcc0c88}
 \index{\+\_\+\+Node@{\+\_\+\+Node}!Y@{Y}}
 \index{Y@{Y}!\+\_\+\+Node@{\+\_\+\+Node}}
 \subsubsection[{\texorpdfstring{Y}{Y}}]{\setlength{\rightskip}{0pt plus 5cm}int Y}\hypertarget{struct___node_aa482c4cc86a24474e4fb19b5b5978778}{}\label{struct___node_aa482c4cc86a24474e4fb19b5b5978778}
-
+position of the node in the map. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
