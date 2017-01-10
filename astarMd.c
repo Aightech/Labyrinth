@@ -145,7 +145,7 @@ Path * astarPath(Map* L, int P)
 		openList=Ntemp;
 	}
 	
-	//int ch = getch();
+	int ch = getch();
 	
 	Nact=closedList;
 	/*while(Nact!=NULL)

@@ -36,7 +36,7 @@ Map* initMap()
 	L->listPlrName[1]=(char*)malloc(25*sizeof(char));
 	addStr(L->listPlrName[1],"BarbeBleue","");
 	L->listPlrName[2]=(char*)malloc(25*sizeof(char));
-	addStr(L->listPlrName[2],"K2S0","");
+	addStr(L->listPlrName[2],"K2SO","");
 	L->listPlrName[3]=(char*)malloc(25*sizeof(char));
 	addStr(L->listPlrName[3],"Darkradox","");
 	
