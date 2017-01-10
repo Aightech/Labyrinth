@@ -20,25 +20,25 @@ typedef struct _LStep{//case of lab to create path
 }Lcase;
 
 /**
- * \struct Node
+ * \struct _Node
  * \brief Node is a case from the map.
  * It is used in Astar mode.
  */
 
 
 typedef struct _Node{//the nodes
-	int X,Y; /**< position of the node in the map. */
-	int cost; /**< distance from the player to the current node */
-	int heuristic; /**< distance between the player and the treasure as the crows fly */
-	char *ncase; /**< pointer to a case of the map in order to get the data of */
-	struct _Node * pathParent; /**< pointer to get the Node evaluated before */
-	struct _Node * pathChild; /**< pointer to get the Node evaluated after */
-	struct _Node * listNext; /**< used if in Closedlist and Openlist */
+	int X,Y; /**< Position of the node in the map. */
+	int cost; /**< Distance from the player to the current node */
+	int heuristic; /**< Distance between the player and the treasure as the crows fly */
+	char *ncase; /**< Pointer to a case of the map in order to get the data of */
+	struct _Node * pathParent; /**< Pointer to get the Node evaluated before */
+	struct _Node * pathChild; /**< Pointer to get the Node evaluated after */
+	struct _Node * listNext; /**< Used if in Closedlist and Openlist */
 	
 }Node;
 
 /**
- * \struct Path
+ * \struct _Path
  * \brief List of lab node and its size.
  * It is used in Astar mode.
  */
@@ -50,25 +50,25 @@ typedef struct _Path {
 }Path;
 
 /**
- * \struct Player
+ * \struct _Player
  * \brief Contains informations of position, energy and mode of a player.
  */
 
 typedef struct _Player {/
-	int lastX; /**< last X position of the player */
-	int lastY;/**< last Y position of the player */
-	int X;/**< current X position of the player  */
-	int Y; /**< current Y position of the player */
+	int lastX; /**< Last X position of the player */
+	int lastY;/**< Last Y position of the player */
+	int X;/**< Current X position of the player  */
+	int Y; /**< Current Y position of the player */
 	int turn; /**< 1 if it is the turn of the player, 0 if it is the turn of the opponnent    */
-	int energy; /**< energy of the player, +1 every turn, -5 if the move is a rotation  */
-	int mode; /**< dumb, manual, random, A*, smart A*  */
+	int energy; /**< Energy of the player, +1 every turn, -5 if the move is a rotation  */
+	int mode; /**< Dumb, manual, random, A*, smart A*  */
 	Path *toOtherP; /**< Path to go to the opponnent */
 	Path *toGoal; /**< Path to go to the treasure */
 	
 }Player;
 
 /**
- * \struct Win
+ * \struct _Win
  * \brief 
  */
 
@@ -85,7 +85,7 @@ typedef struct _Win {
 
 
 /**
- * \struct Map
+ * \struct _Map
  * \brief Contains informations of the Map.
  */
 
