@@ -8,6 +8,12 @@
 #include "astarMd.h"
 #include "labyrinthAPI.h"
 
+/*! \file astarMd.h
+    \brief A* related functions.
+    \author Maeva Arlandis et Alexis Devillard
+    \version 6.2
+    \date 10 janvier 2017
+*/
 
 int astarMode(Map *L)
 {	

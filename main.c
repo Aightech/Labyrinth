@@ -10,7 +10,12 @@
 #include "randMd.h"
 #include "astarMd.h"
 
-
+/*! \file main.c
+    \brief Main file to run the different modes and GUI options.
+    \author Maeva Arlandis et Alexis Devillard
+    \version 6.2
+    \date 10 janvier 2017
+*/
 
 
 Path Astar(Map *L,int P1, int P2); //return the shortest path beetween P1 and P2 

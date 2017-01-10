@@ -8,8 +8,12 @@
 #include <unistd.h>
 #include <time.h>
 
-// pointeur move, largeur et longueur du lab
-// run until generate a possible move 
+/*! \file randMd.c
+    \brief Rand mode related functions.
+    \author Maeva Arlandis et Alexis Devillard
+    \version 6.2
+    \date 10 janvier 2017
+*/
 
 void gene_randmove(Map *L,t_move *move,int P)
 {

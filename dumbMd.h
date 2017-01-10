@@ -4,12 +4,10 @@
 //#include "labyrinthAPI.h"
 
 /*! \file dumbMd.h
-    \brief Dumb mode related functions.
+    \brief Dumb mode related functions descriptions.
     \author Maeva Arlandis et Alexis Devillard
     \version 6.2
     \date 10 janvier 2017
-    
-    Details.
 */
 
 /*! \fn void dumbMode(Map* L)

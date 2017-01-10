@@ -3,13 +3,11 @@
 #include "struct.h"
 #include "labyrinthAPI.h"
 
-/*! \file randlMd.h
-    \brief Rand mode related functions.
+/*! \file randMd.h
+    \brief Rand mode related functions descriptions.
     \author Maeva Arlandis et Alexis Devillard
     \version 6.2
     \date 10 janvier 2017
-    
-    Details.
 */
 
 /*! \fn void gene_randmove(Map* L,t_move *move, int P)

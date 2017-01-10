@@ -4,12 +4,10 @@
 #include "labyrinthAPI.h"
 
 /*! \file mapping.h
-    \brief Mapping related functions.
+    \brief Mapping related functions descriptions.
     \author Maeva Arlandis et Alexis Devillard
     \version 6.2
     \date 10 janvier 2017
-    
-    Details.
 */
 
 /*! \fn Map* initMap();
