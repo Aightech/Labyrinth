@@ -67,11 +67,11 @@ Node * extractPath(Node * clL);
 */
 Node* addToList(Node* N1,Node* NtoAdd);
 
-/*! \fn int rmList(Node* first);
+/*! \fn int rmOList(Node* first);
     \brief Free each node of the list
     \param first First of the the list to remove.
 */
-int rmList(Node* first);
+int rmOList(Node* first);
 
 int distNtoP(Map *L,int P,Node *N);
 int distance_to_treasure(Map *L,int x,int y);

@@ -124,7 +124,7 @@ void getMap(Map *L)
 		break;
 	}
 	
-	char argMap[50];
+	char argMap[100];
 	switch(L->players[1]->mode)
 	{
 		case 0:
@@ -136,7 +136,7 @@ void getMap(Map *L)
 			addStr(L->infoP2[0],"  MANUAL","  (MANUAL)");
 		break;
 		case 2:
-			addStr(argMap,"PLAY_RANDOM",L->TimeOut);
+			addStr(argMap,"PLAY_RANDOM rotation=False",L->TimeOut);
 			addStr(L->infoP2[0],"  RANDOM MOVE PLAYER","  (RANDOM)");
 		break;
 		case 3:
@@ -145,6 +145,10 @@ void getMap(Map *L)
 		break;
 		case 4:
 			addStr(argMap,"ASTAR",L->TimeOut);
+			addStr(L->infoP2[0],"  Clever","  ( A* )");
+		break;
+		case 5:
+			addStr(argMap,"","");
 			addStr(L->infoP2[0],"  Clever","  ( A* )");
 		break;
 		

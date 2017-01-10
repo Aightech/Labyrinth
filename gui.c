@@ -97,7 +97,7 @@ void initGUI(Map * L)
 	L->guiWins[4]->posButt[6][1]=35;
 	addStr(L->guiWins[4]->labButt[6],"XX","");
 	
-	L->guiWins[5]->win=newwin(25, 10, 7, 80);//Player mode
+	L->guiWins[5]->win=newwin(32, 10, 0, 80);//Player mode
 	addStr(L->guiWins[5]->label,"P.mode:","");
 	L->guiWins[5]->numButt=7;
 	L->guiWins[5]->posButt=(int **)malloc(L->guiWins[5]->numButt*sizeof(int*));
@@ -129,7 +129,7 @@ void initGUI(Map * L)
 	addStr(L->guiWins[5]->labButt[6],"XXXXXX","");
 	
 	
-	L->guiWins[6]->win=newwin(25, 10, 7, 90);//Opponent mode
+	L->guiWins[6]->win=newwin(32, 10, 0, 90);//Opponent mode
 	addStr(L->guiWins[6]->label,"Op.md:","");
 	L->guiWins[6]->numButt=7;
 	L->guiWins[6]->posButt=(int **)malloc(L->guiWins[6]->numButt*sizeof(int*));
@@ -155,7 +155,7 @@ void initGUI(Map * L)
 	addStr(L->guiWins[6]->labButt[4],"  A*  ","");
 	L->guiWins[6]->posButt[5][0]=18;
 	L->guiWins[6]->posButt[5][1]=1;
-	addStr(L->guiWins[6]->labButt[5],"XXXXXX","");
+	addStr(L->guiWins[6]->labButt[5],"MATCHO","");
 	L->guiWins[6]->posButt[6][0]=21;
 	L->guiWins[6]->posButt[6][1]=1;
 	addStr(L->guiWins[6]->labButt[6],"XXXXXX","");
@@ -278,7 +278,7 @@ int dispMap(Map* L)//Display the labyrinth
 
 int dispPath(Map* L)//Display the path of a player
 {
-	int i;
+	int i,n=0;
 	Win* win=L->guiWins[0];
 	int starty=12-L->heigth/2+1,startx=18-L->width/2+1;
 	Node * Nact;
@@ -289,9 +289,11 @@ int dispPath(Map* L)//Display the path of a player
 			Nact=L->players[i]->toGoal->first;
 			while(Nact!=NULL)
 			{
-				wattron(win->win,COLOR_PAIR(2));
-				mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
-				wattroff(win->win,COLOR_PAIR(2));
+				
+					wattron(win->win,COLOR_PAIR(2));
+					mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
+					wattroff(win->win,COLOR_PAIR(2));
+					
 				Nact=Nact->pathChild;
 			}
 		}

@@ -95,11 +95,6 @@ int astarMode(Map *L)
 
 Path * astarPath(Map* L, int P)
 {
-	Win* win=L->guiWins[0];
-	int starty=12-L->heigth/2+1,startx=18-L->width/2+1;
-	Node * Nact;
-
-
 	Path * path=NULL;
 	int i,j;
 	char goalValue=4;//the value of the treasur case
@@ -147,8 +142,8 @@ Path * astarPath(Map* L, int P)
 	
 	//int ch = getch();
 	
-	Nact=closedList;
-	/*while(Nact!=NULL)
+	/*Nact=closedList;
+	while(Nact!=NULL)
 	{
 		if(openList!=NULL&&*(openList->ncase)==goalValue)
 		{
@@ -167,6 +162,7 @@ Path * astarPath(Map* L, int P)
 	
 	if(openList!=NULL)
 	{
+		
 		if(*(openList->ncase)==goalValue)
 		{
 			path=(Path*) malloc(sizeof(Path));
@@ -358,6 +354,19 @@ int dist_h(Map *L,int x,int y) // renvoie la somme des distances horizontales et
 	else
 		return x;
 }*/
+
+int rmOList(Node* first)
+{
+	Node * Ntemp;
+	while(first!=NULL)
+	{
+		Ntemp=first->listNext;
+		free(first);
+		first=Ntemp;
+		
+	}	
+	return 1;
+}
 
 /*List * add_to_list(List* list, Case c) //add the case c into list
 {
