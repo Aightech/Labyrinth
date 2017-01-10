@@ -9,18 +9,15 @@ A$\ast$ related functions.
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{astar_md_8h_a6fcd248ff5643acbb0b4fa966ce3cd0f}{astar\+Mode} (\hyperlink{struct___map}{Map} $\ast$L)
+int \hyperlink{astar_md_8h_a6fcd248ff5643acbb0b4fa966ce3cd0f}{astar\+Mode} (\hyperlink{struct_map}{Map} $\ast$L)
 \begin{DoxyCompactList}\small\item\em Generate simple A$\ast$ behavior. \end{DoxyCompactList}\item 
-\hyperlink{struct___path}{Path} $\ast$ \hyperlink{astar_md_8h_aa2523dcedbd90386c3716a638639d4f2}{astar\+Path} (\hyperlink{struct___map}{Map} $\ast$L, int P)
+\hyperlink{struct_path}{Path} $\ast$ \hyperlink{astar_md_8h_aa2523dcedbd90386c3716a638639d4f2}{astar\+Path} (\hyperlink{struct_map}{Map} $\ast$L, int P)
 \begin{DoxyCompactList}\small\item\em Generate the shortest path to the goal with an A$\ast$ algo. \end{DoxyCompactList}\item 
-\hyperlink{struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_ad4e0719576ebe703dcc6309e827992f2}{init\+Open\+List} (\hyperlink{struct___map}{Map} $\ast$L, int x, int y, char $\ast$$\ast$nds)
+\hyperlink{struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_ad4e0719576ebe703dcc6309e827992f2}{init\+Open\+List} (\hyperlink{struct_map}{Map} $\ast$L, int x, int y, char $\ast$$\ast$nds)
 \begin{DoxyCompactList}\small\item\em Initialise and return the node of the position (x,y). \end{DoxyCompactList}\item 
-\hyperlink{struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_a3fff4a8445cd48159ad39bf5e95f8431}{new\+Node} (\hyperlink{struct___map}{Map} $\ast$L, int x, int y, \hyperlink{struct___node}{Node} $\ast$parent, char $\ast$$\ast$nds)
+\hyperlink{struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_a3fff4a8445cd48159ad39bf5e95f8431}{new\+Node} (\hyperlink{struct_map}{Map} $\ast$L, int x, int y, \hyperlink{struct___node}{Node} $\ast$parent, char $\ast$$\ast$nds)
 \begin{DoxyCompactList}\small\item\em Initialise and return the node cominf from fromN. \end{DoxyCompactList}\item 
-\hyperlink{struct___node}{Node} $\ast$ {\bfseries pop\+List} (\hyperlink{struct___node}{Node} $\ast$OpL)\hypertarget{astar_md_8h_a4e8e05be400333b4955a8a4f1e211504}{}\label{astar_md_8h_a4e8e05be400333b4955a8a4f1e211504}
-
-\item 
-\hyperlink{struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_ac7758c289c28b122935f10a1bc8dcb04}{add\+Neigh} (\hyperlink{struct___map}{Map} $\ast$L, \hyperlink{struct___node}{Node} $\ast$OpL, char $\ast$$\ast$nds)
+\hyperlink{struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_ac7758c289c28b122935f10a1bc8dcb04}{add\+Neigh} (\hyperlink{struct_map}{Map} $\ast$L, \hyperlink{struct___node}{Node} $\ast$OpL, char $\ast$$\ast$nds)
 \begin{DoxyCompactList}\small\item\em try to create a node for each neighbor, and add them to the open list. \end{DoxyCompactList}\item 
 \hyperlink{struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_a9b4f457ca7c276eb535b22e2a37de74a}{extract\+Path} (\hyperlink{struct___node}{Node} $\ast$clL)
 \begin{DoxyCompactList}\small\item\em Starting from the goal, iterativly,freing node that are not path\+Parent,taking path\+Parent node and put last node adress in its path\+Child. \end{DoxyCompactList}\item 
@@ -28,10 +25,13 @@ int \hyperlink{astar_md_8h_a6fcd248ff5643acbb0b4fa966ce3cd0f}{astar\+Mode} (\hyp
 \begin{DoxyCompactList}\small\item\em Add a node to a list sort heuristicly increasing. \end{DoxyCompactList}\item 
 int \hyperlink{astar_md_8h_a9f2e525a00122b6a13abc912d078817d}{rm\+List} (\hyperlink{struct___node}{Node} $\ast$first)
 \begin{DoxyCompactList}\small\item\em Free each node of the list. \end{DoxyCompactList}\item 
-int {\bfseries dist\+NtoP} (\hyperlink{struct___map}{Map} $\ast$L, int P, \hyperlink{struct___node}{Node} $\ast$N)\hypertarget{astar_md_8h_aa2236259a3dd1633bef2c35b9ccfd56a}{}\label{astar_md_8h_aa2236259a3dd1633bef2c35b9ccfd56a}
+int {\bfseries dist\+NtoP} (\hyperlink{struct_map}{Map} $\ast$L, int P, \hyperlink{struct___node}{Node} $\ast$N)\hypertarget{astar_md_8h_aa2236259a3dd1633bef2c35b9ccfd56a}{}\label{astar_md_8h_aa2236259a3dd1633bef2c35b9ccfd56a}
 
 \item 
-int {\bfseries distance\+\_\+to\+\_\+treasure} (\hyperlink{struct___map}{Map} $\ast$L, int x, int y)\hypertarget{astar_md_8h_af110e353e2d3901320f2dd6066f6236c}{}\label{astar_md_8h_af110e353e2d3901320f2dd6066f6236c}
+int {\bfseries distance\+\_\+to\+\_\+treasure} (\hyperlink{struct_map}{Map} $\ast$L, int x, int y)\hypertarget{astar_md_8h_af110e353e2d3901320f2dd6066f6236c}{}\label{astar_md_8h_af110e353e2d3901320f2dd6066f6236c}
+
+\item 
+int {\bfseries dist\+\_\+h} (\hyperlink{struct_map}{Map} $\ast$L, int x, int y)\hypertarget{astar_md_8h_a73ad43b838e75903fcabbef2d3adc43a}{}\label{astar_md_8h_a73ad43b838e75903fcabbef2d3adc43a}
 
 \item 
 int {\bfseries abs} (int x)\hypertarget{astar_md_8h_a196e7f007a501cf9d0907cb2bab0b622}{}\label{astar_md_8h_a196e7f007a501cf9d0907cb2bab0b622}

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['mode',['mode',['../df/dec/struct_8h.html#a1ea5d0cb93f22f7d0fdf804bd68c3326',1,'_Player']]],
-  ['mvc',['mvC',['../df/dec/struct_8h.html#a23569f3884fe223e40739ce644769816',1,'_Map']]],
-  ['mvl',['mvL',['../df/dec/struct_8h.html#a610a529d29e0a116ba9b47eacecbb962',1,'_Map']]]
+  ['pathchild',['pathChild',['../d0/d6e/struct___node.html#ac1bcf3cc6dca353ea81f1e92b01d7ecb',1,'_Node']]],
+  ['pathparent',['pathParent',['../d0/d6e/struct___node.html#a7d0cf1a91c4dd335673a79aa5db87d01',1,'_Node']]],
+  ['playername',['PlayerName',['../d7/d1b/struct___map.html#a612b2a0ee041233958a9ef2896741004',1,'_Map']]],
+  ['portname',['PortName',['../d7/d1b/struct___map.html#a92a954e5ff7b84046e76bd7c9a54138b',1,'_Map']]]
 ];
