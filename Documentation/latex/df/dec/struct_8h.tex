@@ -1,5 +1,10 @@
 \hypertarget{struct_8h}{}\section{struct.\+h File Reference}
 \label{struct_8h}\index{struct.\+h@{struct.\+h}}
+
+
+Data structures use in the program.  
+
+
 {\ttfamily \#include $<$panel.\+h$>$}\\*
 {\ttfamily \#include $<$ncurses.\+h$>$}\\*
 \subsection*{Data Structures}
@@ -8,35 +13,56 @@
 struct \hyperlink{struct_8h_d4/dd5/struct___l_step}{\+\_\+\+L\+Step}
 \item 
 struct \hyperlink{struct_8h_d0/d6e/struct___node}{\+\_\+\+Node}
-\item 
+\begin{DoxyCompactList}\small\item\em Node is a case from the map. It is used in Astar mode.  \hyperlink{struct_8h_d0/d6e/struct___node}{More...}\end{DoxyCompactList}\item 
 struct \hyperlink{struct_8h_d7/d82/struct___path}{\+\_\+\+Path}
-\item 
+\begin{DoxyCompactList}\small\item\em List of lab node and its size. It is used in Astar mode.  \hyperlink{struct_8h_d7/d82/struct___path}{More...}\end{DoxyCompactList}\item 
 struct \hyperlink{struct_8h_d4/dcb/struct___player}{\+\_\+\+Player}
-\item 
+\begin{DoxyCompactList}\small\item\em Contains informations of position, energy and mode of a player.  \hyperlink{struct_8h_d4/dcb/struct___player}{More...}\end{DoxyCompactList}\item 
 struct \hyperlink{struct_8h_d0/d4a/struct___win}{\+\_\+\+Win}
 \item 
 struct \hyperlink{struct_8h_d7/d1b/struct___map}{\+\_\+\+Map}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Contains informations of the Map.  \hyperlink{struct_8h_d7/d1b/struct___map}{More...}\end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{struct_8h_a30565ba468295703d7e04c7676643a4f}{nbrW}~7
+\#define {\bfseries nbrW}~7\hypertarget{struct_8h_a30565ba468295703d7e04c7676643a4f}{}\label{struct_8h_a30565ba468295703d7e04c7676643a4f}
+
 \end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct \hyperlink{struct_8h_d4/dd5/struct___l_step}{\+\_\+\+L\+Step} \hyperlink{struct_8h_af5341ec1566a8c9b5eecbdbbe6f269ae}{Lcase}
+typedef struct \hyperlink{struct_8h_d4/dd5/struct___l_step}{\+\_\+\+L\+Step} {\bfseries Lcase}\hypertarget{struct_8h_af5341ec1566a8c9b5eecbdbbe6f269ae}{}\label{struct_8h_af5341ec1566a8c9b5eecbdbbe6f269ae}
+
 \item 
-typedef struct \hyperlink{struct_8h_d0/d6e/struct___node}{\+\_\+\+Node} \hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node}
+typedef struct \hyperlink{struct_8h_d0/d6e/struct___node}{\+\_\+\+Node} {\bfseries Node}\hypertarget{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{}\label{struct_8h_a8ff62746a396b270606ff04818b7e4ac}
+
 \item 
-typedef struct \hyperlink{struct_8h_d7/d82/struct___path}{\+\_\+\+Path} \hyperlink{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}{Path}
+typedef struct \hyperlink{struct_8h_d7/d82/struct___path}{\+\_\+\+Path} {\bfseries Path}\hypertarget{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}{}\label{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}
+
 \item 
-typedef struct \hyperlink{struct_8h_d4/dcb/struct___player}{\+\_\+\+Player} \hyperlink{struct_8h_af30e2030635a69690f85e48bc6ef202f}{Player}
+typedef struct \hyperlink{struct_8h_d4/dcb/struct___player}{\+\_\+\+Player} {\bfseries Player}\hypertarget{struct_8h_af30e2030635a69690f85e48bc6ef202f}{}\label{struct_8h_af30e2030635a69690f85e48bc6ef202f}
+
 \item 
-typedef struct \hyperlink{struct_8h_d0/d4a/struct___win}{\+\_\+\+Win} \hyperlink{struct_8h_adf6d865a38ae98af7b316588c8737f7a}{Win}
+typedef struct \hyperlink{struct_8h_d0/d4a/struct___win}{\+\_\+\+Win} {\bfseries Win}\hypertarget{struct_8h_adf6d865a38ae98af7b316588c8737f7a}{}\label{struct_8h_adf6d865a38ae98af7b316588c8737f7a}
+
 \item 
-typedef struct \hyperlink{struct_8h_d7/d1b/struct___map}{\+\_\+\+Map} \hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map}
+typedef struct \hyperlink{struct_8h_d7/d1b/struct___map}{\+\_\+\+Map} {\bfseries Map}\hypertarget{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{}\label{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}
+
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Data structures use in the program. 
+
+\begin{DoxyAuthor}{Author}
+Maeva Arlandis et Alexis Devillard 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+6.\+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+10 janvier 2017 
+\end{DoxyDate}
 
 
 \subsection{Data Structure Documentation}
@@ -96,41 +122,41 @@ Y&
 \index{\+\_\+\+Node@{\+\_\+\+Node}}\label{struct___node}
 \hypertarget{struct_8h_struct___node}{}
 \subsubsection{struct \+\_\+\+Node}
-\begin{DoxyFields}{Data Fields}
+Node is a case from the map. It is used in Astar mode. \begin{DoxyFields}{Data Fields}
 int\hypertarget{struct_8h_a66700f11d42fee2413e58dbf49c43ee1}{}\label{struct_8h_a66700f11d42fee2413e58dbf49c43ee1}
 &
 cost&
-\\
+Distance from the player to the current node \\
 \hline
 
 int\hypertarget{struct_8h_a266b59afb2a9e30cb84c2b14388fb5fe}{}\label{struct_8h_a266b59afb2a9e30cb84c2b14388fb5fe}
 &
 heuristic&
-\\
+Distance between the player and the treasure as the crows fly \\
 \hline
 
 struct \hyperlink{struct_8h_d0/d6e/struct___node}{\+\_\+\+Node} $\ast$\hypertarget{struct_8h_a92b940ae1bafab81f2c09dcb727b2759}{}\label{struct_8h_a92b940ae1bafab81f2c09dcb727b2759}
 &
 list\+Next&
-\\
+Used if in Closedlist and Openlist \\
 \hline
 
 char $\ast$\hypertarget{struct_8h_aa0cc47f15f87b45c6960e18fd786f286}{}\label{struct_8h_aa0cc47f15f87b45c6960e18fd786f286}
 &
 ncase&
-\\
+Pointer to a case of the map in order to get the data of \\
 \hline
 
 struct \hyperlink{struct_8h_d0/d6e/struct___node}{\+\_\+\+Node} $\ast$\hypertarget{struct_8h_ac1bcf3cc6dca353ea81f1e92b01d7ecb}{}\label{struct_8h_ac1bcf3cc6dca353ea81f1e92b01d7ecb}
 &
 path\+Child&
-\\
+Pointer to get the Node evaluated after \\
 \hline
 
 struct \hyperlink{struct_8h_d0/d6e/struct___node}{\+\_\+\+Node} $\ast$\hypertarget{struct_8h_a7d0cf1a91c4dd335673a79aa5db87d01}{}\label{struct_8h_a7d0cf1a91c4dd335673a79aa5db87d01}
 &
 path\+Parent&
-\\
+Pointer to get the Node evaluated before \\
 \hline
 
 int\hypertarget{struct_8h_a80c0944640e62d3ed6c5419c1bcc0c88}{}\label{struct_8h_a80c0944640e62d3ed6c5419c1bcc0c88}
@@ -142,83 +168,83 @@ X&
 int\hypertarget{struct_8h_aa482c4cc86a24474e4fb19b5b5978778}{}\label{struct_8h_aa482c4cc86a24474e4fb19b5b5978778}
 &
 Y&
-\\
+Position of the node in the map. \\
 \hline
 
 \end{DoxyFields}
 \index{\+\_\+\+Path@{\+\_\+\+Path}}\label{struct___path}
 \hypertarget{struct_8h_struct___path}{}
 \subsubsection{struct \+\_\+\+Path}
-\begin{DoxyFields}{Data Fields}
-\hyperlink{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{Node} $\ast$\hypertarget{struct_8h_a2addc5f5fab651284199528b83cd61c8}{}\label{struct_8h_a2addc5f5fab651284199528b83cd61c8}
+List of lab node and its size. It is used in Astar mode. \begin{DoxyFields}{Data Fields}
+\hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$\hypertarget{struct_8h_a2addc5f5fab651284199528b83cd61c8}{}\label{struct_8h_a2addc5f5fab651284199528b83cd61c8}
 &
 first&
-\\
+Pointer to the first node of the path \\
 \hline
 
 int\hypertarget{struct_8h_a439227feff9d7f55384e8780cfc2eb82}{}\label{struct_8h_a439227feff9d7f55384e8780cfc2eb82}
 &
 size&
-\\
+Number of cases in the Path \\
 \hline
 
 \end{DoxyFields}
 \index{\+\_\+\+Player@{\+\_\+\+Player}}\label{struct___player}
 \hypertarget{struct_8h_struct___player}{}
 \subsubsection{struct \+\_\+\+Player}
-\begin{DoxyFields}{Data Fields}
+Contains informations of position, energy and mode of a player. \begin{DoxyFields}{Data Fields}
 int\hypertarget{struct_8h_a4ec8c7cb48771b844a6d50e2150e3f63}{}\label{struct_8h_a4ec8c7cb48771b844a6d50e2150e3f63}
 &
 energy&
-\\
+Energy of the player, +1 every turn, -\/5 if the move is a rotation \\
 \hline
 
 int\hypertarget{struct_8h_a7bb8b2cfc1aec0db2429c600cddccf17}{}\label{struct_8h_a7bb8b2cfc1aec0db2429c600cddccf17}
 &
 lastX&
-\\
+Last X position of the player \\
 \hline
 
 int\hypertarget{struct_8h_ae135df8cfc9b15d97e97b400a5cbc768}{}\label{struct_8h_ae135df8cfc9b15d97e97b400a5cbc768}
 &
 lastY&
-\\
+Last Y position of the player \\
 \hline
 
 int\hypertarget{struct_8h_a1ea5d0cb93f22f7d0fdf804bd68c3326}{}\label{struct_8h_a1ea5d0cb93f22f7d0fdf804bd68c3326}
 &
 mode&
-\\
+Dumb, manual, random, A$\ast$, smart A$\ast$ \\
 \hline
 
-\hyperlink{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}{Path} $\ast$\hypertarget{struct_8h_ac7fee391a1ea765fcd9a813684459133}{}\label{struct_8h_ac7fee391a1ea765fcd9a813684459133}
+\hyperlink{struct_8h_d7/d82/struct___path}{Path} $\ast$\hypertarget{struct_8h_ac7fee391a1ea765fcd9a813684459133}{}\label{struct_8h_ac7fee391a1ea765fcd9a813684459133}
 &
 to\+Goal&
-\\
+Path to go to the treasure \\
 \hline
 
-\hyperlink{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}{Path} $\ast$\hypertarget{struct_8h_acb6bf1fa3b8884d0c9ce0b566a534bcc}{}\label{struct_8h_acb6bf1fa3b8884d0c9ce0b566a534bcc}
+\hyperlink{struct_8h_d7/d82/struct___path}{Path} $\ast$\hypertarget{struct_8h_acb6bf1fa3b8884d0c9ce0b566a534bcc}{}\label{struct_8h_acb6bf1fa3b8884d0c9ce0b566a534bcc}
 &
 to\+OtherP&
-\\
+Path to go to the opponnent \\
 \hline
 
 int\hypertarget{struct_8h_aaefa47f4fdf865c2358c22b542a993e4}{}\label{struct_8h_aaefa47f4fdf865c2358c22b542a993e4}
 &
 turn&
-\\
+1 if it is the turn of the player, 0 if it is the turn of the opponnent \\
 \hline
 
 int\hypertarget{struct_8h_a80c0944640e62d3ed6c5419c1bcc0c88}{}\label{struct_8h_a80c0944640e62d3ed6c5419c1bcc0c88}
 &
 X&
-\\
+Current X position of the player \\
 \hline
 
 int\hypertarget{struct_8h_aa482c4cc86a24474e4fb19b5b5978778}{}\label{struct_8h_aa482c4cc86a24474e4fb19b5b5978778}
 &
 Y&
-\\
+Current Y position of the player \\
 \hline
 
 \end{DoxyFields}
@@ -260,14 +286,14 @@ win&
 \index{\+\_\+\+Map@{\+\_\+\+Map}}\label{struct___map}
 \hypertarget{struct_8h_struct___map}{}
 \subsubsection{struct \+\_\+\+Map}
-\begin{DoxyFields}{Data Fields}
+Contains informations of the Map. \begin{DoxyFields}{Data Fields}
 char $\ast$$\ast$\hypertarget{struct_8h_a601e32b61d466f9df86e0fbc527472bf}{}\label{struct_8h_a601e32b61d466f9df86e0fbc527472bf}
 &
 cases&
 \\
 \hline
 
-\hyperlink{struct_8h_adf6d865a38ae98af7b316588c8737f7a}{Win} $\ast$$\ast$\hypertarget{struct_8h_a81c46208e94d18eaf33350342c9051f1}{}\label{struct_8h_a81c46208e94d18eaf33350342c9051f1}
+\hyperlink{struct_8h_d0/d4a/struct___win}{Win} $\ast$$\ast$\hypertarget{struct_8h_a81c46208e94d18eaf33350342c9051f1}{}\label{struct_8h_a81c46208e94d18eaf33350342c9051f1}
 &
 gui\+Wins&
 \\
@@ -276,19 +302,19 @@ gui\+Wins&
 int\hypertarget{struct_8h_ae951a64b5603fdb0385b729946d1ebe1}{}\label{struct_8h_ae951a64b5603fdb0385b729946d1ebe1}
 &
 heigth&
-\\
+Heigth of the map \\
 \hline
 
 char\hypertarget{struct_8h_abd5a12f6d08d1da5d84e9142bcef5d9a}{}\label{struct_8h_abd5a12f6d08d1da5d84e9142bcef5d9a}
 &
 info\+P1\mbox{[}10\mbox{]}\mbox{[}50\mbox{]}&
-\\
+Info Player 1 \\
 \hline
 
 char\hypertarget{struct_8h_a7918e7b9cb5d1890b8b6f01464a40e25}{}\label{struct_8h_a7918e7b9cb5d1890b8b6f01464a40e25}
 &
 info\+P2\mbox{[}10\mbox{]}\mbox{[}50\mbox{]}&
-\\
+Info Player 2 \\
 \hline
 
 char $\ast$$\ast$\hypertarget{struct_8h_ade5703e4636c30db184056e412bbad9f}{}\label{struct_8h_ade5703e4636c30db184056e412bbad9f}
@@ -330,22 +356,22 @@ mvL&
 char\hypertarget{struct_8h_ae5cb967283dbbdf75cb2032c1fa08fee}{}\label{struct_8h_ae5cb967283dbbdf75cb2032c1fa08fee}
 &
 name\mbox{[}50\mbox{]}&
-\\
+Map Name \\
 \hline
 
 P\+A\+N\+EL $\ast$\hypertarget{struct_8h_acf9de252f49470dbdbd63ede514eb4eb}{}\label{struct_8h_acf9de252f49470dbdbd63ede514eb4eb}
 &
-panels\mbox{[}\hyperlink{struct_8h_a30565ba468295703d7e04c7676643a4f}{nbrW}+1\mbox{]}&
+panels\mbox{[}nbrW+1\mbox{]}&
 \\
 \hline
 
 char\hypertarget{struct_8h_a612b2a0ee041233958a9ef2896741004}{}\label{struct_8h_a612b2a0ee041233958a9ef2896741004}
 &
 Player\+Name\mbox{[}25\mbox{]}&
-\\
+Name of our player \\
 \hline
 
-\hyperlink{struct_8h_af30e2030635a69690f85e48bc6ef202f}{Player} $\ast$\hypertarget{struct_8h_a48395d86670996c0e7144aff32feb7be}{}\label{struct_8h_a48395d86670996c0e7144aff32feb7be}
+\hyperlink{struct_8h_d4/dcb/struct___player}{Player} $\ast$\hypertarget{struct_8h_a48395d86670996c0e7144aff32feb7be}{}\label{struct_8h_a48395d86670996c0e7144aff32feb7be}
 &
 players\mbox{[}3\mbox{]}&
 \\
@@ -354,58 +380,31 @@ players\mbox{[}3\mbox{]}&
 char\hypertarget{struct_8h_a92a954e5ff7b84046e76bd7c9a54138b}{}\label{struct_8h_a92a954e5ff7b84046e76bd7c9a54138b}
 &
 Port\+Name\mbox{[}10\mbox{]}&
-\\
+Port Name \\
 \hline
 
 char\hypertarget{struct_8h_a8688ed54a60069cc4615ee29c9c6c552}{}\label{struct_8h_a8688ed54a60069cc4615ee29c9c6c552}
 &
 Server\+Name\mbox{[}50\mbox{]}&
-\\
+Server data \\
 \hline
 
 char\hypertarget{struct_8h_ab1aeb27b976555390e2429e283a877b7}{}\label{struct_8h_ab1aeb27b976555390e2429e283a877b7}
 &
 Time\+Out\mbox{[}10\mbox{]}&
-\\
+Max Time to Play \\
 \hline
 
 int\hypertarget{struct_8h_aaefa47f4fdf865c2358c22b542a993e4}{}\label{struct_8h_aaefa47f4fdf865c2358c22b542a993e4}
 &
 turn&
-\\
+Number of played turn \\
 \hline
 
 int\hypertarget{struct_8h_a2474a5474cbff19523a51eb1de01cda4}{}\label{struct_8h_a2474a5474cbff19523a51eb1de01cda4}
 &
 width&
-\\
+Width of the map \\
 \hline
 
 \end{DoxyFields}
-
-
-\subsection{Macro Definition Documentation}
-\index{struct.\+h@{struct.\+h}!nbrW@{nbrW}}
-\index{nbrW@{nbrW}!struct.\+h@{struct.\+h}}
-\subsubsection[{\texorpdfstring{nbrW}{nbrW}}]{\setlength{\rightskip}{0pt plus 5cm}\#define nbrW~7}\hypertarget{struct_8h_a30565ba468295703d7e04c7676643a4f}{}\label{struct_8h_a30565ba468295703d7e04c7676643a4f}
-
-
-\subsection{Typedef Documentation}
-\index{struct.\+h@{struct.\+h}!Lcase@{Lcase}}
-\index{Lcase@{Lcase}!struct.\+h@{struct.\+h}}
-\subsubsection[{\texorpdfstring{Lcase}{Lcase}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+L\+Step} {\bf Lcase}}\hypertarget{struct_8h_af5341ec1566a8c9b5eecbdbbe6f269ae}{}\label{struct_8h_af5341ec1566a8c9b5eecbdbbe6f269ae}
-\index{struct.\+h@{struct.\+h}!Map@{Map}}
-\index{Map@{Map}!struct.\+h@{struct.\+h}}
-\subsubsection[{\texorpdfstring{Map}{Map}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Map} {\bf Map}}\hypertarget{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{}\label{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}
-\index{struct.\+h@{struct.\+h}!Node@{Node}}
-\index{Node@{Node}!struct.\+h@{struct.\+h}}
-\subsubsection[{\texorpdfstring{Node}{Node}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Node} {\bf Node}}\hypertarget{struct_8h_a8ff62746a396b270606ff04818b7e4ac}{}\label{struct_8h_a8ff62746a396b270606ff04818b7e4ac}
-\index{struct.\+h@{struct.\+h}!Path@{Path}}
-\index{Path@{Path}!struct.\+h@{struct.\+h}}
-\subsubsection[{\texorpdfstring{Path}{Path}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Path} {\bf Path}}\hypertarget{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}{}\label{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}
-\index{struct.\+h@{struct.\+h}!Player@{Player}}
-\index{Player@{Player}!struct.\+h@{struct.\+h}}
-\subsubsection[{\texorpdfstring{Player}{Player}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Player} {\bf Player}}\hypertarget{struct_8h_af30e2030635a69690f85e48bc6ef202f}{}\label{struct_8h_af30e2030635a69690f85e48bc6ef202f}
-\index{struct.\+h@{struct.\+h}!Win@{Win}}
-\index{Win@{Win}!struct.\+h@{struct.\+h}}
-\subsubsection[{\texorpdfstring{Win}{Win}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+\+Win} {\bf Win}}\hypertarget{struct_8h_adf6d865a38ae98af7b316588c8737f7a}{}\label{struct_8h_adf6d865a38ae98af7b316588c8737f7a}

@@ -21,8 +21,6 @@ Map* initMap();
 */
 void getMap(Map *L);
 
-void updateMap(Map *L);
-
 /*! \fn int testMoveP(Map *L,int P,t_move* move);
     \brief Return 1 if can't move return : -1(wall) -2(player)
     \param L The labyrinth map structure.
@@ -62,8 +60,4 @@ int moveM(Map *L,int P,t_move* move);
 */
 int movement(Map *L,int P,t_move *move);
 
-
-int addStr(char * target,char * add1,char * add2);
-char *intTostr(int nb);
-int strToint(char *nbr);
 #endif

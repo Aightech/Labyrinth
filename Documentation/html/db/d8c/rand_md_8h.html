@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Labyrinth
-   &#160;<span id="projectnumber">4.03</span>
+   &#160;<span id="projectnumber">4.1</span>
    </div>
    <div id="projectbrief">This project aim to create bios-like GUI, and create an AI able to reach a goal before its opponent in a maze.</div>
   </td>
@@ -111,6 +111,9 @@ $(document).ready(function(){initNavTree('db/d8c/rand_md_8h.html','../../');});
 <div class="title">randMd.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Rand mode related functions descriptions.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../df/dec/struct_8h_source.html">struct.h</a>&quot;</code><br />
 <code>#include &quot;labyrinthAPI.h&quot;</code><br />
 </div>
@@ -118,16 +121,22 @@ $(document).ready(function(){initNavTree('db/d8c/rand_md_8h.html','../../');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae0bd3b500920a5bc0386dd86489db626"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d8c/rand_md_8h.html#ae0bd3b500920a5bc0386dd86489db626">gene_randmove</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L, t_move *move, int P)</td></tr>
+<tr class="memitem:ae0bd3b500920a5bc0386dd86489db626"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d8c/rand_md_8h.html#ae0bd3b500920a5bc0386dd86489db626">gene_randmove</a> (<a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *L, t_move *move, int P)</td></tr>
+<tr class="memdesc:ae0bd3b500920a5bc0386dd86489db626"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate random moves until it is possible for player P to do it (Map rotations and DO_NOTHING include).  <a href="#ae0bd3b500920a5bc0386dd86489db626">More...</a><br /></td></tr>
 <tr class="separator:ae0bd3b500920a5bc0386dd86489db626"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf42bc6a83eb3e1749cff125ad284e2a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d8c/rand_md_8h.html#adf42bc6a83eb3e1749cff125ad284e2a">testMoveM</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L, int P)</td></tr>
-<tr class="separator:adf42bc6a83eb3e1749cff125ad284e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93be1c2860133fd977f23534d7065098"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d8c/rand_md_8h.html#a93be1c2860133fd977f23534d7065098">convert_movetype</a> (int type, t_move *move)</td></tr>
+<tr class="memdesc:a93be1c2860133fd977f23534d7065098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a random move from an integer (Map rotations and DO_NOTHING include).  <a href="#a93be1c2860133fd977f23534d7065098">More...</a><br /></td></tr>
 <tr class="separator:a93be1c2860133fd977f23534d7065098"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9cf95043c41e37326e0cf07440223c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d8c/rand_md_8h.html#af9cf95043c41e37326e0cf07440223c3">randMode</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L)</td></tr>
+<tr class="memitem:af9cf95043c41e37326e0cf07440223c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d8c/rand_md_8h.html#af9cf95043c41e37326e0cf07440223c3">randMode</a> (<a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *L)</td></tr>
+<tr class="memdesc:af9cf95043c41e37326e0cf07440223c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the mode of the game where the player play with random moves (Map rotations and DO_NOTHING include).  <a href="#af9cf95043c41e37326e0cf07440223c3">More...</a><br /></td></tr>
 <tr class="separator:af9cf95043c41e37326e0cf07440223c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Rand mode related functions descriptions. </p>
+<dl class="section author"><dt>Author</dt><dd>Maeva Arlandis et Alexis Devillard </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>6.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>10 janvier 2017 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a93be1c2860133fd977f23534d7065098"></a>
 <div class="memitem">
 <div class="memproto">
@@ -152,6 +161,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Generate a random move from an integer (Map rotations and DO_NOTHING include). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>The labyrinth map structure. </td></tr>
+    <tr><td class="paramname">move</td><td>A pointer to recover the generated move. </td></tr>
+    <tr><td class="paramname">P</td><td>Number of the player we generate a move for. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="ae0bd3b500920a5bc0386dd86489db626"></a>
@@ -161,7 +180,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void gene_randmove </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *&#160;</td>
           <td class="paramname"><em>L</em>, </td>
         </tr>
         <tr>
@@ -184,6 +203,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Generate random moves until it is possible for player P to do it (Map rotations and DO_NOTHING include). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>The labyrinth map structure. </td></tr>
+    <tr><td class="paramname">move</td><td>A pointer to recover the generated move. </td></tr>
+    <tr><td class="paramname">P</td><td>Number of the player we generate a move for. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="af9cf95043c41e37326e0cf07440223c3"></a>
@@ -193,38 +222,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void randMode </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *&#160;</td>
           <td class="paramname"><em>L</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a class="anchor" id="adf42bc6a83eb3e1749cff125ad284e2a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int testMoveM </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
-          <td class="paramname"><em>L</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>P</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Run the mode of the game where the player play with random moves (Map rotations and DO_NOTHING include). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>The labyrinth map structure. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

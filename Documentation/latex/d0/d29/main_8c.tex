@@ -1,9 +1,15 @@
 \hypertarget{main_8c}{}\section{main.\+c File Reference}
 \label{main_8c}\index{main.\+c@{main.\+c}}
+
+
+Main file to run the different modes and G\+UI options.  
+
+
 {\ttfamily \#include $<$stdio.\+h$>$}\\*
 {\ttfamily \#include $<$stdlib.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}gui.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}struct.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}strlib.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}mapping.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}dumb\+Md.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}manual\+Md.\+h\char`\"{}}\\*
@@ -12,68 +18,26 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}{Path} \hyperlink{main_8c_aa150542231bb795748dba0cf7e12a736}{Astar} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int P1, int P2)
-\item 
-\hyperlink{struct_8h_adf1ebd47eaeca3035384408cd5faefa5}{Path} \hyperlink{main_8c_a90d7c79862676709162f24ebaf011502}{Astarpp} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} L, int P1, int P2)
-\item 
-int \hyperlink{main_8c_ad522d2d6c4d793dd1122aa283c466707}{crow\+Fly} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int P1, int P2)
-\item 
-int \hyperlink{main_8c_a2b3a23cb0b4c9bd8e379bfda549cf28c}{evaluate} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L)
-\item 
-int \hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+int {\bfseries main} ()\hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{main_8c_ac3e1795766a80ec63b157951b4b9a7d4}{debug}
+int {\bfseries debug}\hypertarget{main_8c_ac3e1795766a80ec63b157951b4b9a7d4}{}\label{main_8c_ac3e1795766a80ec63b157951b4b9a7d4}
+
 \end{DoxyCompactItemize}
 
 
-\subsection{Function Documentation}
-\index{main.\+c@{main.\+c}!Astar@{Astar}}
-\index{Astar@{Astar}!main.\+c@{main.\+c}}
-\subsubsection[{\texorpdfstring{Astar(\+Map $\ast$\+L, int P1, int P2)}{Astar(Map *L, int P1, int P2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Path} Astar (
-\begin{DoxyParamCaption}
-\item[{{\bf Map} $\ast$}]{L, }
-\item[{int}]{P1, }
-\item[{int}]{P2}
-\end{DoxyParamCaption}
-)}\hypertarget{main_8c_aa150542231bb795748dba0cf7e12a736}{}\label{main_8c_aa150542231bb795748dba0cf7e12a736}
-\index{main.\+c@{main.\+c}!Astarpp@{Astarpp}}
-\index{Astarpp@{Astarpp}!main.\+c@{main.\+c}}
-\subsubsection[{\texorpdfstring{Astarpp(\+Map L, int P1, int P2)}{Astarpp(Map L, int P1, int P2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Path} Astarpp (
-\begin{DoxyParamCaption}
-\item[{{\bf Map}}]{L, }
-\item[{int}]{P1, }
-\item[{int}]{P2}
-\end{DoxyParamCaption}
-)}\hypertarget{main_8c_a90d7c79862676709162f24ebaf011502}{}\label{main_8c_a90d7c79862676709162f24ebaf011502}
-\index{main.\+c@{main.\+c}!crow\+Fly@{crow\+Fly}}
-\index{crow\+Fly@{crow\+Fly}!main.\+c@{main.\+c}}
-\subsubsection[{\texorpdfstring{crow\+Fly(\+Map $\ast$\+L, int P1, int P2)}{crowFly(Map *L, int P1, int P2)}}]{\setlength{\rightskip}{0pt plus 5cm}int crow\+Fly (
-\begin{DoxyParamCaption}
-\item[{{\bf Map} $\ast$}]{L, }
-\item[{int}]{P1, }
-\item[{int}]{P2}
-\end{DoxyParamCaption}
-)}\hypertarget{main_8c_ad522d2d6c4d793dd1122aa283c466707}{}\label{main_8c_ad522d2d6c4d793dd1122aa283c466707}
-\index{main.\+c@{main.\+c}!evaluate@{evaluate}}
-\index{evaluate@{evaluate}!main.\+c@{main.\+c}}
-\subsubsection[{\texorpdfstring{evaluate(\+Map $\ast$\+L)}{evaluate(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}int evaluate (
-\begin{DoxyParamCaption}
-\item[{{\bf Map} $\ast$}]{L}
-\end{DoxyParamCaption}
-)}\hypertarget{main_8c_a2b3a23cb0b4c9bd8e379bfda549cf28c}{}\label{main_8c_a2b3a23cb0b4c9bd8e379bfda549cf28c}
-\index{main.\+c@{main.\+c}!main@{main}}
-\index{main@{main}!main.\+c@{main.\+c}}
-\subsubsection[{\texorpdfstring{main()}{main()}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}
+\subsection{Detailed Description}
+Main file to run the different modes and G\+UI options. 
 
-
-\subsection{Variable Documentation}
-\index{main.\+c@{main.\+c}!debug@{debug}}
-\index{debug@{debug}!main.\+c@{main.\+c}}
-\subsubsection[{\texorpdfstring{debug}{debug}}]{\setlength{\rightskip}{0pt plus 5cm}int debug}\hypertarget{main_8c_ac3e1795766a80ec63b157951b4b9a7d4}{}\label{main_8c_ac3e1795766a80ec63b157951b4b9a7d4}
+\begin{DoxyAuthor}{Author}
+Maeva Arlandis et Alexis Devillard 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+6.\+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+10 janvier 2017 
+\end{DoxyDate}

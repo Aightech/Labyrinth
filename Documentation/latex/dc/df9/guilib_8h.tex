@@ -1,0 +1,233 @@
+\hypertarget{guilib_8h}{}\section{guilib.\+h File Reference}
+\label{guilib_8h}\index{guilib.\+h@{guilib.\+h}}
+
+
+G\+UI related functions descriptions.  
+
+
+{\ttfamily \#include \char`\"{}struct.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{guilib_8h_a52e7af91e0aaf587d1642ab4748b6396}{init\+G\+UI} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L)
+\begin{DoxyCompactList}\small\item\em Allocate and initialize all the G\+UI structures. \end{DoxyCompactList}\item 
+int \hyperlink{guilib_8h_a74faad0e3c55dfd39a5ecd03e9ae60f1}{G\+UI} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, int lst\+G\+U\+Ich)
+\begin{DoxyCompactList}\small\item\em Allocate and initialize all the G\+UI structures. \end{DoxyCompactList}\item 
+void \hyperlink{guilib_8h_a7cfcdaaf5fbb33b1d0f1da23989ebc14}{show\+Win} (\hyperlink{struct_8h_d0/d4a/struct___win}{Win} $\ast$win)
+\begin{DoxyCompactList}\small\item\em Monitor the gui system and all other graphical functions. \end{DoxyCompactList}\item 
+void \hyperlink{guilib_8h_aebef6c596deaf6c14ecc98b4dbb35289}{wboxe} (\hyperlink{struct_8h_d0/d4a/struct___win}{Win} $\ast$win, int starty, int startx, const char $\ast$string)
+\begin{DoxyCompactList}\small\item\em draw a boxe at the position ( startx ; starty ) on the win given and write the string in it. (Rq\+: It size depend of the string size) \end{DoxyCompactList}\item 
+int \hyperlink{guilib_8h_ae485c573e417de3d5d0762338cca871b}{choice} (\hyperlink{struct_8h_d0/d4a/struct___win}{Win} $\ast$win, int lst\+Ch)
+\begin{DoxyCompactList}\small\item\em Enable to browse the different button of the win given, starting at the last choice given. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{guilib_8h_aa17fa48795a82c96a4594499a7948f34}{selectL} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, int w, int starty, int startx, char $\ast$$\ast$list)
+\begin{DoxyCompactList}\small\item\em Draw a menu where the different option. \end{DoxyCompactList}\item 
+int \hyperlink{guilib_8h_a82e2bf7357d16998055a8768e3632f0e}{disp\+Map} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L)
+\begin{DoxyCompactList}\small\item\em Display the labyrinth. \end{DoxyCompactList}\item 
+int \hyperlink{guilib_8h_a59d8e32f972620bcf3a16c00a7f1b9f8}{erase\+Map} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L)
+\begin{DoxyCompactList}\small\item\em Erase the labyrynth. \end{DoxyCompactList}\item 
+int \hyperlink{guilib_8h_abbe720778f4a4bb964fb8dfacaf2e315}{disp\+Info} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L)
+\begin{DoxyCompactList}\small\item\em Display the Player info. \end{DoxyCompactList}\item 
+int \hyperlink{guilib_8h_a49ec06bbcb4afaba4ec233e5f5d0ea50}{disp\+Path} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L)
+\begin{DoxyCompactList}\small\item\em Display the path of players. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+G\+UI related functions descriptions. 
+
+\begin{DoxyAuthor}{Author}
+Maeva Arlandis et Alexis Devillard 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+6.\+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+10 janvier 2017 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{guilib.\+h@{guilib.\+h}!choice@{choice}}
+\index{choice@{choice}!guilib.\+h@{guilib.\+h}}
+\subsubsection[{\texorpdfstring{choice(\+Win $\ast$win, int lst\+Ch)}{choice(Win *win, int lstCh)}}]{\setlength{\rightskip}{0pt plus 5cm}int choice (
+\begin{DoxyParamCaption}
+\item[{{\bf Win} $\ast$}]{win, }
+\item[{int}]{lst\+Ch}
+\end{DoxyParamCaption}
+)}\hypertarget{guilib_8h_ae485c573e417de3d5d0762338cca871b}{}\label{guilib_8h_ae485c573e417de3d5d0762338cca871b}
+
+
+Enable to browse the different button of the win given, starting at the last choice given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & The win to browse. \\
+\hline
+{\em lst\+Ch} & The index of the first button to activate. \\
+\hline
+\end{DoxyParams}
+\index{guilib.\+h@{guilib.\+h}!disp\+Info@{disp\+Info}}
+\index{disp\+Info@{disp\+Info}!guilib.\+h@{guilib.\+h}}
+\subsubsection[{\texorpdfstring{disp\+Info(\+Map $\ast$\+L)}{dispInfo(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}int disp\+Info (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L}
+\end{DoxyParamCaption}
+)}\hypertarget{guilib_8h_abbe720778f4a4bb964fb8dfacaf2e315}{}\label{guilib_8h_abbe720778f4a4bb964fb8dfacaf2e315}
+
+
+Display the Player info. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structure. \\
+\hline
+\end{DoxyParams}
+\index{guilib.\+h@{guilib.\+h}!disp\+Map@{disp\+Map}}
+\index{disp\+Map@{disp\+Map}!guilib.\+h@{guilib.\+h}}
+\subsubsection[{\texorpdfstring{disp\+Map(\+Map $\ast$\+L)}{dispMap(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}int disp\+Map (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L}
+\end{DoxyParamCaption}
+)}\hypertarget{guilib_8h_a82e2bf7357d16998055a8768e3632f0e}{}\label{guilib_8h_a82e2bf7357d16998055a8768e3632f0e}
+
+
+Display the labyrinth. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structure. \\
+\hline
+\end{DoxyParams}
+\index{guilib.\+h@{guilib.\+h}!disp\+Path@{disp\+Path}}
+\index{disp\+Path@{disp\+Path}!guilib.\+h@{guilib.\+h}}
+\subsubsection[{\texorpdfstring{disp\+Path(\+Map $\ast$\+L)}{dispPath(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}int disp\+Path (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L}
+\end{DoxyParamCaption}
+)}\hypertarget{guilib_8h_a49ec06bbcb4afaba4ec233e5f5d0ea50}{}\label{guilib_8h_a49ec06bbcb4afaba4ec233e5f5d0ea50}
+
+
+Display the path of players. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structure. \\
+\hline
+\end{DoxyParams}
+\index{guilib.\+h@{guilib.\+h}!erase\+Map@{erase\+Map}}
+\index{erase\+Map@{erase\+Map}!guilib.\+h@{guilib.\+h}}
+\subsubsection[{\texorpdfstring{erase\+Map(\+Map $\ast$\+L)}{eraseMap(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}int erase\+Map (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L}
+\end{DoxyParamCaption}
+)}\hypertarget{guilib_8h_a59d8e32f972620bcf3a16c00a7f1b9f8}{}\label{guilib_8h_a59d8e32f972620bcf3a16c00a7f1b9f8}
+
+
+Erase the labyrynth. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structure. \\
+\hline
+\end{DoxyParams}
+\index{guilib.\+h@{guilib.\+h}!G\+UI@{G\+UI}}
+\index{G\+UI@{G\+UI}!guilib.\+h@{guilib.\+h}}
+\subsubsection[{\texorpdfstring{G\+U\+I(\+Map $\ast$\+L, int lst\+G\+U\+Ich)}{GUI(Map *L, int lstGUIch)}}]{\setlength{\rightskip}{0pt plus 5cm}int G\+UI (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L, }
+\item[{int}]{lst\+G\+U\+Ich}
+\end{DoxyParamCaption}
+)}\hypertarget{guilib_8h_a74faad0e3c55dfd39a5ecd03e9ae60f1}{}\label{guilib_8h_a74faad0e3c55dfd39a5ecd03e9ae60f1}
+
+
+Allocate and initialize all the G\+UI structures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structure. \\
+\hline
+{\em lst\+G\+U\+Ich} & last choice in the gui to make the active button to keep being activ after being push if there is no windows switch. \\
+\hline
+\end{DoxyParams}
+\index{guilib.\+h@{guilib.\+h}!init\+G\+UI@{init\+G\+UI}}
+\index{init\+G\+UI@{init\+G\+UI}!guilib.\+h@{guilib.\+h}}
+\subsubsection[{\texorpdfstring{init\+G\+U\+I(\+Map $\ast$\+L)}{initGUI(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}void init\+G\+UI (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L}
+\end{DoxyParamCaption}
+)}\hypertarget{guilib_8h_a52e7af91e0aaf587d1642ab4748b6396}{}\label{guilib_8h_a52e7af91e0aaf587d1642ab4748b6396}
+
+
+Allocate and initialize all the G\+UI structures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structure. \\
+\hline
+\end{DoxyParams}
+\index{guilib.\+h@{guilib.\+h}!selectL@{selectL}}
+\index{selectL@{selectL}!guilib.\+h@{guilib.\+h}}
+\subsubsection[{\texorpdfstring{select\+L(\+Map $\ast$\+L, int w, int starty, int startx, char $\ast$$\ast$list)}{selectL(Map *L, int w, int starty, int startx, char **list)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ selectL (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L, }
+\item[{int}]{w, }
+\item[{int}]{starty, }
+\item[{int}]{startx, }
+\item[{char $\ast$$\ast$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{guilib_8h_aa17fa48795a82c96a4594499a7948f34}{}\label{guilib_8h_aa17fa48795a82c96a4594499a7948f34}
+
+
+Draw a menu where the different option. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & The index of the window where the menu should be dispplayed \\
+\hline
+{\em starty} & The Y coordinate of the high-\/right corner of the menu. \\
+\hline
+{\em startx} & The X coordinate of the high-\/right corner of the menu. \\
+\hline
+{\em list} & The list of the different item\textquotesingle{}s label of the menu. \\
+\hline
+\end{DoxyParams}
+\index{guilib.\+h@{guilib.\+h}!show\+Win@{show\+Win}}
+\index{show\+Win@{show\+Win}!guilib.\+h@{guilib.\+h}}
+\subsubsection[{\texorpdfstring{show\+Win(\+Win $\ast$win)}{showWin(Win *win)}}]{\setlength{\rightskip}{0pt plus 5cm}void show\+Win (
+\begin{DoxyParamCaption}
+\item[{{\bf Win} $\ast$}]{win}
+\end{DoxyParamCaption}
+)}\hypertarget{guilib_8h_a7cfcdaaf5fbb33b1d0f1da23989ebc14}{}\label{guilib_8h_a7cfcdaaf5fbb33b1d0f1da23989ebc14}
+
+
+Monitor the gui system and all other graphical functions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & The win to show. \\
+\hline
+\end{DoxyParams}
+\index{guilib.\+h@{guilib.\+h}!wboxe@{wboxe}}
+\index{wboxe@{wboxe}!guilib.\+h@{guilib.\+h}}
+\subsubsection[{\texorpdfstring{wboxe(\+Win $\ast$win, int starty, int startx, const char $\ast$string)}{wboxe(Win *win, int starty, int startx, const char *string)}}]{\setlength{\rightskip}{0pt plus 5cm}void wboxe (
+\begin{DoxyParamCaption}
+\item[{{\bf Win} $\ast$}]{win, }
+\item[{int}]{starty, }
+\item[{int}]{startx, }
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}\hypertarget{guilib_8h_aebef6c596deaf6c14ecc98b4dbb35289}{}\label{guilib_8h_aebef6c596deaf6c14ecc98b4dbb35289}
+
+
+draw a boxe at the position ( startx ; starty ) on the win given and write the string in it. (Rq\+: It size depend of the string size) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & The win to show. \\
+\hline
+{\em starty} & The Y coordinate of the high-\/right corner of the boxe. \\
+\hline
+{\em startx} & The X coordinate of the high-\/right corner of the boxe. \\
+\hline
+{\em string} & The string to write in the boxe. \\
+\hline
+\end{DoxyParams}

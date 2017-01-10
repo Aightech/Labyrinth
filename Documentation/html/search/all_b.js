@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['path',['Path',['../d0/d4b/struct_path.html',1,'']]],
-  ['pathchild',['pathChild',['../d0/d6e/struct___node.html#ac1bcf3cc6dca353ea81f1e92b01d7ecb',1,'_Node']]],
-  ['pathparent',['pathParent',['../d0/d6e/struct___node.html#a7d0cf1a91c4dd335673a79aa5db87d01',1,'_Node']]],
-  ['player',['Player',['../d3/db1/struct_player.html',1,'']]],
-  ['playername',['PlayerName',['../d7/d1b/struct___map.html#a612b2a0ee041233958a9ef2896741004',1,'_Map']]],
-  ['portname',['PortName',['../d7/d1b/struct___map.html#a92a954e5ff7b84046e76bd7c9a54138b',1,'_Map']]]
+  ['name',['name',['../df/dec/struct_8h.html#ae5cb967283dbbdf75cb2032c1fa08fee',1,'_Map']]],
+  ['ncase',['ncase',['../df/dec/struct_8h.html#aa0cc47f15f87b45c6960e18fd786f286',1,'_Node']]],
+  ['newnode',['newNode',['../dd/db2/astar_md_8h.html#a3fff4a8445cd48159ad39bf5e95f8431',1,'astarMd.c']]]
 ];

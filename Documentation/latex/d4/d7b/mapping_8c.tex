@@ -1,45 +1,53 @@
 \hypertarget{mapping_8c}{}\section{mapping.\+c File Reference}
 \label{mapping_8c}\index{mapping.\+c@{mapping.\+c}}
+
+
+Mapping related functions.  
+
+
 {\ttfamily \#include $<$stdio.\+h$>$}\\*
 {\ttfamily \#include $<$stdlib.\+h$>$}\\*
-{\ttfamily \#include \char`\"{}gui.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}guilib.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}struct.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}mapping.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}strlib.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}labyrinth\+A\+P\+I.\+h\char`\"{}}\\*
 {\ttfamily \#include $<$unistd.\+h$>$}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$ \hyperlink{mapping_8c_af7560ce2af2a08abe0b230e7ba56cf45}{init\+Map} ()
-\item 
-void \hyperlink{mapping_8c_acd86842943223c3da418c5981befabf6}{get\+Map} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L)
-\item 
-int \hyperlink{mapping_8c_ab8e6e204f7b1bd95babda75a04279141}{test\+MoveP} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int P, t\+\_\+move $\ast$move)
-\item 
-int \hyperlink{mapping_8c_ad06394e3aa5ef693c34687cb74813336}{moveP} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int P, t\+\_\+move $\ast$move)
-\item 
-int \hyperlink{mapping_8c_a676b72a51bfecda4afdcaf81537e6986}{moveM} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int P, t\+\_\+move $\ast$move)
-\item 
-int \hyperlink{mapping_8c_a7aedd4fdc510867594753696cbb0cd86}{movement} (\hyperlink{struct_8h_ab46d503165c573ef5a1abb88fc4ec2cf}{Map} $\ast$L, int P, t\+\_\+move $\ast$move)
-\item 
-int \hyperlink{mapping_8c_a783c04919536e9a39b5a4903f858b546}{add\+Str} (char $\ast$target, char $\ast$add1, char $\ast$add2)
-\item 
-char $\ast$ \hyperlink{mapping_8c_aeb1a4a6d21bb8e0847409ce31a227e44}{int\+Tostr} (int nb)
-\item 
-int \hyperlink{mapping_8c_a1fefa7b702e2b46655427f2a874abd8c}{str\+Toint} (char $\ast$nbr)
-\end{DoxyCompactItemize}
+\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$ \hyperlink{mapping_8c_a1b4990072cb0d42063abd514d5c9726c}{init\+Map} ()\hypertarget{mapping_8c_a1b4990072cb0d42063abd514d5c9726c}{}\label{mapping_8c_a1b4990072cb0d42063abd514d5c9726c}
+
+\begin{DoxyCompactList}\small\item\em Return a map structure. \end{DoxyCompactList}\item 
+void \hyperlink{mapping_8c_acd86842943223c3da418c5981befabf6}{get\+Map} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L)
+\begin{DoxyCompactList}\small\item\em Connect to the server and get the labyrinth data. \end{DoxyCompactList}\item 
+int \hyperlink{mapping_8c_ab8e6e204f7b1bd95babda75a04279141}{test\+MoveP} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, int P, t\+\_\+move $\ast$move)
+\begin{DoxyCompactList}\small\item\em Return 1 if can\textquotesingle{}t move return \+: -\/1(wall) -\/2(player) \end{DoxyCompactList}\item 
+int \hyperlink{mapping_8c_adf42bc6a83eb3e1749cff125ad284e2a}{test\+MoveM} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, int P)
+\begin{DoxyCompactList}\small\item\em Return 0 if player P has enough energy to move the Map and -\/1 otherwise. \end{DoxyCompactList}\item 
+int \hyperlink{mapping_8c_ad06394e3aa5ef693c34687cb74813336}{moveP} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, int P, t\+\_\+move $\ast$move)
+\begin{DoxyCompactList}\small\item\em Move the position of the player on the map. Return 1 if can\textquotesingle{}t move return \+: -\/1(wall) -\/2(player) \end{DoxyCompactList}\item 
+int \hyperlink{mapping_8c_a676b72a51bfecda4afdcaf81537e6986}{moveM} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, int P, t\+\_\+move $\ast$move)
+\begin{DoxyCompactList}\small\item\em Rotate the map. Return 1 if can\textquotesingle{}t move return \+: -\/1(not enought energy) \end{DoxyCompactList}\item 
+int \hyperlink{mapping_8c_a7aedd4fdc510867594753696cbb0cd86}{movement} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, int P, t\+\_\+move $\ast$move)
+\begin{DoxyCompactList}\small\item\em Rotate the map(move\+M()) or move the player (\hyperlink{mapping_8h_ad06394e3aa5ef693c34687cb74813336}{move\+P()}). Return 1 if can\textquotesingle{}t move return. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Mapping related functions. 
+
+\begin{DoxyAuthor}{Author}
+Maeva Arlandis et Alexis Devillard 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+6.\+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+10 janvier 2017 
+\end{DoxyDate}
 
 
 \subsection{Function Documentation}
-\index{mapping.\+c@{mapping.\+c}!add\+Str@{add\+Str}}
-\index{add\+Str@{add\+Str}!mapping.\+c@{mapping.\+c}}
-\subsubsection[{\texorpdfstring{add\+Str(char $\ast$target, char $\ast$add1, char $\ast$add2)}{addStr(char *target, char *add1, char *add2)}}]{\setlength{\rightskip}{0pt plus 5cm}int add\+Str (
-\begin{DoxyParamCaption}
-\item[{char $\ast$}]{target, }
-\item[{char $\ast$}]{add1, }
-\item[{char $\ast$}]{add2}
-\end{DoxyParamCaption}
-)}\hypertarget{mapping_8c_a783c04919536e9a39b5a4903f858b546}{}\label{mapping_8c_a783c04919536e9a39b5a4903f858b546}
 \index{mapping.\+c@{mapping.\+c}!get\+Map@{get\+Map}}
 \index{get\+Map@{get\+Map}!mapping.\+c@{mapping.\+c}}
 \subsubsection[{\texorpdfstring{get\+Map(\+Map $\ast$\+L)}{getMap(Map *L)}}]{\setlength{\rightskip}{0pt plus 5cm}void get\+Map (
@@ -47,20 +55,15 @@ int \hyperlink{mapping_8c_a1fefa7b702e2b46655427f2a874abd8c}{str\+Toint} (char $
 \item[{{\bf Map} $\ast$}]{L}
 \end{DoxyParamCaption}
 )}\hypertarget{mapping_8c_acd86842943223c3da418c5981befabf6}{}\label{mapping_8c_acd86842943223c3da418c5981befabf6}
-\index{mapping.\+c@{mapping.\+c}!init\+Map@{init\+Map}}
-\index{init\+Map@{init\+Map}!mapping.\+c@{mapping.\+c}}
-\subsubsection[{\texorpdfstring{init\+Map()}{initMap()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Map}$\ast$ init\+Map (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{mapping_8c_af7560ce2af2a08abe0b230e7ba56cf45}{}\label{mapping_8c_af7560ce2af2a08abe0b230e7ba56cf45}
-\index{mapping.\+c@{mapping.\+c}!int\+Tostr@{int\+Tostr}}
-\index{int\+Tostr@{int\+Tostr}!mapping.\+c@{mapping.\+c}}
-\subsubsection[{\texorpdfstring{int\+Tostr(int nb)}{intTostr(int nb)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ int\+Tostr (
-\begin{DoxyParamCaption}
-\item[{int}]{nb}
-\end{DoxyParamCaption}
-)}\hypertarget{mapping_8c_aeb1a4a6d21bb8e0847409ce31a227e44}{}\label{mapping_8c_aeb1a4a6d21bb8e0847409ce31a227e44}
+
+
+Connect to the server and get the labyrinth data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structur. \\
+\hline
+\end{DoxyParams}
 \index{mapping.\+c@{mapping.\+c}!moveM@{moveM}}
 \index{moveM@{moveM}!mapping.\+c@{mapping.\+c}}
 \subsubsection[{\texorpdfstring{move\+M(\+Map $\ast$\+L, int P, t\+\_\+move $\ast$move)}{moveM(Map *L, int P, t_move *move)}}]{\setlength{\rightskip}{0pt plus 5cm}int moveM (
@@ -70,6 +73,19 @@ int \hyperlink{mapping_8c_a1fefa7b702e2b46655427f2a874abd8c}{str\+Toint} (char $
 \item[{t\+\_\+move $\ast$}]{move}
 \end{DoxyParamCaption}
 )}\hypertarget{mapping_8c_a676b72a51bfecda4afdcaf81537e6986}{}\label{mapping_8c_a676b72a51bfecda4afdcaf81537e6986}
+
+
+Rotate the map. Return 1 if can\textquotesingle{}t move return \+: -\/1(not enought energy) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structure. \\
+\hline
+{\em P} & the player from which the movement will be made. \\
+\hline
+{\em move} & The movement that is tested. \\
+\hline
+\end{DoxyParams}
 \index{mapping.\+c@{mapping.\+c}!movement@{movement}}
 \index{movement@{movement}!mapping.\+c@{mapping.\+c}}
 \subsubsection[{\texorpdfstring{movement(\+Map $\ast$\+L, int P, t\+\_\+move $\ast$move)}{movement(Map *L, int P, t_move *move)}}]{\setlength{\rightskip}{0pt plus 5cm}int movement (
@@ -79,6 +95,19 @@ int \hyperlink{mapping_8c_a1fefa7b702e2b46655427f2a874abd8c}{str\+Toint} (char $
 \item[{t\+\_\+move $\ast$}]{move}
 \end{DoxyParamCaption}
 )}\hypertarget{mapping_8c_a7aedd4fdc510867594753696cbb0cd86}{}\label{mapping_8c_a7aedd4fdc510867594753696cbb0cd86}
+
+
+Rotate the map(move\+M()) or move the player (\hyperlink{mapping_8h_ad06394e3aa5ef693c34687cb74813336}{move\+P()}). Return 1 if can\textquotesingle{}t move return. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structure. \\
+\hline
+{\em P} & the player from which the movement will be made. \\
+\hline
+{\em move} & The movement that is tested. \\
+\hline
+\end{DoxyParams}
 \index{mapping.\+c@{mapping.\+c}!moveP@{moveP}}
 \index{moveP@{moveP}!mapping.\+c@{mapping.\+c}}
 \subsubsection[{\texorpdfstring{move\+P(\+Map $\ast$\+L, int P, t\+\_\+move $\ast$move)}{moveP(Map *L, int P, t_move *move)}}]{\setlength{\rightskip}{0pt plus 5cm}int moveP (
@@ -88,13 +117,38 @@ int \hyperlink{mapping_8c_a1fefa7b702e2b46655427f2a874abd8c}{str\+Toint} (char $
 \item[{t\+\_\+move $\ast$}]{move}
 \end{DoxyParamCaption}
 )}\hypertarget{mapping_8c_ad06394e3aa5ef693c34687cb74813336}{}\label{mapping_8c_ad06394e3aa5ef693c34687cb74813336}
-\index{mapping.\+c@{mapping.\+c}!str\+Toint@{str\+Toint}}
-\index{str\+Toint@{str\+Toint}!mapping.\+c@{mapping.\+c}}
-\subsubsection[{\texorpdfstring{str\+Toint(char $\ast$nbr)}{strToint(char *nbr)}}]{\setlength{\rightskip}{0pt plus 5cm}int str\+Toint (
+
+
+Move the position of the player on the map. Return 1 if can\textquotesingle{}t move return \+: -\/1(wall) -\/2(player) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structure. \\
+\hline
+{\em P} & the player from which the movement will be made. \\
+\hline
+{\em move} & The movement that is tested. \\
+\hline
+\end{DoxyParams}
+\index{mapping.\+c@{mapping.\+c}!test\+MoveM@{test\+MoveM}}
+\index{test\+MoveM@{test\+MoveM}!mapping.\+c@{mapping.\+c}}
+\subsubsection[{\texorpdfstring{test\+Move\+M(\+Map $\ast$\+L, int P)}{testMoveM(Map *L, int P)}}]{\setlength{\rightskip}{0pt plus 5cm}int test\+MoveM (
 \begin{DoxyParamCaption}
-\item[{char $\ast$}]{nbr}
+\item[{{\bf Map} $\ast$}]{L, }
+\item[{int}]{P}
 \end{DoxyParamCaption}
-)}\hypertarget{mapping_8c_a1fefa7b702e2b46655427f2a874abd8c}{}\label{mapping_8c_a1fefa7b702e2b46655427f2a874abd8c}
+)}\hypertarget{mapping_8c_adf42bc6a83eb3e1749cff125ad284e2a}{}\label{mapping_8c_adf42bc6a83eb3e1749cff125ad284e2a}
+
+
+Return 0 if player P has enough energy to move the Map and -\/1 otherwise. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structure. \\
+\hline
+{\em P} & The player we want to know if he can move the map. \\
+\hline
+\end{DoxyParams}
 \index{mapping.\+c@{mapping.\+c}!test\+MoveP@{test\+MoveP}}
 \index{test\+MoveP@{test\+MoveP}!mapping.\+c@{mapping.\+c}}
 \subsubsection[{\texorpdfstring{test\+Move\+P(\+Map $\ast$\+L, int P, t\+\_\+move $\ast$move)}{testMoveP(Map *L, int P, t_move *move)}}]{\setlength{\rightskip}{0pt plus 5cm}int test\+MoveP (
@@ -104,3 +158,16 @@ int \hyperlink{mapping_8c_a1fefa7b702e2b46655427f2a874abd8c}{str\+Toint} (char $
 \item[{t\+\_\+move $\ast$}]{move}
 \end{DoxyParamCaption}
 )}\hypertarget{mapping_8c_ab8e6e204f7b1bd95babda75a04279141}{}\label{mapping_8c_ab8e6e204f7b1bd95babda75a04279141}
+
+
+Return 1 if can\textquotesingle{}t move return \+: -\/1(wall) -\/2(player) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structure. \\
+\hline
+{\em P} & the player from which the movement will be made. \\
+\hline
+{\em move} & The movement that is tested. \\
+\hline
+\end{DoxyParams}

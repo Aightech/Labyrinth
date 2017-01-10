@@ -1,0 +1,13 @@
+digraph "testMoveP"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="testMoveP",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="moveP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d0c/mapping_8h.html#ad06394e3aa5ef693c34687cb74813336",tooltip="Move the position of the player on the map. Return 1 if can&#39;t move return : -1(wall) -2(player) ..."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="movement",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d0c/mapping_8h.html#a7aedd4fdc510867594753696cbb0cd86",tooltip="Rotate the map(moveM()) or move the player (moveP()). Return 1 if can&#39;t move return. "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="astarMode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/db2/astar_md_8h.html#a6fcd248ff5643acbb0b4fa966ce3cd0f",tooltip="Generate simple A* behavior. "];
+}

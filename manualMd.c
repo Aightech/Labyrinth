@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "gui.h"
+#include "guilib.h"
+#include "strlib.h"
 #include "labyrinthAPI.h"
 #include "mapping.h"
 #include <unistd.h>

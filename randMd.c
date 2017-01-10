@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "struct.h"
-#include "gui.h"
+#include "guilib.h"
 #include "mapping.h"
+#include "strlib.h"
 #include "randMd.h"
 #include "labyrinthAPI.h"
 #include <unistd.h>

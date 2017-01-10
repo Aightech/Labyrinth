@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+
 #include "struct.h"
-#include "gui.h"
+#include "guilib.h"
+#include "strlib.h"
 #include "mapping.h"
 #include "astarMd.h"
 #include "labyrinthAPI.h"

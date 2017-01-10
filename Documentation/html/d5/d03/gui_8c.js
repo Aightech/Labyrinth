@@ -7,7 +7,7 @@ var gui_8c =
     [ "eraseMap", "d5/d03/gui_8c.html#a59d8e32f972620bcf3a16c00a7f1b9f8", null ],
     [ "GUI", "d5/d03/gui_8c.html#a74faad0e3c55dfd39a5ecd03e9ae60f1", null ],
     [ "initGUI", "d5/d03/gui_8c.html#a52e7af91e0aaf587d1642ab4748b6396", null ],
-    [ "selectL", "d5/d03/gui_8c.html#af21cd0db53cc445ccf02dfaa7d16ef22", null ],
+    [ "selectL", "d5/d03/gui_8c.html#a5f3dede0d8cfb84edb41889ae60c11c1", null ],
     [ "showWin", "d5/d03/gui_8c.html#a7cfcdaaf5fbb33b1d0f1da23989ebc14", null ],
     [ "wboxe", "d5/d03/gui_8c.html#aebef6c596deaf6c14ecc98b4dbb35289", null ]
 ];

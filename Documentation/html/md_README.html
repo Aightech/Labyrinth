@@ -107,22 +107,22 @@ $(document).ready(function(){initNavTree('md_README.html','');});
 <h2>list of structures:</h2>
 <p><b>LStep</b> <em>A case to move at or a modification of the map</em></p>
 <p><b>Node</b> <em>A node of the map (useful for Astar search)</em></p>
-<p><b><a class="el" href="d0/d4b/struct_path.html" title="List of lab node and its size. It is used in Astar mode. ">Path</a></b> <em>list of step and its size</em></p>
-<p><b><a class="el" href="d3/db1/struct_player.html" title="Contains informations of position, energy and mode of a player. ">Player</a></b> <em>player</em></p>
-<p><b><a class="el" href="df/d91/struct_map.html" title="Contains informations of the Map. ">Map</a></b> <em>the labyrinther</em></p>
+<p><b>Path</b> <em>list of step and its size</em></p>
+<p><b>Player</b> <em>player</em></p>
+<p><b>Map</b> <em>the labyrinther</em></p>
 <h2>list of functions:</h2>
 <h3>GUI functions</h3>
-<p><b>int GUI(Map* L,int lastCh);</b> <em>Monitor the gui system and all other graphical functions</em></p>
-<p><b>int dispMap(Map* L);</b> <em>Display the labyrinth</em></p>
-<p><b>int dispInfo(Map* L);</b> <em>Display players' information</em></p>
-<p><b>int dispPath(Map* L);</b> <em>Display the paths of the players to the goal</em></p>
-<h3><a class="el" href="df/d91/struct_map.html" title="Contains informations of the Map. ">Map</a> functions</h3>
-<p><b>Map* <a class="el" href="de/d0c/mapping_8h.html#af7560ce2af2a08abe0b230e7ba56cf45" title="Return a map structure. ">initMap()</a>;</b> <em>Initialize the map</em></p>
+<p><b>int <a class="el" href="dc/df9/guilib_8h.html#a74faad0e3c55dfd39a5ecd03e9ae60f1" title="Allocate and initialize all the GUI structures. ">GUI(Map* L,int lastCh)</a>;</b> <em>Monitor the gui system and all other graphical functions</em></p>
+<p><b>int <a class="el" href="dc/df9/guilib_8h.html#a82e2bf7357d16998055a8768e3632f0e" title="Display the labyrinth. ">dispMap(Map* L)</a>;</b> <em>Display the labyrinth</em></p>
+<p><b>int <a class="el" href="dc/df9/guilib_8h.html#abbe720778f4a4bb964fb8dfacaf2e315" title="Display the Player info. ">dispInfo(Map* L)</a>;</b> <em>Display players' information</em></p>
+<p><b>int <a class="el" href="dc/df9/guilib_8h.html#a49ec06bbcb4afaba4ec233e5f5d0ea50" title="Display the path of players. ">dispPath(Map* L)</a>;</b> <em>Display the paths of the players to the goal</em></p>
+<h3>Map functions</h3>
+<p><b>Map* <a class="el" href="d4/d7b/mapping_8c.html#a1b4990072cb0d42063abd514d5c9726c" title="Return a map structure. ">initMap()</a>;</b> <em>Initialize the map</em></p>
 <p><b>void <a class="el" href="de/d0c/mapping_8h.html#acd86842943223c3da418c5981befabf6" title="Connect to the server and get the labyrinth data. ">getMap(Map *L)</a>;</b> <em>get the map from the server</em> </p><h3>Movements functions</h3>
 <p><b>int testMoveP(Map L, Player P,char move);</b> <em>Return 1. If can't move return : -1(wall) -2(player)</em></p>
 <p><b>int move(Map L, Player P,char move);</b> <em>Return 1. If can't move return : -1(wall) -2(player)</em></p>
 <p><b>int moveMap(Map L,int row, int line);</b> <em>Return 1. If can't move return : -1(not enought energy)</em></p>
-<p><b><a class="el" href="d0/d4b/struct_path.html" title="List of lab node and its size. It is used in Astar mode. ">Path</a> Astar(Map L,Player P1, Player P2);</b> <em>Return the shortest path beetween P1 and P2 (could work with <a class="el" href="df/d91/struct_map.html" title="Contains informations of the Map. ">Map</a> move)</em></p>
+<p><b>Path Astar(Map L,Player P1, Player P2);</b> <em>Return the shortest path beetween P1 and P2 (could work with Map move)</em></p>
 <p><b>int evaluate(Map L);</b> </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

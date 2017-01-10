@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Labyrinth
-   &#160;<span id="projectnumber">4.03</span>
+   &#160;<span id="projectnumber">4.1</span>
    </div>
    <div id="projectbrief">This project aim to create bios-like GUI, and create an AI able to reach a goal before its opponent in a maze.</div>
   </td>
@@ -112,10 +112,14 @@ $(document).ready(function(){initNavTree('d0/d29/main_8c.html','../../');});
 <div class="title">main.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Main file to run the different modes and GUI options.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="../../db/db6/gui_8h_source.html">gui.h</a>&quot;</code><br />
+<code>#include &quot;gui.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/dec/struct_8h_source.html">struct.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d8/dfb/strlib_8h_source.html">strlib.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../de/d0c/mapping_8h_source.html">mapping.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dc/d56/dumb_md_8h_source.html">dumbMd.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../db/daf/manual_md_8h_source.html">manualMd.h</a>&quot;</code><br />
@@ -124,164 +128,22 @@ $(document).ready(function(){initNavTree('d0/d29/main_8c.html','../../');});
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa150542231bb795748dba0cf7e12a736"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dec/struct_8h.html#adf1ebd47eaeca3035384408cd5faefa5">Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#aa150542231bb795748dba0cf7e12a736">Astar</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L, int P1, int P2)</td></tr>
-<tr class="separator:aa150542231bb795748dba0cf7e12a736"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90d7c79862676709162f24ebaf011502"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dec/struct_8h.html#adf1ebd47eaeca3035384408cd5faefa5">Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#a90d7c79862676709162f24ebaf011502">Astarpp</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> L, int P1, int P2)</td></tr>
-<tr class="separator:a90d7c79862676709162f24ebaf011502"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad522d2d6c4d793dd1122aa283c466707"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#ad522d2d6c4d793dd1122aa283c466707">crowFly</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L, int P1, int P2)</td></tr>
-<tr class="separator:ad522d2d6c4d793dd1122aa283c466707"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b3a23cb0b4c9bd8e379bfda549cf28c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#a2b3a23cb0b4c9bd8e379bfda549cf28c">evaluate</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L)</td></tr>
-<tr class="separator:a2b3a23cb0b4c9bd8e379bfda549cf28c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ac3e1795766a80ec63b157951b4b9a7d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d29/main_8c.html#ac3e1795766a80ec63b157951b4b9a7d4">debug</a></td></tr>
+<tr class="memitem:ac3e1795766a80ec63b157951b4b9a7d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3e1795766a80ec63b157951b4b9a7d4"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>debug</b></td></tr>
 <tr class="separator:ac3e1795766a80ec63b157951b4b9a7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="aa150542231bb795748dba0cf7e12a736"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../df/dec/struct_8h.html#adf1ebd47eaeca3035384408cd5faefa5">Path</a> Astar </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
-          <td class="paramname"><em>L</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>P1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>P2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a90d7c79862676709162f24ebaf011502"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../df/dec/struct_8h.html#adf1ebd47eaeca3035384408cd5faefa5">Path</a> Astarpp </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a>&#160;</td>
-          <td class="paramname"><em>L</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>P1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>P2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ad522d2d6c4d793dd1122aa283c466707"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int crowFly </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
-          <td class="paramname"><em>L</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>P1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>P2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a2b3a23cb0b4c9bd8e379bfda549cf28c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int evaluate </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
-          <td class="paramname"><em>L</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int main </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="ac3e1795766a80ec63b157951b4b9a7d4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int debug</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Main file to run the different modes and GUI options. </p>
+<dl class="section author"><dt>Author</dt><dd>Maeva Arlandis et Alexis Devillard </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>6.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>10 janvier 2017 </dd></dl>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

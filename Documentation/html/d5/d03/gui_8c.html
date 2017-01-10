@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Labyrinth
-   &#160;<span id="projectnumber">4.03</span>
+   &#160;<span id="projectnumber">4.1</span>
    </div>
    <div id="projectbrief">This project aim to create bios-like GUI, and create an AI able to reach a goal before its opponent in a maze.</div>
   </td>
@@ -111,6 +111,9 @@ $(document).ready(function(){initNavTree('d5/d03/gui_8c.html','../../');});
 <div class="title">gui.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>GUI related functions.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;ncurses.h&gt;</code><br />
@@ -122,28 +125,43 @@ $(document).ready(function(){initNavTree('d5/d03/gui_8c.html','../../');});
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a52e7af91e0aaf587d1642ab4748b6396"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a52e7af91e0aaf587d1642ab4748b6396">initGUI</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L)</td></tr>
+<tr class="memitem:a52e7af91e0aaf587d1642ab4748b6396"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a52e7af91e0aaf587d1642ab4748b6396">initGUI</a> (<a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *L)</td></tr>
+<tr class="memdesc:a52e7af91e0aaf587d1642ab4748b6396"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate and initialize all the GUI structures.  <a href="#a52e7af91e0aaf587d1642ab4748b6396">More...</a><br /></td></tr>
 <tr class="separator:a52e7af91e0aaf587d1642ab4748b6396"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74faad0e3c55dfd39a5ecd03e9ae60f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a74faad0e3c55dfd39a5ecd03e9ae60f1">GUI</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L, int lstGUIch)</td></tr>
+<tr class="memitem:a74faad0e3c55dfd39a5ecd03e9ae60f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a74faad0e3c55dfd39a5ecd03e9ae60f1">GUI</a> (<a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *L, int lstGUIch)</td></tr>
+<tr class="memdesc:a74faad0e3c55dfd39a5ecd03e9ae60f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate and initialize all the GUI structures.  <a href="#a74faad0e3c55dfd39a5ecd03e9ae60f1">More...</a><br /></td></tr>
 <tr class="separator:a74faad0e3c55dfd39a5ecd03e9ae60f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82e2bf7357d16998055a8768e3632f0e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a82e2bf7357d16998055a8768e3632f0e">dispMap</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L)</td></tr>
+<tr class="memitem:a82e2bf7357d16998055a8768e3632f0e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a82e2bf7357d16998055a8768e3632f0e">dispMap</a> (<a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *L)</td></tr>
+<tr class="memdesc:a82e2bf7357d16998055a8768e3632f0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the labyrinth.  <a href="#a82e2bf7357d16998055a8768e3632f0e">More...</a><br /></td></tr>
 <tr class="separator:a82e2bf7357d16998055a8768e3632f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49ec06bbcb4afaba4ec233e5f5d0ea50"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a49ec06bbcb4afaba4ec233e5f5d0ea50">dispPath</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L)</td></tr>
+<tr class="memitem:a49ec06bbcb4afaba4ec233e5f5d0ea50"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a49ec06bbcb4afaba4ec233e5f5d0ea50">dispPath</a> (<a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *L)</td></tr>
+<tr class="memdesc:a49ec06bbcb4afaba4ec233e5f5d0ea50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the path of players.  <a href="#a49ec06bbcb4afaba4ec233e5f5d0ea50">More...</a><br /></td></tr>
 <tr class="separator:a49ec06bbcb4afaba4ec233e5f5d0ea50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59d8e32f972620bcf3a16c00a7f1b9f8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a59d8e32f972620bcf3a16c00a7f1b9f8">eraseMap</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L)</td></tr>
+<tr class="memitem:a59d8e32f972620bcf3a16c00a7f1b9f8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a59d8e32f972620bcf3a16c00a7f1b9f8">eraseMap</a> (<a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *L)</td></tr>
+<tr class="memdesc:a59d8e32f972620bcf3a16c00a7f1b9f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erase the labyrynth.  <a href="#a59d8e32f972620bcf3a16c00a7f1b9f8">More...</a><br /></td></tr>
 <tr class="separator:a59d8e32f972620bcf3a16c00a7f1b9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cfcdaaf5fbb33b1d0f1da23989ebc14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a7cfcdaaf5fbb33b1d0f1da23989ebc14">showWin</a> (<a class="el" href="../../df/dec/struct_8h.html#adf6d865a38ae98af7b316588c8737f7a">Win</a> *win)</td></tr>
+<tr class="memitem:a7cfcdaaf5fbb33b1d0f1da23989ebc14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a7cfcdaaf5fbb33b1d0f1da23989ebc14">showWin</a> (<a class="el" href="../../df/dec/struct_8h.html#d0/d4a/struct___win">Win</a> *win)</td></tr>
+<tr class="memdesc:a7cfcdaaf5fbb33b1d0f1da23989ebc14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monitor the gui system and all other graphical functions.  <a href="#a7cfcdaaf5fbb33b1d0f1da23989ebc14">More...</a><br /></td></tr>
 <tr class="separator:a7cfcdaaf5fbb33b1d0f1da23989ebc14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebef6c596deaf6c14ecc98b4dbb35289"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#aebef6c596deaf6c14ecc98b4dbb35289">wboxe</a> (<a class="el" href="../../df/dec/struct_8h.html#adf6d865a38ae98af7b316588c8737f7a">Win</a> *win, int starty, int startx, const char *string)</td></tr>
+<tr class="memitem:aebef6c596deaf6c14ecc98b4dbb35289"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#aebef6c596deaf6c14ecc98b4dbb35289">wboxe</a> (<a class="el" href="../../df/dec/struct_8h.html#d0/d4a/struct___win">Win</a> *win, int starty, int startx, const char *string)</td></tr>
+<tr class="memdesc:aebef6c596deaf6c14ecc98b4dbb35289"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a boxe at the position ( startx ; starty ) on the win given and write the string in it. (Rq: It size depend of the string size)  <a href="#aebef6c596deaf6c14ecc98b4dbb35289">More...</a><br /></td></tr>
 <tr class="separator:aebef6c596deaf6c14ecc98b4dbb35289"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae485c573e417de3d5d0762338cca871b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#ae485c573e417de3d5d0762338cca871b">choice</a> (<a class="el" href="../../df/dec/struct_8h.html#adf6d865a38ae98af7b316588c8737f7a">Win</a> *win, int lstCh)</td></tr>
+<tr class="memitem:ae485c573e417de3d5d0762338cca871b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#ae485c573e417de3d5d0762338cca871b">choice</a> (<a class="el" href="../../df/dec/struct_8h.html#d0/d4a/struct___win">Win</a> *win, int lstCh)</td></tr>
+<tr class="memdesc:ae485c573e417de3d5d0762338cca871b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable to browse the different button of the win given, starting at the last choice given.  <a href="#ae485c573e417de3d5d0762338cca871b">More...</a><br /></td></tr>
 <tr class="separator:ae485c573e417de3d5d0762338cca871b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbe720778f4a4bb964fb8dfacaf2e315"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#abbe720778f4a4bb964fb8dfacaf2e315">dispInfo</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L)</td></tr>
+<tr class="memitem:abbe720778f4a4bb964fb8dfacaf2e315"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#abbe720778f4a4bb964fb8dfacaf2e315">dispInfo</a> (<a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *L)</td></tr>
+<tr class="memdesc:abbe720778f4a4bb964fb8dfacaf2e315"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the Player info.  <a href="#abbe720778f4a4bb964fb8dfacaf2e315">More...</a><br /></td></tr>
 <tr class="separator:abbe720778f4a4bb964fb8dfacaf2e315"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af21cd0db53cc445ccf02dfaa7d16ef22"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#af21cd0db53cc445ccf02dfaa7d16ef22">selectL</a> (<a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *L, int w, int starty, int startx, char **list, int sizeL)</td></tr>
-<tr class="separator:af21cd0db53cc445ccf02dfaa7d16ef22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f3dede0d8cfb84edb41889ae60c11c1"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d03/gui_8c.html#a5f3dede0d8cfb84edb41889ae60c11c1">selectL</a> (<a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *L, int w, int starty, int startx, char **list)</td></tr>
+<tr class="memdesc:a5f3dede0d8cfb84edb41889ae60c11c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a menu where the different option.  <a href="#a5f3dede0d8cfb84edb41889ae60c11c1">More...</a><br /></td></tr>
+<tr class="separator:a5f3dede0d8cfb84edb41889ae60c11c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>GUI related functions. </p>
+<dl class="section author"><dt>Author</dt><dd>Maeva Arlandis et Alexis Devillard </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>6.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>10 janvier 2017 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="ae485c573e417de3d5d0762338cca871b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -151,7 +169,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int choice </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#adf6d865a38ae98af7b316588c8737f7a">Win</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#d0/d4a/struct___win">Win</a> *&#160;</td>
           <td class="paramname"><em>win</em>, </td>
         </tr>
         <tr>
@@ -168,6 +186,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Enable to browse the different button of the win given, starting at the last choice given. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">win</td><td>The win to browse. </td></tr>
+    <tr><td class="paramname">lstCh</td><td>The index of the first button to activate. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="abbe720778f4a4bb964fb8dfacaf2e315"></a>
@@ -177,12 +204,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int dispInfo </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *&#160;</td>
           <td class="paramname"><em>L</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Display the Player info. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>The labyrinth map structure. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -193,12 +228,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int dispMap </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *&#160;</td>
           <td class="paramname"><em>L</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Display the labyrinth. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>The labyrinth map structure. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -209,12 +252,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int dispPath </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *&#160;</td>
           <td class="paramname"><em>L</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Display the path of players. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>The labyrinth map structure. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -225,12 +276,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int eraseMap </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *&#160;</td>
           <td class="paramname"><em>L</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Erase the labyrynth. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>The labyrinth map structure. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -241,7 +300,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int GUI </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *&#160;</td>
           <td class="paramname"><em>L</em>, </td>
         </tr>
         <tr>
@@ -258,6 +317,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Allocate and initialize all the GUI structures. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>The labyrinth map structure. </td></tr>
+    <tr><td class="paramname">lstGUIch</td><td>last choice in the gui to make the active button to keep being activ after being push if there is no windows switch. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="a52e7af91e0aaf587d1642ab4748b6396"></a>
@@ -267,23 +335,31 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void initGUI </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *&#160;</td>
           <td class="paramname"><em>L</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Allocate and initialize all the GUI structures. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">L</td><td>The labyrinth map structure. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a class="anchor" id="af21cd0db53cc445ccf02dfaa7d16ef22"></a>
+<a class="anchor" id="a5f3dede0d8cfb84edb41889ae60c11c1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* selectL </td>
+          <td class="memname">char * selectL </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">Map</a> *&#160;</td>
           <td class="paramname"><em>L</em>, </td>
         </tr>
         <tr>
@@ -308,13 +384,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>list</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>sizeL</em>&#160;</td>
+          <td class="paramname"><em>list</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -323,6 +393,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Draw a menu where the different option. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>The index of the window where the menu should be dispplayed </td></tr>
+    <tr><td class="paramname">starty</td><td>The Y coordinate of the high-right corner of the menu. </td></tr>
+    <tr><td class="paramname">startx</td><td>The X coordinate of the high-right corner of the menu. </td></tr>
+    <tr><td class="paramname">list</td><td>The list of the different item's label of the menu. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -333,12 +414,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void showWin </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#adf6d865a38ae98af7b316588c8737f7a">Win</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#d0/d4a/struct___win">Win</a> *&#160;</td>
           <td class="paramname"><em>win</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Monitor the gui system and all other graphical functions. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">win</td><td>The win to show. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -349,7 +438,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void wboxe </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#adf6d865a38ae98af7b316588c8737f7a">Win</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../df/dec/struct_8h.html#d0/d4a/struct___win">Win</a> *&#160;</td>
           <td class="paramname"><em>win</em>, </td>
         </tr>
         <tr>
@@ -377,6 +466,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>draw a boxe at the position ( startx ; starty ) on the win given and write the string in it. (Rq: It size depend of the string size) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">win</td><td>The win to show. </td></tr>
+    <tr><td class="paramname">starty</td><td>The Y coordinate of the high-right corner of the boxe. </td></tr>
+    <tr><td class="paramname">startx</td><td>The X coordinate of the high-right corner of the boxe. </td></tr>
+    <tr><td class="paramname">string</td><td>The string to write in the boxe. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

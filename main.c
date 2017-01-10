@@ -3,6 +3,7 @@
 
 #include "gui.h"
 #include "struct.h"
+#include "strlib.h"
 
 #include "mapping.h"
 #include "dumbMd.h"
@@ -16,13 +17,6 @@
     \version 6.2
     \date 10 janvier 2017
 */
-
-
-Path Astar(Map *L,int P1, int P2); //return the shortest path beetween P1 and P2 
-Path Astarpp(Map L,int P1, int P2); //return the shortest path beetween P1 and P2 taking the change of map into account, evaluatng the advantages with evaluate();
-
-int crowFly(Map *L,int P1,int P2);//evaluate the distance beetween P1 and P2(of the map L) as the crows flies 
-int evaluate(Map *L);//Return the
 
 
 

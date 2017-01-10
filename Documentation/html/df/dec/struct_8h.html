@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Labyrinth
-   &#160;<span id="projectnumber">4.03</span>
+   &#160;<span id="projectnumber">4.1</span>
    </div>
    <div id="projectbrief">This project aim to create bios-like GUI, and create an AI able to reach a goal before its opponent in a maze.</div>
   </td>
@@ -113,6 +113,9 @@ $(document).ready(function(){initNavTree('df/dec/struct_8h.html','../../');});
 <div class="title">struct.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Data structures use in the program.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;panel.h&gt;</code><br />
 <code>#include &lt;ncurses.h&gt;</code><br />
 </div>
@@ -123,37 +126,53 @@ Data Structures</h2></td></tr>
 <tr class="memitem:d4/dd5/struct___l_step"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#d4/dd5/struct___l_step">_LStep</a></td></tr>
 <tr class="separator:d4/dd5/struct___l_step"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d0/d6e/struct___node"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#d0/d6e/struct___node">_Node</a></td></tr>
+<tr class="memdesc:d0/d6e/struct___node"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node is a case from the map. It is used in Astar mode.  <a href="../../df/dec/struct_8h.html#d0/d6e/struct___node">More...</a><br /></td></tr>
 <tr class="separator:d0/d6e/struct___node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d7/d82/struct___path"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#d7/d82/struct___path">_Path</a></td></tr>
+<tr class="memdesc:d7/d82/struct___path"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of lab node and its size. It is used in Astar mode.  <a href="../../df/dec/struct_8h.html#d7/d82/struct___path">More...</a><br /></td></tr>
 <tr class="separator:d7/d82/struct___path"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d4/dcb/struct___player"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#d4/dcb/struct___player">_Player</a></td></tr>
+<tr class="memdesc:d4/dcb/struct___player"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains informations of position, energy and mode of a player.  <a href="../../df/dec/struct_8h.html#d4/dcb/struct___player">More...</a><br /></td></tr>
 <tr class="separator:d4/dcb/struct___player"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d0/d4a/struct___win"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#d0/d4a/struct___win">_Win</a></td></tr>
 <tr class="separator:d0/d4a/struct___win"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d7/d1b/struct___map"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">_Map</a></td></tr>
+<tr class="memdesc:d7/d1b/struct___map"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains informations of the Map.  <a href="../../df/dec/struct_8h.html#d7/d1b/struct___map">More...</a><br /></td></tr>
 <tr class="separator:d7/d1b/struct___map"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a30565ba468295703d7e04c7676643a4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#a30565ba468295703d7e04c7676643a4f">nbrW</a>&#160;&#160;&#160;7</td></tr>
+<tr class="memitem:a30565ba468295703d7e04c7676643a4f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30565ba468295703d7e04c7676643a4f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>nbrW</b>&#160;&#160;&#160;7</td></tr>
 <tr class="separator:a30565ba468295703d7e04c7676643a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:af5341ec1566a8c9b5eecbdbbe6f269ae"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="../../df/dec/struct_8h.html#d4/dd5/struct___l_step">_LStep</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#af5341ec1566a8c9b5eecbdbbe6f269ae">Lcase</a></td></tr>
+<tr class="memitem:af5341ec1566a8c9b5eecbdbbe6f269ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5341ec1566a8c9b5eecbdbbe6f269ae"></a>
+typedef struct <a class="el" href="../../df/dec/struct_8h.html#d4/dd5/struct___l_step">_LStep</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Lcase</b></td></tr>
 <tr class="separator:af5341ec1566a8c9b5eecbdbbe6f269ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ff62746a396b270606ff04818b7e4ac"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="../../df/dec/struct_8h.html#d0/d6e/struct___node">_Node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#a8ff62746a396b270606ff04818b7e4ac">Node</a></td></tr>
+<tr class="memitem:a8ff62746a396b270606ff04818b7e4ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ff62746a396b270606ff04818b7e4ac"></a>
+typedef struct <a class="el" href="../../df/dec/struct_8h.html#d0/d6e/struct___node">_Node</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Node</b></td></tr>
 <tr class="separator:a8ff62746a396b270606ff04818b7e4ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf1ebd47eaeca3035384408cd5faefa5"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="../../df/dec/struct_8h.html#d7/d82/struct___path">_Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#adf1ebd47eaeca3035384408cd5faefa5">Path</a></td></tr>
+<tr class="memitem:adf1ebd47eaeca3035384408cd5faefa5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf1ebd47eaeca3035384408cd5faefa5"></a>
+typedef struct <a class="el" href="../../df/dec/struct_8h.html#d7/d82/struct___path">_Path</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Path</b></td></tr>
 <tr class="separator:adf1ebd47eaeca3035384408cd5faefa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af30e2030635a69690f85e48bc6ef202f"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="../../df/dec/struct_8h.html#d4/dcb/struct___player">_Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#af30e2030635a69690f85e48bc6ef202f">Player</a></td></tr>
+<tr class="memitem:af30e2030635a69690f85e48bc6ef202f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af30e2030635a69690f85e48bc6ef202f"></a>
+typedef struct <a class="el" href="../../df/dec/struct_8h.html#d4/dcb/struct___player">_Player</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Player</b></td></tr>
 <tr class="separator:af30e2030635a69690f85e48bc6ef202f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf6d865a38ae98af7b316588c8737f7a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="../../df/dec/struct_8h.html#d0/d4a/struct___win">_Win</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#adf6d865a38ae98af7b316588c8737f7a">Win</a></td></tr>
+<tr class="memitem:adf6d865a38ae98af7b316588c8737f7a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf6d865a38ae98af7b316588c8737f7a"></a>
+typedef struct <a class="el" href="../../df/dec/struct_8h.html#d0/d4a/struct___win">_Win</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Win</b></td></tr>
 <tr class="separator:adf6d865a38ae98af7b316588c8737f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab46d503165c573ef5a1abb88fc4ec2cf"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">_Map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a></td></tr>
+<tr class="memitem:ab46d503165c573ef5a1abb88fc4ec2cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab46d503165c573ef5a1abb88fc4ec2cf"></a>
+typedef struct <a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">_Map</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Map</b></td></tr>
 <tr class="separator:ab46d503165c573ef5a1abb88fc4ec2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/><h2 class="groupheader">Data Structure Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Data structures use in the program. </p>
+<dl class="section author"><dt>Author</dt><dd>Maeva Arlandis et Alexis Devillard </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>6.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>10 janvier 2017 </dd></dl>
+</div><hr/><h2 class="groupheader">Data Structure Documentation</h2>
 <a name="d4/dd5/struct___l_step" id="d4/dd5/struct___l_step"></a>
 <div class="memitem">
 <div class="memproto">
@@ -226,43 +245,50 @@ Y</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="textblock"></div><table class="fieldtable">
+<div class="textblock"><p>Node is a case from the map. It is used in Astar mode. </p>
+</div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a66700f11d42fee2413e58dbf49c43ee1"></a>int</td>
 <td class="fieldname">
 cost</td>
 <td class="fielddoc">
+<p>Distance from the player to the current node </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a266b59afb2a9e30cb84c2b14388fb5fe"></a>int</td>
 <td class="fieldname">
 heuristic</td>
 <td class="fielddoc">
+<p>Distance between the player and the treasure as the crows fly </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a92b940ae1bafab81f2c09dcb727b2759"></a>struct <a class="el" href="../../df/dec/struct_8h.html#d0/d6e/struct___node">_Node</a> *</td>
 <td class="fieldname">
 listNext</td>
 <td class="fielddoc">
+<p>Used if in Closedlist and Openlist </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="aa0cc47f15f87b45c6960e18fd786f286"></a>char *</td>
 <td class="fieldname">
 ncase</td>
 <td class="fielddoc">
+<p>Pointer to a case of the map in order to get the data of </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="ac1bcf3cc6dca353ea81f1e92b01d7ecb"></a>struct <a class="el" href="../../df/dec/struct_8h.html#d0/d6e/struct___node">_Node</a> *</td>
 <td class="fieldname">
 pathChild</td>
 <td class="fielddoc">
+<p>Pointer to get the Node evaluated after </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a7d0cf1a91c4dd335673a79aa5db87d01"></a>struct <a class="el" href="../../df/dec/struct_8h.html#d0/d6e/struct___node">_Node</a> *</td>
 <td class="fieldname">
 pathParent</td>
 <td class="fielddoc">
+<p>Pointer to get the Node evaluated before </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a80c0944640e62d3ed6c5419c1bcc0c88"></a>int</td>
@@ -275,6 +301,7 @@ X</td>
 <td class="fieldname">
 Y</td>
 <td class="fielddoc">
+<p>Position of the node in the map. </p>
 </td></tr>
 </table>
 
@@ -289,19 +316,22 @@ Y</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="textblock"></div><table class="fieldtable">
+<div class="textblock"><p>List of lab node and its size. It is used in Astar mode. </p>
+</div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a2addc5f5fab651284199528b83cd61c8"></a><a class="el" href="../../df/dec/struct_8h.html#a8ff62746a396b270606ff04818b7e4ac">Node</a> *</td>
+<a class="anchor" id="a2addc5f5fab651284199528b83cd61c8"></a><a class="el" href="../../df/dec/struct_8h.html#d0/d6e/struct___node">Node</a> *</td>
 <td class="fieldname">
 first</td>
 <td class="fielddoc">
+<p>Pointer to the first node of the path </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a439227feff9d7f55384e8780cfc2eb82"></a>int</td>
 <td class="fieldname">
 size</td>
 <td class="fielddoc">
+<p>Number of cases in the Path </p>
 </td></tr>
 </table>
 
@@ -316,61 +346,71 @@ size</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="textblock"></div><table class="fieldtable">
+<div class="textblock"><p>Contains informations of position, energy and mode of a player. </p>
+</div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a4ec8c7cb48771b844a6d50e2150e3f63"></a>int</td>
 <td class="fieldname">
 energy</td>
 <td class="fielddoc">
+<p>Energy of the player, +1 every turn, -5 if the move is a rotation </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a7bb8b2cfc1aec0db2429c600cddccf17"></a>int</td>
 <td class="fieldname">
 lastX</td>
 <td class="fielddoc">
+<p>Last X position of the player </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="ae135df8cfc9b15d97e97b400a5cbc768"></a>int</td>
 <td class="fieldname">
 lastY</td>
 <td class="fielddoc">
+<p>Last Y position of the player </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a1ea5d0cb93f22f7d0fdf804bd68c3326"></a>int</td>
 <td class="fieldname">
 mode</td>
 <td class="fielddoc">
+<p>Dumb, manual, random, A*, smart A* </p>
 </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="ac7fee391a1ea765fcd9a813684459133"></a><a class="el" href="../../df/dec/struct_8h.html#adf1ebd47eaeca3035384408cd5faefa5">Path</a> *</td>
+<a class="anchor" id="ac7fee391a1ea765fcd9a813684459133"></a><a class="el" href="../../df/dec/struct_8h.html#d7/d82/struct___path">Path</a> *</td>
 <td class="fieldname">
 toGoal</td>
 <td class="fielddoc">
+<p>Path to go to the treasure </p>
 </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="acb6bf1fa3b8884d0c9ce0b566a534bcc"></a><a class="el" href="../../df/dec/struct_8h.html#adf1ebd47eaeca3035384408cd5faefa5">Path</a> *</td>
+<a class="anchor" id="acb6bf1fa3b8884d0c9ce0b566a534bcc"></a><a class="el" href="../../df/dec/struct_8h.html#d7/d82/struct___path">Path</a> *</td>
 <td class="fieldname">
 toOtherP</td>
 <td class="fielddoc">
+<p>Path to go to the opponnent </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="aaefa47f4fdf865c2358c22b542a993e4"></a>int</td>
 <td class="fieldname">
 turn</td>
 <td class="fielddoc">
+<p>1 if it is the turn of the player, 0 if it is the turn of the opponnent </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a80c0944640e62d3ed6c5419c1bcc0c88"></a>int</td>
 <td class="fieldname">
 X</td>
 <td class="fielddoc">
+<p>Current X position of the player </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="aa482c4cc86a24474e4fb19b5b5978778"></a>int</td>
 <td class="fieldname">
 Y</td>
 <td class="fielddoc">
+<p>Current Y position of the player </p>
 </td></tr>
 </table>
 
@@ -430,7 +470,8 @@ win</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="textblock"></div><table class="fieldtable">
+<div class="textblock"><p>Contains informations of the Map. </p>
+</div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a601e32b61d466f9df86e0fbc527472bf"></a>char **</td>
@@ -439,7 +480,7 @@ cases</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a81c46208e94d18eaf33350342c9051f1"></a><a class="el" href="../../df/dec/struct_8h.html#adf6d865a38ae98af7b316588c8737f7a">Win</a> **</td>
+<a class="anchor" id="a81c46208e94d18eaf33350342c9051f1"></a><a class="el" href="../../df/dec/struct_8h.html#d0/d4a/struct___win">Win</a> **</td>
 <td class="fieldname">
 guiWins</td>
 <td class="fielddoc">
@@ -449,18 +490,21 @@ guiWins</td>
 <td class="fieldname">
 heigth</td>
 <td class="fielddoc">
+<p>Heigth of the map </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="abd5a12f6d08d1da5d84e9142bcef5d9a"></a>char</td>
 <td class="fieldname">
 infoP1[10][50]</td>
 <td class="fielddoc">
+<p>Info Player 1 </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a7918e7b9cb5d1890b8b6f01464a40e25"></a>char</td>
 <td class="fieldname">
 infoP2[10][50]</td>
 <td class="fielddoc">
+<p>Info Player 2 </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="ade5703e4636c30db184056e412bbad9f"></a>char **</td>
@@ -503,11 +547,12 @@ mvL</td>
 <td class="fieldname">
 name[50]</td>
 <td class="fielddoc">
+<p>Map Name </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="acf9de252f49470dbdbd63ede514eb4eb"></a>PANEL *</td>
 <td class="fieldname">
-panels[<a class="el" href="../../df/dec/struct_8h.html#a30565ba468295703d7e04c7676643a4f">nbrW</a>+1]</td>
+panels[nbrW+1]</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
@@ -515,9 +560,10 @@ panels[<a class="el" href="../../df/dec/struct_8h.html#a30565ba468295703d7e04c76
 <td class="fieldname">
 PlayerName[25]</td>
 <td class="fielddoc">
+<p>Name of our player </p>
 </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a48395d86670996c0e7144aff32feb7be"></a><a class="el" href="../../df/dec/struct_8h.html#af30e2030635a69690f85e48bc6ef202f">Player</a> *</td>
+<a class="anchor" id="a48395d86670996c0e7144aff32feb7be"></a><a class="el" href="../../df/dec/struct_8h.html#d4/dcb/struct___player">Player</a> *</td>
 <td class="fieldname">
 players[3]</td>
 <td class="fielddoc">
@@ -527,118 +573,37 @@ players[3]</td>
 <td class="fieldname">
 PortName[10]</td>
 <td class="fielddoc">
+<p>Port Name </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a8688ed54a60069cc4615ee29c9c6c552"></a>char</td>
 <td class="fieldname">
 ServerName[50]</td>
 <td class="fielddoc">
+<p>Server data </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="ab1aeb27b976555390e2429e283a877b7"></a>char</td>
 <td class="fieldname">
 TimeOut[10]</td>
 <td class="fielddoc">
+<p>Max Time to Play </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="aaefa47f4fdf865c2358c22b542a993e4"></a>int</td>
 <td class="fieldname">
 turn</td>
 <td class="fielddoc">
+<p>Number of played turn </p>
 </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a2474a5474cbff19523a51eb1de01cda4"></a>int</td>
 <td class="fieldname">
 width</td>
 <td class="fielddoc">
+<p>Width of the map </p>
 </td></tr>
 </table>
-
-</div>
-</div>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a30565ba468295703d7e04c7676643a4f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define nbrW&#160;&#160;&#160;7</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="af5341ec1566a8c9b5eecbdbbe6f269ae"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="../../df/dec/struct_8h.html#d4/dd5/struct___l_step">_LStep</a> <a class="el" href="../../df/dec/struct_8h.html#af5341ec1566a8c9b5eecbdbbe6f269ae">Lcase</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ab46d503165c573ef5a1abb88fc4ec2cf"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="../../df/dec/struct_8h.html#d7/d1b/struct___map">_Map</a> <a class="el" href="../../df/dec/struct_8h.html#ab46d503165c573ef5a1abb88fc4ec2cf">Map</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a8ff62746a396b270606ff04818b7e4ac"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="../../df/dec/struct_8h.html#d0/d6e/struct___node">_Node</a> <a class="el" href="../../df/dec/struct_8h.html#a8ff62746a396b270606ff04818b7e4ac">Node</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="adf1ebd47eaeca3035384408cd5faefa5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="../../df/dec/struct_8h.html#d7/d82/struct___path">_Path</a> <a class="el" href="../../df/dec/struct_8h.html#adf1ebd47eaeca3035384408cd5faefa5">Path</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="af30e2030635a69690f85e48bc6ef202f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="../../df/dec/struct_8h.html#d4/dcb/struct___player">_Player</a> <a class="el" href="../../df/dec/struct_8h.html#af30e2030635a69690f85e48bc6ef202f">Player</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="adf6d865a38ae98af7b316588c8737f7a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="../../df/dec/struct_8h.html#d0/d4a/struct___win">_Win</a> <a class="el" href="../../df/dec/struct_8h.html#adf6d865a38ae98af7b316588c8737f7a">Win</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
