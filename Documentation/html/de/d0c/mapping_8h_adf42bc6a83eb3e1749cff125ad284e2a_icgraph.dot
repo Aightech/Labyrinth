@@ -1,0 +1,11 @@
+digraph "testMoveM"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="testMoveM",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="gene_randmove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d8c/rand_md_8h.html#ae0bd3b500920a5bc0386dd86489db626",tooltip="Generate random moves until it is possible for player P to do it (Map rotations and DO_NOTHING includ..."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="randMode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d8c/rand_md_8h.html#af9cf95043c41e37326e0cf07440223c3",tooltip="Run the mode of the game where the player play with random moves (Map rotations and DO_NOTHING includ..."];
+}

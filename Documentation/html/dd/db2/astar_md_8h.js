@@ -8,5 +8,6 @@ var astar_md_8h =
     [ "extractPath", "dd/db2/astar_md_8h.html#a9b4f457ca7c276eb535b22e2a37de74a", null ],
     [ "initOpenList", "dd/db2/astar_md_8h.html#ad4e0719576ebe703dcc6309e827992f2", null ],
     [ "newNode", "dd/db2/astar_md_8h.html#a3fff4a8445cd48159ad39bf5e95f8431", null ],
-    [ "rmOList", "dd/db2/astar_md_8h.html#af00db588d541bcfc34b0694a93743527", null ]
+    [ "rmOList", "dd/db2/astar_md_8h.html#af00db588d541bcfc34b0694a93743527", null ],
+    [ "rmPath", "dd/db2/astar_md_8h.html#a1c3a80e66f96daceb442c2fd37840d8b", null ]
 ];

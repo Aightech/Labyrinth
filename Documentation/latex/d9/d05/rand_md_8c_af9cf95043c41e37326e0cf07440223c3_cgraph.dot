@@ -1,0 +1,26 @@
+digraph "randMode"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="randMode",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="movement",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d7b/mapping_8c.html#a7aedd4fdc510867594753696cbb0cd86",tooltip="Rotate the map(moveM()) or move the player (moveP()). Return 1 if can&#39;t move return. "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="moveM",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d7b/mapping_8c.html#a676b72a51bfecda4afdcaf81537e6986",tooltip="Rotate the map. Return 1 if can&#39;t move return : -1(not enought energy) "];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="moveP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d7b/mapping_8c.html#ad06394e3aa5ef693c34687cb74813336",tooltip="Move the position of the player on the map. Return 1 if can&#39;t move return : -1(wall) -2(player) ..."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="testMoveP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d7b/mapping_8c.html#ab8e6e204f7b1bd95babda75a04279141",tooltip="Return 1 if can&#39;t move return : -1(wall) -2(player) "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="gene_randmove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d05/rand_md_8c.html#ae0bd3b500920a5bc0386dd86489db626",tooltip="Generate random moves until it is possible for player P to do it (Map rotations and DO_NOTHING includ..."];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="convert_movetype",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d05/rand_md_8c.html#a93be1c2860133fd977f23534d7065098",tooltip="Generate a random move from an integer (Map rotations and DO_NOTHING include). "];
+  Node6 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="testMoveM",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d7b/mapping_8c.html#adf42bc6a83eb3e1749cff125ad284e2a",tooltip="Return 0 if player P has enough energy to move the Map and -1 otherwise. "];
+  Node6 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="dispInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d77/guilib_8c.html#abbe720778f4a4bb964fb8dfacaf2e315",tooltip="Display the Player info. "];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="dispMap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d77/guilib_8c.html#a82e2bf7357d16998055a8768e3632f0e",tooltip="Display the labyrinth. "];
+}

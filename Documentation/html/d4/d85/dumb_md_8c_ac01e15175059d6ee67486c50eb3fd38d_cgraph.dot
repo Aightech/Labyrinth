@@ -1,0 +1,15 @@
+digraph "dumbMode"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="dumbMode",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="moveP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d7b/mapping_8c.html#ad06394e3aa5ef693c34687cb74813336",tooltip="Move the position of the player on the map. Return 1 if can&#39;t move return : -1(wall) -2(player) ..."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="testMoveP",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d7b/mapping_8c.html#ab8e6e204f7b1bd95babda75a04279141",tooltip="Return 1 if can&#39;t move return : -1(wall) -2(player) "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="dispInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d77/guilib_8c.html#abbe720778f4a4bb964fb8dfacaf2e315",tooltip="Display the Player info. "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="dispMap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d77/guilib_8c.html#a82e2bf7357d16998055a8768e3632f0e",tooltip="Display the labyrinth. "];
+}

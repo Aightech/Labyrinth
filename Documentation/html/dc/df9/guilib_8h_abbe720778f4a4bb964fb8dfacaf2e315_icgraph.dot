@@ -1,0 +1,23 @@
+digraph "dispInfo"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="dispInfo",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="astarMode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/db2/astar_md_8h.html#a6fcd248ff5643acbb0b4fa966ce3cd0f",tooltip="Generate simple A* behavior. "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="astarPath",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/db2/astar_md_8h.html#aa2523dcedbd90386c3716a638639d4f2",tooltip="Generate the shortest path to the goal with an A* algo. "];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="dumbMode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d56/dumb_md_8h.html#ac01e15175059d6ee67486c50eb3fd38d",tooltip="Run the mode of the game where our player don&#39;t do anything. "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="GUI",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/df9/guilib_8h.html#a74faad0e3c55dfd39a5ecd03e9ae60f1",tooltip="Allocate and initialize all the GUI structures. "];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="manualMode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/daf/manual_md_8h.html#a2787f6e5d5bbc9686cb8463dd5b07f4c",tooltip="Run the mode of the game where the player control his moves turn by turn with the console..."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="getMap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d0c/mapping_8h.html#acd86842943223c3da418c5981befabf6",tooltip="Connect to the server and get the labyrinth data. "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="randMode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d8c/rand_md_8h.html#af9cf95043c41e37326e0cf07440223c3",tooltip="Run the mode of the game where the player play with random moves (Map rotations and DO_NOTHING includ..."];
+}

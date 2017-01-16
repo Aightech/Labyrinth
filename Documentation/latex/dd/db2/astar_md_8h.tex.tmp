@@ -13,40 +13,41 @@ This graph shows which files directly or indirectly include this file\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{astar_md_8h_a6fcd248ff5643acbb0b4fa966ce3cd0f}{astar\+Mode} (\hyperlink{struct___map}{Map} $\ast$L)
+int \hyperlink{astar_md_8h_a6fcd248ff5643acbb0b4fa966ce3cd0f}{astar\+Mode} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L)
 \begin{DoxyCompactList}\small\item\em Generate simple A$\ast$ behavior. \end{DoxyCompactList}\item 
-\hyperlink{struct_path}{Path} $\ast$ \hyperlink{astar_md_8h_aa2523dcedbd90386c3716a638639d4f2}{astar\+Path} (\hyperlink{struct___map}{Map} $\ast$L, int P)
+\hyperlink{struct_8h_d7/d82/struct___path}{Path} $\ast$ \hyperlink{astar_md_8h_aa2523dcedbd90386c3716a638639d4f2}{astar\+Path} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, int P)
 \begin{DoxyCompactList}\small\item\em Generate the shortest path to the goal with an A$\ast$ algo. \end{DoxyCompactList}\item 
-\hyperlink{struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_ad4e0719576ebe703dcc6309e827992f2}{init\+Open\+List} (\hyperlink{struct___map}{Map} $\ast$L, int x, int y, char $\ast$$\ast$nds)
+\hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_ad4e0719576ebe703dcc6309e827992f2}{init\+Open\+List} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, int x, int y, char $\ast$$\ast$nds)
 \begin{DoxyCompactList}\small\item\em Initialise and return the node of the position (x,y). \end{DoxyCompactList}\item 
-\hyperlink{struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_a3fff4a8445cd48159ad39bf5e95f8431}{new\+Node} (\hyperlink{struct___map}{Map} $\ast$L, int x, int y, \hyperlink{struct___node}{Node} $\ast$parent, char $\ast$$\ast$nds)
+\hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_a3fff4a8445cd48159ad39bf5e95f8431}{new\+Node} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, int x, int y, \hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$parent, char $\ast$$\ast$nds)
 \begin{DoxyCompactList}\small\item\em Initialise and return the node cominf from fromN. \end{DoxyCompactList}\item 
-\hyperlink{struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_ac7758c289c28b122935f10a1bc8dcb04}{add\+Neigh} (\hyperlink{struct___map}{Map} $\ast$L, \hyperlink{struct___node}{Node} $\ast$OpL, char $\ast$$\ast$nds)
+\hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_ac7758c289c28b122935f10a1bc8dcb04}{add\+Neigh} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, \hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$OpL, char $\ast$$\ast$nds)
 \begin{DoxyCompactList}\small\item\em try to create a node for each neighbor, and add them to the open list. \end{DoxyCompactList}\item 
-\hyperlink{struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_a9b4f457ca7c276eb535b22e2a37de74a}{extract\+Path} (\hyperlink{struct___node}{Node} $\ast$clL)
+\hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_a9b4f457ca7c276eb535b22e2a37de74a}{extract\+Path} (\hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$clL)
 \begin{DoxyCompactList}\small\item\em Starting from the goal, iterativly,freing node that are not path\+Parent,taking path\+Parent node and put last node adress in its path\+Child. \end{DoxyCompactList}\item 
-\hyperlink{struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_ab524330b8f058f0d6ae7549b9377d3f3}{add\+To\+List} (\hyperlink{struct___node}{Node} $\ast$N1, \hyperlink{struct___node}{Node} $\ast$Nto\+Add)
+\hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$ \hyperlink{astar_md_8h_ab524330b8f058f0d6ae7549b9377d3f3}{add\+To\+List} (\hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$N1, \hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$Nto\+Add)
 \begin{DoxyCompactList}\small\item\em Add a node to a list sort heuristicly increasing. \end{DoxyCompactList}\item 
-int \hyperlink{astar_md_8h_a9f2e525a00122b6a13abc912d078817d}{rm\+List} (\hyperlink{struct___node}{Node} $\ast$first)
+int \hyperlink{astar_md_8h_af00db588d541bcfc34b0694a93743527}{rm\+O\+List} (\hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$first)
 \begin{DoxyCompactList}\small\item\em Free each node of the list. \end{DoxyCompactList}\item 
-int {\bfseries dist\+NtoP} (\hyperlink{struct___map}{Map} $\ast$L, int P, \hyperlink{struct___node}{Node} $\ast$N)\hypertarget{astar_md_8h_aa2236259a3dd1633bef2c35b9ccfd56a}{}\label{astar_md_8h_aa2236259a3dd1633bef2c35b9ccfd56a}
-
-\item 
-int {\bfseries distance\+\_\+to\+\_\+treasure} (\hyperlink{struct___map}{Map} $\ast$L, int x, int y)\hypertarget{astar_md_8h_af110e353e2d3901320f2dd6066f6236c}{}\label{astar_md_8h_af110e353e2d3901320f2dd6066f6236c}
-
-\item 
-int {\bfseries dist\+\_\+h} (\hyperlink{struct___map}{Map} $\ast$L, int x, int y)\hypertarget{astar_md_8h_a73ad43b838e75903fcabbef2d3adc43a}{}\label{astar_md_8h_a73ad43b838e75903fcabbef2d3adc43a}
-
-\item 
-int {\bfseries abs} (int x)\hypertarget{astar_md_8h_a196e7f007a501cf9d0907cb2bab0b622}{}\label{astar_md_8h_a196e7f007a501cf9d0907cb2bab0b622}
-
-\end{DoxyCompactItemize}
+int \hyperlink{astar_md_8h_aa2236259a3dd1633bef2c35b9ccfd56a}{dist\+NtoP} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, int P, \hyperlink{struct_8h_d0/d6e/struct___node}{Node} $\ast$N)
+\begin{DoxyCompactList}\small\item\em Calculate the distance as the crows fly from the node N to the player P. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 A$\ast$ related functions. 
 
-Details. 
+A$\ast$ related functions descriptions.
+
+\begin{DoxyAuthor}{Author}
+Maeva Arlandis et Alexis Devillard 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+6.\+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+10 janvier 2017 
+\end{DoxyDate}
+
 
 \subsection{Function Documentation}
 \index{astar\+Md.\+h@{astar\+Md.\+h}!add\+Neigh@{add\+Neigh}}
@@ -161,6 +162,34 @@ Here is the caller graph for this function\+:
 % FIG 7
 
 
+\index{astar\+Md.\+h@{astar\+Md.\+h}!dist\+NtoP@{dist\+NtoP}}
+\index{dist\+NtoP@{dist\+NtoP}!astar\+Md.\+h@{astar\+Md.\+h}}
+\subsubsection[{\texorpdfstring{dist\+Nto\+P(\+Map $\ast$\+L, int P, Node $\ast$\+N)}{distNtoP(Map *L, int P, Node *N)}}]{\setlength{\rightskip}{0pt plus 5cm}int dist\+NtoP (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{L, }
+\item[{int}]{P, }
+\item[{{\bf Node} $\ast$}]{N}
+\end{DoxyParamCaption}
+)}\hypertarget{astar_md_8h_aa2236259a3dd1633bef2c35b9ccfd56a}{}\label{astar_md_8h_aa2236259a3dd1633bef2c35b9ccfd56a}
+
+
+Calculate the distance as the crows fly from the node N to the player P. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & The labyrinth map structure. \\
+\hline
+{\em P} & Number of the Player. \\
+\hline
+{\em N} & Pointer to the Node. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
 \index{astar\+Md.\+h@{astar\+Md.\+h}!extract\+Path@{extract\+Path}}
 \index{extract\+Path@{extract\+Path}!astar\+Md.\+h@{astar\+Md.\+h}}
 \subsubsection[{\texorpdfstring{extract\+Path(\+Node $\ast$cl\+L)}{extractPath(Node *clL)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ extract\+Path (
@@ -180,7 +209,7 @@ Starting from the goal, iterativly,freing node that are not path\+Parent,taking 
 
 
 Here is the caller graph for this function\+:
-% FIG 8
+% FIG 9
 
 
 \index{astar\+Md.\+h@{astar\+Md.\+h}!init\+Open\+List@{init\+Open\+List}}
@@ -211,7 +240,7 @@ Initialise and return the node of the position (x,y).
 
 
 Here is the caller graph for this function\+:
-% FIG 9
+% FIG 10
 
 
 \index{astar\+Md.\+h@{astar\+Md.\+h}!new\+Node@{new\+Node}}
@@ -242,17 +271,23 @@ Initialise and return the node cominf from fromN.
 \end{DoxyParams}
 
 
+Here is the call graph for this function\+:
+% FIG 11
+
+
+
+
 Here is the caller graph for this function\+:
-% FIG 10
+% FIG 12
 
 
-\index{astar\+Md.\+h@{astar\+Md.\+h}!rm\+List@{rm\+List}}
-\index{rm\+List@{rm\+List}!astar\+Md.\+h@{astar\+Md.\+h}}
-\subsubsection[{\texorpdfstring{rm\+List(\+Node $\ast$first)}{rmList(Node *first)}}]{\setlength{\rightskip}{0pt plus 5cm}int rm\+List (
+\index{astar\+Md.\+h@{astar\+Md.\+h}!rm\+O\+List@{rm\+O\+List}}
+\index{rm\+O\+List@{rm\+O\+List}!astar\+Md.\+h@{astar\+Md.\+h}}
+\subsubsection[{\texorpdfstring{rm\+O\+List(\+Node $\ast$first)}{rmOList(Node *first)}}]{\setlength{\rightskip}{0pt plus 5cm}int rm\+O\+List (
 \begin{DoxyParamCaption}
 \item[{{\bf Node} $\ast$}]{first}
 \end{DoxyParamCaption}
-)}\hypertarget{astar_md_8h_a9f2e525a00122b6a13abc912d078817d}{}\label{astar_md_8h_a9f2e525a00122b6a13abc912d078817d}
+)}\hypertarget{astar_md_8h_af00db588d541bcfc34b0694a93743527}{}\label{astar_md_8h_af00db588d541bcfc34b0694a93743527}
 
 
 Free each node of the list. 
@@ -262,3 +297,9 @@ Free each node of the list.
 {\em first} & First of the the list to remove. \\
 \hline
 \end{DoxyParams}
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+

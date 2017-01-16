@@ -1,6 +1,7 @@
 var files =
 [
     [ "astarMd.h", "dd/db2/astar_md_8h.html", "dd/db2/astar_md_8h" ],
+    [ "cleverMd.h", "d1/d42/clever_md_8h_source.html", null ],
     [ "dumbMd.c", "d4/d85/dumb_md_8c.html", "d4/d85/dumb_md_8c" ],
     [ "dumbMd.h", "dc/d56/dumb_md_8h.html", "dc/d56/dumb_md_8h" ],
     [ "guilib.c", "d1/d77/guilib_8c.html", "d1/d77/guilib_8c" ],
