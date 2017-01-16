@@ -87,7 +87,11 @@ void randMode(Map *L)
 {
 	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
 	t_move* myMove=(t_move*) malloc(sizeof(t_move));
+	if (myMove==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	t_move* adMove=(t_move*) malloc(sizeof(t_move));
+	if (adMove==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	myMove->type = DO_NOTHING;
 	myMove->value = 0;
 	

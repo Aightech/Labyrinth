@@ -17,6 +17,8 @@ void manualMode(Map* L)
 {
 	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
 	t_move* move=(t_move*) malloc(sizeof(t_move));
+	if (move==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	move->type = DO_NOTHING;
 	move->value = 0;
 	t_move moveOp;
