@@ -106,6 +106,7 @@ void randMode(Map *L)
 			addStr(L->infoP1[5],"                         ","");
 			gene_randmove(L,myMove,0);
 			movement(L,0,myMove);
+			sendComment(L->comments[rand()%5]);
 			ret = sendMove(*myMove);
 		}
 		//endwin();

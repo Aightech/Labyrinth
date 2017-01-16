@@ -72,6 +72,7 @@ int astarMode(Map *L)
 				addStr(L->infoP1[8],"no path found","");
 			}
 			movement(L,0,myMove);
+			sendComment(L->comments[rand()%5]);
 			ret = sendMove(*myMove);
 		  }
 		//  int ch = getch();

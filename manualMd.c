@@ -281,7 +281,10 @@ void manualMode(Map* L)
 			}
 			movement(L,0,move);
 			if(L->players[1]->mode!=1)
+			{
+				sendComment(L->comments[rand()%5]);
 		    		ret = sendMove(*move);
+	    		}
 		    
 		  }
 		  //endwin();

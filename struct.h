@@ -113,6 +113,8 @@ typedef struct _Map {//the labyrinth
 	int width; /**< Width of the map */
 	int heigth; /**< Heigth of the map */
 	
+	char comments[5][100]; /**<comments to send to the opponnent */
+	
 	char **cases; /**<  */
 	Player* players[3];//[P1;P2;Tresor] /**< P1 is the opponnent, P2 is our player,  P3 is the treasure */
 	
