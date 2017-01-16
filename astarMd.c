@@ -37,8 +37,8 @@ int astarMode(Map *L)
 			addStr(L->infoP2[5],"                         ","");
 			ret = getMove(opMove);
 			movement(L,1,opMove);
-			rmPath(L->players[1]->toGoal);
-			L->players[1]->toGoal=astarPath(L,1);
+			//rmPath(L->players[1]->toGoal);
+			//L->players[1]->toGoal=astarPath(L,1);
 			
 		}
 		else
