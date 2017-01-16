@@ -33,6 +33,7 @@ void dumbMode(Map* L)
 		else
 		  {
 		  	moveP(L,0,move);
+		  	sendComment(L->comments[rand()%5]);
 		    	ret = sendMove(*move);
 		    
 		  }

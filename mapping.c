@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
 #include "guilib.h"
 #include "struct.h"
 #include "mapping.h"
 #include "strlib.h"
 #include "labyrinthAPI.h"
-#include <unistd.h>
+
 
 /*! \file mapping.c
     \brief Mapping related functions.
@@ -24,6 +26,16 @@ Map* initMap()
 	L->mvC=-1;
 	L->mvL=-1;
 	L->cases=(char **) malloc(L->heigth*sizeof(char*));
+	if (L->cases==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
+	
+	//INITIALISATION OF THE COMMENTS	
+	addStr(L->comments[0],"I am the one with force and the force is with me ...","");
+	addStr(L->comments[1],"Do. Or do not. There is no try.","");
+	addStr(L->comments[2],"I am Gandalf the White. And I come back to you now ... at the turn of the tide.","");
+	addStr(L->comments[3],"YOU SHALL NOT PASS !!!","");
+	addStr(L->comments[4]," * This is not the treasure you're looking for * ","");
+	
 	
 	char MapI[]="---------------------  Project Labyrinth       2016/2017       ---------------------       ROB 3         ---------------------   ARLANDIS Maeva                           DEVILLARD  Alexis                          AUSSAGE Antoine   ---------------------";
 	
@@ -37,24 +49,45 @@ Map* initMap()
 		}
 	}
 	
-	L->listPlrName=(char **) malloc(5*sizeof(char*));
+	//INITIALISATION OF THE PLAYER'S NAMES
+	L->listPlrName=(char **) malloc(6*sizeof(char*));
+	if (L->listPlrName==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	L->listPlrName[0]=(char*)malloc(25*sizeof(char));
+	if (L->listPlrName[0]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	addStr(L->listPlrName[0],"aightech","");
 	L->listPlrName[1]=(char*)malloc(25*sizeof(char));
+	if (L->listPlrName[1]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	addStr(L->listPlrName[1],"BarbeBleue","");
 	L->listPlrName[2]=(char*)malloc(25*sizeof(char));
+	if (L->listPlrName[2]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	addStr(L->listPlrName[2],"K2SO","");
 	L->listPlrName[3]=(char*)malloc(25*sizeof(char));
+	if (L->listPlrName[3]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	addStr(L->listPlrName[3],"Darkradox","");
-	L->listPlrName[4]=NULL;
+	L->listPlrName[4]=(char*)malloc(25*sizeof(char));
+	if (L->listPlrName[4]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
+	addStr(L->listPlrName[4],"Gandalf","");
+	L->listPlrName[5]=NULL;
 	
 	
 	addStr(L->PlayerName,L->listPlrName[0],"");//default;
 	
 	L->listSvrName=(char **) malloc(3*sizeof(char*));
+	if (L->listSvrName==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	L->listSvrName[1]=(char*)malloc(50*sizeof(char));
+	if (L->listSvrName[1]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	addStr(L->listSvrName[1],"pc4023.polytech.upmc.fr","");
 	L->listSvrName[0]=(char*)malloc(50*sizeof(char));
+	if (L->listSvrName[0]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	addStr(L->listSvrName[0],"pc4001.polytech.upmc.fr","");
 	L->listSvrName[2]=NULL;
 	
@@ -62,18 +95,30 @@ Map* initMap()
 	addStr(L->PlayerName,L->listSvrName[0],"");//default;
 	
 	L->listTimeOut=(char **) malloc(4*sizeof(char*));
+	if (L->listTimeOut==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	L->listTimeOut[0]=(char*)malloc(10*sizeof(char));
+	if (L->listTimeOut[0]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	addStr(L->listTimeOut[0],"100","");
 	L->listTimeOut[1]=(char*)malloc(10*sizeof(char));
+	if (L->listTimeOut[1]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	addStr(L->listTimeOut[1],"10","");
 	L->listTimeOut[2]=(char*)malloc(10*sizeof(char));
+	if (L->listTimeOut[2]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	addStr(L->listTimeOut[2],"1000","");
 	L->listTimeOut[3]=NULL;
 	
 	addStr(L->TimeOut,L->listTimeOut[0],"");//default;
 	
 	L->listPrtName=(char **) malloc(2*sizeof(char*));
+	if (L->listPrtName==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	L->listPrtName[0]=(char*)malloc(10*sizeof(char));
+	if (L->listPrtName[0]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	addStr(L->listPrtName[0],"1234","");
 	L->listPrtName[1]=NULL;
 	
@@ -168,6 +213,8 @@ void getMap(Map *L)
 	/* wait for a game, and retrieve informations about it */
 	waitForLabyrinth( argMap, L->name, &(L->width), &(L->heigth));
 	labData = (char*) malloc( L->width*L->heigth);
+	if (labData==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	L->players[0]->turn = getLabyrinth(labData);
 	mvwprintw(L->guiWins[0]->win, 1, 10, L->name);
 	mvwprintw(L->guiWins[0]->win, 1, 25, "turn:");
@@ -218,11 +265,16 @@ void getMap(Map *L)
 	
 	
 	L->cases=(char **) malloc(L->heigth*sizeof(char*));
+	if (L->cases==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
 	
 	
 	for(i=0;i<L->heigth;i++)//get the lab in a 2dim array
 	{
 		L->cases[i]=(char*)malloc(L->width*sizeof(char));
+		if (L->cases[i]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
+		
 		for(j=0;j<L->width;j++)
 		{
 			L->cases[i][j]=labData[i*L->width+j];
