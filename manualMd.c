@@ -214,7 +214,8 @@ void manualMode(Map* L)
 					choice=40;
 					addStr(L->infoP1[3],"                              ","");
 					addStr(L->infoP1[4],"                              ","");
-					while(choice!=45)
+					int selected=0;
+					while(choice!=45|| selected!=1)
 					{
 						dispMap(L);
 						addStr(L->infoP1[3]," Select the direction of the rotation.","");
@@ -231,6 +232,7 @@ void manualMode(Map* L)
 									move->value=L->mvL;
 									mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18+L->width/2+3, "  ");
 									mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18-L->width/2-2, "<<");
+									selected=1;
 								}
 							break;
 							case 43:
@@ -240,6 +242,7 @@ void manualMode(Map* L)
 									move->value=L->mvL;
 									mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18-L->width/2-2, "  ");
 									mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18+L->width/2+3, ">>");
+									selected=1;
 								}
 							break;
 							case 41:
@@ -249,6 +252,7 @@ void manualMode(Map* L)
 									move->value=L->mvC;
 									mvwprintw(L->guiWins[0]->win, 12+L->heigth/2+3, 18-L->width/2+L->mvC+1, " ");
 									mvwprintw(L->guiWins[0]->win, 12-L->heigth/2-1, 18-L->width/2+L->mvC+1, "^");
+									selected=1;
 								}
 							break;
 							case 42:
@@ -258,16 +262,18 @@ void manualMode(Map* L)
 									move->value=L->mvC;
 									mvwprintw(L->guiWins[0]->win, 12-L->heigth/2-1, 18-L->width/2+L->mvC+1, " ");
 									mvwprintw(L->guiWins[0]->win, 12+L->heigth/2+3, 18-L->width/2+L->mvC+1, "v");
+									selected=1;
 								}
 							break;
 						}
 					}
-					L->mvL=-1;
-					L->mvC=-1;
+					
 					mvwprintw(L->guiWins[0]->win, 12+L->heigth/2+3, 18-L->width/2+L->mvC+1, " ");
 					mvwprintw(L->guiWins[0]->win, 12-L->heigth/2-1, 18-L->width/2+L->mvC+1, " ");
 					mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18-L->width/2-2, "  ");
 					mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18+L->width/2+3, "  ");
+					L->mvL=-1;
+					L->mvC=-1;
 					addStr(L->infoP1[3],"                                      ","");
 					addStr(L->infoP1[4],"                              ","");
 					

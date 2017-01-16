@@ -156,11 +156,15 @@ void getMap(Map *L)
 		break;
 		case 4:
 			addStr(argMap,"ASTAR",L->TimeOut);
-			addStr(L->infoP2[0],"  Clever","  ( A* )");
+			addStr(L->infoP2[0],"  fastest path","  ( A* )");
 		break;
 		case 5:
 			addStr(argMap,"","");
-			addStr(L->infoP2[0],"  Clever","  ( A* )");
+			addStr(L->infoP2[0],"  Other player","");
+		break;
+		case 6:
+			addStr(argMap,"","");
+			addStr(L->infoP2[0]," Contest mode"," ");
 		break;
 		
 	}
@@ -170,7 +174,9 @@ void getMap(Map *L)
 	labData = (char*) malloc( L->width*L->heigth);
 	L->players[0]->turn = getLabyrinth(labData);
 	mvwprintw(L->guiWins[0]->win, 1, 10, L->name);
-	mvwprintw(L->guiWins[0]->win, 1, 25, "turn:");
+	mvwprintw(L->guiWins[0]->win, 1, 25, "turn:       ");
+	L->turn =0;
+	
 	
 	
 	if(L->players[0]->turn==0)//if we start
@@ -183,7 +189,7 @@ void getMap(Map *L)
 		
 		L->players[1]->X=L->width-1;//curent position of the player
 		L->players[1]->Y=L->heigth/2;
-		L->players[1]->energy=1;
+		L->players[1]->energy=2;
 		L->players[1]->lastX=L->players[1]->X;//last position of the player
 		L->players[1]->lastY=L->players[1]->Y;
 	}
@@ -197,14 +203,17 @@ void getMap(Map *L)
 		
 		L->players[0]->X=L->width-1;//curent position of the player
 		L->players[0]->Y=L->heigth/2;
-		L->players[0]->energy=1;
+		L->players[0]->energy=2;
 		L->players[0]->lastX=L->players[0]->X;//last position of the player
 		L->players[0]->lastY=L->players[0]->Y;
 	}
 	
 	char* e=intTostr(L->players[0]->energy);
+	addStr(L->infoP1[1],"          ","");
 	addStr(L->infoP1[1],"  ",e);
+	
 	e=intTostr(L->players[1]->energy);
+	addStr(L->infoP2[1],"          ","");
 	addStr(L->infoP2[1],"  ",e);
 	free(e);
 	

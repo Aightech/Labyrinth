@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <time.h>
+
 
 
 #include "struct.h"
@@ -102,11 +102,8 @@ int astarMode(Map *L)
 	/* end the connection, because we are polite */
 	closeConnection();
 
-	   /*Pause l'application pour i milliseconds*/
-	    clock_t start,end;
-	    start=clock();
-	    int i=50;
-	    while(((end=clock())-start)<=((i*CLOCKS_PER_SEC)/1000));
+	   
+	    
 	
 	
 	

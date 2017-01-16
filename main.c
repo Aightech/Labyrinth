@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "guilib.h"
 #include "struct.h"
@@ -56,6 +57,27 @@ int main()
 				choice++;
 			break;
 			case 34://connection to the server
+				
+				addStr(L->infoP1[5],"                                     ","");
+				getMap(L);//switch of the value getmap return to lauched the game mode
+				if(L->players[0]->mode==0)//we are dumb
+					dumbMode(L);
+				else if(L->players[0]->mode==1)//we play manual
+					manualMode(L);
+				else if(L->players[0]->mode==2)//we play random
+					randMode(L);
+				else if(L->players[0]->mode==3)//we play astar
+					astarMode(L);
+			
+				for(i=3;i<7;i++)
+				{
+					addStr(L->infoP1[i],"                                 ","");
+					addStr(L->infoP2[i],"                                 ","");
+				}
+				addStr(L->infoP1[5]," Select your mode.","");
+				choice=50;	
+			break;
+			case 35://connection to the server
 				while(true){
 				addStr(L->infoP1[5],"                                     ","");
 				getMap(L);//switch of the value getmap return to lauched the game mode
@@ -67,6 +89,11 @@ int main()
 					randMode(L);
 				else if(L->players[0]->mode==3)//we play astar
 					astarMode(L);
+				/*Pause l'application pour i milliseconds*/
+				clock_t start,end;
+				start=clock();
+				int i=50;
+	    			while(((end=clock())-start)<=((i*CLOCKS_PER_SEC)/1000));
 				}
 				for(i=3;i<7;i++)
 				{

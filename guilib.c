@@ -53,7 +53,7 @@ void initGUI(Map * L)
 	
 	L->guiWins[3]->win=newwin(7, 100, 32, 0);//Server options
 	addStr(L->guiWins[3]->label,"Server:","");
-	L->guiWins[3]->numButt=5;
+	L->guiWins[3]->numButt=6;
 	L->guiWins[3]->posButt=(int **)malloc(L->guiWins[3]->numButt*sizeof(int*));
 	L->guiWins[3]->labButt=(char **)malloc(L->guiWins[3]->numButt*sizeof(char*));
 	for(i=0;i<L->guiWins[3]->numButt;i++){
@@ -70,11 +70,14 @@ void initGUI(Map * L)
 	L->guiWins[3]->posButt[2][1]=57;
 	addStr(L->guiWins[3]->labButt[2],"timeOut","");
 	L->guiWins[3]->posButt[3][0]=3;
-	L->guiWins[3]->posButt[3][1]=75;
+	L->guiWins[3]->posButt[3][1]=72;
 	addStr(L->guiWins[3]->labButt[3],"Port","");
 	L->guiWins[3]->posButt[4][0]=3;
-	L->guiWins[3]->posButt[4][1]=90;
+	L->guiWins[3]->posButt[4][1]=86;
 	addStr(L->guiWins[3]->labButt[4],"Connect","");
+	L->guiWins[3]->posButt[5][0]=3;
+	L->guiWins[3]->posButt[5][1]=95;
+	addStr(L->guiWins[3]->labButt[5],"OO","");
 	
 	L->guiWins[4]->win=newwin(7, 40, 25, 0);//Commands options
 	addStr(L->guiWins[4]->label,"Commands:","");
@@ -139,7 +142,7 @@ void initGUI(Map * L)
 	addStr(L->guiWins[5]->labButt[6],"XXXXXX","");
 	
 	
-	L->guiWins[6]->win=newwin(32, 10, 0, 90);//Opponent mode
+	L->guiWins[6]->win=newwin(32, 11, 0, 90);//Opponent mode
 	addStr(L->guiWins[6]->label,"Op.md:","");
 	L->guiWins[6]->numButt=7;
 	L->guiWins[6]->posButt=(int **)malloc(L->guiWins[6]->numButt*sizeof(int*));
@@ -150,25 +153,25 @@ void initGUI(Map * L)
 	}
 	L->guiWins[6]->posButt[0][0]=3;
 	L->guiWins[6]->posButt[0][1]=1;
-	addStr(L->guiWins[6]->labButt[0]," Dumb ","");
+	addStr(L->guiWins[6]->labButt[0]," Dumb  ","");
 	L->guiWins[6]->posButt[1][0]=6;
 	L->guiWins[6]->posButt[1][1]=1;
-	addStr(L->guiWins[6]->labButt[1],"Manual","");
+	addStr(L->guiWins[6]->labButt[1],"Manual ","");
 	L->guiWins[6]->posButt[2][0]=9;
 	L->guiWins[6]->posButt[2][1]=1;
-	addStr(L->guiWins[6]->labButt[2],"Rand P","");
+	addStr(L->guiWins[6]->labButt[2],"Rand P ","");
 	L->guiWins[6]->posButt[3][0]=12;
 	L->guiWins[6]->posButt[3][1]=1;
-	addStr(L->guiWins[6]->labButt[3],"RandMP","");
+	addStr(L->guiWins[6]->labButt[3],"Rand MP","");
 	L->guiWins[6]->posButt[4][0]=15;
 	L->guiWins[6]->posButt[4][1]=1;
-	addStr(L->guiWins[6]->labButt[4],"  A*  ","");
+	addStr(L->guiWins[6]->labButt[4],"   A*  ","");
 	L->guiWins[6]->posButt[5][0]=18;
 	L->guiWins[6]->posButt[5][1]=1;
-	addStr(L->guiWins[6]->labButt[5],"MATCHO","");
+	addStr(L->guiWins[6]->labButt[5]," MATCH ","");
 	L->guiWins[6]->posButt[6][0]=21;
 	L->guiWins[6]->posButt[6][1]=1;
-	addStr(L->guiWins[6]->labButt[6],"XXXXXX","");
+	addStr(L->guiWins[6]->labButt[6],"CONTEST","");
 	
 	
 	
@@ -446,7 +449,7 @@ int dispInfo(Map *L)//Display the Player info
 	wattron(win1->win,COLOR_PAIR(3));
 	mvwprintw(win1->win, starty, startx+5, "%s", L->infoP1[0]);
 	wattroff(win1->win,COLOR_PAIR(3));
-	mvwprintw(win1->win, starty+1, startx, "%s", "Energy:");
+	mvwprintw(win1->win, starty+1, startx, "%s", "Energy:          ");
 	mvwprintw(win1->win, starty+1, startx+7, "%s", L->infoP1[1]);
 	mvwprintw(win1->win, starty+2, startx, "%s", "Infos:");
 	for(i=3;i<10;i++)
@@ -456,7 +459,7 @@ int dispInfo(Map *L)//Display the Player info
 	wattron(win2->win,COLOR_PAIR(1));
 	mvwprintw(win2->win, starty, startx+5, "%s", L->infoP2[0]);
 	wattroff(win2->win,COLOR_PAIR(1));
-	mvwprintw(win2->win, starty+1, startx, "%s", "Energy:");
+	mvwprintw(win2->win, starty+1, startx, "%s", "Energy:          ");
 	mvwprintw(win2->win, starty+1, startx+7, "%s", L->infoP2[1]);
 	mvwprintw(win2->win, starty+2, startx, "%s", "Infos:");
 	for(i=3;i<10;i++)
