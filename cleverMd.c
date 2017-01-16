@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <time.h>
 
 
 #include "struct.h"
@@ -18,7 +17,7 @@
     \date 10 janvier 2017
 */
 
-int astarMode(Map *L)
+int cleverMode(Map *L)
 {	
 	
 	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
@@ -37,14 +36,10 @@ int astarMode(Map *L)
 			addStr(L->infoP2[5],"                         ","");
 			ret = getMove(opMove);
 			movement(L,1,opMove);
-			rmPath(L->players[1]->toGoal);
-			L->players[1]->toGoal=astarPath(L,1);
-			
 		}
 		else
 		{
 			addStr(L->infoP1[5],"                         ","");
-			rmPath(L->players[0]->toGoal);
 			L->players[0]->toGoal=astarPath(L,0);
 			
 			if(L->players[0]->toGoal!=NULL&& L->players[0]->toGoal->first!=NULL && L->players[0]->toGoal->first->pathChild!=NULL)
@@ -64,7 +59,6 @@ int astarMode(Map *L)
 					else
 						myMove->type=MOVE_LEFT;
 				}
-				addStr(L->infoP1[8],"             ","");
 			}
 			else
 			{
@@ -74,9 +68,7 @@ int astarMode(Map *L)
 			movement(L,0,myMove);
 			ret = sendMove(*myMove);
 		  }
-		//  int ch = getch();
-		
-		dispInfo(L);
+		  dispInfo(L);
 		dispMap(L);
 		dispPath(L);
 		  //endwin();
@@ -102,11 +94,7 @@ int astarMode(Map *L)
 	/* end the connection, because we are polite */
 	closeConnection();
 
-	   /*Pause l'application pour i milliseconds*/
-	    clock_t start,end;
-	    start=clock();
-	    int i=50;
-	    while(((end=clock())-start)<=((i*CLOCKS_PER_SEC)/1000));
+		
 	
 	
 	
@@ -119,20 +107,24 @@ Path * astarPath(Map* L, int P)
 	int i,j;
 	char goalValue=4;//the value of the treasur case
 	char ** nodes=(char **) malloc(L->width*L->heigth*sizeof(char*));//array of char to make easier the check of visited or not neighbor: nodes[i][j]=0=>pas check;nodes[i][j]=1=> check;
-	if (nodes==NULL) //test if the allocation is a success
+	/*if (nodes==NULL) //test if the allocation is a success
+	{
+		printf("Malloc Error!\n");
 		exit(EXIT_FAILURE); //EXIT_FAILURE is a predefined macro, opposite of EXIT_SUCCESS
-		
+	}*/
 	for(i =0;i<L->heigth;i++)
 	{
 		nodes[i]=(char *) malloc(L->width*sizeof(char)); // we can use calloc
-		if (nodes[i]==NULL) //test if the allocation is a success
+		/*if (nodes==NULL) //test if the allocation is a success
+		{
+			printf("Malloc Error!\n");
 			exit(EXIT_FAILURE);
-			
+		}*/
 		for(j=0;j<L->width;j++) //we don't need this if we use calloc
 			nodes[i][j]=0;
 	}
 		
-	Node * openList=initOpenList(L,L->players[P]->X,L->players[P]->Y,nodes);
+	Node * openList=initOpenList(L,L->players[0]->X,L->players[0]->Y,nodes);
 	
 	dispInfo(L);
 	
@@ -143,6 +135,10 @@ Path * astarPath(Map* L, int P)
 	
 	while(openList!=NULL&&*(openList->ncase)!=goalValue)//if the openlist isn't empty and the current node is not the goal.
 	{
+		/*Nact=openList;
+		wattron(win->win,COLOR_PAIR(2));
+		mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
+		wattroff(win->win,COLOR_PAIR(2));*/
 		dispInfo(L);
 		addNeigh(L,openList,nodes);//add the neighbors of the first node of the openlist
 		dispInfo(L);
@@ -154,6 +150,23 @@ Path * astarPath(Map* L, int P)
 	
 	//int ch = getch();
 	
+	/*Nact=closedList;
+	while(Nact!=NULL)
+	{
+		if(openList!=NULL&&*(openList->ncase)==goalValue)
+		{
+			wattron(win->win,COLOR_PAIR(2));
+			mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
+			wattroff(win->win,COLOR_PAIR(2));
+		}
+		else
+		{
+			wattron(win->win,COLOR_PAIR(1));
+			mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
+			wattroff(win->win,COLOR_PAIR(1));
+		}
+		Nact=Nact->pathParent;
+	}*/
 	
 	if(openList!=NULL)
 	{
@@ -162,8 +175,11 @@ Path * astarPath(Map* L, int P)
 		{
 			path=(Path*) malloc(sizeof(Path));
 			if (nodes==NULL) //test if the allocation is a success
+			{
+				printf("Malloc Error!\n");
 				exit(EXIT_FAILURE);
-				
+				addStr(L->infoP1[6],"Malloc Error!","");
+			}
 			addStr(L->infoP1[7],"path found","");
 			Ntemp=openList->listNext;
 			openList->listNext=closedList;
@@ -185,9 +201,11 @@ Path * astarPath(Map* L, int P)
 Node *initOpenList(Map *L,int x, int y,char ** nds) 
 {
 	Node* N= (Node *) malloc(sizeof(Node));
-	if (N==NULL) //test if the allocation is a success
+	/*if (nodes==NULL) //test if the allocation is a success
+	{
+		printf("Malloc Error!\n");
 		exit(EXIT_FAILURE);
-		
+	}*/
 	N->X=x;
 	N->Y=y;
 	N->ncase=L->cases[N->Y]+N->X;//this is the character of the map so it as the mapping data : wall/players
@@ -208,9 +226,11 @@ Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case
 	{
 		
 		N=(Node *) malloc(sizeof(Node));
-		if (N==NULL) //test if the allocation is a success
+		/*if (nodes==NULL) //test if the allocation is a success
+		{
+			printf("Malloc Error!\n");
 			exit(EXIT_FAILURE);
-		
+		}*/
 		N->X=x;
 		N->Y=y;
 		
@@ -218,7 +238,6 @@ Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case
 		N->cost=parent->cost+1;
 		N->heuristic=N->cost+distNtoP(L,2,N);//dist_h(L,x,y);
 		N->pathParent=parent;
-		N->pathChild=NULL;
 		nds[N->Y][N->X]=1;
 	}
 	return N;//return NULL if the node was already visted or was a wall
@@ -333,23 +352,4 @@ int rmOList(Node* first)
 		
 	}	
 	return 1;
-}
-
-int rmPath(Path *p)
-{
-	if(p!=NULL)
-	{
-		Node * Ntemp;
-		while(p->first!=NULL)
-		{
-			Ntemp=p->first->pathChild;
-			free(p->first);
-			p->first=Ntemp;
-		
-		}
-		free(p);	
-		return 1;
-	}
-	else
-		return 0;
 }

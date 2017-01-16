@@ -29,6 +29,8 @@ void initGUI(Map * L)
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
 	init_pair(3, COLOR_BLUE, COLOR_BLACK);
 	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(5, COLOR_GREEN, COLOR_BLACK);
+	init_pair(6, COLOR_CYAN, COLOR_BLACK);
 	
 	int i;
 	
@@ -128,7 +130,7 @@ void initGUI(Map * L)
 	addStr(L->guiWins[5]->labButt[3],"  A*  ","");
 	L->guiWins[5]->posButt[4][0]=15;
 	L->guiWins[5]->posButt[4][1]=1;
-	addStr(L->guiWins[5]->labButt[4],"XXXXXX","");
+	addStr(L->guiWins[5]->labButt[4],"Clever","");
 	L->guiWins[5]->posButt[5][0]=18;
 	L->guiWins[5]->posButt[5][1]=1;
 	addStr(L->guiWins[5]->labButt[5],"XXXXXX","");
@@ -299,9 +301,9 @@ int dispPath(Map* L)//Display the path of a player
 			{
 				if(n>1)
 				{
-					wattron(win->win,COLOR_PAIR(2));
+					wattron(win->win,COLOR_PAIR(5+i));
 					mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
-					wattroff(win->win,COLOR_PAIR(2));
+					wattroff(win->win,COLOR_PAIR(5+i));
 				}
 				n++;	
 				Nact=Nact->pathChild;

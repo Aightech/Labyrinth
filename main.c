@@ -56,7 +56,7 @@ int main()
 				choice++;
 			break;
 			case 34://connection to the server
-				
+				while(true){
 				addStr(L->infoP1[5],"                                     ","");
 				getMap(L);//switch of the value getmap return to lauched the game mode
 				if(L->players[0]->mode==0)//we are dumb
@@ -67,6 +67,7 @@ int main()
 					randMode(L);
 				else if(L->players[0]->mode==3)//we play astar
 					astarMode(L);
+				}
 				for(i=3;i<7;i++)
 				{
 					addStr(L->infoP1[i],"                                 ","");

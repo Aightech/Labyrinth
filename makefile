@@ -23,7 +23,7 @@ mapping.o:guilib.h struct.h mapping.h
 dumbMd.o:guilib.h struct.h dumbMd.h mapping.h
 manualMd.o:guilib.h struct.h manualMd.h mapping.h
 randMd.o:guilib.h struct.h randMd.h mapping.h
-astarMd.o:guilib.h struct.h astarMd.h mapping.h
+astarMd.o:guilib.h struct.h astarMd.h mapping.h 
 
 # règles de compilation
 %.o: %.c

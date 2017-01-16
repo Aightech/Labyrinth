@@ -15,7 +15,7 @@
     \brief Generate simple A* behavior.
     \param L The labyrinth map structure.
 */
-int astarMode(Map *L);
+int cleverMode(Map *L);
 
 /*! \fn Path * astarPath(Map *L,int P);
     \brief Generate the shortest path to the goal with an A* algo.
@@ -76,8 +76,6 @@ int rmOList(Node* first);
     \param N Pointer to the Node.
 */
 int distNtoP(Map *L,int P,Node *N);
-
-int rmPath(Path *p);
 
 
 #endif
