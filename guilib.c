@@ -15,6 +15,7 @@
     \date 10 janvier 2017
 */
 
+
 void initGUI(Map * L)
 {
 	initscr();
@@ -24,7 +25,18 @@ void initGUI(Map * L)
 	cbreak();	/* Line buffering disabled. pass on everything */
 	keypad(stdscr, TRUE);
 	refresh();
+
+	mvprintw( 1, 1, "%s","  _____              _                    _       _                 _                 ");
+	mvprintw( 2, 1, "%s"," |  __ \\            (_)                  | |     (_)               | |                ");
+	mvprintw( 3, 1, "%s"," | |  | | ___  _ __  _  ___  _ __     ___| |_     _  __ _ _ __ ___ | |__   ___  _ __  ");
+	mvprintw( 4, 1, "%s"," | |  | |/ _ \\| '_ \\| |/ _ \\| '_ \\   / _ \\ __|   | |/ _` | '_ ` _ \\| '_ \\ / _ \\| '_ \\ ");
+	mvprintw( 5, 1, "%s"," | |__| | (_) | | | | | (_) | | | | |  __/ |_    | | (_| | | | | | | |_) | (_) | | | |");
+	mvprintw( 6, 1, "%s"," |_____/ \\___/|_| |_| |\\___/|_| |_|  \\___|\\__|   | |\\__,_|_| |_| |_|_.__/ \\___/|_| |_|");
+	mvprintw( 7, 1, "%s","                   _/ |                         _/ |                                  ");
+	mvprintw( 8, 1, "%s","                  |__/                         |__/                                   ");
+	mvprintw( 10, 1, "%s","                                     < PRESS ANY KEY >                                 ");
 	
+	getch();
 	init_pair(1, COLOR_RED, COLOR_BLACK);
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
 	init_pair(3, COLOR_BLUE, COLOR_BLACK);

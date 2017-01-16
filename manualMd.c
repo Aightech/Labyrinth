@@ -58,25 +58,28 @@ void manualMode(Map* L)
 					moveOp.type=DO_NOTHING;
 				break;
 				case 44:
-					choice=40;
 					L->mvC=0;
 					while(choice!=45)
 					{
 						dispMap(L);
+						addStr(L->infoP2[3]," Select OK to confirm the line","");
+						addStr(L->infoP2[4]," or the column to move.","");
+						dispInfo(L);
+						
 						choice=GUI(L,choice);
 						switch(choice)
 						{
 							/*COLUMN MOVES*/
 							case 40:
 								L->mvL=-1;
-								if(L->mvC<0)
+								if(L->mvC>0)
 									L->mvC--;
 								else
 									L->mvC=L->width-1;
 							break;
 							case 43:
 								L->mvL=-1;
-								if(L->mvC+1>L->width-1)
+								if(L->mvC+1<L->width)
 									L->mvC++;
 								else
 									L->mvC=0;
@@ -99,51 +102,78 @@ void manualMode(Map* L)
 						}
 					}
 					choice=40;
-					while(choice!=45)
+					addStr(L->infoP2[3],"                              ","");
+					addStr(L->infoP2[4],"                              ","");
+					int selected=0;
+					while(choice!=45|| selected!=1)
 					{
 						dispMap(L);
+						addStr(L->infoP2[3]," Select the direction of the rotation.","");
+						addStr(L->infoP2[4]," Then select OK to confirm.","");
+						dispInfo(L);
 						choice=GUI(L,choice);
 						switch(choice)
 						{
 							/*ROTATIONS MOVES*/
 							case 40:
-								if(L->mvC!=-1)
+								if(L->mvL!=-1)
 								{
-									move->type=ROTATE_LINE_LEFT;
-									move->value=L->mvC;
-									mvwaddch(L->guiWins[0]->win, 12-L->heigth/2+L->mvC+1, 18-L->width/2-1, '>');
+									moveOp.type=ROTATE_LINE_LEFT;
+									moveOp.value=L->mvL;
+									mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18+L->width/2+3, "  ");
+									mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18-L->width/2-2, "<<");
+									selected=1;
 								}
 							break;
 							case 43:
-								if(L->mvC!=-1)
+								if(L->mvL!=-1)
 								{
-									move->type=ROTATE_LINE_RIGHT;
-									move->value=L->mvC;
+									moveOp.type=ROTATE_LINE_RIGHT;
+									moveOp.value=L->mvL;
+									mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18-L->width/2-2, "  ");
+									mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18+L->width/2+3, ">>");
+									selected=1;
 								}
 							break;
 							case 41:
-								if(L->mvL!=-1)
+								if(L->mvC!=-1)
 								{
-									move->type=ROTATE_COLUMN_UP;
-									move->value=L->mvL;
+									moveOp.type=ROTATE_COLUMN_UP;
+									moveOp.value=L->mvC;
+									mvwprintw(L->guiWins[0]->win, 12+L->heigth/2+3, 18-L->width/2+L->mvC+1, " ");
+									mvwprintw(L->guiWins[0]->win, 12-L->heigth/2-1, 18-L->width/2+L->mvC+1, "^");
+									selected=1;
 								}
 							break;
 							case 42:
-								if(L->mvL!=-1)
+								if(L->mvC!=-1)
 								{
-									move->type=ROTATE_COLUMN_DOWN;
-									move->value=L->mvL;
+									moveOp.type=ROTATE_COLUMN_DOWN;
+									moveOp.value=L->mvC;
+									mvwprintw(L->guiWins[0]->win, 12-L->heigth/2-1, 18-L->width/2+L->mvC+1, " ");
+									mvwprintw(L->guiWins[0]->win, 12+L->heigth/2+3, 18-L->width/2+L->mvC+1, "v");
+									selected=1;
 								}
 							break;
 						}
 					}
+					
+					mvwprintw(L->guiWins[0]->win, 12+L->heigth/2+3, 18-L->width/2+L->mvC+1, " ");
+					mvwprintw(L->guiWins[0]->win, 12-L->heigth/2-1, 18-L->width/2+L->mvC+1, " ");
+					mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18-L->width/2-2, "  ");
+					mvwprintw(L->guiWins[0]->win, 12-L->heigth/2+L->mvL+1, 18+L->width/2+3, "  ");
+					L->mvL=-1;
+					L->mvC=-1;
+					addStr(L->infoP2[3],"                                      ","");
+					addStr(L->infoP2[4],"                              ","");
+					
 				break;		
 				
 			
 				
 			}
 			//ret = getMove( &moveOp);
-			moveP(L,1,&moveOp);
+			movement(L,1,&moveOp);
 		}
 		else
 		  {
