@@ -44,6 +44,7 @@ var struct_8h =
     ] ],
     [ "_Map", "df/dec/struct_8h.html#d7/d1b/struct___map", [
       [ "cases", "df/dec/struct_8h.html#a601e32b61d466f9df86e0fbc527472bf", null ],
+      [ "comments", "df/dec/struct_8h.html#a4a169943cd6dcc3b792787a2265ee9bd", null ],
       [ "guiWins", "df/dec/struct_8h.html#a81c46208e94d18eaf33350342c9051f1", null ],
       [ "heigth", "df/dec/struct_8h.html#ae951a64b5603fdb0385b729946d1ebe1", null ],
       [ "infoP1", "df/dec/struct_8h.html#abd5a12f6d08d1da5d84e9142bcef5d9a", null ],

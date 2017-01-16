@@ -7,18 +7,22 @@ Mapping related functions.
 
 {\ttfamily \#include $<$stdio.\+h$>$}\\*
 {\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}guilib.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}struct.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}mapping.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}strlib.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}labyrinth\+A\+P\+I.\+h\char`\"{}}\\*
-{\ttfamily \#include $<$unistd.\+h$>$}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$ \hyperlink{mapping_8c_a1b4990072cb0d42063abd514d5c9726c}{init\+Map} ()\hypertarget{mapping_8c_a1b4990072cb0d42063abd514d5c9726c}{}\label{mapping_8c_a1b4990072cb0d42063abd514d5c9726c}
 
 \begin{DoxyCompactList}\small\item\em Return a map structure. \end{DoxyCompactList}\item 
+void {\bfseries free\+Map} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L)\hypertarget{mapping_8c_adf94b7d992f38e7d8099d0dbd987e026}{}\label{mapping_8c_adf94b7d992f38e7d8099d0dbd987e026}
+
+\item 
 void \hyperlink{mapping_8c_acd86842943223c3da418c5981befabf6}{get\+Map} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L)
 \begin{DoxyCompactList}\small\item\em Connect to the server and get the labyrinth data. \end{DoxyCompactList}\item 
 int \hyperlink{mapping_8c_ab8e6e204f7b1bd95babda75a04279141}{test\+MoveP} (\hyperlink{struct_8h_d7/d1b/struct___map}{Map} $\ast$L, int P, t\+\_\+move $\ast$move)

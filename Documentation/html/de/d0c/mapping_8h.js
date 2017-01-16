@@ -1,5 +1,6 @@
 var mapping_8h =
 [
+    [ "freeMap", "de/d0c/mapping_8h.html#adf94b7d992f38e7d8099d0dbd987e026", null ],
     [ "getMap", "de/d0c/mapping_8h.html#acd86842943223c3da418c5981befabf6", null ],
     [ "initMap", "de/d0c/mapping_8h.html#af7560ce2af2a08abe0b230e7ba56cf45", null ],
     [ "moveM", "de/d0c/mapping_8h.html#a676b72a51bfecda4afdcaf81537e6986", null ],
