@@ -10,7 +10,7 @@ LDFLAGS = -lm -lcgs -lncurses -lpanel
 # fichiers du projet
 SRC = main.c guilib.c mapping.c dumbMd.c manualMd.c randMd.c astarMd.c strlib.c
 OBJ = $(SRC:.c=.o)
-EXEC = test
+EXEC = donjon_jambon
 
 
 # règle initiale
