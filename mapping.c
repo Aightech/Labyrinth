@@ -148,6 +148,18 @@ Map* initMap()
 	return L;
 	
 }
+void  freeMap(Map *L)
+{
+	int i;
+	for(i=0;i<3;i++)
+	{
+		free(L->cases[L->players[i]->Y]);
+	}
+	free(L->cases);
+	
+	
+	
+}
 
 void getMap(Map *L)
 {

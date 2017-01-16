@@ -15,6 +15,8 @@
 */
 Map* initMap();
 
+void  freeMap(Map *L);
+
 /*! \fn void getMap(Map *L);
     \brief Connect to the server and get the labyrinth data.
     \param L The labyrinth map structur.
