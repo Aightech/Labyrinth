@@ -15,6 +15,8 @@
 */
 void initGUI(Map * L);
 
+void freeGUI(Map * L);
+
 /*! \fn int GUI(Map * L,int lstGUIch);
     \brief  Allocate and initialize all the GUI structures.
     \param L The labyrinth map structure.

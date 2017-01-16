@@ -151,9 +151,9 @@ Map* initMap()
 void  freeMap(Map *L)
 {
 	int i;
-	for(i=0;i<3;i++)
+	for(i=0;i<L->heigth;i++)
 	{
-		free(L->cases[L->players[i]->Y]);
+		free(L->cases[i]);
 	}
 	free(L->cases);
 	

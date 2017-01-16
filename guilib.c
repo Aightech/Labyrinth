@@ -203,6 +203,67 @@ void initGUI(Map * L)
 	doupdate();
 }
 
+void freeGUI(Map * L)
+{
+	int i,j;
+	/*Déallocation*/
+	
+	for(i = 0; i < nbrW; ++i)
+	{
+		for(j=0;j<L->guiWins[i]->numButt;j++){
+			free(L->guiWins[i]->posButt[j]);
+			free(L->guiWins[i]->labButt[j]);
+		}
+		if(L->guiWins[i]->numButt!=0)
+		{
+			free(L->guiWins[i]->posButt);
+			free(L->guiWins[i]->labButt);
+		}
+		L->guiWins[i]=(Win *)malloc(nbrW*sizeof(Win));	
+	}
+	free(L->guiWins);
+	
+	//Desalocation of the menus
+	i=0;
+	while(L->listPlrName[i]!=NULL)
+	{
+		free(L->listPlrName[i]);
+		i++;
+	}
+	free(L->listPlrName);
+	
+	i=0;
+	while(L->listSvrName[i]!=NULL)
+	{
+		free(L->listSvrName[i]);
+		i++;
+	}
+	free(L->listSvrName);
+	
+	i=0;
+	while(L->listTimeOut[i]!=NULL)
+	{
+		free(L->listTimeOut[i]);
+		i++;
+	}
+	free(L->listTimeOut);
+	
+	i=0;
+	while(L->listPrtName[i]!=NULL)
+	{
+		free(L->listPrtName[i]);
+		i++;
+	}
+	free(L->listPrtName);
+	for(i=0;i<3;i++)
+	{
+		free(L->players[i]);
+	}
+	
+	free(L);
+	
+}
+
 int GUI(Map *L,int lstGUIch)
 {
 	

@@ -91,7 +91,7 @@ int main()
 	debug=0;
 	Map *L=initMap();
 	initGUI(L);
-	t_move* move=(t_move*) malloc(sizeof(t_move));
+	//t_move* move=(t_move*) malloc(sizeof(t_move));
 	
 	int choice=53,i;
 	
@@ -143,6 +143,7 @@ int main()
 			case 35://connection to the server
 				while(true){
 					addStr(L->infoP1[5],"                                     ","");
+					//freeMap(L);
 					getMap(L);//switch of the value getmap return to lauched the game mode
 					if(L->players[0]->mode==0)//we are dumb
 						dumbMode(L);
@@ -157,7 +158,7 @@ int main()
 					start=clock();
 					int i=50;
 		    			while(((end=clock())-start)<=((i*CLOCKS_PER_SEC)/1000));
-		    			freeMap(L);
+		    			
 				}
 				for(i=3;i<7;i++)
 				{
@@ -168,7 +169,7 @@ int main()
 				choice=50;	
 			break;
 			
-			/*MANUAL MOVES*/
+			/*MANUAL MOVES
 			case 40:
 				move->type=MOVE_LEFT;
 				moveP(L,0,move);
@@ -184,7 +185,7 @@ int main()
 			case 43:
 				move->type=MOVE_RIGHT;
 				moveP(L,0,move);
-			break;
+			break;*/
 			
 			/*PLAYER MODES*/
 			case 50://DO NOTHING
@@ -213,7 +214,8 @@ int main()
 			
 		}
 	}
-	
+	//freeMap(L);
+	freeGUI(L);
 	return 0;
 }
 
