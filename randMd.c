@@ -77,25 +77,30 @@ void randMode(Map *L)
 		//printLabyrinth();
 		dispInfo(L);
 		dispMap(L);
+		dispPath(L);
 		  
 	}
 	if ((L->players[0]->turn==1 && ret == MOVE_WIN) || (L->players[0]->turn==0 && ret == MOVE_LOSE))
 	{
-		addStr(L->infoP2[5]," YOU LOOSE","");
-		addStr(L->infoP1[5]," YOU WIN","");
+		addStr(L->infoP1[4],"                                  ","");
+		addStr(L->infoP2[6]," YOU LOOSE","");
+		addStr(L->infoP1[6]," YOU WIN","");
+		addStr(L->cases[L->heigth/2],"   YOU WIN","");
 	}
 	else
 	{
-		addStr(L->infoP1[5]," YOU LOOSE","");
-		addStr(L->infoP2[5]," YOU WIN","");
+	 	addStr(L->infoP1[4],"                                  ","");
+		addStr(L->infoP1[6]," YOU LOOSE","");
+		addStr(L->infoP2[6]," YOU WIN","");
+		addStr(L->cases[L->heigth/2],"   YOU LOOSE","");
 	}
 	
-	free(myMove);
-	free(opMove);
-	
-	if(L->offline==0)
+	if(L->offline==0&&L->players[1]->mode!=1)
 		/* end the connection, because we are polite */
 		closeConnection();
+		
+	free(myMove);
+	free(opMove);
 	
 	
 	

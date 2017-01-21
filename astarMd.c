@@ -70,7 +70,7 @@ int astarMode(Map *L)
 			else
 				ret =movement(L,0,myMove);
 		  }
-		int ch = getch();
+		//int ch = getch();
 		
 		dispInfo(L);
 		dispMap(L);
@@ -95,12 +95,12 @@ int astarMode(Map *L)
 		addStr(L->cases[L->heigth/2],"   YOU LOOSE","");
 	}
 	
+	if(L->offline==0&&L->players[1]->mode!=1)
+		/* end the connection, because we are polite */
+		closeConnection();
+		
 	free(myMove);
 	free(opMove);
-	
-	/* end the connection, because we are polite */
-	if(L->offline==0)
-		closeConnection();
 
 	   
 	    

@@ -21,7 +21,7 @@ int getMoveOff(Map* L,int P,t_move* move)
 			move->value = 0;
 		break;
 		case 1:
-			addStr(L->infoP2[0],"  MANUAL","  (MANUAL)");
+			manualMv(L,P,move);
 		break;
 		case 2:
 			gene_randmove(L,move,P);

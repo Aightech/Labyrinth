@@ -15,4 +15,12 @@
     \param L The labyrinth map structure.
 */
 void manualMode(Map* L);
+
+/*! \fn void manualMv(Map* L, int P,t_move* move);
+    \brief Run the mode of the game where the player control his moves turn by turn with the console.
+    \param L The labyrinth map structure.
+    \param P The players to move.
+    \param move The move that will be made.
+*/
+void manualMv(Map* L, int P,t_move* move);
 #endif
