@@ -17,6 +17,14 @@
 */
 int astarMode(Map *L);
 
+/*! \fn void astarMv(Map* L, int P,t_move* move);
+    \brief Generate the shortest path to the goal with an A* algo.
+    \param L The labyrinth map structure.
+    \param P the player from which the path wll start.
+    \param move the to do.
+*/
+void astarMv(Map* L, int P,t_move* move);
+
 /*! \fn Path * astarPath(Map *L,int P);
     \brief Generate the shortest path to the goal with an A* algo.
     \param L The labyrinth map structure.

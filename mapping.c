@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
 
 #include "guilib.h"
 #include "struct.h"
@@ -25,6 +26,7 @@ Map* initMap()
 	L->heigth=12;
 	L->mvC=-1;
 	L->mvL=-1;
+	L->offline=0;
 	L->cases=(char **) malloc(L->heigth*sizeof(char*));
 	if (L->cases==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
@@ -56,7 +58,7 @@ Map* initMap()
 	L->listPlrName[0]=(char*)malloc(25*sizeof(char));
 	if (L->listPlrName[0]==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
-	addStr(L->listPlrName[0],"aightech","");
+	addStr(L->listPlrName[0],"aightech  ","");
 	L->listPlrName[1]=(char*)malloc(25*sizeof(char));
 	if (L->listPlrName[1]==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
@@ -64,32 +66,40 @@ Map* initMap()
 	L->listPlrName[2]=(char*)malloc(25*sizeof(char));
 	if (L->listPlrName[2]==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
-	addStr(L->listPlrName[2],"K2SO","");
+	addStr(L->listPlrName[2],"K2SO      ","");
 	L->listPlrName[3]=(char*)malloc(25*sizeof(char));
 	if (L->listPlrName[3]==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
-	addStr(L->listPlrName[3],"Darkradox","");
+	addStr(L->listPlrName[3],"Darkradox ","");
 	L->listPlrName[4]=(char*)malloc(25*sizeof(char));
 	if (L->listPlrName[4]==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
-	addStr(L->listPlrName[4],"Gandalf","");
-	L->listPlrName[5]=NULL;
-	
-	
+	addStr(L->listPlrName[4],"Gandalf   ","");
+	L->listPlrName[5]=NULL;	
+
 	addStr(L->PlayerName,L->listPlrName[0],"");//default;
-	
-	L->listSvrName=(char **) malloc(3*sizeof(char*));
+
+	/***************************************************************/	
+	L->listSvrName=(char **) malloc(4*sizeof(char*));
 	if (L->listSvrName==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
+	/////////////////////////////////////////////////////////////////
+	L->listSvrName[2]=(char*)malloc(50*sizeof(char));
+	if (L->listSvrName[2]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
+	addStr(L->listSvrName[2],"pc4023.polytech.upmc.fr","");
+	/////////////////////////////////////////////////////////////////
 	L->listSvrName[1]=(char*)malloc(50*sizeof(char));
 	if (L->listSvrName[1]==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
-	addStr(L->listSvrName[1],"pc4023.polytech.upmc.fr","");
+	addStr(L->listSvrName[1],"pc4001.polytech.upmc.fr","");
+	/////////////////////////////////////////////////////////////////
 	L->listSvrName[0]=(char*)malloc(50*sizeof(char));
 	if (L->listSvrName[0]==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
-	addStr(L->listSvrName[0],"pc4001.polytech.upmc.fr","");
-	L->listSvrName[2]=NULL;
+	addStr(L->listSvrName[0],"Offline                 ","");
+	/////////////////////////////////////////////////////////////////
+	L->listSvrName[3]=NULL;
 	
 	
 	addStr(L->PlayerName,L->listSvrName[0],"");//default;
@@ -100,11 +110,11 @@ Map* initMap()
 	L->listTimeOut[0]=(char*)malloc(10*sizeof(char));
 	if (L->listTimeOut[0]==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
-	addStr(L->listTimeOut[0],"100","");
+	addStr(L->listTimeOut[0],"100 ","");
 	L->listTimeOut[1]=(char*)malloc(10*sizeof(char));
 	if (L->listTimeOut[1]==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
-	addStr(L->listTimeOut[1],"10","");
+	addStr(L->listTimeOut[1],"10  ","");
 	L->listTimeOut[2]=(char*)malloc(10*sizeof(char));
 	if (L->listTimeOut[2]==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
@@ -166,14 +176,16 @@ void getMap(Map *L)
 	
 	char* labData;						/* data of the labyrinth */
 	/* connection to the server */
-	connectToServer( L->ServerName,strToint(L->PortName),L->PlayerName);
-	int i,j;
-	for(i=0;i<L->heigth;i++)//delete the last cases
-	{
-		free(L->cases[i]);
-	}
-	free(L->cases);
-	eraseMap(L);
+	if(L->ServerName[0]=='O'&&L->ServerName[1]=='f'&&L->ServerName[2]=='f') //TODO: make the offline mode
+		L->offline=1;
+	else
+		L->offline=0;
+		
+	if(L->offline==0)
+		connectToServer( L->ServerName,strToint(L->PortName),L->PlayerName);
+
+	
+	
 	
 	
 	switch(L->players[0]->mode)
@@ -226,12 +238,60 @@ void getMap(Map *L)
 		
 	}
 	dispInfo(L);
-	/* wait for a game, and retrieve informations about it */
-	waitForLabyrinth( argMap, L->name, &(L->width), &(L->heigth));
-	labData = (char*) malloc( L->width*L->heigth);
-	if (labData==NULL) //test if the allocation is a success
-			exit(EXIT_FAILURE);
-	L->players[0]->turn = getLabyrinth(labData);
+	int i,j;
+	if(L->offline==0)/* wait for a game, and retrieve informations about it */
+	{
+		waitForLabyrinth( argMap, L->name, &(L->width), &(L->heigth));
+		labData = (char*) malloc( L->width*L->heigth);
+		if (labData==NULL) //test if the allocation is a success
+				exit(EXIT_FAILURE);
+		L->players[0]->turn = getLabyrinth(labData);
+	}
+	else//choose one of the map available
+	{
+		time_t t;
+		/* Intializes random number generator */
+		srand((unsigned) time(&t));
+		int n = rand()%500;//choose one of the map available
+		L->players[0]->turn=rand()%2;
+	
+		FILE* file = NULL;
+		file = fopen("maps.txt", "r");
+		i=0;
+		while(i<n){if(fgetc((FILE*)file)=='\n')i++;}
+	
+		char ch=fgetc((FILE*)file);
+		//find the size of the map
+		int sizeX=0;
+		int sizeY=0;
+		while(ch!=';')//get the X size of the map
+		{
+			sizeX=sizeX*10+ch-'0';
+			ch=fgetc((FILE*)file);
+		}
+		
+		ch=fgetc((FILE*)file);
+		while(ch!=';')
+		{
+			sizeY=sizeY*10+ch-'0';
+			ch=fgetc((FILE*)file);
+		}
+		L->width=sizeX;
+		L->heigth=sizeY;
+		
+		labData = (char*) malloc( L->width*L->heigth);
+		if (labData==NULL) //test if the allocation is a success
+				exit(EXIT_FAILURE);
+
+		i=0;
+		for(i=0;i<sizeX*sizeY;i++)
+		{
+			ch=fgetc((FILE*)file);
+			labData[i]=ch-'0';
+		}		
+		
+	}
+	
 	mvwprintw(L->guiWins[0]->win, 1, 10, L->name);
 	mvwprintw(L->guiWins[0]->win, 1, 25, "turn:       ");
 	L->turn =0;
@@ -319,11 +379,15 @@ int testMoveP(Map *L,int P,t_move *move)
 			{
 				if(L->cases[L->players[P]->Y][L->players[P]->X-1]==1)
 					state= -1;
+				else if(L->players[P]->X-1==L->players[2]->X && L->players[P]->Y==L->players[2]->Y)
+					state= 1;
 			}
 			else//else it has to appear in the other side
 			{
 				if(L->cases[L->players[P]->Y][L->width-1]==1)
 					state= -1;
+				else if(L->width-1==L->players[2]->X && L->players[P]->Y==L->players[2]->Y)
+					state= 1;
 			}
 		break;
 		case MOVE_UP:
@@ -331,11 +395,15 @@ int testMoveP(Map *L,int P,t_move *move)
 			{
 				if(L->cases[L->players[P]->Y-1][L->players[P]->X]==1)
 					state= -1;
+				else if(L->players[P]->X==L->players[2]->X && L->players[P]->Y-1==L->players[2]->Y)
+					state= 1;
 			}
 			else
 			{
 				if(L->cases[L->heigth-1][L->players[P]->X]==1)
 					state= -1;
+				else if(L->players[P]->X==L->players[2]->X && L->heigth-1==L->players[2]->Y)
+					state= 1;
 			}
 				
 		break;
@@ -344,11 +412,15 @@ int testMoveP(Map *L,int P,t_move *move)
 			{
 				if(L->cases[L->players[P]->Y+1][L->players[P]->X]==1)
 					state= -1;
+				else if(L->players[P]->X==L->players[2]->X && L->players[P]->Y+1==L->players[2]->Y)
+					state= 1;
 			}
 			else
 			{
 				if(L->cases[0][L->players[P]->X]==1)
 					state= -1;
+				else if(L->players[P]->X==L->players[2]->X && 0==L->players[2]->Y)
+					state= 1;
 			}
 		break;
 		case MOVE_RIGHT:
@@ -356,11 +428,15 @@ int testMoveP(Map *L,int P,t_move *move)
 			{
 				if(L->cases[L->players[P]->Y][L->players[P]->X+1]==1)
 					state= -1;
+				else if(L->players[P]->X==L->players[2]->X +1 && L->players[P]->Y==L->players[2]->Y)
+					state= 1;
 			}
 			else
 			{
 				if(L->cases[L->players[P]->Y][0]==1)
 					state= -1;
+				else if(0==L->players[2]->X && L->players[P]->Y==L->players[2]->Y)
+					state= 1;
 			}
 		break;
 	}
@@ -382,59 +458,62 @@ int testMoveM(Map *L,int P)
 
 int moveP(Map *L, int P,t_move *move)
 {
-	int state=0;
-	if(testMoveP(L,P,move)!=-1)
+	int state=testMoveP(L,P,move);
+	
+	
+	switch(move->type)
 	{
-		switch(move->type)
-		{
-			case MOVE_LEFT:
-				L->cases[L->players[P]->Y][L->players[P]->X]=0;
-				L->players[P]->X=(L->width+L->players[P]->X-1)%L->width;	
-				L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
+		case MOVE_LEFT:
+			L->cases[L->players[P]->Y][L->players[P]->X]=0;
+			L->players[P]->X=(L->width+L->players[P]->X-1)%L->width;	
+			L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
+	
+		break;
+		case MOVE_UP:
+			L->cases[L->players[P]->Y][L->players[P]->X]=0;
+			L->players[P]->Y=(L->heigth+L->players[P]->Y-1)%L->heigth;
+			L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
+							
+		break;
+		case MOVE_DOWN:
+			L->cases[L->players[P]->Y][L->players[P]->X]=0;
+			L->players[P]->Y=(L->heigth+L->players[P]->Y+1)%L->heigth;
+			L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
+		break;
+		case MOVE_RIGHT:
+			L->cases[L->players[P]->Y][L->players[P]->X]=0;
+			L->players[P]->X=(L->width+L->players[P]->X+1)%L->width;
+			L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
+		break;
+	}
 		
-			break;
-			case MOVE_UP:
-				L->cases[L->players[P]->Y][L->players[P]->X]=0;
-				L->players[P]->Y=(L->heigth+L->players[P]->Y-1)%L->heigth;
-				L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
-								
-			break;
-			case MOVE_DOWN:
-				L->cases[L->players[P]->Y][L->players[P]->X]=0;
-				L->players[P]->Y=(L->heigth+L->players[P]->Y+1)%L->heigth;
-				L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
-			break;
-			case MOVE_RIGHT:
-				L->cases[L->players[P]->Y][L->players[P]->X]=0;
-				L->players[P]->X=(L->width+L->players[P]->X+1)%L->width;
-				L->cases[L->players[P]->Y][L->players[P]->X]=2+P;
-			break;
-			default:
-				state=-1;
-			break;
-		}
-		
-		
+	if(state!=-1)
+	{
 		L->players[P]->energy++;
 		char* e=intTostr(L->players[P]->energy);
 		if(P==0)
 			addStr(L->infoP1[1],"  ",e);
-		else
+		else if(P==1)
 			addStr(L->infoP2[1],"  ",e);
 			
 		L->turn++;
 		e=intTostr(L->turn);
 		mvwprintw(L->guiWins[0]->win, 1, 32, e);
 		free(e);
+		if(state==1)
+		{
+			if(P==0)
+				addStr(L->infoP1[5]," YOU WIN","");
+			else if(P==1)
+				addStr(L->infoP2[5]," YOU WIN","");
+		}
 	}
 	else
 	{
 		if(P==0)
 			addStr(L->infoP1[5]," CANNOT MOVE","");
-		else
+		else if(P==1)
 			addStr(L->infoP2[5]," CANNOT MOVE","");
-		
-		state=-1;
 	}
 	L->players[P]->turn=1;
 	L->players[(P+1)%2]->turn=0;
@@ -449,7 +528,7 @@ int moveP(Map *L, int P,t_move *move)
 int moveM(Map *L,int P,t_move *move)
 //apply changes generate by move to the current map L
 {
-	int i;
+	int i,state=testMoveM(L,P);
 	char temp;
 	int width=L->width; //create to avoid many ->
 	int heigth=L->heigth;
@@ -530,16 +609,15 @@ int moveM(Map *L,int P,t_move *move)
 	mvwprintw(L->guiWins[0]->win, 1, 32, e);
 	free(e);
 	
-	return 0;
+	return state;
 }
 
 int movement(Map *L,int P,t_move *move)
 {
 	if (move->type==ROTATE_COLUMN_UP || move->type==ROTATE_COLUMN_DOWN || move->type==ROTATE_LINE_LEFT ||move->type==ROTATE_LINE_RIGHT)
-		moveM(L,P,move);
+		return moveM(L,P,move);
 	else
-		moveP(L,P,move);
-	return 1;
+		return moveP(L,P,move);
 }
 
 	
