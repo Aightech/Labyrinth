@@ -9,6 +9,7 @@
 #include "strlib.h"
 #include "mapping.h"
 #include "astarMd.h"
+#include "offline.h"
 #include "labyrinthAPI.h"
 
 /*! \file astarMd.h
@@ -23,9 +24,14 @@ int astarMode(Map *L)
 	
 	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
 	t_move* myMove=(t_move*) malloc(sizeof(t_move));
+	if (myMove==NULL) //test if the allocation is a success
+		exit(EXIT_FAILURE);
 	myMove->type = DO_NOTHING;
 	myMove->value = 0;
+	
 	t_move* opMove=(t_move*) malloc(sizeof(t_move));
+	if (opMove==NULL) //test if the allocation is a success
+		exit(EXIT_FAILURE);
 	opMove->type = DO_NOTHING;
 	opMove->value = 0;
 	dispMap(L);
@@ -34,48 +40,37 @@ int astarMode(Map *L)
 	{
 		if (L->players[0]->turn==1)//op turn	
 		{
-			addStr(L->infoP2[5],"                         ","");
-			ret = getMove(opMove);
-			movement(L,1,opMove);
-			//rmPath(L->players[1]->toGoal);
-			//L->players[1]->toGoal=astarPath(L,1);
-			
-		}
-		else
-		{
-			addStr(L->infoP1[5],"                         ","");
-			rmPath(L->players[0]->toGoal);
-			L->players[0]->toGoal=astarPath(L,0);
-			
-			if(L->players[0]->toGoal!=NULL&& L->players[0]->toGoal->first!=NULL && L->players[0]->toGoal->first->pathChild!=NULL)
+			if(L->offline==0)
 			{
-				Node * NToGO=L->players[0]->toGoal->first->pathChild;
-				if(NToGO->X==L->players[0]->X)
-				{
-					if((NToGO->Y>L->players[0]->Y && NToGO->Y!=L->heigth-1) || (NToGO->Y==0&&L->players[0]->Y==L->heigth-1)||(L->players[0]->Y==L->heigth-2 && NToGO->Y==L->heigth-1))
-						myMove->type=MOVE_DOWN;
-					else
-						myMove->type=MOVE_UP;
-				}
-				else
-				{
-					if((NToGO->X>L->players[0]->X && NToGO->X!=L->width-1) || (NToGO->X==0 && L->players[0]->X==L->width-1)||(L->players[0]->X==L->width-2 && NToGO->X==L->width-1))
-						myMove->type=MOVE_RIGHT;
-					else
-						myMove->type=MOVE_LEFT;
-				}
-				addStr(L->infoP1[8],"             ","");
+				addStr(L->infoP2[5],"                         ","");
+				ret = getMove(opMove);
+				movement(L,1,opMove);
+				//rmPath(L->players[1]->toGoal);
+				//L->players[1]->toGoal=astarPath(L,1);
 			}
 			else
 			{
-				myMove->type=DO_NOTHING;
-				addStr(L->infoP1[8],"no path found","");
+				addStr(L->infoP2[5],"                         ","");
+				getMoveOff(L,1,opMove);
+				ret =movement(L,1,opMove);
 			}
-			movement(L,0,myMove);
-			sendComment(L->comments[rand()%5]);
-			ret = sendMove(*myMove);
+		}
+			
+		else
+		{
+			addStr(L->infoP1[5],"                         ","");
+			astarMv(L, 0,myMove);//get the astar move to do
+			
+			if(L->offline==0)
+			{
+				movement(L,0,myMove);
+				sendComment(L->comments[rand()%5]);
+				ret = sendMove(*myMove);
+			}
+			else
+				ret =movement(L,0,myMove);
 		  }
-		//  int ch = getch();
+		//int ch = getch();
 		
 		dispInfo(L);
 		dispMap(L);
@@ -99,9 +94,13 @@ int astarMode(Map *L)
 		addStr(L->infoP2[6]," YOU WIN","");
 		addStr(L->cases[L->heigth/2],"   YOU LOOSE","");
 	}
-
-	/* end the connection, because we are polite */
-	closeConnection();
+	
+	if(L->offline==0&&L->players[1]->mode!=1)
+		/* end the connection, because we are polite */
+		closeConnection();
+		
+	free(myMove);
+	free(opMove);
 
 	   
 	    
@@ -109,6 +108,39 @@ int astarMode(Map *L)
 	
 	
 	return 1;
+}
+
+void astarMv(Map* L, int P,t_move* move)
+{
+	rmPath(L->players[P]->toGoal);
+	L->players[P]->toGoal=astarPath(L,P);
+	
+	if(L->players[P]->toGoal!=NULL&& L->players[P]->toGoal->first!=NULL && L->players[P]->toGoal->first->pathChild!=NULL)
+	{
+		Node * NToGO=L->players[P]->toGoal->first->pathChild;
+		if(NToGO->X==L->players[P]->X)
+		{
+			if((NToGO->Y>L->players[P]->Y && NToGO->Y!=L->heigth-1) || (NToGO->Y==0&&L->players[P]->Y==L->heigth-1)||(L->players[P]->Y==L->heigth-2 && NToGO->Y==L->heigth-1))
+				move->type=MOVE_DOWN;
+			else
+				move->type=MOVE_UP;
+		}
+		else
+		{
+			if((NToGO->X>L->players[P]->X && NToGO->X!=L->width-1) || (NToGO->X==0 && L->players[P]->X==L->width-1)||(L->players[P]->X==L->width-2 && NToGO->X==L->width-1))
+				move->type=MOVE_RIGHT;
+			else
+				move->type=MOVE_LEFT;
+		}
+	}
+	else
+	{
+		move->type=DO_NOTHING;
+		if(P==0)
+			addStr(L->infoP1[8],"no path found","");
+		else if(P==1)
+			addStr(L->infoP2[8],"no path found","");
+	}
 }
 
 Path * astarPath(Map* L, int P)

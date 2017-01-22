@@ -105,6 +105,7 @@ typedef struct _Map {//the labyrinth
 	
 	char PlayerName[25]; /**< Name of our player */
 	char ServerName[50]; /**< Server data */
+	int offline;
 	char TimeOut[10]; /**< Max Time to Play */
 	char PortName[10]; /**< Port Name */
 	char name[50]; /**< Map Name */

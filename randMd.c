@@ -1,13 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <time.h>
+
 #include "struct.h"
 #include "guilib.h"
 #include "mapping.h"
 #include "strlib.h"
 #include "randMd.h"
+#include "offline.h"
+
 #include "labyrinthAPI.h"
-#include <unistd.h>
-#include <time.h>
+
 
 /*! \file randMd.c
     \brief Rand mode related functions.
@@ -16,10 +20,96 @@
     \date 10 janvier 2017
 */
 
+void randMode(Map *L)
+//instructions of the random mode of the game
+{
+	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
+	
+	t_move* myMove=(t_move*) malloc(sizeof(t_move));
+	if (myMove==NULL) //test if the allocation is a success
+		exit(EXIT_FAILURE);
+	myMove->type = DO_NOTHING;
+	myMove->value = 0;
+	
+	
+	t_move* opMove=(t_move*) malloc(sizeof(t_move));
+	if (opMove==NULL) //test if the allocation is a success
+		exit(EXIT_FAILURE);
+	opMove->type = DO_NOTHING;
+	opMove->value = 0;
+	
+	dispMap(L);
+	
+	
+	while(ret==MOVE_OK)
+	{
+		if (L->players[0]->turn==1)
+		{
+			if(L->offline==0)
+			{
+				addStr(L->infoP2[5],"                         ","");
+				ret = getMove(opMove);
+				movement(L,1,opMove);
+			}
+			else
+			{
+				getMoveOff(L,1,opMove);
+				ret = movement(L,1,opMove);
+			}
+			      
+		}
+		else
+		{
+			addStr(L->infoP1[5],"                         ","");
+			gene_randmove(L,myMove,0);
+			if(L->offline==0)
+			{
+				movement(L,0,myMove);
+				sendComment(L->comments[rand()%5]);
+				ret = sendMove(*myMove);
+			}
+			else
+				ret =movement(L,0,myMove);
+		}
+		
+		//int ch = getch();
+		//endwin();
+		//printLabyrinth();
+		dispInfo(L);
+		dispMap(L);
+		dispPath(L);
+		  
+	}
+	if ((L->players[0]->turn==1 && ret == MOVE_WIN) || (L->players[0]->turn==0 && ret == MOVE_LOSE))
+	{
+		addStr(L->infoP1[4],"                                  ","");
+		addStr(L->infoP2[6]," YOU LOOSE","");
+		addStr(L->infoP1[6]," YOU WIN","");
+		addStr(L->cases[L->heigth/2],"   YOU WIN","");
+	}
+	else
+	{
+	 	addStr(L->infoP1[4],"                                  ","");
+		addStr(L->infoP1[6]," YOU LOOSE","");
+		addStr(L->infoP2[6]," YOU WIN","");
+		addStr(L->cases[L->heigth/2],"   YOU LOOSE","");
+	}
+	
+	if(L->offline==0&&L->players[1]->mode!=1)
+		/* end the connection, because we are polite */
+		closeConnection();
+		
+	free(myMove);
+	free(opMove);
+	
+	
+	
+}
+
+
 void gene_randmove(Map *L,t_move *move,int P)
 {
-  int type,t=-1;
-  srand(time(NULL));
+	int type,t=-1;
 	while(t==-1)
 	{
 		type=rand()%9;      
@@ -82,58 +172,6 @@ void convert_movetype(int type, t_move *move)
 
 
   
-void randMode(Map *L)
-//instructions of the random mode of the game
-{
-	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
-	t_move* myMove=(t_move*) malloc(sizeof(t_move));
-	if (myMove==NULL) //test if the allocation is a success
-			exit(EXIT_FAILURE);
-	t_move* adMove=(t_move*) malloc(sizeof(t_move));
-	if (adMove==NULL) //test if the allocation is a success
-			exit(EXIT_FAILURE);
-	myMove->type = DO_NOTHING;
-	myMove->value = 0;
-	
-	
-	while(ret==MOVE_OK)
-	{
-		if (L->players[0]->turn==1)
-		{
-			addStr(L->infoP2[5],"                         ","");
-			ret = getMove(adMove);
-			movement(L,1,adMove);
-			      
-		}
-		else
-		{
-			addStr(L->infoP1[5],"                         ","");
-			gene_randmove(L,myMove,0);
-			movement(L,0,myMove);
-			sendComment(L->comments[rand()%5]);
-			ret = sendMove(*myMove);
-		}
-		//endwin();
-		//printLabyrinth();
-		dispInfo(L);
-		dispMap(L);
-		  
-	}
-	if ((L->players[0]->turn==1 && ret == MOVE_WIN) || (L->players[0]->turn==0 && ret == MOVE_LOSE))
-	{
-		addStr(L->infoP2[5]," YOU LOOSE","");
-		addStr(L->infoP1[5]," YOU WIN","");
-	}
-	else
-	{
-		addStr(L->infoP1[5]," YOU LOOSE","");
-		addStr(L->infoP2[5]," YOU WIN","");
-	}
-	
-	/* end the connection, because we are polite */
-	closeConnection();
-	
-	
-}
+
 
 

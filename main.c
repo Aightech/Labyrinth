@@ -29,8 +29,9 @@ int main()
 	debug=0;
 	Map *L=initMap();
 	initGUI(L);
-	//t_move* move=(t_move*) malloc(sizeof(t_move));
 	
+	//t_move* move=(t_move*) malloc(sizeof(t_move));
+	printf("ROTATE_COLUMN_DOWN= %d ",ROTATE_COLUMN_DOWN);
 	int choice=53,i;
 	
 	addStr(L->infoP1[5]," Select your mode.","");
@@ -59,7 +60,12 @@ int main()
 			case 34://connection to the server
 				
 				addStr(L->infoP1[5],"                                     ","");
+				freeMap(L);
 				getMap(L);//switch of the value getmap return to lauched the game mode
+				if(L->players[1]->mode==1)
+					/* end the connection, because we don't need the server anymore */
+					closeConnection();
+					
 				if(L->players[0]->mode==0)//we are dumb
 					dumbMode(L);
 				else if(L->players[0]->mode==1)//we play manual
@@ -75,14 +81,18 @@ int main()
 					addStr(L->infoP2[i],"                                 ","");
 				}
 				addStr(L->infoP1[5]," Select your mode.","");
-				freeMap(L);
+				
 				choice=50;	
 			break;
 			case 35://connection to the server
 				while(true){
 					addStr(L->infoP1[5],"                                     ","");
-					//freeMap(L);
+					freeMap(L);
 					getMap(L);//switch of the value getmap return to lauched the game mode
+					if(L->players[1]->mode==1)
+					/* end the connection, because we don't need the server anymore */
+					closeConnection();
+					
 					if(L->players[0]->mode==0)//we are dumb
 						dumbMode(L);
 					else if(L->players[0]->mode==1)//we play manual
