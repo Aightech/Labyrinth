@@ -44,6 +44,32 @@ typedef struct _Node{//the nodes
 }Node;
 
 /**
+ * \struct _NodeC
+ * \brief Node is a case from the map.
+ * It is used in Astar mode.
+ */
+
+
+typedef struct _NodeC{//the nodes for the clever mode
+	int X,Y; /**< Position of the node in the map. */
+	int cost; /**< Distance from the player to the current node */
+	int heuristic; /**< Distance between the player and the treasure as the crows fly */
+	char *ncase; /**< Pointer to a case of the map in order to get the data of */
+	
+	int energy;
+	int typeRot;
+	int valueRot;
+	int opCost;
+	
+	struct _NodeC * rotFrom; /**< The node from where the rotation happened  */
+	
+	struct _NodeC * pathParent; /**< Pointer to get the Node evaluated before */
+	struct _NodeC * pathChild; /**< Pointer to get the Node evaluated after */
+	struct _NodeC * listNext; /**< Used if in Closedlist and Openlist */
+	
+}NodeC;
+
+/**
  * \struct _Path
  * \brief List of lab node and its size.
  * It is used in Astar mode.

@@ -249,10 +249,8 @@ void getMap(Map *L)
 	}
 	else//choose one of the map available
 	{
-		time_t t;
-		/* Intializes random number generator */
-		srand((unsigned) time(&t));
-		int n = rand()%500;//choose one of the map available
+		
+		int n = rand()%5000;//choose one of the map available
 		L->players[0]->turn=rand()%2;
 	
 		FILE* file = NULL;
@@ -428,7 +426,7 @@ int testMoveP(Map *L,int P,t_move *move)
 			{
 				if(L->cases[L->players[P]->Y][L->players[P]->X+1]==1)
 					state= -1;
-				else if(L->players[P]->X==L->players[2]->X +1 && L->players[P]->Y==L->players[2]->Y)
+				else if(L->players[P]->X+1==L->players[2]->X && L->players[P]->Y==L->players[2]->Y)
 					state= 1;
 			}
 			else

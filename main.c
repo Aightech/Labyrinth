@@ -27,11 +27,15 @@ extern int debug;
 int main()
 {
 	debug=0;
+	time_t t;
+	/* Intializes random number generator */
+	srand((unsigned) time(&t));
+	
 	Map *L=initMap();
 	initGUI(L);
 	
 	//t_move* move=(t_move*) malloc(sizeof(t_move));
-	printf("ROTATE_COLUMN_DOWN= %d ",ROTATE_COLUMN_DOWN);
+	//printf("ROTATE_COLUMN_DOWN= %d ",ROTATE_COLUMN_DOWN);
 	int choice=53,i;
 	
 	addStr(L->infoP1[5]," Select your mode.","");
@@ -60,6 +64,7 @@ int main()
 			case 34://connection to the server
 				
 				addStr(L->infoP1[5],"                                     ","");
+				eraseMap(L);
 				freeMap(L);
 				getMap(L);//switch of the value getmap return to lauched the game mode
 				if(L->players[1]->mode==1)
@@ -87,6 +92,7 @@ int main()
 			case 35://connection to the server
 				while(true){
 					addStr(L->infoP1[5],"                                     ","");
+					eraseMap(L);
 					freeMap(L);
 					getMap(L);//switch of the value getmap return to lauched the game mode
 					if(L->players[1]->mode==1)

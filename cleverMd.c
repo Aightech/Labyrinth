@@ -8,6 +8,8 @@
 #include "strlib.h"
 #include "mapping.h"
 #include "astarMd.h"
+#include "offline.h"
+
 #include "labyrinthAPI.h"
 
 /*! \file astarMd.h
@@ -22,9 +24,14 @@ int cleverMode(Map *L)
 	
 	t_return_code ret = MOVE_OK;		/* indicates the status of the previous move */
 	t_move* myMove=(t_move*) malloc(sizeof(t_move));
+	if (myMove==NULL) //test if the allocation is a success
+		exit(EXIT_FAILURE);
 	myMove->type = DO_NOTHING;
 	myMove->value = 0;
+	
 	t_move* opMove=(t_move*) malloc(sizeof(t_move));
+	if (opMove==NULL) //test if the allocation is a success
+		exit(EXIT_FAILURE);
 	opMove->type = DO_NOTHING;
 	opMove->value = 0;
 	dispMap(L);
@@ -33,42 +40,39 @@ int cleverMode(Map *L)
 	{
 		if (L->players[0]->turn==1)//op turn	
 		{
-			addStr(L->infoP2[5],"                         ","");
-			ret = getMove(opMove);
-			movement(L,1,opMove);
-		}
-		else
-		{
-			addStr(L->infoP1[5],"                         ","");
-			L->players[0]->toGoal=astarPath(L,0);
-			
-			if(L->players[0]->toGoal!=NULL&& L->players[0]->toGoal->first!=NULL && L->players[0]->toGoal->first->pathChild!=NULL)
+			if(L->offline==0)
 			{
-				Node * NToGO=L->players[0]->toGoal->first->pathChild;
-				if(NToGO->X==L->players[0]->X)
-				{
-					if((NToGO->Y>L->players[0]->Y && NToGO->Y!=L->heigth-1) || (NToGO->Y==0&&L->players[0]->Y==L->heigth-1)||(L->players[0]->Y==L->heigth-2 && NToGO->Y==L->heigth-1))
-						myMove->type=MOVE_DOWN;
-					else
-						myMove->type=MOVE_UP;
-				}
-				else
-				{
-					if((NToGO->X>L->players[0]->X && NToGO->X!=L->width-1) || (NToGO->X==0 && L->players[0]->X==L->width-1)||(L->players[0]->X==L->width-2 && NToGO->X==L->width-1))
-						myMove->type=MOVE_RIGHT;
-					else
-						myMove->type=MOVE_LEFT;
-				}
+				addStr(L->infoP2[5],"                         ","");
+				ret = getMove(opMove);
+				movement(L,1,opMove);
+				//rmPath(L->players[1]->toGoal);
+				//L->players[1]->toGoal=astarPath(L,1);
 			}
 			else
 			{
-				myMove->type=DO_NOTHING;
-				addStr(L->infoP1[8],"no path found","");
+				addStr(L->infoP2[5],"                         ","");
+				getMoveOff(L,1,opMove);
+				ret =movement(L,1,opMove);
 			}
-			movement(L,0,myMove);
-			ret = sendMove(*myMove);
+		}
+			
+		else
+		{
+			addStr(L->infoP1[5],"                         ","");
+			astarMv(L, 0,myMove);//get the astar move to do
+			
+			if(L->offline==0)
+			{
+				movement(L,0,myMove);
+				sendComment(L->comments[rand()%5]);
+				ret = sendMove(*myMove);
+			}
+			else
+				ret =movement(L,0,myMove);
 		  }
-		  dispInfo(L);
+		//int ch = getch();
+		
+		dispInfo(L);
 		dispMap(L);
 		dispPath(L);
 		  //endwin();
@@ -90,41 +94,59 @@ int cleverMode(Map *L)
 		addStr(L->infoP2[6]," YOU WIN","");
 		addStr(L->cases[L->heigth/2],"   YOU LOOSE","");
 	}
-
-	/* end the connection, because we are polite */
-	closeConnection();
-
+	
+	if(L->offline==0&&L->players[1]->mode!=1)
+		/* end the connection, because we are polite */
+		closeConnection();
 		
-	
-	
+	free(myMove);
+	free(opMove);
+
 	
 	return 1;
 }
 
-Path * astarPath(Map* L, int P)
+void astarMv(Map* L, int P,t_move* move)
+{
+	rmPath(L->players[P]->toGoal);
+	L->players[P]->toGoal=astarPath(L,P);
+	
+	if(L->players[P]->toGoal!=NULL&& L->players[P]->toGoal->first!=NULL && L->players[P]->toGoal->first->pathChild!=NULL)
+	{
+		NodeC * NToGO=L->players[P]->toGoal->first->pathChild;
+		if(NToGO->X==L->players[P]->X)
+		{
+			if((NToGO->Y>L->players[P]->Y && NToGO->Y!=L->heigth-1) || (NToGO->Y==0&&L->players[P]->Y==L->heigth-1)||(L->players[P]->Y==L->heigth-2 && NToGO->Y==L->heigth-1))
+				move->type=MOVE_DOWN;
+			else
+				move->type=MOVE_UP;
+		}
+		else
+		{
+			if((NToGO->X>L->players[P]->X && NToGO->X!=L->width-1) || (NToGO->X==0 && L->players[P]->X==L->width-1)||(L->players[P]->X==L->width-2 && NToGO->X==L->width-1))
+				move->type=MOVE_RIGHT;
+			else
+				move->type=MOVE_LEFT;
+		}
+	}
+	else
+	{
+		move->type=DO_NOTHING;
+		if(P==0)
+			addStr(L->infoP1[8],"no path found","");
+		else if(P==1)
+			addStr(L->infoP2[8],"no path found","");
+	}
+}
+
+Path * cleverPath(Map* L, int P)
 {
 	Path * path=NULL;
 	int i,j;
 	char goalValue=4;//the value of the treasur case
-	char ** nodes=(char **) malloc(L->width*L->heigth*sizeof(char*));//array of char to make easier the check of visited or not neighbor: nodes[i][j]=0=>pas check;nodes[i][j]=1=> check;
-	/*if (nodes==NULL) //test if the allocation is a success
-	{
-		printf("Malloc Error!\n");
-		exit(EXIT_FAILURE); //EXIT_FAILURE is a predefined macro, opposite of EXIT_SUCCESS
-	}*/
-	for(i =0;i<L->heigth;i++)
-	{
-		nodes[i]=(char *) malloc(L->width*sizeof(char)); // we can use calloc
-		/*if (nodes==NULL) //test if the allocation is a success
-		{
-			printf("Malloc Error!\n");
-			exit(EXIT_FAILURE);
-		}*/
-		for(j=0;j<L->width;j++) //we don't need this if we use calloc
-			nodes[i][j]=0;
-	}
+	
 		
-	Node * openList=initOpenList(L,L->players[0]->X,L->players[0]->Y,nodes);
+	NodeC * openList=initOpenList(L,L->players[P]->X,L->players[P]->Y,nodes);
 	
 	dispInfo(L);
 	
@@ -135,10 +157,6 @@ Path * astarPath(Map* L, int P)
 	
 	while(openList!=NULL&&*(openList->ncase)!=goalValue)//if the openlist isn't empty and the current node is not the goal.
 	{
-		/*Nact=openList;
-		wattron(win->win,COLOR_PAIR(2));
-		mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
-		wattroff(win->win,COLOR_PAIR(2));*/
 		dispInfo(L);
 		addNeigh(L,openList,nodes);//add the neighbors of the first node of the openlist
 		dispInfo(L);
@@ -150,23 +168,6 @@ Path * astarPath(Map* L, int P)
 	
 	//int ch = getch();
 	
-	/*Nact=closedList;
-	while(Nact!=NULL)
-	{
-		if(openList!=NULL&&*(openList->ncase)==goalValue)
-		{
-			wattron(win->win,COLOR_PAIR(2));
-			mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
-			wattroff(win->win,COLOR_PAIR(2));
-		}
-		else
-		{
-			wattron(win->win,COLOR_PAIR(1));
-			mvwaddch(win->win, starty+Nact->Y, startx+Nact->X, 'o');
-			wattroff(win->win,COLOR_PAIR(1));
-		}
-		Nact=Nact->pathParent;
-	}*/
 	
 	if(openList!=NULL)
 	{
@@ -175,11 +176,8 @@ Path * astarPath(Map* L, int P)
 		{
 			path=(Path*) malloc(sizeof(Path));
 			if (nodes==NULL) //test if the allocation is a success
-			{
-				printf("Malloc Error!\n");
 				exit(EXIT_FAILURE);
-				addStr(L->infoP1[6],"Malloc Error!","");
-			}
+				
 			addStr(L->infoP1[7],"path found","");
 			Ntemp=openList->listNext;
 			openList->listNext=closedList;
@@ -201,11 +199,9 @@ Path * astarPath(Map* L, int P)
 Node *initOpenList(Map *L,int x, int y,char ** nds) 
 {
 	Node* N= (Node *) malloc(sizeof(Node));
-	/*if (nodes==NULL) //test if the allocation is a success
-	{
-		printf("Malloc Error!\n");
+	if (N==NULL) //test if the allocation is a success
 		exit(EXIT_FAILURE);
-	}*/
+		
 	N->X=x;
 	N->Y=y;
 	N->ncase=L->cases[N->Y]+N->X;//this is the character of the map so it as the mapping data : wall/players
@@ -226,11 +222,9 @@ Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case
 	{
 		
 		N=(Node *) malloc(sizeof(Node));
-		/*if (nodes==NULL) //test if the allocation is a success
-		{
-			printf("Malloc Error!\n");
+		if (N==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
-		}*/
+		
 		N->X=x;
 		N->Y=y;
 		
@@ -238,6 +232,7 @@ Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case
 		N->cost=parent->cost+1;
 		N->heuristic=N->cost+distNtoP(L,2,N);//dist_h(L,x,y);
 		N->pathParent=parent;
+		N->pathChild=NULL;
 		nds[N->Y][N->X]=1;
 	}
 	return N;//return NULL if the node was already visted or was a wall
@@ -352,4 +347,23 @@ int rmOList(Node* first)
 		
 	}	
 	return 1;
+}
+
+int rmPath(Path *p)
+{
+	if(p!=NULL)
+	{
+		Node * Ntemp;
+		while(p->first!=NULL)
+		{
+			Ntemp=p->first->pathChild;
+			free(p->first);
+			p->first=Ntemp;
+		
+		}
+		free(p);	
+		return 1;
+	}
+	else
+		return 0;
 }
