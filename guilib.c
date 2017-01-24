@@ -219,7 +219,6 @@ void freeGUI(Map * L)
 			free(L->guiWins[i]->posButt);
 			free(L->guiWins[i]->labButt);
 		}
-		L->guiWins[i]=(Win *)malloc(nbrW*sizeof(Win));	
 	}
 	free(L->guiWins);
 	
