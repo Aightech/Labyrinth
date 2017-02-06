@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
+
 
 
 
@@ -246,6 +248,12 @@ Node *newNode(Map *L,int x, int y,Node * parent,char ** nds) //create a new case
 		
 		N->ncase=L->cases[N->Y]+N->X;
 		N->cost=parent->cost+1;
+		/*L->cases[y][x]='0' + N->cost%10;
+		dispMap(L);
+		clock_t start,end;
+		start=clock();
+		int i=50;
+		while(((end=clock())-start)<=((i*CLOCKS_PER_SEC)/1000));*/
 		N->heuristic=N->cost+distNtoP(L,2,N);//dist_h(L,x,y);
 		N->pathParent=parent;
 		N->pathChild=NULL;
@@ -262,16 +270,16 @@ Node * addNeigh(Map* L,Node* opL,char** nds)// try to create a node for each nei
 	Node* N;
 	int x=opL->X;
 	int y=opL->Y;
-	if((N=newNode(L,(x+1<L->width)?x+1:0,y,opL,nds))!=NULL)//if the node leftside is not a wall or a already visited node.
+	if((N=newNode(L,(x+1<L->width)?x+1:0,y,opL,nds))!=NULL)//if the node rightside is not a wall or a already visited node.
 		opL=addToList(opL,N);//put the leftside neighbor into the open list at the heuristic place it belong to.
 	
-	if((N=newNode(L,(x>0)?x-1:L->width-1,y,opL,nds))!=NULL)//if the node rightside is not a wall or a already visited node.
+	if((N=newNode(L,(x>0)?x-1:L->width-1,y,opL,nds))!=NULL)//if the node leftside is not a wall or a already visited node.
 		opL=addToList(opL,N);//put the rightside neighbor into the open list at the heuristic place it belong to.
 	
-	if((N=newNode(L,x,(y+1<L->heigth)?y+1:0,opL,nds))!=NULL)//if the node upside is not a wall or a already visited node.
+	if((N=newNode(L,x,(y+1<L->heigth)?y+1:0,opL,nds))!=NULL)//if the node downside is not a wall or a already visited node.
 		opL=addToList(opL,N);//put the upside neighbor into the open list at the heuristic place it belong to.
 	
-	if((N=newNode(L,x,(y>0)?y-1:L->heigth-1,opL,nds))!=NULL)//if the node downside is not a wall or a already visited node.
+	if((N=newNode(L,x,(y>0)?y-1:L->heigth-1,opL,nds))!=NULL)//if the node upside is not a wall or a already visited node.
 		opL=addToList(opL,N);//put the downside neighbor into the open list at the heuristic place it belong to.
 	
 	

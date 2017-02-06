@@ -3,9 +3,10 @@
 #define STRUCT_H
 
 #define nbrW 7
+#define nbrOfPlayer 3
 #include <panel.h>
 #include <ncurses.h>
-
+#include "labyrinthAPI.h"
 /*! \file struct.h
     \brief Data structures use in the program.
     \author Maeva Arlandis et Alexis Devillard
@@ -43,31 +44,55 @@ typedef struct _Node{//the nodes
 	
 }Node;
 
+
 /**
- * \struct _NodeC
+ * \struct _Graph
+ * \brief 
+ */
+
+typedef struct _Graph {
+
+	char grid[17][21]; /**<  */
+	int heigth;
+	int width;
+	
+	struct _Graph ** rotGraph[4];
+	
+	
+}Graph;
+
+
+/**
+ * \struct _Movement
  * \brief Node is a case from the map.
  * It is used in Astar mode.
  */
 
+typedef struct _Movement{//the nodes for the clever mode
 
-typedef struct _NodeC{//the nodes for the clever mode
-	int X,Y; /**< Position of the node in the map. */
+	int pos[nbrOfPlayer][2]; /**< Position of the node in the map. */
+	t_move move;
+	
+	int value;
+	Graph *graph;
+	char **map;
+	char *node;
+	
 	int cost; /**< Distance from the player to the current node */
 	int heuristic; /**< Distance between the player and the treasure as the crows fly */
 	char *ncase; /**< Pointer to a case of the map in order to get the data of */
+	
 	
 	int energy;
 	int typeRot;
 	int valueRot;
 	int opCost;
 	
-	struct _NodeC * rotFrom; /**< The node from where the rotation happened  */
+	struct _Movement * listNext;
+	struct _Movement * parent;
+	struct _Movement * childs;
 	
-	struct _NodeC * pathParent; /**< Pointer to get the Node evaluated before */
-	struct _NodeC * pathChild; /**< Pointer to get the Node evaluated after */
-	struct _NodeC * listNext; /**< Used if in Closedlist and Openlist */
-	
-}NodeC;
+}Movement;
 
 /**
  * \struct _Path
@@ -98,6 +123,9 @@ typedef struct _Player {
 	Path *toGoal; /**< Path to go to the treasure */
 	
 }Player;
+
+
+
 
 /**
  * \struct _Win
@@ -143,12 +171,16 @@ typedef struct _Map {//the labyrinth
 	char comments[5][100]; /**<comments to send to the opponnent */
 	
 	char **cases; /**<  */
+	Graph graph;
+	
 	Player* players[3];//[P1;P2;Tresor] /**< P1 is the opponnent, P2 is our player,  P3 is the treasure */
 	
 	PANEL  *panels[nbrW+1]; /**<  */
 	Win **guiWins; /**<  */
 	int mvC,mvL; /**<  */
 	int turn; /**< Number of played turn */
+	
+	
 	
 }Map;
 

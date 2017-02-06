@@ -8,7 +8,7 @@ LIBS = -L $(LIBDIR)/lib
 LDFLAGS = -lm -lcgs -lncurses -lpanel
 
 # fichiers du projet
-SRC = main.c guilib.c mapping.c dumbMd.c manualMd.c randMd.c astarMd.c strlib.c offline.c
+SRC = main.c guilib.c mapping.c dumbMd.c manualMd.c randMd.c astarMd.c cleverMd.c strlib.c offline.c
 OBJ = $(SRC:.c=.o)
 EXEC = donjon_jambon
 
@@ -17,13 +17,14 @@ EXEC = donjon_jambon
 all: $(EXEC) clean
 
 # dépendance des .h
-main.o: guilib.h mapping.h struct.h dumbMd.h randMd.h astarMd.h
+main.o: guilib.h mapping.h struct.h dumbMd.h randMd.h astarMd.h cleverMd.h
 guilib.o: guilib.h struct.h mapping.h
 mapping.o:guilib.h struct.h mapping.h
 dumbMd.o:guilib.h struct.h dumbMd.h mapping.h offline.h
 manualMd.o:guilib.h struct.h manualMd.h mapping.h offline.h
 randMd.o:guilib.h struct.h randMd.h mapping.h offline.h
 astarMd.o:guilib.h struct.h astarMd.h mapping.h offline.h
+cleverMd.o:guilib.h struct.h cleverMd.h mapping.h offline.h
 offline.o: dumbMd.h randMd.h astarMd.h
 
 # règles de compilation

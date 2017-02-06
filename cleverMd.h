@@ -1,5 +1,5 @@
-#ifndef ASTARMD_H
-#define ASTARMD_H
+#ifndef CLEVERMD_H
+#define CLEVERMD_H
 #include "struct.h"
 //#include "labyrinthAPI.h"
 
@@ -17,65 +17,29 @@
 */
 int cleverMode(Map *L);
 
-/*! \fn Path * astarPath(Map *L,int P);
-    \brief Generate the shortest path to the goal with an A* algo.
-    \param L The labyrinth map structure.
-    \param P the player from which the path wll start.
-*/
-Path * astarPath(Map* L, int P);
+void cleverMv(Map* L, int P,t_move* move);
 
-/*! \fn Node *initOpenList(Map *L,int x, int y,char ** nds)
-    \brief Initialise and return the node of the position (x,y).
-    \param L The labyrinth map structure.
-    \param x The x coordinate of the staring point.
-    \param y The y coordinate of the staring point.
-    \param nds The character array of 0/1 (making easier checking if cases have been checked.)
-*/
-Node *initOpenList(Map *L,int x, int y,char ** nds);
+int Max(Map *L,int depth,Movement* mv,int P);
 
-/*! \fn Node *newNode(Map *L,int x, int y,Node * neigh,char ** nds); 
-    \brief Initialise and return the node cominf from fromN.
-    \param L The labyrinth map structure.
-    \param x The x coordinate of the staring point.
-    \param y The y coordinate of the staring point.
-    \param nds The character array of 0/1 (making easier checking if cases have been checked.)
-*/
-Node *newNode(Map *L,int x, int y,Node * parent,char ** nds);
+int Min(Map *L,int depth,Movement* m,int P);//return the best this move could lead to
 
-/*! \fn Node * addNeigh(Map* L,Node* OpL,char** nds);
-    \brief try to create a node for each neighbor, and add them to the open list.
-    \param L The labyrinth map structure.
-    \param OpL The open list.
-    \param nds The character array of 0/1 (making easier checking if cases have been checked.)
-*/
-Node * addNeigh(Map* L,Node* OpL,char** nds);
+void initChilds(Movement *mv);
+Movement * addChild(Movement *mv,int i);
 
-/*! \fn Node * extractPath(Node * clL);
-    \brief Starting from the goal, iterativly,freing node that are not pathParent,taking pathParent node and put last node adress in its pathChild.
-    \param clL closed list The open list.
-*/
-Node * extractPath(Node * clL);
+Movement *initMovement(Movement *parent,int P,int moveType,int x, int y);
 
-/*! \fn Node* addToList(Node *N1,Node* NtoAdd);
-    \brief Add a node to a list sort heuristicly increasing
-    \param N1 First node of the the list to add.
-    \param NtoAdd node to add to the list.
-*/
-Node* addToList(Node* N1,Node* NtoAdd);
+int evaluate(Map *L,Movement *M,int P);
 
-/*! \fn int rmOList(Node* first);
-    \brief Free each node of the list
-    \param first First of the the list to remove.
-*/
-int rmOList(Node* first);
+int distMtoG(Map *L,Movement *M,int P, int G);
+int astarDistMtoG(Map *L,Movement *M,int P, int G);Node *newNodeC(Movement *M,int x, int y,Node * parent,char ** nds); //create a new case for a neighbour of c
+Node * addNeighC(Movement *M,Node* opL,char** nds);// try to create a node for each neighbor, and add them to the open list.
+int distNtoPC(Movement *M,int P,Node *N);
 
-/*! \fn int distNtoP(Map *L,int P,Node *N)
-    \brief Calculate the distance as the crows fly from the node N to the player P.
-    \param L The labyrinth map structure.
-    \param P Number of the Player.
-    \param N Pointer to the Node.
-*/
-int distNtoP(Map *L,int P,Node *N);
+
+Movement *addToListMIN(Movement * M1,Movement * NtoAdd);
+Movement *addToListMAX(Movement * M1,Movement * NtoAdd);
+
+
 
 
 #endif

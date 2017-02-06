@@ -328,7 +328,7 @@ void getMap(Map *L)
 	char* e=intTostr(L->players[0]->energy);
 	addStr(L->infoP1[1],"          ","");
 	addStr(L->infoP1[1],"  ",e);
-	
+	free(e);
 	e=intTostr(L->players[1]->energy);
 	addStr(L->infoP2[1],"          ","");
 	addStr(L->infoP2[1],"  ",e);

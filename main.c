@@ -11,6 +11,7 @@
 #include "manualMd.h"
 #include "randMd.h"
 #include "astarMd.h"
+#include "cleverMd.h"
 
 /*! \file main.c
     \brief Main file to run the different modes and GUI options.
@@ -35,7 +36,7 @@ int main()
 	initGUI(L);
 	
 	//t_move* move=(t_move*) malloc(sizeof(t_move));
-	//printf("ROTATE_COLUMN_DOWN= %d ",ROTATE_COLUMN_DOWN);
+	printf("ROTATE_COLUMN_RIGHT= %d ",ROTATE_LINE_RIGHT);
 	int choice=53,i;
 	
 	addStr(L->infoP1[5]," Select your mode.","");
@@ -79,6 +80,11 @@ int main()
 					randMode(L);
 				else if(L->players[0]->mode==3)//we play astar
 					astarMode(L);
+				else if(L->players[0]->mode==4)//we play astar
+				{	
+					cleverMode(L);
+					//return 0;
+				}
 			
 				for(i=3;i<7;i++)
 				{
@@ -146,6 +152,7 @@ int main()
 			case 51://MANUAL
 			case 52://RANDOM
 			case 53://ASTAR
+			case 54://CLEVER
 				L->players[0]->mode=choice%10;
 				addStr(L->infoP1[5]," Select the mode of your opponent.","");
 				choice+=10;
