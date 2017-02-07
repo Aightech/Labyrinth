@@ -324,8 +324,91 @@ int dispMap(Map* L)//Display the labyrinth
 		{
 			if(i==L->mvL||j==L->mvC)
 				wattron(win->win, A_REVERSE); 
+			if(L->players[0]->X==j && L->players[0]->Y==i)
+			{
+				wattron(win->win,COLOR_PAIR(3));
+				mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+				wattroff(win->win,COLOR_PAIR(3));
+			}
+			else if(L->players[1]->X==j && L->players[1]->Y==i)
+			{
+				wattron(win->win,COLOR_PAIR(1));
+				mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+				wattroff(win->win,COLOR_PAIR(1));
+			}
+			else if(L->players[2]->X==j && L->players[2]->Y==i)
+			{
+				wattron(win->win,COLOR_PAIR(4));
+				mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+				wattroff(win->win,COLOR_PAIR(4));
+			}
+			else
+			{
+				switch(L->cases[i][j])
+				{
+					case 0:
+						mvwaddch(win->win, starty+i+1, startx+j+1, ' ');
+					break;
+					case 1:
+						mvwaddch(win->win, starty+i+1, startx+j+1, ACS_CKBOARD);
+					break;
+					/*case 2:
+						wattron(win->win,COLOR_PAIR(3));
+						mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+						wattroff(win->win,COLOR_PAIR(3));
+					break;
+					case 3:
+						wattron(win->win,COLOR_PAIR(1));
+						mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+						wattroff(win->win,COLOR_PAIR(1));
+					break;
+					case 4:
+						wattron(win->win,COLOR_PAIR(4));
+						//mvwprintw(win->win, starty+i+1, startx+j+1, "%s", "o");
+						mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+						wattroff(win->win,COLOR_PAIR(4));
+					break;*/
+					default:
+						mvwaddch(win->win, starty+i+1, startx+j+1, L->cases[i][j]);
+					break;
+				}
+			}
+			if(i==L->mvL||j==L->mvC)
+				wattroff(win->win, A_REVERSE);
+		}
+	}
+	update_panels();
+	doupdate();
+	return 1;
+}
+
+int dispGraph(Map *L,Graph* G,Movement *M)
+{
+	//mvwprintw(win->win, 5,5, "%s", L->cases[0]);
+	Win* win=L->guiWins[0];
+	int starty=12-L->heigth/2,startx=18-L->width/2;
+	mvwaddch(win->win, starty, startx, ACS_ULCORNER); 
+	//mvwaddch(win->win, starty+1, startx, ACS_VLINE); 
+	mvwvline(win->win, starty+1, startx, ACS_VLINE, L->heigth+1);
+	mvwhline(win->win, starty, startx+1, ACS_HLINE, L->width); 
+	mvwaddch(win->win, starty, startx+L->width+1, ACS_URCORNER); 
+	mvwvline(win->win, starty+1, startx+L->width+1, ACS_VLINE, L->heigth+1);
+	//mvwaddch(win->win, starty+1, startx+L->width+1, ACS_VLINE);
+	mvwaddch(win->win, starty+L->heigth+1, startx+L->width+1, ACS_LRCORNER);
+	mvwhline(win->win, starty+L->heigth+1, startx+1, ACS_HLINE, L->width); 
+	mvwaddch(win->win, starty+L->heigth+1, startx, ACS_LLCORNER);
+	
+	int i,j;
+	for(i=0;i<L->heigth;i++)
+	{
+		for(j=0;j<L->width;j++)
+		{
+			if(i==L->mvL||j==L->mvC)
+				wattron(win->win, A_REVERSE); 
+			
+			
 				
-			switch(L->cases[i][j])
+			switch(G->grid[i][j])
 			{
 				case 0:
 					mvwaddch(win->win, starty+i+1, startx+j+1, ' ');
@@ -333,25 +416,21 @@ int dispMap(Map* L)//Display the labyrinth
 				case 1:
 					mvwaddch(win->win, starty+i+1, startx+j+1, ACS_CKBOARD);
 				break;
-				case 2:
-					wattron(win->win,COLOR_PAIR(3));
-					mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
-					wattroff(win->win,COLOR_PAIR(3));
-				break;
-				case 3:
-					wattron(win->win,COLOR_PAIR(1));
-					mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
-					wattroff(win->win,COLOR_PAIR(1));
-				break;
-				case 4:
-					wattron(win->win,COLOR_PAIR(4));
-					//mvwprintw(win->win, starty+i+1, startx+j+1, "%s", "o");
-					mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
-					wattroff(win->win,COLOR_PAIR(4));
-				break;
 				default:
-					mvwaddch(win->win, starty+i+1, startx+j+1, L->cases[i][j]);
+					mvwaddch(win->win, starty+i+1, startx+j+1,G->grid[i][j]);// L->cases[i][j]);
 				break;
+			}
+			if(M->pos[0][0]==j && M->pos[0][1]==i)
+			{
+				wattron(win->win,COLOR_PAIR(3));
+				mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+				wattroff(win->win,COLOR_PAIR(3));
+			}
+			else if(M->pos[1][0]==j && M->pos[1][1]==i)
+			{
+				wattron(win->win,COLOR_PAIR(1));
+				mvwaddch(win->win, starty+i+1, startx+j+1, 'o');
+				wattroff(win->win,COLOR_PAIR(1));
 			}
 			if(i==L->mvL||j==L->mvC)
 				wattroff(win->win, A_REVERSE);
@@ -389,6 +468,41 @@ int dispPath(Map* L)//Display the path of a player
 	}
 	return 1;
 }
+
+int dispSeqMov(Map* L,Movement * M,int P)//Display the path of a player
+{
+	//int i,n;
+	Win* win=L->guiWins[0];
+	int starty=12-L->heigth/2+1,startx=18-L->width/2+1;
+	Movement *Mact;
+	
+	if(M->childs!=NULL)//if a path has been calculated
+	{
+		Mact=M;
+		
+		wattron(win->win,COLOR_PAIR(6));
+		mvwaddch(win->win, starty, startx, 'o');
+		mvwaddch(win->win, starty+Mact->pos[1][1], startx+Mact->pos[1][0], 'o');
+		wattroff(win->win,COLOR_PAIR(6));
+		
+		while(Mact->childs!=NULL)
+		{
+			Mact=Mact->childs;
+			wattron(win->win,COLOR_PAIR(5));
+			mvwaddch(win->win, starty+Mact->pos[P][1], startx+Mact->pos[P][0], 'o');
+			mvwaddch(win->win, starty+Mact->pos[1][1], startx+Mact->pos[1][0], 'o');
+			wattroff(win->win,COLOR_PAIR(5));
+				
+			
+		}
+		
+	}
+	update_panels();
+	doupdate();
+	
+	return 1;
+}
+
 int eraseMap(Map *L)
 {
 	Win* win=L->guiWins[0];

@@ -62,4 +62,6 @@ int moveM(Map *L,int P,t_move* move);
 */
 int movement(Map *L,int P,t_move *move);
 
+int contestMode(Map * L);
+
 #endif

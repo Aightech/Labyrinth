@@ -44,6 +44,17 @@ typedef struct _Node{//the nodes
 	
 }Node;
 
+/**
+ * \struct _DijkstraNode
+ * \brief Node is a case from the map.
+ * It is used in Astar mode.
+ */
+typedef struct _DijkstraNode{//the nodes
+	int X,Y; /**< Position of the node in the map. */
+	int cost; /**< Distance from the player to the current node */
+	struct _DijkstraNode * listNext; /**< Used if in Closedlist and Openlist */
+}DijkstraNode;
+
 
 /**
  * \struct _Graph
@@ -52,9 +63,11 @@ typedef struct _Node{//the nodes
 
 typedef struct _Graph {
 
-	char grid[17][21]; /**<  */
+	int **grid; /**<  */
 	int heigth;
 	int width;
+	int xG,yG;
+	int depth;
 	
 	struct _Graph ** rotGraph[4];
 	
@@ -75,7 +88,7 @@ typedef struct _Movement{//the nodes for the clever mode
 	
 	int value;
 	Graph *graph;
-	char **map;
+	int **map;
 	char *node;
 	
 	int cost; /**< Distance from the player to the current node */
@@ -83,7 +96,7 @@ typedef struct _Movement{//the nodes for the clever mode
 	char *ncase; /**< Pointer to a case of the map in order to get the data of */
 	
 	
-	int energy;
+	int energy[2];
 	int typeRot;
 	int valueRot;
 	int opCost;
@@ -160,6 +173,7 @@ typedef struct _Map {//the labyrinth
 	char PlayerName[25]; /**< Name of our player */
 	char ServerName[50]; /**< Server data */
 	int offline;
+	int contest;
 	char TimeOut[10]; /**< Max Time to Play */
 	char PortName[10]; /**< Port Name */
 	char name[50]; /**< Map Name */
@@ -171,7 +185,7 @@ typedef struct _Map {//the labyrinth
 	char comments[5][100]; /**<comments to send to the opponnent */
 	
 	char **cases; /**<  */
-	Graph graph;
+	Graph *graph;
 	
 	Player* players[3];//[P1;P2;Tresor] /**< P1 is the opponnent, P2 is our player,  P3 is the treasure */
 	

@@ -26,7 +26,12 @@ int Min(Map *L,int depth,Movement* m,int P);//return the best this move could le
 void initChilds(Movement *mv);
 Movement * addChild(Movement *mv,int i);
 
+Graph * initGraph(Map *L);
+Graph * computeGraphRot(Graph * graph, int type, int value);
+
 Movement *initMovement(Movement *parent,int P,int moveType,int x, int y);
+Movement *initMovementRot(Movement *parent,int P,int moveType,int value);
+void freeMovement(Movement *mv);
 
 int evaluate(Map *L,Movement *M,int P);
 
@@ -35,6 +40,14 @@ int astarDistMtoG(Map *L,Movement *M,int P, int G);Node *newNodeC(Movement *M,in
 Node * addNeighC(Movement *M,Node* opL,char** nds);// try to create a node for each neighbor, and add them to the open list.
 int distNtoPC(Movement *M,int P,Node *N);
 
+
+void dijkstraMarking(Graph *G,int x, int y);
+
+DijkstraNode * addNeighD(Graph *G,DijkstraNode* opL,char** nds);// try to create a node for each neighbor, and add them to the open list.
+
+DijkstraNode *newNodeD(Graph *G,int x, int y,int costParent,char ** nds); //create a new case for a neighbour of c
+
+DijkstraNode * addToListCost(DijkstraNode *N1,DijkstraNode* NtoAdd);//add a node to a list sort cost increasing
 
 Movement *addToListMIN(Movement * M1,Movement * NtoAdd);
 Movement *addToListMAX(Movement * M1,Movement * NtoAdd);

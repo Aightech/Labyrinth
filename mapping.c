@@ -80,7 +80,7 @@ Map* initMap()
 	addStr(L->PlayerName,L->listPlrName[0],"");//default;
 
 	/***************************************************************/	
-	L->listSvrName=(char **) malloc(4*sizeof(char*));
+	L->listSvrName=(char **) malloc(5*sizeof(char*));
 	if (L->listSvrName==NULL) //test if the allocation is a success
 			exit(EXIT_FAILURE);
 	/////////////////////////////////////////////////////////////////
@@ -99,7 +99,13 @@ Map* initMap()
 			exit(EXIT_FAILURE);
 	addStr(L->listSvrName[0],"Offline                 ","");
 	/////////////////////////////////////////////////////////////////
-	L->listSvrName[3]=NULL;
+	L->listSvrName[3]=(char*)malloc(50*sizeof(char));
+	if (L->listSvrName[3]==NULL) //test if the allocation is a success
+			exit(EXIT_FAILURE);
+	addStr(L->listSvrName[3],"pc4002.polytech.upmc.fr","");
+	/////////////////////////////////////////////////////////////////
+	
+	L->listSvrName[4]=NULL;
 	
 	
 	addStr(L->PlayerName,L->listSvrName[0],"");//default;
@@ -180,14 +186,16 @@ void getMap(Map *L)
 		L->offline=1;
 	else
 		L->offline=0;
-		
+	
+	
+	
 	if(L->offline==0)
 		connectToServer( L->ServerName,strToint(L->PortName),L->PlayerName);
 
 	
 	
 	
-	
+	L->contest=0;
 	switch(L->players[0]->mode)
 	{
 		case 0:
@@ -201,6 +209,9 @@ void getMap(Map *L)
 		break;
 		case 3:
 			addStr(L->infoP1[0],L->PlayerName,"  ( A* )");
+		break;
+		case 6:
+			L->contest=1;
 		break;
 	}
 	
@@ -232,7 +243,7 @@ void getMap(Map *L)
 			addStr(L->infoP2[0],"  Other player","");
 		break;
 		case 6:
-			addStr(argMap,"","");
+			addStr(argMap,"TOURNAMENT TopTournament","");
 			addStr(L->infoP2[0]," Contest mode"," ");
 		break;
 		
@@ -365,6 +376,135 @@ void getMap(Map *L)
 		L->cases[L->players[i]->Y][L->players[i]->X]=i+2;
 	}
 	
+}
+
+int contestMode(Map * L)
+{
+	if(L->contest==1)
+	{
+		
+	
+		char argMap[100];
+		switch(L->players[1]->mode)
+		{
+			case 0:
+				addStr(argMap,"DO_NOTHING",L->TimeOut);
+				addStr(L->infoP2[0],"  DUMB","  (DO_NOTHING)");
+			break;
+			case 1:
+				addStr(argMap,"PLAY_RANDOM",L->TimeOut);
+				addStr(L->infoP2[0],"  MANUAL","  (MANUAL)");
+			break;
+			case 2:
+				addStr(argMap,"PLAY_RANDOM rotation=False",L->TimeOut);
+				addStr(L->infoP2[0],"  RANDOM MOVE PLAYER","  (RANDOM)");
+			break;
+			case 3:
+				addStr(argMap,"PLAY_RANDOM",L->TimeOut);
+				addStr(L->infoP2[0],"  RANDOM","  (RANDOM)");
+			break;
+			case 4:
+				addStr(argMap,"ASTAR",L->TimeOut);
+				addStr(L->infoP2[0],"  fastest path","  ( A* )");
+			break;
+			case 5:
+				addStr(argMap,"","");
+				addStr(L->infoP2[0],"  Other player","");
+			break;
+			case 6:
+				addStr(argMap,"TOURNAMENT TopTournament","");
+				addStr(L->infoP2[0]," Contest mode"," ");
+			break;
+		
+		}
+		dispInfo(L);
+		int i,j;
+		char* labData;	
+		waitForLabyrinth( argMap, L->name, &(L->width), &(L->heigth));
+		labData = (char*) malloc( L->width*L->heigth);
+		if (labData==NULL) //test if the allocation is a success
+				exit(EXIT_FAILURE);
+		L->players[0]->turn = getLabyrinth(labData);
+		
+	
+		mvwprintw(L->guiWins[0]->win, 1, 10, L->name);
+		mvwprintw(L->guiWins[0]->win, 1, 25, "turn:       ");
+		L->turn =0;
+	
+	
+	
+		if(L->players[0]->turn==0)//if we start
+		{
+			L->players[0]->X=0;//curent position of the player
+			L->players[0]->Y=L->heigth/2;
+			L->players[0]->energy=0;
+			L->players[0]->lastX=L->players[0]->X;//last position of the player
+			L->players[0]->lastY=L->players[0]->Y;
+		
+			L->players[1]->X=L->width-1;//curent position of the player
+			L->players[1]->Y=L->heigth/2;
+			L->players[1]->energy=2;
+			L->players[1]->lastX=L->players[1]->X;//last position of the player
+			L->players[1]->lastY=L->players[1]->Y;
+		}
+		else//the op start
+		{
+			L->players[1]->X=0;//curent position of the player
+			L->players[1]->Y=L->heigth/2;
+			L->players[1]->energy=0;
+			L->players[1]->lastX=L->players[1]->X;//last position of the player
+			L->players[1]->lastY=L->players[1]->Y;
+		
+			L->players[0]->X=L->width-1;//curent position of the player
+			L->players[0]->Y=L->heigth/2;
+			L->players[0]->energy=2;
+			L->players[0]->lastX=L->players[0]->X;//last position of the player
+			L->players[0]->lastY=L->players[0]->Y;
+		}
+	
+		char* e=intTostr(L->players[0]->energy);
+		addStr(L->infoP1[1],"          ","");
+		addStr(L->infoP1[1],"  ",e);
+		free(e);
+		e=intTostr(L->players[1]->energy);
+		addStr(L->infoP2[1],"          ","");
+		addStr(L->infoP2[1],"  ",e);
+		free(e);
+	
+	
+		L->players[2]->X=L->width/2;//curent position of the tresor
+		L->players[2]->Y=L->heigth/2;
+		L->players[2]->energy=0;
+		L->players[2]->lastX=L->players[2]->X;//last position of the tresor
+		L->players[2]->lastY=L->players[2]->Y;
+	
+	
+	
+		L->cases=(char **) malloc(L->heigth*sizeof(char*));
+		if (L->cases==NULL) //test if the allocation is a success
+				exit(EXIT_FAILURE);
+	
+	
+		for(i=0;i<L->heigth;i++)//get the lab in a 2dim array
+		{
+			L->cases[i]=(char*)malloc(L->width*sizeof(char));
+			if (L->cases[i]==NULL) //test if the allocation is a success
+				exit(EXIT_FAILURE);
+		
+			for(j=0;j<L->width;j++)
+			{
+				L->cases[i][j]=labData[i*L->width+j];
+			}
+		}
+		free(labData);
+		for(i=0;i<3;i++)
+		{
+			L->cases[L->players[i]->Y][L->players[i]->X]=i+2;
+		}
+		return 1;
+	}
+	else
+		return 0;
 }
 
 int testMoveP(Map *L,int P,t_move *move)

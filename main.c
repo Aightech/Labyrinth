@@ -36,7 +36,7 @@ int main()
 	initGUI(L);
 	
 	//t_move* move=(t_move*) malloc(sizeof(t_move));
-	printf("ROTATE_COLUMN_RIGHT= %d ",ROTATE_LINE_RIGHT);
+	printf("MOVE_UP= %d\tMOVE_DOWN= %d\tMOVE_LEFT= %d\tMOVE_RIGHT= %d\t \n ",MOVE_UP,MOVE_DOWN,MOVE_LEFT,MOVE_RIGHT);
 	int choice=53,i;
 	
 	addStr(L->infoP1[5]," Select your mode.","");
@@ -68,29 +68,30 @@ int main()
 				eraseMap(L);
 				freeMap(L);
 				getMap(L);//switch of the value getmap return to lauched the game mode
-				if(L->players[1]->mode==1)
-					/* end the connection, because we don't need the server anymore */
-					closeConnection();
-					
-				if(L->players[0]->mode==0)//we are dumb
-					dumbMode(L);
-				else if(L->players[0]->mode==1)//we play manual
-					manualMode(L);
-				else if(L->players[0]->mode==2)//we play random
-					randMode(L);
-				else if(L->players[0]->mode==3)//we play astar
-					astarMode(L);
-				else if(L->players[0]->mode==4)//we play astar
-				{	
-					cleverMode(L);
-					//return 0;
-				}
-			
-				for(i=3;i<7;i++)
+				do
 				{
-					addStr(L->infoP1[i],"                                 ","");
-					addStr(L->infoP2[i],"                                 ","");
-				}
+					if(L->players[0]->mode==0)//we are dumb
+						dumbMode(L);
+					else if(L->players[0]->mode==1)//we play manual
+						manualMode(L);
+					else if(L->players[0]->mode==2)//we play random
+						randMode(L);
+					else if(L->players[0]->mode==3)//we play astar
+						astarMode(L);
+					else if(L->players[0]->mode==4)//we play clver
+					{	
+						cleverMode(L);
+						//return 0;
+					}
+			
+					for(i=3;i<7;i++)
+					{
+						addStr(L->infoP1[i],"                                 ","");
+						addStr(L->infoP2[i],"                                 ","");
+					}
+					eraseMap(L);
+					freeMap(L);
+				}while(contestMode(L));
 				addStr(L->infoP1[5]," Select your mode.","");
 				
 				choice=50;	
@@ -101,9 +102,7 @@ int main()
 					eraseMap(L);
 					freeMap(L);
 					getMap(L);//switch of the value getmap return to lauched the game mode
-					if(L->players[1]->mode==1)
-					/* end the connection, because we don't need the server anymore */
-					closeConnection();
+					
 					
 					if(L->players[0]->mode==0)//we are dumb
 						dumbMode(L);
@@ -113,6 +112,8 @@ int main()
 						randMode(L);
 					else if(L->players[0]->mode==3)//we play astar
 						astarMode(L);
+					else if(L->players[0]->mode==4)//we play clever
+					cleverMode(L);
 					/*Pause l'application pour i milliseconds*/
 					clock_t start,end;
 					start=clock();

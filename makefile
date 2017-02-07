@@ -3,7 +3,7 @@ LIBDIR = /home/sasl/encad/brajard/projet/CGS_lib
 
 # options de compilation
 CC =gcc
-CCFLAGS = -Wall -Wno-switch -I $(LIBDIR)/include
+CCFLAGS = -g -Wall -Wno-switch -I $(LIBDIR)/include
 LIBS = -L $(LIBDIR)/lib
 LDFLAGS = -lm -lcgs -lncurses -lpanel
 
@@ -24,7 +24,7 @@ dumbMd.o:guilib.h struct.h dumbMd.h mapping.h offline.h
 manualMd.o:guilib.h struct.h manualMd.h mapping.h offline.h
 randMd.o:guilib.h struct.h randMd.h mapping.h offline.h
 astarMd.o:guilib.h struct.h astarMd.h mapping.h offline.h
-cleverMd.o:guilib.h struct.h cleverMd.h mapping.h offline.h
+cleverMd.o:guilib.h struct.h cleverMd.h astarMd.h mapping.h offline.h
 offline.o: dumbMd.h randMd.h astarMd.h
 
 # règles de compilation

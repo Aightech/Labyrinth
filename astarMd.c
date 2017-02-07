@@ -4,8 +4,6 @@
 #include <time.h>
 
 
-
-
 #include "struct.h"
 #include "guilib.h"
 #include "strlib.h"
@@ -176,7 +174,7 @@ Path * astarPath(Map* L, int P)
 	while(openList!=NULL&&*(openList->ncase)!=goalValue)//if the openlist isn't empty and the current node is not the goal.
 	{
 		dispInfo(L);
-		addNeigh(L,openList,nodes);//add the neighbors of the first node of the openlist
+		openList = addNeigh(L,openList,nodes);//add the neighbors of the first node of the openlist
 		dispInfo(L);
 		Ntemp=openList->listNext;
 		openList->listNext=closedList;

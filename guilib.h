@@ -62,6 +62,8 @@ char * selectL(Map *L, int w, int starty, int startx, char ** list);
 */
 int dispMap(Map *L);
 
+int dispGraph(Map *L,Graph* G,Movement *M);
+
 /*! \fn int eraseMap(Map *L);
     \brief  Erase the labyrynth
     \param L The labyrinth map structure.
@@ -79,6 +81,8 @@ int dispInfo(Map *L);
     \param L The labyrinth map structure.
 */
 int dispPath(Map* L);
+
+int dispSeqMov(Map* L,Movement * M,int P);
 
 
 #endif
